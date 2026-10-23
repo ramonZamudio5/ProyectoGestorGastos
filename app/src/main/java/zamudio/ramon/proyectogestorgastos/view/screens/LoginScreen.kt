@@ -50,7 +50,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
-fun LoginScreen(innerPadding: PaddingValues) {
+fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit) {
     var user by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -96,7 +96,7 @@ fun LoginScreen(innerPadding: PaddingValues) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Text("¿Aún no tienes una cuenta en GastoClaro?", style = Typography.labelLarge, color = Color(0xFF475467))
             Spacer(Modifier.height(8.dp))
-            Row(Modifier.clickable { }, verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.clickable { navigateToRegister()}, verticalAlignment = Alignment.CenterVertically) {
                 Text("Regístrate", color = purplePrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Spacer(Modifier.width(4.dp))
                 Icon(painter = painterResource(id = R.drawable.ic_person_add), contentDescription = "Icono Registrar", tint = purplePrimary, modifier = Modifier.size(20.dp)
@@ -108,5 +108,5 @@ fun LoginScreen(innerPadding: PaddingValues) {
 @Preview()
 @Composable
 fun PreviewLogin(){
-    LoginScreen(PaddingValues(15.dp))
+    LoginScreen(PaddingValues(15.dp),{})
 }

@@ -7,18 +7,23 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.RegisterScreen
 
 @Composable
 fun Myapp(innerPadding: PaddingValues) {
     val navController = rememberNavController()
     val navigateToPerfil = {navController.navigate(route = Perfil)}
     val navigateToLogin = {navController.navigate(route = Login)}
-    NavHost(navController = navController, startDestination = Perfil) {
+    val navigateToRegister = {navController.navigate(route = Register)}
+    NavHost(navController = navController, startDestination = Login) {
         composable<Login> {
-            LoginScreen(innerPadding)
+            LoginScreen(innerPadding,navigateToRegister)
         }
         composable<Perfil> {
             PerfilScreen(innerPadding,navigateToLogin)
+        }
+        composable<Register> {
+            RegisterScreen(innerPadding,navigateToLogin)
         }
     }
 }

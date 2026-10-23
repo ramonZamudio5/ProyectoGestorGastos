@@ -8,3 +8,6 @@ object Login
 
 @Serializable
 object Perfil
+
+@Serializable
+object Register

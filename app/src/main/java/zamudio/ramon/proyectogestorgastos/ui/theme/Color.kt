@@ -23,3 +23,5 @@ val GrayText = Color(0xFF6B7280)
 val RedlogOut = Color(0xFFB91C1C)
 
 val BackgroundRed = Color(0xFFFCE8E8)
+
+val LightBlue = Color(0xFF89ABF1)
