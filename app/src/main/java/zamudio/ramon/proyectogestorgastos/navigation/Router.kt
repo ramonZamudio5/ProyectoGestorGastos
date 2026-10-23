@@ -11,3 +11,6 @@ object Perfil
 
 @Serializable
 object Register
+
+@Serializable
+object RegisterPerfil

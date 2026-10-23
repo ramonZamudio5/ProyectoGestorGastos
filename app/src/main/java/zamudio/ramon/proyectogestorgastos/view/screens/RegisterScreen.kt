@@ -46,7 +46,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
 
 
 @Composable
-fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit){
+fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigateToRegisterPerfil:()-> Unit){
     var nombre by remember { mutableStateOf("") }
     var primerApellido by remember { mutableStateOf("") }
     var segundoApellido by remember { mutableStateOf("") }
@@ -132,7 +132,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit){
             }
         }
         Spacer(Modifier.height(30.dp))
-        Button(onClick = {}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = purplePrimary),
+        Button(onClick = {navigateToRegisterPerfil()}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = purplePrimary),
             shape = RoundedCornerShape(40.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                 Text(text = "Continuar ->", color = Color.White, style = Typography.labelLarge)
@@ -154,5 +154,5 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit){
 @Preview
 @Composable
 fun PreviewRegisterScreen(){
-    RegisterScreen(PaddingValues(10.dp),{})
+    RegisterScreen(PaddingValues(10.dp),{},{})
 }
