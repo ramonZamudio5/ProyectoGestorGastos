@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPasswordScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterScreen
 
@@ -17,6 +18,7 @@ fun Myapp(innerPadding: PaddingValues) {
     val navigateToLogin = {navController.navigate(route = Login)}
     val navigateToRegister = {navController.navigate(route = Register)}
     val navigateToRegisterPerfil = {navController.navigate(route = RegisterPerfil)}
+    val navigateToRegisterPassword = {navController.navigate(route = RegisterPassword)}
     NavHost(navController = navController, startDestination = Login) {
         composable<Login> {
             LoginScreen(innerPadding,navigateToRegister)
@@ -28,7 +30,10 @@ fun Myapp(innerPadding: PaddingValues) {
             RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
         }
         composable<RegisterPerfil> {
-            RegisterPerfilScreen(innerPadding,navigateToRegister)
+            RegisterPerfilScreen(innerPadding,navigateToRegister,navigateToRegisterPassword)
+        }
+        composable<RegisterPassword>{
+            RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil)
         }
     }
 }

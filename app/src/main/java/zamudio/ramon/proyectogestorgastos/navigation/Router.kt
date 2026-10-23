@@ -14,3 +14,6 @@ object Register
 
 @Serializable
 object RegisterPerfil
+
+@Serializable
+object RegisterPassword

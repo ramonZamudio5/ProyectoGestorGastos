@@ -46,7 +46,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 
 @Composable
-fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Unit) {
+fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Unit,navigateToRegisterPassword:()-> Unit) {
     var email by remember { mutableStateOf("") }
     var day by remember { mutableStateOf("") }
     var month by remember { mutableStateOf("") }
@@ -141,13 +141,13 @@ fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Uni
             }
 
             Spacer(Modifier.height(32.dp))
-            Button(onClick = { }, modifier = Modifier.fillMaxWidth().height(56.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8B5CF6)), shape = RoundedCornerShape(16.dp)) {
+            Button(onClick = { navigateToRegisterPassword()}, modifier = Modifier.fillMaxWidth().height(56.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8B5CF6)), shape = RoundedCornerShape(16.dp)) {
                 Text("Continuar", color = Color.White, style = Typography.titleMedium)
                 Spacer(Modifier.width(8.dp))
                 Icon(painterResource(R.drawable.ic_arrow_right), null, tint = Color.White)
             }
             Spacer(Modifier.height(16.dp))
-            Row(Modifier.fillMaxWidth().clickable { }, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.fillMaxWidth().clickable { navigateToRegister()}, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                 Icon(painterResource(R.drawable.ic_chevron_left), null, tint = Color(0xFF4B5563), modifier = Modifier.size(16.dp))
                 Spacer(Modifier.width(4.dp))
                 Text("Volver al paso anterior", color = Color(0xFF4B5563), style = Typography.labelLarge)
@@ -160,5 +160,5 @@ fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Uni
 @Preview
 @Composable
 fun PreviewRegistroPerfil() {
-    RegisterPerfilScreen(PaddingValues(10.dp),{})
+    RegisterPerfilScreen(PaddingValues(10.dp),{},{})
 }
