@@ -46,6 +46,8 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
+import zamudio.ramon.proyectogestorgastos.view.components.Header
+import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun LoginScreen(innerPadding: PaddingValues) {
@@ -92,12 +94,13 @@ fun LoginScreen(innerPadding: PaddingValues) {
             Spacer(modifier = Modifier.height(32.dp))
         }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "¿Aún no tienes una cuenta en GastoClaro?",  style = Typography.labelLarge, color = Color(0xFF475467))
+            Text("¿Aún no tienes una cuenta en GastoClaro?", style = Typography.labelLarge, color = Color(0xFF475467))
             Spacer(Modifier.height(8.dp))
             Row(Modifier.clickable { }, verticalAlignment = Alignment.CenterVertically) {
-                Text(text = "Regístrate", color = purplePrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text("Regístrate", color = purplePrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Spacer(Modifier.width(4.dp))
-                Icon(painter = painterResource(id = R.drawable.ic_person_add), contentDescription = "Icono Registrar", tint = purplePrimary, modifier = Modifier.size(20.dp))
+                Icon(painter = painterResource(id = R.drawable.ic_person_add), contentDescription = "Icono Registrar", tint = purplePrimary, modifier = Modifier.size(20.dp)
+                )
             }
         }
     }
