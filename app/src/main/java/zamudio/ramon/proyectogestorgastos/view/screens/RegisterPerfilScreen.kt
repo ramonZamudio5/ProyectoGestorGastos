@@ -44,6 +44,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
+import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
 @Composable
 fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Unit,navigateToRegisterPassword:()-> Unit) {
@@ -56,6 +57,7 @@ fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Uni
     val opcionesGenero = listOf("Femenino", "Masculino", "No binario", "Prefiero no decirlo")
 
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding).verticalScroll(rememberScrollState())) {
+        BarraProgreso(2,3)
         Column(Modifier.padding(24.dp)) {
             Spacer(Modifier.height(24.dp))
             Row(Modifier.background(BackGroundPurple, CircleShape).padding(horizontal = 12.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {

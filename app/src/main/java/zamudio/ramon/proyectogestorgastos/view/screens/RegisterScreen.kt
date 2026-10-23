@@ -43,6 +43,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightBlue
 import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
 
 @Composable
@@ -52,6 +53,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
     var segundoApellido by remember { mutableStateOf("") }
 
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)) {
+        BarraProgreso(1,3)
         Text(
             "Crear Cuenta",
             style = Typography.headlineLarge,
