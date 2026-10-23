@@ -44,7 +44,7 @@ fun Header(innerPadding: PaddingValues){
             Icon(painter = painterResource(R.drawable.ic_notificaciones), contentDescription = "Notificaciones",
                 Modifier.align(Alignment.CenterVertically).size(25.dp))
         }
-        Image(painter = painterResource(R.drawable.profilePicture), contentDescription = "Foto de perfil",
+        Image(painter = painterResource(R.drawable.profile_picture), contentDescription = "Foto de perfil",
             contentScale = ContentScale.Crop, modifier = Modifier.padding(end = 8.dp).size(40.dp).clip(CircleShape).clickable {})
     }
 }
