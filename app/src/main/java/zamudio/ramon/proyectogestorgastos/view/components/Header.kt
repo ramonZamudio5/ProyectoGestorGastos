@@ -31,7 +31,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 
 @Composable
-fun Header(innerPadding: PaddingValues){
+fun Header(innerPadding: PaddingValues,onNavigateToPerfil : ()-> Unit){
     Row(Modifier.fillMaxWidth().background(Color.White).padding(innerPadding),verticalAlignment = Alignment.CenterVertically) {
         Image(painterResource(R.drawable.ic_logo), contentDescription = "Logo", Modifier.size(35.dp).align(
             Alignment.CenterVertically))
@@ -45,7 +45,7 @@ fun Header(innerPadding: PaddingValues){
                 Modifier.align(Alignment.CenterVertically).size(25.dp))
         }
         Image(painter = painterResource(R.drawable.profile_picture), contentDescription = "Foto de perfil",
-            contentScale = ContentScale.Crop, modifier = Modifier.padding(end = 8.dp).size(40.dp).clip(CircleShape).clickable {})
+            contentScale = ContentScale.Crop, modifier = Modifier.padding(end = 8.dp).size(40.dp).clip(CircleShape).clickable {onNavigateToPerfil()})
     }
 }
 
@@ -53,5 +53,5 @@ fun Header(innerPadding: PaddingValues){
 @Preview
 @Composable
 fun PreviewHeader(){
-    Header(PaddingValues(15.dp))
+    Header(PaddingValues(15.dp),{})
 }

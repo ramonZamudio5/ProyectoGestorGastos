@@ -6,14 +6,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 
 @Composable
 fun Myapp(innerPadding: PaddingValues) {
     val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = Login) {
+    val navigateToPerfil = {navController.navigate(route = Perfil)}
+    val navigateToLogin = {navController.navigate(route = Login)}
+    NavHost(navController = navController, startDestination = Perfil) {
         composable<Login> {
             LoginScreen(innerPadding)
+        }
+        composable<Perfil> {
+            PerfilScreen(innerPadding,navigateToLogin)
         }
     }
 }

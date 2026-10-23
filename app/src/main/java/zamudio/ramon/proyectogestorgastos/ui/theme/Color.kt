@@ -13,3 +13,13 @@ val Pink40 = Color(0xFF7D5260)
 val purplePrimary = Color(0xFF5516BE)
 
 val screenBackground = Color(0xFFFFF0F5)
+
+val BluePrimary = Color(0xFF2563EB)
+
+val GrayForm = Color(0xFFF4F5F9)
+
+val GrayText = Color(0xFF6B7280)
+
+val RedlogOut = Color(0xFFB91C1C)
+
+val BackgroundRed = Color(0xFFFCE8E8)
