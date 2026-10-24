@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -122,19 +121,10 @@ fun GroupCardItem(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Row(horizontalArrangement = Arrangement.spacedBy((-6).dp)) {
-                    repeat(3) { idx ->
-                        Box(
-                            modifier = Modifier
-                                .size(24.dp)
-                                .clip(CircleShape)
-                                .background(Color(0xFFB0BEC5)),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            if (idx == 2) Text("Tú", fontSize = 9.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                        }
-                    }
-                }
+                AvatarStack(
+                    avatarSize = 26.dp,
+                    includeCurrentUser = true
+                )
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("Último: ", fontSize = 12.sp, color = Color.Gray)
                     Text(
