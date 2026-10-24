@@ -25,7 +25,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.view.components.BannerBalance
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastos
@@ -34,7 +34,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun PrincipalScreen(innerPadding: PaddingValues, onNavigateToPerfil : ()-> Unit, gastos: List<Gasto>){
-    Column(Modifier.background(color= fondo).fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
+    Column(Modifier.background(color= Fondo).fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
         Header(innerPadding, onNavigateToPerfil)
         Column(Modifier.padding(15.dp), verticalArrangement = Arrangement.SpaceBetween) {
             BannerBalance(30.0, 40.0)

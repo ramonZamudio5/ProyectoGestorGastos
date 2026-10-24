@@ -20,23 +20,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
+import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
+
+enum class BalanceType {
+    TE_DEBEN,
+    DEBES
+}
 
 @SuppressLint("DefaultLocale")
 @Composable
 fun BalanceStatCard(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    type: BalanceType
 ) {
-    val title = "Te Deben"
+    val title = when (type) {
+        BalanceType.TE_DEBEN -> "Te deben"
+        BalanceType.DEBES -> "Debes"
+    }
     val amount = 3000.00
-    val accentColor = Color(0xFF673AB7)
-    val icon: Painter = painterResource(R.drawable.ic_arrow_down)
+    val accentColor = when (type) {
+        BalanceType.TE_DEBEN -> Purple40
+        BalanceType.DEBES -> RedlogOut
+    }
+    val iconRes = when (type) {
+        BalanceType.TE_DEBEN -> R.drawable.ic_arrow_down
+        BalanceType.DEBES -> R.drawable.ic_arrow_up
+    }
 
     Card(
         modifier = modifier,
@@ -58,7 +74,7 @@ fun BalanceStatCard(
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    painter = icon,
+                    painter = painterResource(iconRes),
                     contentDescription = null,
                     tint = accentColor,
                     modifier = Modifier.size(18.dp)
@@ -88,7 +104,12 @@ fun BalanceStatCard(
 
 @Preview
 @Composable
-fun BalanceStatCardPreview(){
-    BalanceStatCard(
-        modifier = Modifier)
+fun BalanceStatCardPreviewTeDeben(){
+    BalanceStatCard(modifier = Modifier, BalanceType.TE_DEBEN)
+}
+
+@Preview
+@Composable
+fun BalanceStatCardPreviewDebes(){
+    BalanceStatCard(modifier = Modifier, BalanceType.DEBES)
 }

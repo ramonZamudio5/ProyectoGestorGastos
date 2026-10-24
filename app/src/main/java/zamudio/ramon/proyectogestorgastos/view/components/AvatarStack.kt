@@ -15,7 +15,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -24,8 +23,6 @@ import androidx.compose.ui.zIndex
 @Composable
 fun AvatarStack(
     modifier: Modifier = Modifier,
-    avatarSize: Dp = 26.dp,
-    overlapOffset: Dp = (-8).dp,
     includeCurrentUser: Boolean = true
 ){
     val placeholderColors = listOf(
@@ -34,6 +31,7 @@ fun AvatarStack(
         Color(0xFFFFCC80)  // Naranja pastel
     )
 
+
     Row (
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
@@ -41,9 +39,9 @@ fun AvatarStack(
         placeholderColors.forEachIndexed { index, color ->
             Box(
                 modifier = Modifier
-                    .offset(x = overlapOffset * index)
+                    .offset(x = (-8).dp * index)
                     .zIndex(index.toFloat())
-                    .size(avatarSize)
+                    .size(26.dp)
                     .border(1.5.dp, Color.White, CircleShape)
                     .clip(CircleShape)
                     .background(color)
@@ -54,9 +52,9 @@ fun AvatarStack(
         if (includeCurrentUser) {
             Box(
                 modifier = Modifier
-                    .offset(x = overlapOffset * placeholderColors.size)
+                    .offset(x = (-8).dp * placeholderColors.size)
                     .zIndex(placeholderColors.size.toFloat())
-                    .size(avatarSize)
+                    .size(26.dp)
                     .border(1.5.dp, Color.White, CircleShape)
                     .clip(CircleShape)
                     .background(Color(0xFF7E57C2)), // Morado como el acento de la app

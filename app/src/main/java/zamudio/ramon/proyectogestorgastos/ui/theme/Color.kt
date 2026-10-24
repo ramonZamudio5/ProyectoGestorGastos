@@ -32,7 +32,7 @@ val BlueNavy = Color(0xFF131B2E)
 
 val White = Color(0xFFFFFFFF)
 
-val fondo = Color(0xFFEFE8F9)
+val Fondo = Color(0xFFEFE8F9)
 
 val purpleButton = Color(0xFF8455EF)
 

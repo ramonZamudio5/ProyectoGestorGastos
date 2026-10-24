@@ -121,10 +121,7 @@ fun GroupCardItem(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                AvatarStack(
-                    avatarSize = 26.dp,
-                    includeCurrentUser = true
-                )
+                AvatarStack()
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("Último: ", fontSize = 12.sp, color = Color.Gray)
                     Text(
