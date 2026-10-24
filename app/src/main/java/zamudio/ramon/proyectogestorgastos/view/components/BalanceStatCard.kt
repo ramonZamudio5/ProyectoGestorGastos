@@ -1,11 +1,11 @@
 package zamudio.ramon.proyectogestorgastos.view.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -28,14 +28,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun BalanceStatCard(
-    title: String,
-    amount: String,
-    accentColor: Color,
-    icon: Painter,
     modifier: Modifier = Modifier
 ) {
+    val title = "Te Deben"
+    val amount = 3000.00
+    val accentColor = Color(0xFF673AB7)
+    val icon: Painter = painterResource(R.drawable.ic_arrow_down)
+
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
@@ -44,7 +46,6 @@ fun BalanceStatCard(
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 14.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -75,7 +76,7 @@ fun BalanceStatCard(
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    text = amount,
+                    text = String.format("%.2f", amount),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = accentColor
@@ -85,13 +86,9 @@ fun BalanceStatCard(
     }
 }
 
-@Preview (showBackground = true)
+@Preview
 @Composable
 fun BalanceStatCardPreview(){
     BalanceStatCard(
-        title = "Te deben",
-        amount = "$3,000.00",
-        accentColor = Color(0xFF673AB7),
-        icon = painterResource(R.drawable.ic_arrow_down),
         modifier = Modifier)
 }
