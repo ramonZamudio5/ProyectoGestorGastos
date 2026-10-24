@@ -27,3 +27,13 @@ val BackgroundRed = Color(0xFFFCE8E8)
 val LightBlue = Color(0xFF89ABF1)
 
 val BackGroundPurple = Color(0xFFEBE4FF)
+
+val White = Color(0xFFFFFFFF)
+
+val fondo = Color(0xFFEFE8F9)
+
+val purpleButton = Color(0xFF8455EF)
+
+val lightGreen = Color(0xC3BCF86C)
+
+val lightRed = Color(0xCBEC3939)
