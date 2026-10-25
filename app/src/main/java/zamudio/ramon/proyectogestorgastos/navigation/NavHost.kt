@@ -2,11 +2,15 @@ package zamudio.ramon.proyectogestorgastos.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
+import zamudio.ramon.proyectogestorgastos.view.screens.HistorialScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.PrincipalScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPasswordScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterScreen
@@ -19,9 +23,12 @@ fun Myapp(innerPadding: PaddingValues) {
     val navigateToRegister = {navController.navigate(route = Register)}
     val navigateToRegisterPerfil = {navController.navigate(route = RegisterPerfil)}
     val navigateToRegisterPassword = {navController.navigate(route = RegisterPassword)}
+    val navigateToHistorial = {navController.navigate(route = Historial)}
+    val navigateToPrincipal = {navController.navigate(route = Principal)}
+
     NavHost(navController = navController, startDestination = Login) {
         composable<Login> {
-            LoginScreen(innerPadding,navigateToRegister)
+            LoginScreen(innerPadding,navigateToRegister, navigateToPrincipal)
         }
         composable<Perfil> {
             PerfilScreen(innerPadding,navigateToLogin)
@@ -34,6 +41,12 @@ fun Myapp(innerPadding: PaddingValues) {
         }
         composable<RegisterPassword>{
             RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil)
+        }
+        composable<Historial> {
+            HistorialScreen(innerPadding, navigateToPerfil)
+        }
+        composable<Principal> {
+            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock, navigateToHistorial)
         }
     }
 }
