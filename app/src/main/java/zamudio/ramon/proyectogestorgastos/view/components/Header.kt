@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -32,7 +33,13 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 
 @Composable
 fun Header(innerPadding: PaddingValues,onNavigateToPerfil : ()-> Unit){
-    Row(Modifier.fillMaxWidth().background(Color.White).padding(innerPadding),verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        Modifier.fillMaxWidth()
+            .background(Color.White)
+            .statusBarsPadding()
+            .padding(innerPadding),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Image(painterResource(R.drawable.ic_logo), contentDescription = "Logo", Modifier.size(35.dp).align(
             Alignment.CenterVertically))
         Column(Modifier.padding(horizontal = 10.dp)) {

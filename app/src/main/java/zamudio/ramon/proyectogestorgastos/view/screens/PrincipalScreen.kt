@@ -37,14 +37,21 @@ import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
-fun PrincipalScreen(innerPadding: PaddingValues, onNavigateToPerfil : ()-> Unit, gastos: List<Gasto>,
-                    onNavigateToHistorial: () -> Unit, onNavigateToGraficos: ()-> Unit){
-    Column(Modifier.background(color= fondo).fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
+fun PrincipalScreen(
+    innerPadding: PaddingValues,
+    onNavigateToPerfil: () -> Unit,
+    gastos: List<Gasto>,
+    onNavigateToRegistroGasto: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},  onNavigateToHistorial: () -> Unit, onNavigateToGraficos: ()-> Unit
+) {
+    Column(Modifier
+        .background(color = fondo)
+        .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
         Header(innerPadding, onNavigateToPerfil)
-        Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween) {
-            BannerBalance(getGastosTotales(gastos), 3000.0)
-            Spacer(Modifier.size(10.dp))
-            Button(onClick = {}, Modifier.fillMaxWidth(),
+        Column(Modifier.padding(15.dp), verticalArrangement = Arrangement.SpaceBetween) {
+            BannerBalance(30.0, 40.0)
+            Spacer(Modifier.size(15.dp))
+            Button(onClick = onNavigateToRegistroGasto, Modifier.fillMaxWidth(),
                 colors = ButtonColors(
                     containerColor = purpleButton,
                     contentColor = White, disabledContainerColor = Purple40,
