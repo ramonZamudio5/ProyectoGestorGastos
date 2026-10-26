@@ -23,3 +23,6 @@ object Historial
 
 @Serializable
 object Principal
+
+@Serializable
+object Graficos

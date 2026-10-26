@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
+import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
@@ -31,8 +32,8 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 
 @Composable
-fun HistorialScreen(innerPadding: PaddingValues, onNavigateToPerfil:()-> Unit){
-    var filtroActual by remember { mutableStateOf("dia") }
+fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
+    var filtroActual by remember { mutableStateOf("todo") }
     Column(Modifier.background(color= fondo).fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween) {
         Header(innerPadding, onNavigateToPerfil)
@@ -45,18 +46,18 @@ fun HistorialScreen(innerPadding: PaddingValues, onNavigateToPerfil:()-> Unit){
                 unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent,
                 errorBorderColor = Color.Transparent), shape = RoundedCornerShape(10.dp))
             Spacer(Modifier.size(10.dp))
-            RowDeFiltros(gastosMock, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
+            RowDeFiltros(gastos, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             Spacer(Modifier.size(10.dp))
             Column(modifier = Modifier.background(color= White, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
-                ColumnaGastosPorFiltro(filtroActual, gastosMock)
+                ColumnaGastosPorFiltro(filtroActual, gastos)
             }
         }
-        NavBar()
+        NavBar(onNavigateToGraficos)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewHistorialScreen(){
-    HistorialScreen(PaddingValues(), {})
+    HistorialScreen(PaddingValues(), gastosMock, {},{})
 }

@@ -50,3 +50,8 @@ fun getGastosTotales(gastos: List<Gasto>): Double{
     val total = gastos.sumOf { it.cantidad }
     return "%.2f".format(total).toDouble()
 }
+
+@Composable
+fun getPresupuestoTotal(gastos: List<Gasto>): Double{
+    return "%.2f".format(getTiposInGastos(gastos).sumOf { it -> it.estimado }).toDouble()
+}

@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
+import zamudio.ramon.proyectogestorgastos.view.screens.GraficosScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.HistorialScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
@@ -25,13 +26,14 @@ fun Myapp(innerPadding: PaddingValues) {
     val navigateToRegisterPassword = {navController.navigate(route = RegisterPassword)}
     val navigateToHistorial = {navController.navigate(route = Historial)}
     val navigateToPrincipal = {navController.navigate(route = Principal)}
+    val navigateToGraficos = {navController.navigate(route = Graficos)}
 
     NavHost(navController = navController, startDestination = Login) {
         composable<Login> {
             LoginScreen(innerPadding,navigateToRegister, navigateToPrincipal)
         }
         composable<Perfil> {
-            PerfilScreen(innerPadding,navigateToLogin)
+            PerfilScreen(innerPadding,navigateToLogin, navigateToGraficos)
         }
         composable<Register> {
             RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
@@ -43,10 +45,14 @@ fun Myapp(innerPadding: PaddingValues) {
             RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil)
         }
         composable<Historial> {
-            HistorialScreen(innerPadding, navigateToPerfil)
+            HistorialScreen(innerPadding,gastosMock, navigateToPerfil, navigateToGraficos)
         }
         composable<Principal> {
-            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock, navigateToHistorial)
+            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock,
+                navigateToHistorial, navigateToGraficos)
+        }
+        composable<Graficos> {
+            GraficosScreen(innerPadding, gastosMock,navigateToPerfil, navigateToGraficos)
         }
     }
 }

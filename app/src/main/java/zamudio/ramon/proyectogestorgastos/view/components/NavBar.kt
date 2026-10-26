@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
-fun NavBar(){
+fun NavBar(onNavigateToGraficos: ()-> Unit){
     Row(Modifier.fillMaxWidth().background(Color.White), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
         IconButton(onClick = { }) {
             Icon(painter = painterResource(R.drawable.ic_inicio), contentDescription = "inicio")
@@ -29,7 +29,7 @@ fun NavBar(){
         IconButton(onClick = { }) {
             Icon(painter = painterResource(R.drawable.ic_grupos), contentDescription = "grupos")
         }
-        IconButton(onClick = { }) {
+        IconButton(onClick = onNavigateToGraficos) {
             Icon(painter = painterResource(R.drawable.ic_graficas), contentDescription = "grafica")
         }
     }
@@ -39,5 +39,5 @@ fun NavBar(){
 @Preview
 @Composable
 fun previewNavBar(){
-    NavBar()
+    NavBar({})
 }

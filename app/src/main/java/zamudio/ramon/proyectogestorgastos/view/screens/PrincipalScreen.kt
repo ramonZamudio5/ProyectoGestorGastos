@@ -38,7 +38,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun PrincipalScreen(innerPadding: PaddingValues, onNavigateToPerfil : ()-> Unit, gastos: List<Gasto>,
-                    onNavigateToHistorial: () -> Unit){
+                    onNavigateToHistorial: () -> Unit, onNavigateToGraficos: ()-> Unit){
     Column(Modifier.background(color= fondo).fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
         Header(innerPadding, onNavigateToPerfil)
         Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween) {
@@ -65,12 +65,12 @@ fun PrincipalScreen(innerPadding: PaddingValues, onNavigateToPerfil : ()-> Unit,
                 }
             }
         }
-        NavBar()
+        NavBar(onNavigateToGraficos)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewPrincipalScreen(){
-    PrincipalScreen(PaddingValues(15.dp),{}, gastosMock, {})
+    PrincipalScreen(PaddingValues(15.dp),{}, gastosMock, {},{})
 }

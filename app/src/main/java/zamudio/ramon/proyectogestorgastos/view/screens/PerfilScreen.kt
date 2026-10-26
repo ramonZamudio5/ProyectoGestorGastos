@@ -51,7 +51,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
-fun PerfilScreen(innerPadding: PaddingValues,onNavigateToLogin: ()-> Unit) {
+fun PerfilScreen(innerPadding: PaddingValues,onNavigateToLogin: ()-> Unit, onNavigateToGraficos: ()-> Unit) {
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -76,7 +76,7 @@ fun PerfilScreen(innerPadding: PaddingValues,onNavigateToLogin: ()-> Unit) {
             BotonCerrarSesion(onNavigateToLogin)
             Spacer(modifier = Modifier.height(16.dp))
         }
-        NavBar()
+        NavBar(onNavigateToGraficos)
     }
 }
 
@@ -195,5 +195,5 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
 @Preview
 @Composable
 fun PreviewPerfil(){
-    PerfilScreen(PaddingValues(10.dp),{})
+    PerfilScreen(PaddingValues(10.dp),{},{})
 }
