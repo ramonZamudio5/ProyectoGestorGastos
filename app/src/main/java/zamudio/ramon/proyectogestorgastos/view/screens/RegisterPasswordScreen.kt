@@ -52,7 +52,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
 @Composable
-fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:()-> Unit) {
+fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:()-> Unit,navigateToPrincipal : ()-> Unit) {
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -60,6 +60,7 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
     var termsAccepted by remember { mutableStateOf(false) }
 
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding).verticalScroll(rememberScrollState())) {
+        Spacer(Modifier.height(10.dp))
         BarraProgreso(3,3)
         Column(Modifier.padding(24.dp)) {
             Spacer(Modifier.height(16.dp))
@@ -175,7 +176,7 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
             }
 
             Spacer(Modifier.height(24.dp))
-            Button(onClick = { }, modifier = Modifier.fillMaxWidth().height(56.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6B21A8)), shape = RoundedCornerShape(16.dp)) {
+            Button(onClick = {navigateToPrincipal() }, modifier = Modifier.fillMaxWidth().height(56.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6B21A8)), shape = RoundedCornerShape(16.dp)) {
                 Text("Crear Cuenta", color = Color.White, style = Typography.titleMedium)
                 Spacer(Modifier.width(8.dp))
                 Icon(painterResource(R.drawable.ic_arrow_right), null, tint = Color.White)
@@ -194,5 +195,5 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
 @Preview
 @Composable
 fun PreviewRegistroPassword() {
-    RegisterPasswordScreen(PaddingValues(10.dp),{})
+    RegisterPasswordScreen(PaddingValues(10.dp),{},{})
 }

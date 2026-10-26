@@ -15,9 +15,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
-fun NavBar(){
+fun NavBar(navigateToPrincipal: ()-> Unit){
     Row(Modifier.fillMaxWidth().background(Color.White), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
-        IconButton(onClick = { }) {
+        IconButton(onClick = {navigateToPrincipal() }) {
             Icon(painter = painterResource(R.drawable.ic_inicio), contentDescription = "inicio")
         }
         IconButton(onClick = { }) {
@@ -39,5 +39,5 @@ fun NavBar(){
 @Preview
 @Composable
 fun previewNavBar(){
-    NavBar()
+    NavBar({})
 }
