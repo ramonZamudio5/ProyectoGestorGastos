@@ -57,7 +57,7 @@ fun PerfilScreen(
     navigateToPrincipal: () -> Unit,
     navigateToMetodosPago: () -> Unit = {},
     navigateToPresupuesto: () -> Unit = {},
-    navigateToRegistroGasto: () -> Unit = {}
+    navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
 ) {
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -97,7 +97,8 @@ fun PerfilScreen(
         NavBar(
             onInicioClick = navigateToPrincipal,
             onPresupuestoClick = navigateToPresupuesto,
-            onAgregarClick = navigateToRegistroGasto
+            onAgregarClick = navigateToRegistroGasto,
+            onNavigateToGraficos
         )
     }
 }

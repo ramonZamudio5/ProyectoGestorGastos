@@ -19,10 +19,16 @@ object RegisterPerfil
 object RegisterPassword
 
 @Serializable
+object Historial
+
+@Serializable
 object Presupuesto
 
 @Serializable
 object Principal
+
+@Serializable
+object Graficos
 
 @Serializable
 object MetodosPago

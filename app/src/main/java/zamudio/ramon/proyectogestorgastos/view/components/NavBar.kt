@@ -45,15 +45,14 @@ fun NavBar(
         IconButton(onClick = onGruposClick) {
             Icon(painterResource(R.drawable.ic_grupos), contentDescription = "Grupos")
         }
-        IconButton(onClick = onGraficasClick) {
-            Icon(painterResource(R.drawable.ic_graficas), contentDescription = "Gráficas")
+        IconButton(onClick = onNavigateToGraficos) {
+            Icon(painter = painterResource(R.drawable.ic_graficas), contentDescription = "grafica")
         }
     }
 }
 
 @Preview
 @Composable
-fun previewNavBar() {
-    NavBar()
+fun previewNavBar(){
+    NavBar({}, {}, {}, {}, {})
 }
-

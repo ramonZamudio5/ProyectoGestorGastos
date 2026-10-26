@@ -2,6 +2,13 @@ package zamudio.ramon.proyectogestorgastos.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
+import zamudio.ramon.proyectogestorgastos.view.screens.GraficosScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.HistorialScreen
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateListOf
 import androidx.navigation.compose.NavHost
@@ -11,7 +18,6 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.Gasto
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
-
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PrincipalScreen
@@ -33,7 +39,9 @@ fun Myapp(innerPadding: PaddingValues) {
     val navigateToRegister = {navController.navigate(route = Register)}
     val navigateToRegisterPerfil = {navController.navigate(route = RegisterPerfil)}
     val navigateToRegisterPassword = {navController.navigate(route = RegisterPassword)}
+    val navigateToHistorial = {navController.navigate(route = Historial)}
     val navigateToPrincipal = {navController.navigate(route = Principal)}
+    val navigateToGraficos = {navController.navigate(route = Graficos)}
     val navigateToMetodosPago = {navController.navigate(route = MetodosPago)}
     val navigateToRegistroMovimiento = { navController.navigate(route = RegistrarMovimiento) }
     val navigateToPresupuesto = { navController.navigate(route = Presupuesto) }
@@ -109,6 +117,16 @@ fun Myapp(innerPadding: PaddingValues) {
                     navController.popBackStack()
                 }
             )
+        }
+        composable<Historial> {
+            HistorialScreen(innerPadding,gastosMock, navigateToPerfil, navigateToGraficos)
+        }
+        composable<Principal> {
+            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock,
+                navigateToHistorial, navigateToGraficos)
+        }
+        composable<Graficos> {
+            GraficosScreen(innerPadding, gastosMock,navigateToPerfil, navigateToGraficos)
         }
     }
 }
