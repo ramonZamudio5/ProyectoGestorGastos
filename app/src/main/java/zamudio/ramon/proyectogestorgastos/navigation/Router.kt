@@ -24,4 +24,13 @@ object Presupuesto
 
 @Serializable
 object Principal
+
+@Serializable
+object MetodosPago
+
+@Serializable
+object RegistrarTarjeta
+
+@Serializable
+object RegistrarMovimiento
  

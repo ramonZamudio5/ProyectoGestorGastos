@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
-fun NavBar(){
+fun NavBar(onInicioClick: () -> Unit = {}){
     Row(
         Modifier.fillMaxWidth()
             .background(Color.White)
@@ -27,7 +27,7 @@ fun NavBar(){
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { }) {
+        IconButton(onClick = onInicioClick) {
             Icon(painter = painterResource(R.drawable.ic_inicio), contentDescription = "inicio")
         }
         IconButton(onClick = { }) {

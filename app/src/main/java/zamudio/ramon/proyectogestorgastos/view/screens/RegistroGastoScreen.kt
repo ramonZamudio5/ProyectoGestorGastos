@@ -6,6 +6,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -29,6 +32,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,6 +50,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.Gasto
+import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
+import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
+import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
@@ -59,6 +67,7 @@ import java.util.Calendar
 fun RegistroGastoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onNavigateToPerfil: () -> Unit = {},
+    tarjetasDisponibles: List<TarjetaPago> = tarjetasPagoMock,
     onGuardar: (Gasto) -> Unit = {}
 ) {
     var esGasto by remember { mutableStateOf(true) }
@@ -66,6 +75,7 @@ fun RegistroGastoScreen(
     var descripcion by remember { mutableStateOf("") }
     var categoria by remember { mutableStateOf("") }
     var tipoPago by remember { mutableStateOf("") }
+    var tarjetaSeleccionada by remember { mutableStateOf<TarjetaPago?>(null) }
     var fecha by remember { mutableStateOf("") }
     var recibo by remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -80,22 +90,25 @@ fun RegistroGastoScreen(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 20.dp),
             verticalArrangement = Arrangement.spacedBy(11.dp)
         ) {
-            Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(White).padding(4.dp)) {
-                TipoMovimientoButton("Gasto", esGasto, Modifier.weight(1f)) {
+            SelectorTipoMovimiento(
+                esGasto = esGasto,
+                onSeleccionarGasto = {
                     if (!esGasto) {
                         esGasto = true
                         categoria = ""
                         tipoPago = ""
+                        tarjetaSeleccionada = null
                     }
-                }
-                TipoMovimientoButton("Ingreso", !esGasto, Modifier.weight(1f)) {
+                },
+                onSeleccionarIngreso = {
                     if (esGasto) {
                         esGasto = false
                         categoria = ""
                         tipoPago = ""
+                        tarjetaSeleccionada = null
                     }
                 }
-            }
+            )
             CampoRegistro(
                 if (esGasto) "Monto del gasto" else "Monto del ingreso",
                 monto, { monto = it }, "0.00", KeyboardType.Decimal
@@ -116,7 +129,28 @@ fun RegistroGastoScreen(
                 tipoPago,
                 if (esGasto) listOf("Efectivo", "Tarjeta de débito", "Tarjeta de crédito", "Transferencia", "Otro")
                 else listOf("Efectivo", "Transferencia", "Depósito", "Otro")
-            ) { tipoPago = it }
+            ) {
+                tipoPago = it
+                if (it != "Tarjeta de débito" && it != "Tarjeta de crédito") {
+                    tarjetaSeleccionada = null
+                } else if (tarjetaSeleccionada?.tipoTarjeta?.let { tipo ->
+                        (it == "Tarjeta de débito" && tipo != TipoTarjeta.DEBITO) ||
+                            (it == "Tarjeta de crédito" && tipo != TipoTarjeta.CREDITO)
+                    } == true) {
+                    tarjetaSeleccionada = null
+                }
+            }
+            if (esGasto && tipoPago in listOf("Tarjeta de débito", "Tarjeta de crédito")) {
+                val tipoRequerido = if (tipoPago == "Tarjeta de crédito") TipoTarjeta.CREDITO else TipoTarjeta.DEBITO
+                val tarjetasDelTipo = tarjetasDisponibles.filter { it.tipoTarjeta == tipoRequerido }
+                SelectorRegistro(
+                    "Tarjeta",
+                    tarjetaSeleccionada?.let { "${it.banco} •••• ${it.ultimosCuatroDigitos}" }.orEmpty(),
+                    tarjetasDelTipo.map { "${it.banco} •••• ${it.ultimosCuatroDigitos}" }
+                ) { opcion ->
+                    tarjetaSeleccionada = tarjetasDelTipo.firstOrNull { "${it.banco} •••• ${it.ultimosCuatroDigitos}" == opcion }
+                }
+            }
             Text(
                 if (esGasto) "Foto del recibo (opcional)" else "Comprobante del ingreso (opcional)",
                 style = Typography.labelLarge, fontWeight = FontWeight.SemiBold
@@ -159,14 +193,16 @@ fun RegistroGastoScreen(
                         tipo = categoria.toTipoGasto(),
                         cantidad = monto.toDoubleOrNull() ?: 0.0,
                         fecha = fecha,
-                        imagen = categoria.toIconoGasto()
+                        imagen = categoria.toIconoGasto(),
+                        tarjetaPago = if (esGasto) tarjetaSeleccionada else null
                     )
                     onGuardar(gasto)
                 },
                 Modifier.fillMaxWidth().height(52.dp),
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = purpleButton),
-                enabled = monto.isNotBlank() && categoria.isNotBlank()
+                enabled = monto.isNotBlank() && categoria.isNotBlank() &&
+                    (tipoPago !in listOf("Tarjeta de débito", "Tarjeta de crédito") || tarjetaSeleccionada != null)
             ) {
                 Icon(painterResource(R.drawable.ic_anadir), contentDescription = null, modifier = Modifier.size(18.dp))
                 Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
@@ -192,13 +228,47 @@ private fun String.toIconoGasto(): Int = when (this) {
 }
 
 @Composable
-private fun TipoMovimientoButton(text: String, seleccionado: Boolean, modifier: Modifier, onClick: () -> Unit) {
-    Button(
-        onClick = onClick, modifier = modifier.height(38.dp),
-        shape = RoundedCornerShape(8.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = if (seleccionado) purplePrimary else White, contentColor = if (seleccionado) White else Color.Black),
-        contentPadding = PaddingValues(0.dp)
-    ) { Text(text, style = Typography.labelLarge) }
+private fun SelectorTipoMovimiento(
+    esGasto: Boolean,
+    onSeleccionarGasto: () -> Unit,
+    onSeleccionarIngreso: () -> Unit
+) {
+    BoxWithConstraints(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(White).padding(4.dp)
+    ) {
+        val anchoOpcion = maxWidth / 2
+        val desplazamiento = animateDpAsState(
+            targetValue = if (esGasto) 0.dp else anchoOpcion,
+            label = "Desplazamiento selector gasto ingreso"
+        )
+        Box(
+            Modifier.offset(x = desplazamiento.value).width(anchoOpcion).height(38.dp)
+                .clip(RoundedCornerShape(8.dp)).background(purplePrimary)
+        )
+        Row(Modifier.fillMaxWidth()) {
+            OpcionTipoMovimiento("Gasto", esGasto, Modifier.weight(1f), onSeleccionarGasto)
+            OpcionTipoMovimiento("Ingreso", !esGasto, Modifier.weight(1f), onSeleccionarIngreso)
+        }
+    }
+}
+
+@Composable
+private fun OpcionTipoMovimiento(
+    texto: String,
+    seleccionada: Boolean,
+    modifier: Modifier,
+    onClick: () -> Unit
+) {
+    val colorTexto = animateColorAsState(
+        targetValue = if (seleccionada) White else Color(0xFF171717),
+        label = "Color texto tipo movimiento"
+    )
+    Box(
+        modifier.height(38.dp).clip(RoundedCornerShape(8.dp)).clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(texto, style = Typography.labelLarge, color = colorTexto.value, fontWeight = FontWeight.SemiBold)
+    }
 }
 
 @Composable
