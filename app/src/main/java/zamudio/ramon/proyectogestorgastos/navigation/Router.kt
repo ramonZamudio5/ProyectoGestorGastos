@@ -20,3 +20,8 @@ object RegisterPassword
 
 @Serializable
 object Presupuesto
+
+
+@Serializable
+object Principal
+ 

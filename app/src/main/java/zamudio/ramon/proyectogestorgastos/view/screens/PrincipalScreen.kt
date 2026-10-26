@@ -34,7 +34,9 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun PrincipalScreen(innerPadding: PaddingValues, onNavigateToPerfil : ()-> Unit, gastos: List<Gasto>){
-    Column(Modifier.background(color= fondo).fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
+    Column(Modifier
+        .background(color = fondo)
+        .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
         Header(innerPadding, onNavigateToPerfil)
         Column(Modifier.padding(15.dp), verticalArrangement = Arrangement.SpaceBetween) {
             BannerBalance(30.0, 40.0)
@@ -48,16 +50,21 @@ fun PrincipalScreen(innerPadding: PaddingValues, onNavigateToPerfil : ()-> Unit,
                 Text("Agregar gasto/ingreso")
             }
             Spacer(Modifier.size(15.dp))
-            Column(modifier = Modifier.background(color= White, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
+            Column(modifier = Modifier
+                .background(color = White, shape = RoundedCornerShape(10.dp))
+                .padding(10.dp)) {
                 Text("Últimos gastos", style = Typography.titleMedium)
                 ColumnaGastos(gastos)
-                Row(modifier = Modifier.fillMaxWidth().padding(10.dp).background(color= White, shape = RoundedCornerShape(10.dp)),
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+                    .background(color = White, shape = RoundedCornerShape(10.dp)),
                     verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween){
                     Text("Ver historial completo", style= Typography.labelMedium)
                 }
             }
         }
-        NavBar()
+        NavBar({})
     }
 }
 
