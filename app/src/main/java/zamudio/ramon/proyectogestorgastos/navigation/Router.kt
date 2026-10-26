@@ -17,3 +17,6 @@ object RegisterPerfil
 
 @Serializable
 object RegisterPassword
+
+@Serializable
+object Presupuesto

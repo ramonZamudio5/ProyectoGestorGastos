@@ -10,6 +10,7 @@ import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPasswordScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.PresupuestoScreen
 
 @Composable
 fun Myapp(innerPadding: PaddingValues) {
@@ -34,6 +35,9 @@ fun Myapp(innerPadding: PaddingValues) {
         }
         composable<RegisterPassword>{
             RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil)
+        }
+        composable<Presupuesto> {
+            PresupuestoScreen(innerPadding, navigateToPerfil)
         }
     }
 }
