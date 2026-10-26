@@ -21,7 +21,6 @@ object RegisterPassword
 @Serializable
 object Presupuesto
 
-
 @Serializable
 object Principal
 
@@ -34,3 +33,6 @@ object RegistrarTarjeta
 @Serializable
 object RegistrarMovimiento
  
+@Serializable
+object Principal
+

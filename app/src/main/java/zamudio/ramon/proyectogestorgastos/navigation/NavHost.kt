@@ -11,6 +11,7 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.Gasto
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
+
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PrincipalScreen
@@ -33,14 +34,20 @@ fun Myapp(innerPadding: PaddingValues) {
     val navigateToRegisterPerfil = {navController.navigate(route = RegisterPerfil)}
     val navigateToRegisterPassword = {navController.navigate(route = RegisterPassword)}
     val navigateToPrincipal = {navController.navigate(route = Principal)}
+
     val navigateToMetodosPago = {navController.navigate(route = MetodosPago)}
     val navigateToRegistroMovimiento = { navController.navigate(route = RegistrarMovimiento) }
+
+
     NavHost(navController = navController, startDestination = Login) {
         composable<Login> {
             LoginScreen(innerPadding,navigateToRegister,navigateToPrincipal)
         }
         composable<Perfil> {
+
             PerfilScreen(innerPadding,navigateToLogin,navigateToPrincipal,navigateToMetodosPago)
+
+            PerfilScreen(innerPadding,navigateToLogin,navigateToPrincipal)
         }
         composable<Register> {
             RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
@@ -52,6 +59,7 @@ fun Myapp(innerPadding: PaddingValues) {
             RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil,navigateToPrincipal)
         }
         composable<Principal> {
+
             PrincipalScreen(innerPadding, navigateToPerfil, gastos, navigateToRegistroMovimiento)
         }
         composable<Presupuesto> {
@@ -88,6 +96,8 @@ fun Myapp(innerPadding: PaddingValues) {
                     navController.popBackStack()
                 }
             )
+
+            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock)
         }
     }
 }

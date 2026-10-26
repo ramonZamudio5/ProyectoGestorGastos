@@ -28,6 +28,10 @@ fun NavBar(onInicioClick: () -> Unit = {}){
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(onClick = onInicioClick) {
+fun NavBar(navigateToPrincipal: ()-> Unit){
+    Row(Modifier.fillMaxWidth().background(Color.White), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
+        IconButton(onClick = {navigateToPrincipal() }) {
+
             Icon(painter = painterResource(R.drawable.ic_inicio), contentDescription = "inicio")
         }
         IconButton(onClick = { }) {
@@ -49,5 +53,10 @@ fun NavBar(onInicioClick: () -> Unit = {}){
 @Preview
 @Composable
 fun previewNavBar(){
+
     NavBar()
 }
+
+    NavBar({})
+}
+
