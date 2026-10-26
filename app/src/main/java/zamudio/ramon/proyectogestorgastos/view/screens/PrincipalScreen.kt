@@ -37,7 +37,8 @@ fun PrincipalScreen(
     innerPadding: PaddingValues,
     onNavigateToPerfil: () -> Unit,
     gastos: List<Gasto>,
-    onNavigateToRegistroGasto: () -> Unit = {}
+    onNavigateToRegistroGasto: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {}
 ) {
     Column(Modifier
         .background(color = fondo)
@@ -69,7 +70,11 @@ fun PrincipalScreen(
                 }
             }
         }
-        NavBar({})
+        NavBar(
+            onInicioClick = {},
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto
+        )
     }
 }
 

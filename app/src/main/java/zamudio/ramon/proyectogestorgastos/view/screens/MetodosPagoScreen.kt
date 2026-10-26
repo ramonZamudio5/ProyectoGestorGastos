@@ -42,6 +42,8 @@ fun MetodosPagoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onNavigateToPerfil: () -> Unit = {},
     onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},
+    onNavigateToRegistroGasto: () -> Unit = {},
     onRegistrarTarjeta: () -> Unit = {},
     tarjetas: List<TarjetaPago> = tarjetasPagoMock
 ) {
@@ -73,7 +75,11 @@ fun MetodosPagoScreen(
                 )
             }
         }
-        NavBar(onNavigateToPrincipal)
+        NavBar(
+            onInicioClick = onNavigateToPrincipal,
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto
+        )
     }
 }
 

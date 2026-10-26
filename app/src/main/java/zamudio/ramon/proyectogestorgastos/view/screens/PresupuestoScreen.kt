@@ -62,7 +62,9 @@ import zamudio.ramon.proyectogestorgastos.view.components.formatoDinero
 @Composable
 fun PresupuestoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
-    onNavigateToPerfil: () -> Unit = {}
+    onNavigateToPerfil: () -> Unit = {},
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToRegistroGasto: () -> Unit = {}
 ) {
     val categorias = remember {
         mutableStateListOf(
@@ -116,7 +118,7 @@ fun PresupuestoScreen(
             )
             Spacer(Modifier.height(4.dp))
         }
-        NavBar()
+        NavBar(onInicioClick = onNavigateToPrincipal, onAgregarClick = onNavigateToRegistroGasto)
     }
 
     categoriaEditando?.let { categoria ->

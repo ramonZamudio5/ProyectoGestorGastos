@@ -55,7 +55,9 @@ fun PerfilScreen(
     innerPadding: PaddingValues,
     onNavigateToLogin: () -> Unit,
     navigateToPrincipal: () -> Unit,
-    navigateToMetodosPago: () -> Unit = {}
+    navigateToMetodosPago: () -> Unit = {},
+    navigateToPresupuesto: () -> Unit = {},
+    navigateToRegistroGasto: () -> Unit = {}
 ) {
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -92,7 +94,11 @@ fun PerfilScreen(
             BotonCerrarSesion(onNavigateToLogin)
             Spacer(modifier = Modifier.height(16.dp))
         }
-        NavBar(navigateToPrincipal)
+        NavBar(
+            onInicioClick = navigateToPrincipal,
+            onPresupuestoClick = navigateToPresupuesto,
+            onAgregarClick = navigateToRegistroGasto
+        )
     }
 }
 

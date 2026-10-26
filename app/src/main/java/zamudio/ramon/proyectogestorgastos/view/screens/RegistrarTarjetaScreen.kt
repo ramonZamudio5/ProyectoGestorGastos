@@ -59,7 +59,9 @@ fun RegistrarTarjetaScreen(
     onGuardar: (TarjetaPago) -> Unit = {},
     onCancelar: () -> Unit = {},
     onNavigateToPerfil: () -> Unit = {},
-    onNavigateToPrincipal: () -> Unit = {}
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},
+    onNavigateToRegistroGasto: () -> Unit = {}
 ) {
     var titular by remember { mutableStateOf("") }
     var banco by remember { mutableStateOf("") }
@@ -107,7 +109,11 @@ fun RegistrarTarjetaScreen(
                 Text("Cancelar", Modifier.clickable(onClick = onCancelar).padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
             }
         }
-        NavBar(onNavigateToPrincipal)
+        NavBar(
+            onInicioClick = onNavigateToPrincipal,
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto
+        )
     }
 }
 

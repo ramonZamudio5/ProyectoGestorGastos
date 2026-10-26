@@ -67,6 +67,8 @@ import java.util.Calendar
 fun RegistroGastoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onNavigateToPerfil: () -> Unit = {},
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},
     tarjetasDisponibles: List<TarjetaPago> = tarjetasPagoMock,
     onGuardar: (Gasto) -> Unit = {}
 ) {
@@ -208,7 +210,7 @@ fun RegistroGastoScreen(
                 Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
             }
         }
-        NavBar()
+        NavBar(onInicioClick = onNavigateToPrincipal, onPresupuestoClick = onNavigateToPresupuesto)
     }
 }
 

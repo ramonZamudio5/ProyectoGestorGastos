@@ -34,9 +34,9 @@ fun Myapp(innerPadding: PaddingValues) {
     val navigateToRegisterPerfil = {navController.navigate(route = RegisterPerfil)}
     val navigateToRegisterPassword = {navController.navigate(route = RegisterPassword)}
     val navigateToPrincipal = {navController.navigate(route = Principal)}
-
     val navigateToMetodosPago = {navController.navigate(route = MetodosPago)}
     val navigateToRegistroMovimiento = { navController.navigate(route = RegistrarMovimiento) }
+    val navigateToPresupuesto = { navController.navigate(route = Presupuesto) }
 
 
     NavHost(navController = navController, startDestination = Login) {
@@ -44,10 +44,10 @@ fun Myapp(innerPadding: PaddingValues) {
             LoginScreen(innerPadding,navigateToRegister,navigateToPrincipal)
         }
         composable<Perfil> {
-
-            PerfilScreen(innerPadding,navigateToLogin,navigateToPrincipal,navigateToMetodosPago)
-
-            PerfilScreen(innerPadding,navigateToLogin,navigateToPrincipal)
+            PerfilScreen(
+                innerPadding, navigateToLogin, navigateToPrincipal,
+                navigateToMetodosPago, navigateToPresupuesto, navigateToRegistroMovimiento
+            )
         }
         composable<Register> {
             RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
@@ -59,17 +59,26 @@ fun Myapp(innerPadding: PaddingValues) {
             RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil,navigateToPrincipal)
         }
         composable<Principal> {
-
-            PrincipalScreen(innerPadding, navigateToPerfil, gastos, navigateToRegistroMovimiento)
+            PrincipalScreen(
+                innerPadding, navigateToPerfil, gastos, navigateToRegistroMovimiento,
+                onNavigateToPresupuesto = navigateToPresupuesto
+            )
         }
         composable<Presupuesto> {
-            PresupuestoScreen(innerPadding, navigateToPerfil)
+            PresupuestoScreen(
+                innerPadding = innerPadding,
+                onNavigateToPerfil = navigateToPerfil,
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento
+            )
         }
         composable<MetodosPago> {
             MetodosPagoScreen(
                 innerPadding = innerPadding,
                 onNavigateToPerfil = navigateToPerfil,
                 onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento,
                 onRegistrarTarjeta = { navController.navigate(RegistrarTarjeta) },
                 tarjetas = tarjetasPago
             )
@@ -83,21 +92,23 @@ fun Myapp(innerPadding: PaddingValues) {
                 },
                 onCancelar = { navController.popBackStack() },
                 onNavigateToPerfil = navigateToPerfil,
-                onNavigateToPrincipal = navigateToPrincipal
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento
             )
         }
         composable<RegistrarMovimiento> {
             RegistroGastoScreen(
                 innerPadding = innerPadding,
                 onNavigateToPerfil = navigateToPerfil,
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToPresupuesto = navigateToPresupuesto,
                 tarjetasDisponibles = tarjetasPago,
                 onGuardar = { gasto ->
                     gastos.add(gasto)
                     navController.popBackStack()
                 }
             )
-
-            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock)
         }
     }
 }

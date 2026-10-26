@@ -18,7 +18,13 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
-fun NavBar(onInicioClick: () -> Unit = {}){
+fun NavBar(
+    onInicioClick: () -> Unit = {},
+    onPresupuestoClick: () -> Unit = {},
+    onAgregarClick: () -> Unit = {},
+    onGruposClick: () -> Unit = {},
+    onGraficasClick: () -> Unit = {}
+) {
     Row(
         Modifier.fillMaxWidth()
             .background(Color.White)
@@ -28,35 +34,26 @@ fun NavBar(onInicioClick: () -> Unit = {}){
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(onClick = onInicioClick) {
-fun NavBar(navigateToPrincipal: ()-> Unit){
-    Row(Modifier.fillMaxWidth().background(Color.White), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
-        IconButton(onClick = {navigateToPrincipal() }) {
-
-            Icon(painter = painterResource(R.drawable.ic_inicio), contentDescription = "inicio")
+            Icon(painterResource(R.drawable.ic_inicio), contentDescription = "Inicio")
         }
-        IconButton(onClick = { }) {
-            Icon(painter = painterResource(R.drawable.ic_presupuesto), contentDescription = "presupuesto")
+        IconButton(onClick = onPresupuestoClick) {
+            Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = "Presupuesto")
         }
-        IconButton(onClick = { }) {
-            Icon(painter = painterResource(R.drawable.ic_anadir), contentDescription = "añadir")
+        IconButton(onClick = onAgregarClick) {
+            Icon(painterResource(R.drawable.ic_anadir), contentDescription = "Agregar gasto")
         }
-        IconButton(onClick = { }) {
-            Icon(painter = painterResource(R.drawable.ic_grupos), contentDescription = "grupos")
+        IconButton(onClick = onGruposClick) {
+            Icon(painterResource(R.drawable.ic_grupos), contentDescription = "Grupos")
         }
-        IconButton(onClick = { }) {
-            Icon(painter = painterResource(R.drawable.ic_graficas), contentDescription = "grafica")
+        IconButton(onClick = onGraficasClick) {
+            Icon(painterResource(R.drawable.ic_graficas), contentDescription = "Gráficas")
         }
     }
 }
 
-
 @Preview
 @Composable
-fun previewNavBar(){
-
+fun previewNavBar() {
     NavBar()
-}
-
-    NavBar({})
 }
 

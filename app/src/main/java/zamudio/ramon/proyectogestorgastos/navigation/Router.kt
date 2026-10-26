@@ -32,7 +32,4 @@ object RegistrarTarjeta
 
 @Serializable
 object RegistrarMovimiento
- 
-@Serializable
-object Principal
 
