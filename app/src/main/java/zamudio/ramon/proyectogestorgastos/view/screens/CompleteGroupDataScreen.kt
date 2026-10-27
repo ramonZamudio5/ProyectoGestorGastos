@@ -21,6 +21,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -72,14 +73,14 @@ fun CompleteGroupDataScreen(
             item {
                 Column(modifier = Modifier.padding(vertical = 4.dp)) {
                     Text(
-                        text = "Completa los datos del grupo",
+                        text = stringResource(R.string.group_complete_title),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = GroupTextPrimary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "Configura el presupuesto estimado y añade notas antes de iniciar.",
+                        text = stringResource(R.string.group_complete_description),
                         fontSize = 13.sp,
                         color = GroupTextSecondary,
                         lineHeight = 18.sp
@@ -137,7 +138,7 @@ fun CompleteGroupDataScreen(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Finalizar y Crear Grupo",
+                        text = stringResource(R.string.group_finish_create),
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
                         color = White

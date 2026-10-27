@@ -20,6 +20,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,20 +53,20 @@ fun GroupBudgetInputCard(
                 .padding(18.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            // Cabecera: Título y etiqueta "Opcional"
+            // Cabecera: Título y etiqueta stringResource(R.string.group_optional)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Presupuesto estimado total",
+                    text = stringResource(R.string.group_budget_title),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
-                    text = "Opcional",
+                    text = stringResource(R.string.group_optional),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
                     color = GroupTextSecondary
@@ -81,7 +83,7 @@ fun GroupBudgetInputCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "$",
+                    text = stringResource(R.string.group_currency_symbol),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = PurplePrimary
@@ -109,7 +111,7 @@ fun GroupBudgetInputCard(
                     decorationBox = { innerTextField ->
                         if (budget.isEmpty()) {
                             Text(
-                                text = "0.00",
+                                text = stringResource(R.string.group_budget_placeholder),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = GroupTextPlaceholder
@@ -120,7 +122,7 @@ fun GroupBudgetInputCard(
                 )
 
                 Text(
-                    text = "MXN",
+                    text = stringResource(R.string.group_currency_code),
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextSecondary

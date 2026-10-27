@@ -27,6 +27,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -74,14 +75,14 @@ fun GroupTypeSelectorCard(
             // Título de la tarjeta y descripción
             Column {
                 Text(
-                    text = "Tipo de Grupo",
+                    text = stringResource(R.string.group_type_label),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = "Define cómo se calculan las balanzas y sugerencias de gastos.",
+                    text = stringResource(R.string.group_type_description),
                     fontSize = 12.sp,
                     color = GroupTextSecondary,
                     lineHeight = 16.sp
@@ -191,7 +192,7 @@ fun GroupTypeSelectorCard(
                             if (isSelected) {
                                 Icon(
                                     painter = painterResource(R.drawable.ic_check),
-                                    contentDescription = "Seleccionado",
+                                    contentDescription = stringResource(R.string.group_selected),
                                     tint = PurplePrimary,
                                     modifier = Modifier.size(18.dp)
                                 )

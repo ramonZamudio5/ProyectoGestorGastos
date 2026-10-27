@@ -17,6 +17,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,20 +49,20 @@ fun GroupDescriptionCard(
                 .padding(18.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Cabecera: Título y etiqueta "Visible para todos"
+            // Cabecera: Título y etiqueta stringResource(R.string.group_description_visibility)
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Nota o descripción",
+                    text = stringResource(R.string.group_description_title),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
-                    text = "Visible para todos",
+                    text = stringResource(R.string.group_description_visibility),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
                     color = GroupTextSecondary
@@ -88,7 +90,7 @@ fun GroupDescriptionCard(
                     decorationBox = { innerTextField ->
                         if (description.isEmpty()) {
                             Text(
-                                text = "Ej. Gastos compartidos de hotel, gasolina y comidas del viaje a la playa...",
+                                text = stringResource(R.string.group_description_hint),
                                 fontSize = 14.sp,
                                 color = GroupTextSecondary,
                                 lineHeight = 20.sp

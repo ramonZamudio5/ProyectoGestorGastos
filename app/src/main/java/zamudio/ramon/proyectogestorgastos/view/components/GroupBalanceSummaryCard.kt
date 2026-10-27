@@ -17,6 +17,8 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceText
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,7 +58,7 @@ fun GroupBalanceSummaryCard(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = "BALANCE TOTAL GRUPAL",
+                        text = stringResource(R.string.group_balance_title),
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         color = GroupBalanceText

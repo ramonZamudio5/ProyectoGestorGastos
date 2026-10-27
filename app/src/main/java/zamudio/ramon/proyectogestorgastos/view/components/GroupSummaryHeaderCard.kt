@@ -21,6 +21,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -95,7 +96,7 @@ fun GroupSummaryHeaderCard(
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_edit),
-                    contentDescription = "Editar",
+                    contentDescription = stringResource(R.string.group_edit),
                     tint = PurplePrimary,
                     modifier = Modifier.size(16.dp)
                 )

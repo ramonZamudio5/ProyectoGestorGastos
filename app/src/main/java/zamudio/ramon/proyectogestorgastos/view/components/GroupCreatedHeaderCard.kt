@@ -22,6 +22,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSuccessBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -101,7 +102,7 @@ fun GroupCreatedHeaderCard(
                 ) {
                     Spacer(modifier = Modifier.width(3.dp))
                     Text(
-                        text = "Creado por: $creatorName",
+                        text = stringResource(R.string.group_created_by, creatorName),
                         fontSize = 11.sp,
                         color = GroupTextSecondary
                     )

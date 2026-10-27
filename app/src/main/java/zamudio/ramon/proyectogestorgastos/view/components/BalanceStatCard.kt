@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,8 +43,8 @@ fun BalanceStatCard(
     type: BalanceType
 ) {
     val title = when (type) {
-        BalanceType.TE_DEBEN -> "Te deben"
-        BalanceType.DEBES -> "Debes"
+        BalanceType.TE_DEBEN -> stringResource(R.string.group_balance_owed_to_you)
+        BalanceType.DEBES -> stringResource(R.string.group_balance_you_owe)
     }
     val amount = 3000.00
     val accentColor = when (type) {

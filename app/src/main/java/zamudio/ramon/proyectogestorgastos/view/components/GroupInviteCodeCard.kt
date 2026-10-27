@@ -23,6 +23,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -45,6 +46,7 @@ fun GroupInviteCodeCard(
     modifier: Modifier = Modifier,
     onCodeCopied: () -> Unit = {}
 ) {
+    val clipboardLabel = stringResource(R.string.group_clipboard_label)
     val clipboard = LocalClipboard.current
     val scope = rememberCoroutineScope()
 
@@ -75,7 +77,7 @@ fun GroupInviteCodeCard(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = "Código de Invitación Único",
+                    text = stringResource(R.string.group_invite_title),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary,
@@ -85,7 +87,7 @@ fun GroupInviteCodeCard(
 
             // Subtítulo explicativo
             Text(
-                text = "Comparte este código con tus amigos o familiares para que se unan al grupo al instante desde su app GastoClaro.",
+                text = stringResource(R.string.group_invite_description),
                 fontSize = 12.sp,
                 color = GroupTextSecondary,
                 lineHeight = 16.sp
@@ -124,7 +126,7 @@ fun GroupInviteCodeCard(
                     .background(GroupAccentBackground)
                     .clickable {
                         scope.launch {
-                            val clipData = ClipData.newPlainText("Código Grupo", code)
+                            val clipData = ClipData.newPlainText(clipboardLabel, code)
                             clipboard.setClipEntry(ClipEntry(clipData))
                             onCodeCopied()
                         }
@@ -143,7 +145,7 @@ fun GroupInviteCodeCard(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Copiar Código ($code)",
+                        text = stringResource(R.string.group_copy_code, code),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
                         color = PurplePrimary

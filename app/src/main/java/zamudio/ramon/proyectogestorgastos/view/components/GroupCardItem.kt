@@ -26,6 +26,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -108,7 +109,7 @@ fun GroupCardItem(
                     Spacer(modifier = Modifier.height(2.dp))
 
                     Text(
-                        text = "Total: $${grupo.totalGasto} MXN",
+                        text = stringResource(R.string.group_total, grupo.totalGasto.toString()),
                         fontSize = 12.sp,
                         color = GroupTextSecondary,
                         maxLines = 1,
@@ -129,9 +130,9 @@ fun GroupCardItem(
             ) {
                 AvatarStack()
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Último: ", fontSize = 12.sp, color = GroupTextSecondary)
+                    Text(stringResource(R.string.group_last_expense_label), fontSize = 12.sp, color = GroupTextSecondary)
                     Text(
-                        text = "Gasto reciente",
+                        text = stringResource(R.string.group_recent_expense),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         color = GroupTextPrimary
@@ -163,7 +164,7 @@ fun GroupCardItem(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = "Te deben $3,000.00 MXN",
+                            text = stringResource(R.string.group_amount_owed, "3,000.00"),
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
                             color = PurplePrimary

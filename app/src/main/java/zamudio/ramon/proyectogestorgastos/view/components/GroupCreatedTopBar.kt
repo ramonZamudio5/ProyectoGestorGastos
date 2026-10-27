@@ -14,6 +14,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCloseIcon
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -57,7 +58,7 @@ fun GroupCreatedTopBar(
             }
 
             Text(
-                text = "¡Grupo Creado!",
+                text = stringResource(R.string.group_created_title),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 color = GroupTextPrimary
@@ -74,7 +75,7 @@ fun GroupCreatedTopBar(
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_close),
-                contentDescription = "Cerrar",
+                contentDescription = stringResource(R.string.group_close),
                 tint = GroupCloseIcon,
                 modifier = Modifier.size(18.dp)
             )

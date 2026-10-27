@@ -26,6 +26,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupJoinAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -71,7 +73,7 @@ fun MyGroupScreen(
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "Mis Grupos",
+                            text = stringResource(R.string.groups_title),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = BlueNavy
@@ -82,7 +84,7 @@ fun MyGroupScreen(
                             color = GroupBadgeBackground
                         ) {
                             Text(
-                                text = "${grupos.size} activos",
+                                text = pluralStringResource(R.plurals.groups_active_count, grupos.size, grupos.size),
                                 color = GroupBadgeText,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.SemiBold,
@@ -117,7 +119,7 @@ fun MyGroupScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Crear un Grupo",
+                            text = stringResource(R.string.groups_create),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             color = White
@@ -144,7 +146,7 @@ fun MyGroupScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = "Unirse a un Grupo con Código",
+                            text = stringResource(R.string.groups_join_with_code),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             color = GroupJoinAccent
@@ -166,7 +168,7 @@ fun MyGroupScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "GRUPOS EN CURSO",
+                        text = stringResource(R.string.groups_in_progress),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         color = GroupSectionText

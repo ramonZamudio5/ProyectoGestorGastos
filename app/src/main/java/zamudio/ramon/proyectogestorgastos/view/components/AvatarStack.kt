@@ -13,6 +13,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarGreen
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarOrange
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,7 +54,7 @@ fun AvatarStack(
             )
         }
 
-        // Burbuja final para "Tú" o un contador "+N"
+        // Burbuja final para stringResource(R.string.group_you) o un contador "+N"
         if (includeCurrentUser) {
             Box(
                 modifier = Modifier
@@ -65,7 +67,7 @@ fun AvatarStack(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Tú",
+                    text = stringResource(R.string.group_you),
                     fontSize = 10.sp,
                     fontWeight = FontWeight.Bold,
                     color = White

@@ -25,6 +25,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupMemberText
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -63,7 +64,7 @@ fun GroupMemberListCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Miembros del Grupo",
+                    text = stringResource(R.string.group_members_title),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
@@ -142,13 +143,13 @@ fun GroupMemberListCard(
 
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "Esperando nuevos miembros...",
+                        text = stringResource(R.string.group_waiting_members),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
                         color = GroupMemberText
                     )
                     Text(
-                        text = "Unirse usando código $inviteCode",
+                        text = stringResource(R.string.group_join_code, inviteCode),
                         fontSize = 12.sp,
                         color = GroupTextSecondary
                     )

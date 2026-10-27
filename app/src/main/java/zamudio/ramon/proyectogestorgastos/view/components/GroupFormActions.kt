@@ -16,6 +16,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -55,7 +56,7 @@ fun GroupFormActions(
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = "Guardar Cambios",
+                text = stringResource(R.string.group_save_changes),
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
                 color = White
@@ -72,7 +73,7 @@ fun GroupFormActions(
             colors = ButtonDefaults.outlinedButtonColors(containerColor = White)
         ) {
             Text(
-                text = "Cancelar / Descartar",
+                text = stringResource(R.string.group_cancel_discard),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = GroupSectionText

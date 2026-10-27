@@ -26,6 +26,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupNameHintBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -69,13 +70,13 @@ fun GroupNameImputField(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Nombre del Grupo",
+                    text = stringResource(R.string.group_name_label),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
-                    text = "${value.length} / $maxLength",
+                    text = stringResource(R.string.group_character_count, value.length, maxLength),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = PurplePrimary
@@ -120,7 +121,7 @@ fun GroupNameImputField(
                     decorationBox = { innerTextField ->
                         if (value.isEmpty()) {
                             Text(
-                                text = "Ej. Viaje Cancún 2025",
+                                text = stringResource(R.string.group_name_hint),
                                 fontSize = 15.sp,
                                 color = GroupTextSecondary
                             )
@@ -140,7 +141,7 @@ fun GroupNameImputField(
                     ) {
                         Icon(
                             painter = painterResource(R.drawable.ic_delete),
-                            contentDescription = "Limpiar texto",
+                            contentDescription = stringResource(R.string.group_clear_text),
                             tint = PurplePrimary,
                             modifier = Modifier.size(14.dp)
                         )

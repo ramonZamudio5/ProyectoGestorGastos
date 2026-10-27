@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -97,7 +98,7 @@ fun GroupCreatedSuccessScreen(
                     colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
                 ) {
                     Text(
-                        text = "Ir al Panel del Grupo",
+                        text = stringResource(R.string.group_open_dashboard),
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
                         color = White

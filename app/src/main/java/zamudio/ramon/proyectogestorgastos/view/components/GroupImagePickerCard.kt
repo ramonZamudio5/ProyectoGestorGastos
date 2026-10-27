@@ -29,6 +29,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupImagePlaceholder
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -85,7 +86,7 @@ fun GroupImagePickerCard(
                 // Placeholder para simular imagen de playa o icono
                 Image(
                     painter = painterResource(R.drawable.group_default_image),
-                    contentDescription = "Foto de portada",
+                    contentDescription = stringResource(R.string.group_cover_photo),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop
                 )
@@ -121,7 +122,7 @@ fun GroupImagePickerCard(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = "Foto Real",
+                                text = stringResource(R.string.group_photo_mode),
                                 fontSize = 12.sp,
                                 fontWeight = if (isFotoReal) FontWeight.Bold else FontWeight.Medium,
                                 color = if (isFotoReal) GroupTextPrimary else GroupTextSecondary
@@ -149,7 +150,7 @@ fun GroupImagePickerCard(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = "Ícono / Emoji",
+                                text = stringResource(R.string.group_icon_mode),
                                 fontSize = 12.sp,
                                 fontWeight = if (isIcono) FontWeight.Bold else FontWeight.Medium,
                                 color = if (isIcono) GroupTextPrimary else GroupTextSecondary
@@ -164,7 +165,7 @@ fun GroupImagePickerCard(
             ) {
                 // Tomar Foto
                 ActionButtonSquare(
-                    title = "Tomar Foto",
+                    title = stringResource(R.string.group_take_photo),
                     icon = painterResource(R.drawable.ic_camara),
                     accentColor = PurplePrimary,
                     backgroundColor = GroupAccentBackground,
@@ -174,7 +175,7 @@ fun GroupImagePickerCard(
 
                 // Galería
                 ActionButtonSquare(
-                    title = "Galería",
+                    title = stringResource(R.string.group_gallery),
                     icon = painterResource(R.drawable.ic_image),
                     accentColor = PurplePrimary,
                     backgroundColor = GroupAccentBackground,
@@ -184,7 +185,7 @@ fun GroupImagePickerCard(
 
                 // Quitar Foto
                 ActionButtonSquare(
-                    title = "Quitar Foto",
+                    title = stringResource(R.string.group_remove_photo),
                     icon = painterResource(R.drawable.ic_delete),
                     accentColor = GroupDeleteAccent,
                     backgroundColor = GroupDeleteBackground,
