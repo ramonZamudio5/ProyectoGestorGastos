@@ -27,10 +27,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
 fun GroupSummaryHeaderCard(
-    typeGroup: TipoGrupoItem,
+    typeGroup: TipoGrupo,
     modifier: Modifier = Modifier,
     groupName: String = "Viaje Cancún 2025",
     onEditClick: () -> Unit = {}
@@ -58,7 +60,7 @@ fun GroupSummaryHeaderCard(
                 Icon(
                     painter = painterResource(id = typeGroup.iconRes),
                     contentDescription = null,
-                    tint = Color(0xFF7E57C2),
+                    tint = PurplePrimary,
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -90,7 +92,7 @@ fun GroupSummaryHeaderCard(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_edit),
                     contentDescription = "Editar",
-                    tint = Color(0xFF7E57C2),
+                    tint = PurplePrimary,
                     modifier = Modifier.size(16.dp)
                 )
             }
@@ -102,7 +104,7 @@ fun GroupSummaryHeaderCard(
 @Preview
 @Composable
 fun GroupSummaryHeaderCardPreview(){
-    GroupSummaryHeaderCard(TipoGrupoItem(
+    GroupSummaryHeaderCard(TipoGrupo(
         "amigos",
         "Amigos / Viajes",
         "Vacaciones y escapadas",

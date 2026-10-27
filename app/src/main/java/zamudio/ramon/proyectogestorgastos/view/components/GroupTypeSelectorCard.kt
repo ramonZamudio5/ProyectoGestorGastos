@@ -34,69 +34,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
-
-// Modelo local para las opciones del selector de tipo
-//No sé si puede ir aquí o se tiene que sacar a otra parte
-data class TipoGrupoItem(
-    val id: String,
-    val title: String,
-    val subtitle: String,
-    val iconRes: Int,
-    val color: Color
-)
+import zamudio.ramon.proyectogestorgastos.model.data.tiposDisponibles
+import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
 
 @Composable
 fun GroupTypeSelectorCard(
     modifier: Modifier = Modifier,
     initialSelectedId: String = "amigos",
-    onTipoSelected: (TipoGrupoItem) -> Unit = {}
+    onTipoSelected: (TipoGrupo) -> Unit = {}
 ) {
-    val tiposDisponibles = remember {
-        listOf(
-            TipoGrupoItem(
-                "amigos",
-                "Amigos / Viajes",
-                "Vacaciones y escapadas",
-                R.drawable.ic_flight,
-                Color(0xFF7E57C2)
-            ),
-            TipoGrupoItem(
-                "pareja",
-                "Pareja / Cuentas compartidas",
-                "Metas y gastos mutuos",
-                R.drawable.ic_heart,
-                Color(0xFFBA68C8)
-            ),
-            TipoGrupoItem(
-                "hogar",
-                "Hogar / Familia",
-                "Servicios, despensa y renta",
-                R.drawable.ic_home,
-                Color(0xFFFFB300)
-            ),
-            TipoGrupoItem(
-                "roomies",
-                "Roomies / Compañeros de piso",
-                "Alquiler y servicios comunes",
-                R.drawable.ic_meeting_room,
-                Color(0xFF5C6BC0)
-            ),
-            TipoGrupoItem(
-                "proyecto",
-                "Proyecto / Trabajo",
-                "Eventos y viáticos de equipo",
-                R.drawable.ic_work,
-                Color(0xFF42A5F5)
-            ),
-            TipoGrupoItem(
-                "otro",
-                "Otro / Personalizado",
-                "Reglas y categorías libres",
-                R.drawable.ic_tune,
-                Color(0xFF78909C)
-            )
-        )
-    }
+
 
     var selectedTipo by remember {
         mutableStateOf(tiposDisponibles.firstOrNull { it.id == initialSelectedId }
@@ -237,7 +184,7 @@ fun GroupTypeSelectorCard(
                                 Icon(
                                     painter = painterResource(R.drawable.ic_check),
                                     contentDescription = "Seleccionado",
-                                    tint = Color(0xFF673AB7),
+                                    tint = Color(0xFF7E57C2),
                                     modifier = Modifier.size(18.dp)
                                 )
                             }

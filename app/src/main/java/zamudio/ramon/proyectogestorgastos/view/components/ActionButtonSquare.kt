@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
 fun ActionButtonSquare(
@@ -72,7 +73,7 @@ fun ActionButtonSquare(
 fun ActionButtonSquarePreview(){
     ActionButtonSquare(title = "Tomar Foto",
         painterResource(R.drawable.ic_camara),
-        accentColor = Color(0xFF673AB7),
+        accentColor = PurplePrimary,
         backgroundColor = Color(0xFFEDE7F6),
         onClick = {})
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
 fun GroupDescriptionCard(
@@ -80,7 +81,7 @@ fun GroupDescriptionCard(
                         color = Color(0xFF1E2022),
                         lineHeight = 20.sp
                     ),
-                    cursorBrush = SolidColor(Color(0xFF673AB7)),
+                    cursorBrush = SolidColor(PurplePrimary),
                     decorationBox = { innerTextField ->
                         if (description.isEmpty()) {
                             Text(

@@ -44,9 +44,9 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.BackgroundRed
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayForm
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
@@ -141,7 +141,7 @@ fun TarjetaSeguridad() {
         Row(Modifier.fillMaxWidth().padding(bottom = 24.dp),verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(36.dp).clip(CircleShape).background(Color(0xFFF3E8FF)), contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_shield), contentDescription = "Icono Seguridad",
-                    tint = purplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Text("Seguridad y Acceso", style = Typography.titleLarge)
@@ -170,7 +170,7 @@ fun TarjetaSeguridad() {
             Box(Modifier.size(40.dp).clip(RoundedCornerShape(10.dp)).background(Color(0xFFF3E8FF)),
                 contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_key), contentDescription = "Llave",
-                    tint = purplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {

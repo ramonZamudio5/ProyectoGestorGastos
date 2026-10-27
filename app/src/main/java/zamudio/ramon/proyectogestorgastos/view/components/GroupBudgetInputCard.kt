@@ -27,6 +27,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
 fun GroupBudgetInputCard(
@@ -79,7 +80,7 @@ fun GroupBudgetInputCard(
                     text = "$",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF673AB7)
+                    color = PurplePrimary
                 )
 
                 Spacer(modifier = Modifier.width(8.dp))
@@ -100,7 +101,7 @@ fun GroupBudgetInputCard(
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF1E2022)
                     ),
-                    cursorBrush = SolidColor(Color(0xFF673AB7)),
+                    cursorBrush = SolidColor(PurplePrimary),
                     decorationBox = { innerTextField ->
                         if (budget.isEmpty()) {
                             Text(

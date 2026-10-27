@@ -47,7 +47,7 @@ import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
@@ -64,7 +64,7 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
         Column(Modifier.padding(24.dp)) {
             Spacer(Modifier.height(16.dp))
             Box(Modifier.size(48.dp).background(BackGroundPurple, CircleShape), contentAlignment = Alignment.Center) {
-                Icon(painterResource(R.drawable.ic_lock_outline_large), contentDescription = "candado", tint = purplePrimary, modifier = Modifier.size(24.dp))
+                Icon(painterResource(R.drawable.ic_lock_outline_large), contentDescription = "candado", tint = PurplePrimary, modifier = Modifier.size(24.dp))
             }
             Spacer(Modifier.height(16.dp))
             Text("Protege tu Cuenta", style = Typography.headlineLarge.copy(fontWeight = FontWeight.ExtraBold))
@@ -74,7 +74,7 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
             Spacer(Modifier.height(24.dp))
             Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(40.dp).background(BackGroundPurple, CircleShape), contentAlignment = Alignment.Center) {
-                    Icon(painterResource(R.drawable.ic_shield_outline), "escudo", tint = purplePrimary, modifier = Modifier.size(20.dp))
+                    Icon(painterResource(R.drawable.ic_shield_outline), "escudo", tint = PurplePrimary, modifier = Modifier.size(20.dp))
                 }
                 Spacer(Modifier.width(12.dp))
                 Column(Modifier.weight(1f)) {
@@ -92,11 +92,11 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
                     Text("Contraseña ", style = Typography.labelLarge)
                     Text("*", style = Typography.labelLarge)
                 }
-                Text("Obligatorio", color = purplePrimary, style = Typography.labelLarge.copy(fontSize = 10.sp), modifier = Modifier.background(BackGroundPurple, CircleShape).padding(horizontal = 8.dp, vertical = 4.dp))
+                Text("Obligatorio", color = PurplePrimary, style = Typography.labelLarge.copy(fontSize = 10.sp), modifier = Modifier.background(BackGroundPurple, CircleShape).padding(horizontal = 8.dp, vertical = 4.dp))
             }
             Spacer(Modifier.height(8.dp))
             TextField(value = password, onValueChange = { password = it },
-                leadingIcon = { Icon(painterResource(R.drawable.ic_lock_outline), null, tint = purplePrimary) },
+                leadingIcon = { Icon(painterResource(R.drawable.ic_lock_outline), null, tint = PurplePrimary) },
                 trailingIcon = { Icon(painterResource(R.drawable.ic_ojo_abierto), null, modifier = Modifier.clickable { passwordVisible = !passwordVisible }) },
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 colors = TextFieldDefaults.colors(focusedContainerColor = Color.White, unfocusedContainerColor = Color.White),
@@ -158,9 +158,9 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
                 Text(
                     text = buildAnnotatedString {
                         append("Acepto los ")
-                        withStyle(style = SpanStyle(color =purplePrimary, textDecoration = TextDecoration.Underline)) { append("Términos y Condiciones") }
+                        withStyle(style = SpanStyle(color = PurplePrimary, textDecoration = TextDecoration.Underline)) { append("Términos y Condiciones") }
                         append(" y la ")
-                        withStyle(style = SpanStyle(color = purplePrimary, textDecoration = TextDecoration.Underline)) { append("Política de Privacidad") }
+                        withStyle(style = SpanStyle(color = PurplePrimary, textDecoration = TextDecoration.Underline)) { append("Política de Privacidad") }
                         append(" de GastoClaro para el resguardo de mi información.")
                     },
                     style = Typography.bodyMedium.copy(fontSize = 12.sp), lineHeight = 18.sp
@@ -169,7 +169,7 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
 
             Spacer(Modifier.height(16.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                Icon(painterResource(R.drawable.ic_lock_outline), null, tint = purplePrimary, modifier = Modifier.size(16.dp))
+                Icon(painterResource(R.drawable.ic_lock_outline), null, tint = PurplePrimary, modifier = Modifier.size(16.dp))
                 Spacer(Modifier.width(6.dp))
                 Text("Cifrado de grado bancario AES de 256 bits", style = Typography.labelLarge.copy(fontSize = 12.sp))
             }

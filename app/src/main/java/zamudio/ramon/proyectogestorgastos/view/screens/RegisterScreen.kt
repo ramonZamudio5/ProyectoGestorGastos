@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightBlue
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
 
@@ -134,7 +134,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
             }
         }
         Spacer(Modifier.height(30.dp))
-        Button(onClick = {navigateToRegisterPerfil()}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = purplePrimary),
+        Button(onClick = {navigateToRegisterPerfil()}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary),
             shape = RoundedCornerShape(40.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                 Text(text = "Continuar ->", color = Color.White, style = Typography.labelLarge)
@@ -144,7 +144,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
         Spacer(Modifier.height(25.dp))
         Row(Modifier.fillMaxWidth().clickable{navigateToLogin()},horizontalArrangement = Arrangement.Center) {
             Text("¿Ya tienes una cuenta?", style = Typography.labelLarge, color = Color(0xFF475467))
-            Text("Inicia Sesion", color = purplePrimary, style = Typography.labelLarge)
+            Text("Inicia Sesion", color = PurplePrimary, style = Typography.labelLarge)
         }
         }
 

@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 enum class ImagePickerMode {
     FOTO_REAL,
@@ -107,7 +108,7 @@ fun GroupImagePickerCard(
                             Icon(
                                 painter = painterResource(R.drawable.ic_image),
                                 contentDescription = null,
-                                tint = if (isFotoReal) Color(0xFF673AB7) else Color.Gray,
+                                tint = if (isFotoReal) PurplePrimary else Color.Gray,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -135,7 +136,7 @@ fun GroupImagePickerCard(
                             Icon(
                                 painter = painterResource(R.drawable.ic_emojie),
                                 contentDescription = null,
-                                tint = if (isIcono) Color(0xFF673AB7) else Color.Gray,
+                                tint = if (isIcono) PurplePrimary else Color.Gray,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -157,7 +158,7 @@ fun GroupImagePickerCard(
                 ActionButtonSquare(
                     title = "Tomar Foto",
                     icon = painterResource(R.drawable.ic_camara),
-                    accentColor = Color(0xFF673AB7),
+                    accentColor = PurplePrimary,
                     backgroundColor = Color(0xFFEDE7F6),
                     onClick = onTakePhotoClick,
                     modifier = Modifier.weight(1f)
@@ -167,7 +168,7 @@ fun GroupImagePickerCard(
                 ActionButtonSquare(
                     title = "Galería",
                     icon = painterResource(R.drawable.ic_image),
-                    accentColor = Color(0xFF5E35B1),
+                    accentColor = PurplePrimary,
                     backgroundColor = Color(0xFFEDE7F6),
                     onClick = onGalleryClick,
                     modifier = Modifier.weight(1f)

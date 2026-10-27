@@ -30,13 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBudgetInputCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupDescriptionCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupSummaryHeaderCard
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
-import zamudio.ramon.proyectogestorgastos.view.components.TipoGrupoItem
 
 @Composable
 fun CompleteGroupDataScreen(
@@ -86,12 +87,12 @@ fun CompleteGroupDataScreen(
             //modificar esto para dejar de se mock
             item {
                 GroupSummaryHeaderCard(
-                    TipoGrupoItem(
+                    TipoGrupo(
                         "amigos",
                         "Amigos / Viajes",
                         "Vacaciones y escapadas",
                         R.drawable.ic_flight,
-                        Color(0xFF7E57C2)
+                        PurplePrimary
                     )
                 )
             }
@@ -121,7 +122,7 @@ fun CompleteGroupDataScreen(
                         .height(52.dp)
                         .padding(top = 8.dp),
                     shape = RoundedCornerShape(14.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF7E57C2))
+                    colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_check),

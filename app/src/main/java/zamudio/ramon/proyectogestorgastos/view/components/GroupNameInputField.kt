@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
 fun GroupNameImputField(
@@ -73,7 +74,7 @@ fun GroupNameImputField(
                     text = "${value.length} / $maxLength",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF7E57C2)
+                    color = PurplePrimary
                 )
             }
             Row(
@@ -88,7 +89,7 @@ fun GroupNameImputField(
                 Icon(
                     painter = painterResource(R.drawable.ic_edit),
                     contentDescription = null,
-                    tint = Color(0xFF7E57C2),
+                    tint = PurplePrimary,
                     modifier = Modifier.size(20.dp)
                 )
 
@@ -109,7 +110,7 @@ fun GroupNameImputField(
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFF1E2022)
                     ),
-                    cursorBrush = SolidColor(Color(0xFF7E57C2)),
+                    cursorBrush = SolidColor(PurplePrimary),
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                     decorationBox = { innerTextField ->
@@ -136,7 +137,7 @@ fun GroupNameImputField(
                         Icon(
                             painter = painterResource(R.drawable.ic_delete),
                             contentDescription = "Limpiar texto",
-                            tint = Color(0xFF4527A0),
+                            tint = PurplePrimary,
                             modifier = Modifier.size(14.dp)
                         )
                     }

@@ -35,6 +35,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
 fun GroupCardItem(
@@ -92,7 +93,7 @@ fun GroupCardItem(
                         ) {
                             Text(
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
-                                color = Color(0xFF673AB7),
+                                color = PurplePrimary,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
@@ -152,7 +153,7 @@ fun GroupCardItem(
                         Icon(
                             painter = painterResource(R.drawable.ic_arrow_down),
                             contentDescription = null,
-                            tint = Color(0xFF673AB7),
+                            tint = PurplePrimary,
                             modifier = Modifier.size(15.dp)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
@@ -160,7 +161,7 @@ fun GroupCardItem(
                             text = "Te deben $3,000.00 MXN",
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF673AB7)
+                            color = PurplePrimary
                         )
                     }
                 }
