@@ -24,7 +24,6 @@ val RedlogOut = Color(0xFFB91C1C)
 
 val BackgroundRed = Color(0xFFFCE8E8)
 
-val LightBlue = Color(0xFF89ABF1)
 
 val BackGroundPurple = Color(0xFFEBE4FF)
 
@@ -36,6 +35,9 @@ val Fondo = Color(0xFFEFE8F9)
 
 val purpleButton = Color(0xFF8455EF)
 
-val lightGreen = Color(0xC3BCF86C)
-
-val lightRed = Color(0xCBEC3939)
+//colores que puede utilizar el usuario
+val LightGreen = Color(0xBFBCF86C)
+val LightRed = Color(0xBFEC3939)
+val LightBlue = Color(0xFF89ABF1)
+val LightOrange = Color(0xBFEC9D39)
+val LightYellow = Color(0xBFF8E16C)

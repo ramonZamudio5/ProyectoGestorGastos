@@ -51,7 +51,14 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
-fun PerfilScreen(innerPadding: PaddingValues,onNavigateToLogin: ()-> Unit) {
+fun PerfilScreen(
+    innerPadding: PaddingValues,
+    onNavigateToLogin: () -> Unit,
+    navigateToPrincipal: () -> Unit,
+    navigateToMetodosPago: () -> Unit = {},
+    navigateToPresupuesto: () -> Unit = {},
+    navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
+) {
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -71,12 +78,28 @@ fun PerfilScreen(innerPadding: PaddingValues,onNavigateToLogin: ()-> Unit) {
 
             TarjetaDatosPersonales()
             Spacer(Modifier.height(16.dp))
+            Row(
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)
+                    .clickable(onClick = navigateToMetodosPago).padding(18.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurplePrimary)
+                Spacer(Modifier.width(12.dp))
+                Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge, fontWeight = FontWeight.SemiBold)
+                Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = "Abrir métodos de pago", tint = GrayText)
+            }
+            Spacer(Modifier.height(16.dp))
             TarjetaSeguridad()
             Spacer(modifier = Modifier.height(24.dp))
             BotonCerrarSesion(onNavigateToLogin)
             Spacer(modifier = Modifier.height(16.dp))
         }
-        NavBar()
+        NavBar(
+            onInicioClick = navigateToPrincipal,
+            onPresupuestoClick = navigateToPresupuesto,
+            onAgregarClick = navigateToRegistroGasto,
+            onNavigateToGraficos
+        )
     }
 }
 
@@ -195,5 +218,5 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
 @Preview
 @Composable
 fun PreviewPerfil(){
-    PerfilScreen(PaddingValues(10.dp),{})
+    PerfilScreen(PaddingValues(10.dp),{},{}, {}, {}, {}, {})
 }

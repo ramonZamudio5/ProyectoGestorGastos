@@ -47,7 +47,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 
 @Composable
-fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit) {
+fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNavigateToPrincipal:()-> Unit) {
     var user by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -80,7 +80,7 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit) {
             )
             HorizontalDivider(color = PurplePrimary.copy(alpha = 0.3f), thickness = 1.dp)
             Box(Modifier.padding(24.dp)) {
-                Button(onClick = {}, Modifier.fillMaxWidth().height(52.dp),
+                Button(onClick = onNavigateToPrincipal, Modifier.fillMaxWidth().height(52.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary), shape = RoundedCornerShape(12.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                         Text(text = "Iniciar Sesión", color = Color.White, style = Typography.titleLarge)
@@ -105,5 +105,5 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit) {
 @Preview()
 @Composable
 fun PreviewLogin(){
-    LoginScreen(PaddingValues(15.dp),{})
+    LoginScreen(PaddingValues(15.dp),{}, {})
 }
