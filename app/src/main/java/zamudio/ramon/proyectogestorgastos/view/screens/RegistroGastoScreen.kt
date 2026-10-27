@@ -90,7 +90,6 @@ fun RegistroGastoScreen(
     val calendar = Calendar.getInstance()
 
     Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
-        Header(PaddingValues(horizontal = 16.dp, vertical = 10.dp), onNavigateToPerfil)
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 20.dp),
             verticalArrangement = Arrangement.spacedBy(11.dp)
@@ -213,7 +212,6 @@ fun RegistroGastoScreen(
                 Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
             }
         }
-        NavBar(onInicioClick = onNavigateToPrincipal, onPresupuestoClick = onNavigateToPresupuesto)
     }
 }
 

@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -36,8 +38,8 @@ fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateT
     var filtroActual by remember { mutableStateOf("todo") }
     Column(Modifier.background(color= Fondo).fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween) {
-        Header(innerPadding, onNavigateToPerfil)
-        Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween) {
+        Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState())
+            , verticalArrangement = Arrangement.SpaceBetween) {
             OutlinedTextField(state= TextFieldState("Buscar movimiento, tienda o concepto..."),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = White,
@@ -52,7 +54,6 @@ fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateT
                 ColumnaGastosPorFiltro(filtroActual, gastos)
             }
         }
-        NavBar(onNavigateToGraficos)
     }
 }
 

@@ -31,8 +31,6 @@ fun CreateEditGroupScreen(
     var groupName by remember { mutableStateOf("Viaje Cancún 2025") }
 
     Scaffold(
-        topBar = { Header(PaddingValues(15.dp), {}) },
-        bottomBar = { NavBar() },
         containerColor = GroupScreenBackground // Tinte lila de fondo
     ) { innerPadding ->
         LazyColumn(

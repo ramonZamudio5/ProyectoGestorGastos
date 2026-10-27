@@ -73,7 +73,6 @@ fun RegistrarTarjetaScreen(
         .fillMaxSize()
         .background(Color(0xFFFAF9FF))
         .padding(innerPadding)) {
-        Header(PaddingValues(horizontal = 16.dp, vertical = 8.dp), onNavigateToPerfil)
         Column(
             Modifier
                 .weight(1f)
@@ -125,11 +124,6 @@ fun RegistrarTarjetaScreen(
                     .padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
             }
         }
-        NavBar(
-            onInicioClick = onNavigateToPrincipal,
-            onPresupuestoClick = onNavigateToPresupuesto,
-            onAgregarClick = onNavigateToRegistroGasto
-        )
     }
 }
 

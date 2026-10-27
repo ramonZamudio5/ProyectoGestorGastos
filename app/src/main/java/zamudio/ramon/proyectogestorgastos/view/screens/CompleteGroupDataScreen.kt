@@ -51,8 +51,6 @@ fun CompleteGroupDataScreen(
     var description by remember { mutableStateOf("") }
 
     Scaffold(
-        topBar = { Header(PaddingValues(15.dp), {}) },
-        bottomBar = { NavBar() },
         containerColor = GroupScreenBackground
     ) { innerPadding ->
         LazyColumn(

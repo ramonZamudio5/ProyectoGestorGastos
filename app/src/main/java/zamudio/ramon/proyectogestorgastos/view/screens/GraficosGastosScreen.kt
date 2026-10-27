@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,8 +34,7 @@ fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateTo
     var filtroActual by remember { mutableStateOf("todo") }
     Column(Modifier.background(color= Fondo).fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween) {
-        Header(innerPadding, onNavigateToPerfil)
-        Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
             RowDeFiltros(gastos, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             Spacer(Modifier.size(10.dp))
             GraficaGastos(gastos)
@@ -42,7 +43,6 @@ fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateTo
             Spacer(Modifier.size(10.dp))
             ColumnaGastosVSEstimado(gastos)
         }
-        NavBar(onNavigateToGraficos)
     }
 }
 

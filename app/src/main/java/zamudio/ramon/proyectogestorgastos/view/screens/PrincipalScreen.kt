@@ -50,7 +50,6 @@ fun PrincipalScreen(
     Column(Modifier
         .background(color = Fondo)
         .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
-        Header(innerPadding, onNavigateToPerfil)
         Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween) {
             BannerBalance(30.0, 40.0)
             Spacer(Modifier.size(15.dp))
@@ -75,12 +74,6 @@ fun PrincipalScreen(
                 }
             }
         }
-        NavBar(
-            onPresupuestoClick = onNavigateToPresupuesto,
-            onAgregarClick = onNavigateToRegistroGasto,
-            onGruposClick = onNavigateToGrupos,
-            onGraficasClick = onNavigateToGraficos
-        )
     }
 }
 

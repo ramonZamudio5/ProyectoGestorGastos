@@ -46,7 +46,6 @@ fun MetodosPagoScreen(
     onRegistrarTarjeta: () -> Unit = {}
 ) {
     Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
-        Header(PaddingValues(horizontal = 16.dp, vertical = 8.dp), onNavigateToPerfil)
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 30.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -73,11 +72,6 @@ fun MetodosPagoScreen(
                 )
             }
         }
-        NavBar(
-            onInicioClick = onNavigateToPrincipal,
-            onPresupuestoClick = onNavigateToPresupuesto,
-            onAgregarClick = onNavigateToRegistroGasto
-        )
     }
 }
 

@@ -94,12 +94,6 @@ fun PerfilScreen(
             BotonCerrarSesion(onNavigateToLogin)
             Spacer(modifier = Modifier.height(16.dp))
         }
-        NavBar(
-            onInicioClick = navigateToPrincipal,
-            onPresupuestoClick = navigateToPresupuesto,
-            onAgregarClick = navigateToRegistroGasto,
-            onNavigateToGraficos
-        )
     }
 }
 

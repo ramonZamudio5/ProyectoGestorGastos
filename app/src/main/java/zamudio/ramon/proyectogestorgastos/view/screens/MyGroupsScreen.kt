@@ -51,8 +51,6 @@ fun MyGroupScreen(
     onJoinGroupClick: () -> Unit = {}
 ) {
     Scaffold(
-        topBar = { Header(PaddingValues(15.dp), {}) },
-        bottomBar = { NavBar() },
         containerColor = Fondo
     ) { innerPadding ->
         LazyColumn(
