@@ -16,11 +16,15 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +44,7 @@ fun GroupSummaryHeaderCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Row(
@@ -54,7 +58,7 @@ fun GroupSummaryHeaderCard(
                 modifier = Modifier
                     .size(46.dp)
                     .clip(RoundedCornerShape(14.dp))
-                    .background(Color(0xFFEDE7F6)),
+                    .background(GroupAccentBackground),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -71,12 +75,12 @@ fun GroupSummaryHeaderCard(
                     text = groupName,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
                 Text(
                     text = typeGroup.title,
                     fontSize = 12.sp,
-                    color = Color.Gray,
+                    color = GroupTextSecondary,
                     fontWeight = FontWeight.Medium
                 )
             }
@@ -85,7 +89,7 @@ fun GroupSummaryHeaderCard(
                 modifier = Modifier
                     .size(34.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFFF3F1FA))
+                    .background(GroupFieldBackground)
                     .clickable { onEditClick() },
                 contentAlignment = Alignment.Center
             ) {
@@ -109,6 +113,6 @@ fun GroupSummaryHeaderCardPreview(){
         "Amigos / Viajes",
         "Vacaciones y escapadas",
         R.drawable.ic_flight,
-        Color(0xFF7E57C2)
+        PurplePrimary
     ))
 }

@@ -15,11 +15,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceText
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,14 +52,14 @@ fun GroupBalanceSummaryCard(
                         modifier = Modifier
                             .size(8.dp)
                             .clip(CircleShape)
-                            .background(Color(0xFF2962FF))
+                            .background(GroupBlueAccent)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         text = "BALANCE TOTAL GRUPAL",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF455A64)
+                        color = GroupBalanceText
                     )
                 }
             }

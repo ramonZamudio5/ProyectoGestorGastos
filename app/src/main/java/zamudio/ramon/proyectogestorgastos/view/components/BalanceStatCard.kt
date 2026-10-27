@@ -15,11 +15,12 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,7 +58,7 @@ fun BalanceStatCard(
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Row(
@@ -88,7 +89,7 @@ fun BalanceStatCard(
                 Text(
                     text = title,
                     fontSize = 11.sp,
-                    color = Color.Gray,
+                    color = GroupTextSecondary,
                     fontWeight = FontWeight.Medium
                 )
                 Text(

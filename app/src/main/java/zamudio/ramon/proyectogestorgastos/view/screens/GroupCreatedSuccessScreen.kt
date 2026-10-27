@@ -16,9 +16,10 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,7 +48,7 @@ fun GroupCreatedSuccessScreen(
     Scaffold(
         topBar = { Header(PaddingValues(15.dp), {}) },
         bottomBar = { NavBar() },
-        containerColor = Color(0xFFF3F1F9)
+        containerColor = GroupScreenBackground
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
@@ -99,13 +100,13 @@ fun GroupCreatedSuccessScreen(
                         text = "Ir al Panel del Grupo",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = White
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Icon(
                         painter = painterResource(R.drawable.ic_arrow_right),
                         contentDescription = null,
-                        tint = Color.White,
+                        tint = White,
                         modifier = Modifier.size(18.dp)
                     )
                 }

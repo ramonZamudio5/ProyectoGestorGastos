@@ -17,13 +17,16 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,7 +53,7 @@ fun CompleteGroupDataScreen(
     Scaffold(
         topBar = { Header(PaddingValues(15.dp), {}) },
         bottomBar = { NavBar() },
-        containerColor = Color(0xFFF3F1F9)
+        containerColor = GroupScreenBackground
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
@@ -72,13 +75,13 @@ fun CompleteGroupDataScreen(
                         text = "Completa los datos del grupo",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1E2022)
+                        color = GroupTextPrimary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = "Configura el presupuesto estimado y añade notas antes de iniciar.",
                         fontSize = 13.sp,
-                        color = Color.Gray,
+                        color = GroupTextSecondary,
                         lineHeight = 18.sp
                     )
                 }
@@ -129,7 +132,7 @@ fun CompleteGroupDataScreen(
                     Icon(
                         painter = painterResource(R.drawable.ic_check),
                         contentDescription = null,
-                        tint = Color.White,
+                        tint = White,
                         modifier = Modifier.size(20.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
@@ -137,7 +140,7 @@ fun CompleteGroupDataScreen(
                         text = "Finalizar y Crear Grupo",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = White
                     )
                 }
             }

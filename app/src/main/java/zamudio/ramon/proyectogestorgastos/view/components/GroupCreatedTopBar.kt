@@ -10,11 +10,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCloseIcon
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,7 +45,7 @@ fun GroupCreatedTopBar(
                 modifier = Modifier
                     .size(36.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFFEDE7F6)),
+                    .background(GroupAccentBackground),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -57,7 +60,7 @@ fun GroupCreatedTopBar(
                 text = "¡Grupo Creado!",
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1E2022)
+                color = GroupTextPrimary
             )
         }
 
@@ -65,14 +68,14 @@ fun GroupCreatedTopBar(
             modifier = Modifier
                 .size(36.dp)
                 .clip(CircleShape)
-                .background(Color(0xFFE8E5F2))
+                .background(GroupBorder)
                 .clickable { onClose() },
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_close),
                 contentDescription = "Cerrar",
-                tint = Color(0xFF49454F),
+                tint = GroupCloseIcon,
                 modifier = Modifier.size(18.dp)
             )
         }

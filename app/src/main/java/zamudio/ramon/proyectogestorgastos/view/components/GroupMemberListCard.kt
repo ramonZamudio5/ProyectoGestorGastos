@@ -17,11 +17,18 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupMemberAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupMemberText
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,7 +49,7 @@ fun GroupMemberListCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -59,14 +66,14 @@ fun GroupMemberListCard(
                     text = "Miembros del Grupo",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Box(
                     modifier = Modifier
                         .size(22.dp)
                         .clip(CircleShape)
-                        .background(Color(0xFFEDE7F6)),
+                        .background(GroupAccentBackground),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
@@ -83,7 +90,7 @@ fun GroupMemberListCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(14.dp))
-                        .background(Color(0xFFF3F1FA))
+                        .background(GroupFieldBackground)
                         .padding(horizontal = 12.dp, vertical = 10.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -102,7 +109,7 @@ fun GroupMemberListCard(
                         text = usuario.nombre,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1E2022)
+                        color = GroupTextPrimary
                     )
                 }
             }
@@ -112,7 +119,7 @@ fun GroupMemberListCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(14.dp))
-                    .background(Color(0xFFF3F1FA))
+                    .background(GroupFieldBackground)
                     .padding(horizontal = 12.dp, vertical = 10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -120,13 +127,13 @@ fun GroupMemberListCard(
                     modifier = Modifier
                         .size(44.dp)
                         .clip(CircleShape)
-                        .background(Color(0xFFE8E5F2)),
+                        .background(GroupBorder),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_add_person),
                         contentDescription = null,
-                        tint = Color(0xFF5C6BC0),
+                        tint = GroupMemberAccent,
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -138,12 +145,12 @@ fun GroupMemberListCard(
                         text = "Esperando nuevos miembros...",
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF2C3E50)
+                        color = GroupMemberText
                     )
                     Text(
                         text = "Unirse usando código $inviteCode",
                         fontSize = 12.sp,
-                        color = Color.Gray
+                        color = GroupTextSecondary
                     )
                 }
 
@@ -151,13 +158,13 @@ fun GroupMemberListCard(
                     modifier = Modifier
                         .size(36.dp)
                         .clip(CircleShape)
-                        .background(Color(0xFFE8E5F2)),
+                        .background(GroupBorder),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_hourglass_empty),
                         contentDescription = null,
-                        tint = Color(0xFF5C6BC0),
+                        tint = GroupMemberAccent,
                         modifier = Modifier.size(18.dp)
                     )
                 }

@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
@@ -33,7 +33,7 @@ fun CreateEditGroupScreen(
     Scaffold(
         topBar = { Header(PaddingValues(15.dp), {}) },
         bottomBar = { NavBar() },
-        containerColor = Color(0xFFF3F1F9) // Tinte lila de fondo
+        containerColor = GroupScreenBackground // Tinte lila de fondo
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier

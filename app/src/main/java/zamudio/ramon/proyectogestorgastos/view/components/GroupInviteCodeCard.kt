@@ -18,12 +18,16 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.painterResource
@@ -47,7 +51,7 @@ fun GroupInviteCodeCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -74,7 +78,7 @@ fun GroupInviteCodeCard(
                     text = "Código de Invitación Único",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022),
+                    color = GroupTextPrimary,
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -83,7 +87,7 @@ fun GroupInviteCodeCard(
             Text(
                 text = "Comparte este código con tus amigos o familiares para que se unan al grupo al instante desde su app GastoClaro.",
                 fontSize = 12.sp,
-                color = Color.Gray,
+                color = GroupTextSecondary,
                 lineHeight = 16.sp
             )
 
@@ -99,14 +103,14 @@ fun GroupInviteCodeCard(
                             .height(54.dp)
                             .padding(horizontal = 3.dp)
                             .clip(RoundedCornerShape(12.dp))
-                            .background(Color(0xFFF3F1FA)),
+                            .background(GroupFieldBackground),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = char.toString(),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.ExtraBold,
-                            color = Color(0xFF1E2022)
+                            color = GroupTextPrimary
                         )
                     }
                 }
@@ -117,7 +121,7 @@ fun GroupInviteCodeCard(
                     .fillMaxWidth()
                     .height(46.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(Color(0xFFEDE7F6))
+                    .background(GroupAccentBackground)
                     .clickable {
                         scope.launch {
                             val clipData = ClipData.newPlainText("Código Grupo", code)

@@ -13,6 +13,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,6 +75,6 @@ fun ActionButtonSquarePreview(){
     ActionButtonSquare(title = "Tomar Foto",
         painterResource(R.drawable.ic_camara),
         accentColor = PurplePrimary,
-        backgroundColor = Color(0xFFEDE7F6),
+        backgroundColor = GroupAccentBackground,
         onClick = {})
 }

@@ -13,11 +13,14 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -35,7 +38,7 @@ fun GroupDescriptionCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -54,13 +57,13 @@ fun GroupDescriptionCard(
                     text = "Nota o descripción",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
                 Text(
                     text = "Visible para todos",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray
+                    color = GroupTextSecondary
                 )
             }
             Box(
@@ -68,7 +71,7 @@ fun GroupDescriptionCard(
                     .fillMaxWidth()
                     .heightIn(min = 90.dp)
                     .clip(RoundedCornerShape(14.dp))
-                    .background(Color(0xFFF3F1FA))
+                    .background(GroupFieldBackground)
                     .padding(14.dp)
             ) {
                 BasicTextField(
@@ -78,7 +81,7 @@ fun GroupDescriptionCard(
                     textStyle = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Normal,
-                        color = Color(0xFF1E2022),
+                        color = GroupTextPrimary,
                         lineHeight = 20.sp
                     ),
                     cursorBrush = SolidColor(PurplePrimary),
@@ -87,7 +90,7 @@ fun GroupDescriptionCard(
                             Text(
                                 text = "Ej. Gastos compartidos de hotel, gasolina y comidas del viaje a la playa...",
                                 fontSize = 14.sp,
-                                color = Color.Gray,
+                                color = GroupTextSecondary,
                                 lineHeight = 20.sp
                             )
                         }

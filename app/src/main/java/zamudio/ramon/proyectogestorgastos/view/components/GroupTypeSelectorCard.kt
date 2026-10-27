@@ -19,6 +19,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupIconSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupOptionsBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -54,7 +62,7 @@ fun GroupTypeSelectorCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -69,13 +77,13 @@ fun GroupTypeSelectorCard(
                     text = "Tipo de Grupo",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "Define cómo se calculan las balanzas y sugerencias de gastos.",
                     fontSize = 12.sp,
-                    color = Color.Gray,
+                    color = GroupTextSecondary,
                     lineHeight = 16.sp
                 )
             }
@@ -83,7 +91,7 @@ fun GroupTypeSelectorCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
-                    .border(1.dp, Color(0xFFE8E5F2), RoundedCornerShape(16.dp))
+                    .border(1.dp, GroupBorder, RoundedCornerShape(16.dp))
                     .clickable { isExpanded = !isExpanded }
                     .padding(12.dp),
                 verticalAlignment = Alignment.CenterVertically
@@ -109,19 +117,19 @@ fun GroupTypeSelectorCard(
                         text = selectedTipo.title,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1E2022)
+                        color = GroupTextPrimary
                     )
                     Text(
                         text = selectedTipo.subtitle,
                         fontSize = 11.sp,
-                        color = Color.Gray
+                        color = GroupTextSecondary
                     )
                 }
                 Icon(
                     painter = if (isExpanded) painterResource(R.drawable.ic_keyboard_up)
                     else painterResource(R.drawable.ic_keyboard_down),
                     contentDescription = null,
-                    tint = Color.DarkGray
+                    tint = GroupIconSecondary
                 )
             }
             AnimatedVisibility(visible = isExpanded) {
@@ -129,7 +137,7 @@ fun GroupTypeSelectorCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(16.dp))
-                        .background(Color(0xFFFAFAFD))
+                        .background(GroupOptionsBackground)
                         .padding(8.dp),
                     verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
@@ -140,7 +148,7 @@ fun GroupTypeSelectorCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clip(RoundedCornerShape(12.dp))
-                                .background(if (isSelected) Color(0xFFEDE7F6) else Color.Transparent)
+                                .background(if (isSelected) GroupAccentBackground else Color.Transparent)
                                 .clickable {
                                     selectedTipo = tipoItem
                                     onTipoSelected(tipoItem)
@@ -171,12 +179,12 @@ fun GroupTypeSelectorCard(
                                     text = tipoItem.title,
                                     fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = Color(0xFF1E2022)
+                                    color = GroupTextPrimary
                                 )
                                 Text(
                                     text = tipoItem.subtitle,
                                     fontSize = 11.sp,
-                                    color = Color.Gray
+                                    color = GroupTextSecondary
                                 )
                             }
 
@@ -184,7 +192,7 @@ fun GroupTypeSelectorCard(
                                 Icon(
                                     painter = painterResource(R.drawable.ic_check),
                                     contentDescription = "Seleccionado",
-                                    tint = Color(0xFF7E57C2),
+                                    tint = PurplePrimary,
                                     modifier = Modifier.size(18.dp)
                                 )
                             }

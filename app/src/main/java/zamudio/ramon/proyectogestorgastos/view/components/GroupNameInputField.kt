@@ -21,11 +21,15 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupNameHintBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -49,7 +53,7 @@ fun GroupNameImputField(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -68,7 +72,7 @@ fun GroupNameImputField(
                     text = "Nombre del Grupo",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
                 Text(
                     text = "${value.length} / $maxLength",
@@ -82,7 +86,7 @@ fun GroupNameImputField(
                     .fillMaxWidth()
                     .height(52.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(Color(0xFFF3F1FA))
+                    .background(GroupFieldBackground)
                     .padding(horizontal = 14.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -108,7 +112,7 @@ fun GroupNameImputField(
                     textStyle = TextStyle(
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF1E2022)
+                        color = GroupTextPrimary
                     ),
                     cursorBrush = SolidColor(PurplePrimary),
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -118,7 +122,7 @@ fun GroupNameImputField(
                             Text(
                                 text = "Ej. Viaje Cancún 2025",
                                 fontSize = 15.sp,
-                                color = Color.Gray
+                                color = GroupTextSecondary
                             )
                         }
                         innerTextField()
@@ -130,7 +134,7 @@ fun GroupNameImputField(
                         modifier = Modifier
                             .size(22.dp)
                             .clip(CircleShape)
-                            .background(Color(0xFFD1C4E9))
+                            .background(GroupNameHintBackground)
                             .clickable { onValueChange("") },
                         contentAlignment = Alignment.Center
                     ) {

@@ -20,11 +20,16 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -48,7 +53,7 @@ fun GroupCardItem(
             .fillMaxWidth()
             .clickable { onClick() },
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
@@ -65,7 +70,7 @@ fun GroupCardItem(
                     modifier = Modifier
                         .size(46.dp)
                         .clip(RoundedCornerShape(12.dp))
-                        .background(Color(0xFFEDE7F6)),
+                        .background(GroupAccentBackground),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
@@ -89,7 +94,7 @@ fun GroupCardItem(
                         Spacer(modifier = Modifier.width(8.dp))
                         Surface(
                             shape = RoundedCornerShape(50),
-                            color = Color(0xFFEDE7F6)
+                            color = GroupAccentBackground
                         ) {
                             Text(
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
@@ -105,7 +110,7 @@ fun GroupCardItem(
                     Text(
                         text = "Total: $${grupo.totalGasto} MXN",
                         fontSize = 12.sp,
-                        color = Color.Gray,
+                        color = GroupTextSecondary,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -113,7 +118,7 @@ fun GroupCardItem(
                 Icon(
                     painter = painterResource(R.drawable.ic_row_right),
                     contentDescription = null,
-                    tint = Color.LightGray,
+                    tint = GroupTextPlaceholder,
                     modifier = Modifier.size(15.dp)
                 )
             }
@@ -124,12 +129,12 @@ fun GroupCardItem(
             ) {
                 AvatarStack()
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Último: ", fontSize = 12.sp, color = Color.Gray)
+                    Text("Último: ", fontSize = 12.sp, color = GroupTextSecondary)
                     Text(
                         text = "Gasto reciente",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1E2022)
+                        color = GroupTextPrimary
                     )
                 }
             }
@@ -137,14 +142,14 @@ fun GroupCardItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(Color(0xFFF7F8FA))
+                    .background(GroupBalanceBackground)
                     .padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
                 Surface(
                     shape = RoundedCornerShape(20.dp),
-                    color = Color(0xFFEDE7F6)
+                    color = GroupAccentBackground
                 ) {
                     Row(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),

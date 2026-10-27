@@ -15,11 +15,15 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -38,7 +42,7 @@ fun GroupBudgetInputCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -57,13 +61,13 @@ fun GroupBudgetInputCard(
                     text = "Presupuesto estimado total",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
                 Text(
                     text = "Opcional",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray
+                    color = GroupTextSecondary
                 )
             }
             // Campo de entrada con '$' a la izquierda y 'MXN' fijo a la derecha
@@ -72,7 +76,7 @@ fun GroupBudgetInputCard(
                     .fillMaxWidth()
                     .height(52.dp)
                     .clip(RoundedCornerShape(14.dp))
-                    .background(Color(0xFFF3F1FA))
+                    .background(GroupFieldBackground)
                     .padding(horizontal = 14.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -99,7 +103,7 @@ fun GroupBudgetInputCard(
                     textStyle = TextStyle(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1E2022)
+                        color = GroupTextPrimary
                     ),
                     cursorBrush = SolidColor(PurplePrimary),
                     decorationBox = { innerTextField ->
@@ -108,7 +112,7 @@ fun GroupBudgetInputCard(
                                 text = "0.00",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = Color.LightGray
+                                color = GroupTextPlaceholder
                             )
                         }
                         innerTextField()
@@ -119,7 +123,7 @@ fun GroupBudgetInputCard(
                     text = "MXN",
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Gray
+                    color = GroupTextSecondary
                 )
             }
 

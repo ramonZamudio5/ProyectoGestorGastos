@@ -20,10 +20,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeText
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupJoinAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -74,11 +79,11 @@ fun MyGroupScreen(
                         Spacer(modifier = Modifier.width(10.dp))
                         Surface(
                             shape = RoundedCornerShape(50),
-                            color = Color(0xFFE0D7F5)
+                            color = GroupBadgeBackground
                         ) {
                             Text(
                                 text = "${grupos.size} activos",
-                                color = Color(0xFF5E35B1),
+                                color = GroupBadgeText,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
@@ -101,13 +106,13 @@ fun MyGroupScreen(
                             .height(50.dp),
                         shape = RoundedCornerShape(14.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF2962FF)
+                            containerColor = GroupBlueAccent
                         )
                     ) {
                         Icon(
                             painter = painterResource(R.drawable.ic_add_person),
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = White,
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
@@ -115,7 +120,7 @@ fun MyGroupScreen(
                             text = "Crear un Grupo",
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = White
                         )
                     }
 
@@ -127,14 +132,14 @@ fun MyGroupScreen(
                             .height(50.dp),
                         shape = RoundedCornerShape(14.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White
+                            containerColor = White
                         ),
                         elevation = ButtonDefaults.buttonElevation(defaultElevation = 1.dp)
                     ) {
                         Icon(
                             painter = painterResource(R.drawable.ic_key),
                             contentDescription = null,
-                            tint = Color(0xFF673AB7),
+                            tint = GroupJoinAccent,
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
@@ -142,7 +147,7 @@ fun MyGroupScreen(
                             text = "Unirse a un Grupo con Código",
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF673AB7)
+                            color = GroupJoinAccent
                         )
                     }
                 }
@@ -164,7 +169,7 @@ fun MyGroupScreen(
                         text = "GRUPOS EN CURSO",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF37474F)
+                        color = GroupSectionText
                     )
                 }
             }

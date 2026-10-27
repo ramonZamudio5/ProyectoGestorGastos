@@ -14,9 +14,10 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,7 +50,7 @@ fun GroupFormActions(
             Icon(
                 painter = painterResource(R.drawable.ic_check),
                 contentDescription = null,
-                tint = Color.White,
+                tint = White,
                 modifier = Modifier.size(18.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -57,7 +58,7 @@ fun GroupFormActions(
                 text = "Guardar Cambios",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = White
             )
         }
 
@@ -68,13 +69,13 @@ fun GroupFormActions(
                 .fillMaxWidth()
                 .height(50.dp),
             shape = RoundedCornerShape(14.dp),
-            colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White)
+            colors = ButtonDefaults.outlinedButtonColors(containerColor = White)
         ) {
             Text(
                 text = "Cancelar / Descartar",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF37474F)
+                color = GroupSectionText
             )
         }
     }

@@ -21,6 +21,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupImagePlaceholder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -56,7 +64,7 @@ fun GroupImagePickerCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -71,7 +79,7 @@ fun GroupImagePickerCard(
                 modifier = Modifier
                     .size(110.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFFE0E0E0)),
+                    .background(GroupImagePlaceholder),
                 contentAlignment = Alignment.Center
             ) {
                 // Placeholder para simular imagen de playa o icono
@@ -87,7 +95,7 @@ fun GroupImagePickerCard(
                     .fillMaxWidth()
                     .height(44.dp)
                     .clip(RoundedCornerShape(50))
-                    .background(Color(0xFFF3F1FA))
+                    .background(GroupFieldBackground)
                     .padding(4.dp)
             ){
                 Row(
@@ -100,7 +108,7 @@ fun GroupImagePickerCard(
                             .weight(1f)
                             .fillMaxHeight()
                             .clip(RoundedCornerShape(50))
-                            .background(if (isFotoReal) Color.White else Color.Transparent)
+                            .background(if (isFotoReal) White else Color.Transparent)
                             .clickable { selectedMode = ImagePickerMode.FOTO_REAL },
                         contentAlignment = Alignment.Center
                     ) {
@@ -108,7 +116,7 @@ fun GroupImagePickerCard(
                             Icon(
                                 painter = painterResource(R.drawable.ic_image),
                                 contentDescription = null,
-                                tint = if (isFotoReal) PurplePrimary else Color.Gray,
+                                tint = if (isFotoReal) PurplePrimary else GroupTextSecondary,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -116,7 +124,7 @@ fun GroupImagePickerCard(
                                 text = "Foto Real",
                                 fontSize = 12.sp,
                                 fontWeight = if (isFotoReal) FontWeight.Bold else FontWeight.Medium,
-                                color = if (isFotoReal) Color(0xFF1E2022) else Color.Gray
+                                color = if (isFotoReal) GroupTextPrimary else GroupTextSecondary
                             )
                         }
                     }
@@ -128,7 +136,7 @@ fun GroupImagePickerCard(
                             .weight(1f)
                             .fillMaxHeight()
                             .clip(RoundedCornerShape(50))
-                            .background(if (isIcono) Color.White else Color.Transparent)
+                            .background(if (isIcono) White else Color.Transparent)
                             .clickable { selectedMode = ImagePickerMode.ICONO_EMOJI },
                         contentAlignment = Alignment.Center
                     ) {
@@ -136,7 +144,7 @@ fun GroupImagePickerCard(
                             Icon(
                                 painter = painterResource(R.drawable.ic_emojie),
                                 contentDescription = null,
-                                tint = if (isIcono) PurplePrimary else Color.Gray,
+                                tint = if (isIcono) PurplePrimary else GroupTextSecondary,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -144,7 +152,7 @@ fun GroupImagePickerCard(
                                 text = "Ícono / Emoji",
                                 fontSize = 12.sp,
                                 fontWeight = if (isIcono) FontWeight.Bold else FontWeight.Medium,
-                                color = if (isIcono) Color(0xFF1E2022) else Color.Gray
+                                color = if (isIcono) GroupTextPrimary else GroupTextSecondary
                             )
                         }
                     }
@@ -159,7 +167,7 @@ fun GroupImagePickerCard(
                     title = "Tomar Foto",
                     icon = painterResource(R.drawable.ic_camara),
                     accentColor = PurplePrimary,
-                    backgroundColor = Color(0xFFEDE7F6),
+                    backgroundColor = GroupAccentBackground,
                     onClick = onTakePhotoClick,
                     modifier = Modifier.weight(1f)
                 )
@@ -169,7 +177,7 @@ fun GroupImagePickerCard(
                     title = "Galería",
                     icon = painterResource(R.drawable.ic_image),
                     accentColor = PurplePrimary,
-                    backgroundColor = Color(0xFFEDE7F6),
+                    backgroundColor = GroupAccentBackground,
                     onClick = onGalleryClick,
                     modifier = Modifier.weight(1f)
                 )
@@ -178,8 +186,8 @@ fun GroupImagePickerCard(
                 ActionButtonSquare(
                     title = "Quitar Foto",
                     icon = painterResource(R.drawable.ic_delete),
-                    accentColor = Color(0xFFE53935),
-                    backgroundColor = Color(0xFFFFEBEE),
+                    accentColor = GroupDeleteAccent,
+                    backgroundColor = GroupDeleteBackground,
                     onClick = onRemovePhotoClick,
                     modifier = Modifier.weight(1f)
                 )

@@ -15,11 +15,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCategoryBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCategoryText
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSuccessAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSuccessBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,7 +43,7 @@ fun GroupCreatedHeaderCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Row(
@@ -51,13 +57,13 @@ fun GroupCreatedHeaderCard(
                 modifier = Modifier
                     .size(56.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(Color(0xFFE0F2F1)),
+                    .background(GroupSuccessBackground),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_flight),
                     contentDescription = null,
-                    tint = Color(0xFF00695C),
+                    tint = GroupSuccessAccent,
                     modifier = Modifier.size(28.dp)
                 )
             }
@@ -71,14 +77,14 @@ fun GroupCreatedHeaderCard(
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(6.dp))
-                        .background(Color(0xFFF3E5F5))
+                        .background(GroupCategoryBackground)
                         .padding(horizontal = 6.dp, vertical = 2.dp)
                 ) {
                     Text(
                         text = categoryTag,
                         fontSize = 10.sp,
                         fontWeight = FontWeight.ExtraBold,
-                        color = Color(0xFF8E24AA)
+                        color = GroupCategoryText
                     )
                 }
                 // Nombre del grupo
@@ -86,7 +92,7 @@ fun GroupCreatedHeaderCard(
                     text = groupName,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1E2022)
+                    color = GroupTextPrimary
                 )
 
                 // Creador
@@ -97,7 +103,7 @@ fun GroupCreatedHeaderCard(
                     Text(
                         text = "Creado por: $creatorName",
                         fontSize = 11.sp,
-                        color = Color.Gray
+                        color = GroupTextSecondary
                     )
                 }
             }
