@@ -1,8 +1,6 @@
 package zamudio.ramon.proyectogestorgastos.view.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,12 +13,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -28,7 +23,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,8 +33,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
 import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
-import zamudio.ramon.proyectogestorgastos.view.components.BalanceStatCard
-import zamudio.ramon.proyectogestorgastos.view.components.BalanceType
+import zamudio.ramon.proyectogestorgastos.view.components.GroupBalanceSummaryCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItem
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
@@ -156,56 +149,7 @@ fun MyGroupScreen(
             }
             // 3. TARJETA DE BALANCE TOTAL GRUPAL
             item {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(20.dp),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(14.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        // Encabezado del Balance
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(8.dp)
-                                        .clip(CircleShape)
-                                        .background(Color(0xFF2962FF))
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
-                                Text(
-                                    text = "BALANCE TOTAL GRUPAL",
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color(0xFF455A64)
-                                )
-                            }
-                        }
-
-                        // Las dos tarjetas usando BalanceStatCard
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(10.dp)
-                        ) {
-                            BalanceStatCard(
-                                type = BalanceType.TE_DEBEN,
-                                modifier = Modifier.weight(1f)
-                            )
-                            BalanceStatCard(
-                                type = BalanceType.DEBES,
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
-                    }
-                }
+                GroupBalanceSummaryCard()
             }
             // 4. HEADER DE LA SECCIÓN: GRUPOS EN CURSO
             item {

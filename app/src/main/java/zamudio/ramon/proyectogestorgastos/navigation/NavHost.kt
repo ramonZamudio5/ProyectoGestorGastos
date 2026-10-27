@@ -164,6 +164,9 @@ fun Myapp(innerPadding: PaddingValues) {
                             inclusive = true
                         }
                     }
+                },
+                onEditGroupClick = {
+                    navController.popBackStack()
                 }
             )
         }

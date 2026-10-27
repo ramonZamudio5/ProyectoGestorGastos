@@ -41,7 +41,8 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun CompleteGroupDataScreen(
-    onNavigateNext: () -> Unit = {}
+    onNavigateNext: () -> Unit = {},
+    onEditGroupClick: () -> Unit = {}
 ) {
     var budget by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
@@ -87,13 +88,14 @@ fun CompleteGroupDataScreen(
             //modificar esto para dejar de se mock
             item {
                 GroupSummaryHeaderCard(
-                    TipoGrupo(
+                    typeGroup = TipoGrupo(
                         "amigos",
                         "Amigos / Viajes",
                         "Vacaciones y escapadas",
                         R.drawable.ic_flight,
                         PurplePrimary
-                    )
+                    ),
+                    onEditClick = onEditGroupClick
                 )
             }
 
