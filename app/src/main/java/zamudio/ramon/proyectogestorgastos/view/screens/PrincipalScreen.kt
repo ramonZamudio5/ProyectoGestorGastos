@@ -40,7 +40,10 @@ fun PrincipalScreen(
     onNavigateToPerfil: () -> Unit,
     gastos: List<Gasto>,
     onNavigateToRegistroGasto: () -> Unit = {},
-    onNavigateToPresupuesto: () -> Unit = {},  onNavigateToHistorial: () -> Unit, onNavigateToGraficos: ()-> Unit
+    onNavigateToPresupuesto: () -> Unit = {},
+    onNavigateToHistorial: () -> Unit,
+    onNavigateToGraficos: ()-> Unit,
+    onNavigateToGrupos: () -> Unit = {}
 ) {
     Column(Modifier
         .background(color = Fondo)
@@ -70,7 +73,12 @@ fun PrincipalScreen(
                 }
             }
         }
-        NavBar(onNavigateToGraficos)
+        NavBar(
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto,
+            onGruposClick = onNavigateToGrupos,
+            onGraficasClick = onNavigateToGraficos
+        )
     }
 }
 

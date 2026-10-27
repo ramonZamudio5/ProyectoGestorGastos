@@ -10,9 +10,14 @@ import zamudio.ramon.proyectogestorgastos.view.screens.GraficosScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.HistorialScreen
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateListOf
+import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
+import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
+import zamudio.ramon.proyectogestorgastos.view.screens.CompleteGroupDataScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.CreateEditGroupScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.GroupCreatedSuccessScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PrincipalScreen
@@ -21,6 +26,7 @@ import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PresupuestoScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.MetodosPagoScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.MyGroupScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegistrarTarjetaScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegistroGastoScreen
 
@@ -64,8 +70,18 @@ fun Myapp(innerPadding: PaddingValues) {
         }
         composable<Principal> {
             PrincipalScreen(
-                innerPadding, navigateToPerfil, gastos, navigateToRegistroMovimiento,
-                onNavigateToPresupuesto = navigateToPresupuesto, navigateToHistorial, navigateToGraficos
+                innerPadding = innerPadding,
+                onNavigateToPerfil = navigateToPerfil,
+                gastos = gastos,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                onNavigateToHistorial = navigateToHistorial,
+                onNavigateToGraficos = navigateToGraficos,
+                onNavigateToGrupos = {
+                    navController.navigate(MyGroups) {
+                        launchSingleTop = true
+                    }
+                }
             )
         }
         composable<Presupuesto> {
@@ -117,13 +133,49 @@ fun Myapp(innerPadding: PaddingValues) {
         composable<Historial> {
             HistorialScreen(innerPadding,gastosMock, navigateToPerfil, navigateToGraficos)
         }
-        composable<Principal> {
-            PrincipalScreen(innerPadding,navigateToPerfil, gastosMock,
-                navigateToRegistroMovimiento, navigateToPresupuesto, navigateToHistorial,
-                navigateToGraficos)
-        }
+
         composable<Graficos> {
             GraficosScreen(innerPadding, gastosMock,navigateToPerfil, navigateToGraficos)
+        }
+        composable<MyGroups> {
+            MyGroupScreen (
+                onCreateGroupClick = {
+                    navController.navigate(CreateEditGroup)
+                }
+            )
+        }
+
+        composable<CreateEditGroup> {
+            CreateEditGroupScreen (
+                onNavigateNext = {
+                    navController.navigate(CompleteGroupData)
+                },
+                onCancel = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<CompleteGroupData> {
+            CompleteGroupDataScreen(
+                onNavigateNext = {
+                    navController.navigate(GroupCreatedSuccess) {
+                        popUpTo<CreateEditGroup> {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable<GroupCreatedSuccess> {
+            GroupCreatedSuccessScreen(
+                group = grupo,
+                miembros = usuarios,
+                onClose = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
