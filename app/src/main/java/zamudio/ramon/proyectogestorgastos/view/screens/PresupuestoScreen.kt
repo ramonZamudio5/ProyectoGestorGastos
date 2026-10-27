@@ -47,9 +47,9 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
 import zamudio.ramon.proyectogestorgastos.view.components.AlertaPresupuesto
@@ -62,7 +62,9 @@ import zamudio.ramon.proyectogestorgastos.view.components.formatoDinero
 @Composable
 fun PresupuestoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
-    onNavigateToPerfil: () -> Unit = {}
+    onNavigateToPerfil: () -> Unit = {},
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToRegistroGasto: () -> Unit = {}
 ) {
     val categorias = remember {
         mutableStateListOf(
@@ -81,7 +83,7 @@ fun PresupuestoScreen(
     val gastosObligados = 14200.0
     val disponibleMensual = (ingresoMensual - gastosObligados).coerceAtLeast(0.0)
 
-    Column(Modifier.fillMaxSize().background(fondo).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
         Header(PaddingValues(horizontal = 16.dp, vertical = 8.dp), onNavigateToPerfil)
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 12.dp),
@@ -97,7 +99,7 @@ fun PresupuestoScreen(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
                     Image(painterResource(R.drawable.ic_presupuesto), contentDescription = null, modifier = Modifier.size(16.dp))
-                    Text("Asignación por categorías", style = Typography.labelLarge, color = purplePrimary, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 5.dp))
+                    Text("Asignación por categorías", style = Typography.labelLarge, color = PurplePrimary, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 5.dp))
                 }
                 Text("${categorias.size} de 4 activas", style = Typography.labelSmall, color = Color.DarkGray)
             }
@@ -116,6 +118,7 @@ fun PresupuestoScreen(
             )
             Spacer(Modifier.height(4.dp))
         }
+        NavBar(onInicioClick = onNavigateToPrincipal, onAgregarClick = onNavigateToRegistroGasto)
     }
 
     categoriaEditando?.let { categoria ->
@@ -171,7 +174,7 @@ private fun EditorIngresoMensualDialog(
         },
         confirmButton = {
             TextButton(onClick = { monto?.let(onGuardar) }, enabled = monto != null && monto > 0) {
-                Text("Guardar", color = purplePrimary)
+                Text("Guardar", color = PurplePrimary)
             }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Cancelar") } }
@@ -255,7 +258,7 @@ private fun EditorCategoriaBottomSheet(
                     Text(
                         if (modoFijo) "\$${valor.formatoDinero()} MXN" else "\$${montoAsignado.formatoDinero()} MXN (${valor.formatoDinero()}%)",
                         modifier = Modifier.fillMaxWidth(), style = Typography.headlineSmall,
-                        color = purplePrimary, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center
+                        color = PurplePrimary, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center
                     )
                     Text("De un fondo disponible de \$${presupuestoDisponible.formatoDinero()} MXN", modifier = Modifier.fillMaxWidth(), style = Typography.labelSmall, textAlign = TextAlign.Center, color = Color.DarkGray)
                     Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -273,7 +276,7 @@ private fun EditorCategoriaBottomSheet(
                     }
                     Column(Modifier.fillMaxWidth().background(Color(0xFFF1F0FF), RoundedCornerShape(12.dp)).padding(11.dp)) {
                         Text("◉  Impacto en saldo restante: te quedarán", style = Typography.labelSmall)
-                        Text("\$${quedaLibre.formatoDinero()} MXN libres para tus otras categorías.", style = Typography.labelSmall, color = purplePrimary)
+                        Text("\$${quedaLibre.formatoDinero()} MXN libres para tus otras categorías.", style = Typography.labelSmall, color = PurplePrimary)
                     }
                     Button(
                         onClick = { onConfirmar(montoAsignado) }, modifier = Modifier.fillMaxWidth(),

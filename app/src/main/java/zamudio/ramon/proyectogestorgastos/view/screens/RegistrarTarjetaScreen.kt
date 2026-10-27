@@ -45,7 +45,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
@@ -58,7 +58,10 @@ fun RegistrarTarjetaScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onGuardar: (TarjetaPago) -> Unit = {},
     onCancelar: () -> Unit = {},
-    onNavigateToPerfil: () -> Unit = {}
+    onNavigateToPerfil: () -> Unit = {},
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},
+    onNavigateToRegistroGasto: () -> Unit = {}
 ) {
     var titular by remember { mutableStateOf("") }
     var banco by remember { mutableStateOf("") }
@@ -122,6 +125,11 @@ fun RegistrarTarjetaScreen(
                     .padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
             }
         }
+        NavBar(
+            onInicioClick = onNavigateToPrincipal,
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto
+        )
     }
 }
 
@@ -150,7 +158,7 @@ private fun CampoTarjeta(
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             shape = RoundedCornerShape(13.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = purplePrimary,
+                focusedBorderColor = PurplePrimary,
                 unfocusedBorderColor = Color.Transparent,
                 focusedContainerColor = White,
                 unfocusedContainerColor = White
@@ -195,11 +203,11 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
         shape = RoundedCornerShape(9.dp),
         colors = ButtonDefaults.buttonColors(
         containerColor = if (seleccionado) White else Color.Transparent,
-        contentColor = if (seleccionado) purplePrimary else Color(0xFF667085)
+        contentColor = if (seleccionado) PurplePrimary else Color(0xFF667085)
         ),
         contentPadding = PaddingValues(horizontal = 6.dp)
     ) {
-        Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = if (seleccionado) purplePrimary else Color(0xFF667085), modifier = Modifier.size(17.dp))
+        Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = if (seleccionado) PurplePrimary else Color(0xFF667085), modifier = Modifier.size(17.dp))
         Text(texto, Modifier.padding(start = 6.dp), style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
     }
 }

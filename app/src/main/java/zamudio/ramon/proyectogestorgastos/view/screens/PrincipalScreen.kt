@@ -8,9 +8,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -26,12 +24,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
-import zamudio.ramon.proyectogestorgastos.model.data.getGastosTotales
 import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.view.components.BannerBalance
 import zamudio.ramon.proyectogestorgastos.view.components.BannerDistribucion
@@ -45,11 +42,14 @@ fun PrincipalScreen(
     onNavigateToPerfil: () -> Unit,
     gastos: List<Gasto>,
     onNavigateToRegistroGasto: () -> Unit = {},
-    onNavigateToHistorial: () -> Unit
+    onNavigateToPresupuesto: () -> Unit = {},
+    onNavigateToHistorial: () -> Unit,
+    onNavigateToGraficos: ()-> Unit,
+    onNavigateToGrupos: () -> Unit = {}
 ) {
     Column(Modifier
-        .background(color = fondo)
-        .fillMaxSize(), verticalArrangement = Arrangement.spacedBy(5.dp)) {
+        .background(color = Fondo)
+        .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
         Header(innerPadding, onNavigateToPerfil)
         Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween) {
             BannerBalance(30.0, 40.0)
@@ -75,12 +75,17 @@ fun PrincipalScreen(
                 }
             }
         }
+        NavBar(
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto,
+            onGruposClick = onNavigateToGrupos,
+            onGraficasClick = onNavigateToGraficos
+        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewPrincipalScreen(){
-    PrincipalScreen(PaddingValues(15.dp),{}, gastosMock,
-        {},{})
+    PrincipalScreen(PaddingValues(15.dp),{}, gastosMock, {},{}, {}, {})
 }

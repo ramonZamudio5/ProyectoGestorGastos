@@ -38,4 +38,14 @@ object RegistrarTarjeta
 
 @Serializable
 object RegistrarMovimiento
+@Serializable
+object MyGroups
 
+@Serializable
+object CreateEditGroup
+
+@Serializable
+object CompleteGroupData
+
+@Serializable
+object GroupCreatedSuccess

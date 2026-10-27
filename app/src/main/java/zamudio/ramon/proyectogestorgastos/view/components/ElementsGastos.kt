@@ -27,11 +27,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -52,11 +50,11 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Purple80
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
-import zamudio.ramon.proyectogestorgastos.ui.theme.lightGreen
-import zamudio.ramon.proyectogestorgastos.ui.theme.lightRed
-import java.text.DateFormatSymbols
+import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.LightGreen
+import zamudio.ramon.proyectogestorgastos.ui.theme.LightRed
 import java.time.LocalDate
+import java.time.format.TextStyle
 import java.util.Locale
 
 @Composable
@@ -73,14 +71,15 @@ fun ColumnaGastos(gastos: List<Gasto>) {
 @Composable
 fun ColumnaGastosPorFiltro(filtro: String, gastos: List<Gasto>) {
     val filtroLower = filtro.lowercase()
-    val mesesNombres = remember { DateFormatSymbols(Locale("es", "ES")).months }
 
     val gastosAgrupados = when (filtroLower) {
         "todo" -> gastos.groupBy { "Todos tus gastos" }
-        "dia" -> gastos.groupBy { "Día ${it.fecha.day}/${it.fecha.month}/${it.fecha.year}" }
+        "dia" -> gastos.groupBy { "Día ${it.fecha.dayOfMonth}/${it.fecha.month}/${it.fecha.year}" }
         "mes" -> gastos.groupBy {
-            val mesNum = it.fecha.month
-            val nombreMes = if (mesNum in 1..12) mesesNombres[mesNum - 1].replaceFirstChar { c -> c.uppercase() } else "$mesNum"
+            val nombreMes = it.fecha.month
+                .getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-MX"))
+                .replaceFirstChar { c -> c.uppercase() }
+
             "$nombreMes ${it.fecha.year}"
         }
         else -> {
@@ -202,7 +201,7 @@ fun BannerGasto(gasto: Gasto) {
         Column(Modifier.padding(5.dp).weight(1f)) {
             Text(gasto.nombre, style = Typography.titleMedium)
             Text(
-                "${gasto.tipo} • ${gasto.fecha.day}/${gasto.fecha.month}",
+                "${gasto.tipo} • ${gasto.fecha.dayOfMonth}/${gasto.fecha.month}",
                 style = Typography.labelSmall
             )
         }
@@ -239,7 +238,7 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
         ) {
             Column(
                 Modifier
-                    .background(color = lightGreen, shape = RoundedCornerShape(10.dp))
+                    .background(color = LightGreen, shape = RoundedCornerShape(10.dp))
                     .padding(10.dp)
             ) {
                 Text("Ingresos del mes", style = Typography.labelMedium)
@@ -247,7 +246,7 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
             }
             Column(
                 Modifier
-                    .background(color = lightRed, shape = RoundedCornerShape(10.dp))
+                    .background(color = LightRed, shape = RoundedCornerShape(10.dp))
                     .padding(10.dp)
             ) {
                 Text("Gastos del mes", style = Typography.labelMedium)
@@ -317,7 +316,7 @@ fun BannerDistribucion(gastos: List<Gasto>) {
 fun CeldaTipoGasto(tipo: Tipo, gastos: List<Gasto>) {
     Column(
         Modifier
-            .background(color = fondo, shape = RoundedCornerShape(10.dp))
+            .background(color = Fondo, shape = RoundedCornerShape(10.dp))
             .fillMaxWidth()
             .padding(10.dp)
     ) {
@@ -361,7 +360,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
             Text("Presupuesto asignado: $" + getPresupuestoTotal(gastos).toString() + "MXN", color= PurpleGrey40)
             Box(modifier = Modifier.fillMaxWidth().padding(10.dp), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(50.dp * 2f)){
-                    drawArc(color= fondo, posicion, 360f, false,
+                    drawArc(color= Fondo, posicion, 360f, false,
                         style = Stroke(strokeWidthPx, cap=StrokeCap.Round))
                 }
                 tipos.forEach { tipo->
@@ -376,7 +375,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
                 }
             }
             val celdasPorFila = tipos.chunked(2)
-            Column(Modifier.background(color = fondo, shape = RoundedCornerShape(10.dp))
+            Column(Modifier.background(color = Fondo, shape = RoundedCornerShape(10.dp))
                 .fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                 celdasPorFila.forEach { fila ->
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
@@ -407,7 +406,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
 fun BannerPromedioDiario(gastos: List<Gasto>) {
     val fechaActual = LocalDate.now()
     val gastosMesActual = gastos.filter {
-        it.fecha.month == fechaActual.monthValue && it.fecha.year == fechaActual.year
+        it.fecha.month == fechaActual.month && it.fecha.year == fechaActual.year
     }
 
     val totalGastadoMes = getGastosTotales(gastosMesActual)
@@ -472,7 +471,7 @@ fun ColumnaGastosVSEstimado(gastos: List<Gasto>) {
                             .fillMaxWidth()
                             .height(10.dp)
                             .clip(RoundedCornerShape(10.dp))
-                            .background(color = fondo)
+                            .background(color = Fondo)
                     ) {
                         if (porcentajeBarra > 0f) {
                             Box(

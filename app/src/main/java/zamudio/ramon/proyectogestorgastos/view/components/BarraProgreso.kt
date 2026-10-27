@@ -11,16 +11,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
 
 @Composable
 fun BarraProgreso(pasoActual: Int, totalPasos: Int) {
@@ -31,15 +32,15 @@ fun BarraProgreso(pasoActual: Int, totalPasos: Int) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Paso $pasoActual de $totalPasos",
+            text = stringResource(R.string.group_step, pasoActual, totalPasos),
             style = Typography.labelLarge,
-            color = purplePrimary
+            color = PurplePrimary
         )
         Spacer(Modifier.width(16.dp))
         Box(Modifier.weight(1f).height(8.dp).clip(RoundedCornerShape(4.dp)).background(
                 BackGroundPurple)) {
             Box(
-                modifier = Modifier.fillMaxWidth(progreso).fillMaxHeight().clip(RoundedCornerShape(4.dp)).background(purplePrimary)
+                modifier = Modifier.fillMaxWidth(progreso).fillMaxHeight().clip(RoundedCornerShape(4.dp)).background(PurplePrimary)
             )
         }
     }

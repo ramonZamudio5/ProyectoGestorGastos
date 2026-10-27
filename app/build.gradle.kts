@@ -34,6 +34,9 @@ android {
     buildFeatures {
         compose = true
     }
+    defaultConfig {
+        minSdk = 26
+    }
 }
 
 dependencies {
@@ -60,3 +63,4 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }
+

@@ -5,13 +5,12 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import java.time.LocalDate
-import java.util.Date
 
 val gasto = Gasto(
     "gasolina",
     Tipo.GASOLINA,
     850.0,
-    Date(2026,10,23),
+    LocalDate.of(2026,10,23),
     R.drawable.ic_car,
     TipoPago.DEBITO
 )
@@ -21,13 +20,13 @@ val gastosMock = listOf<Gasto>(
         "gasolina",
         Tipo.GASOLINA,
         850.0,
-        Date(2026,10,23),
+        LocalDate.of(2026,10,23),
         R.drawable.ic_car,
         TipoPago.DEBITO
     ),
-    Gasto("comida", Tipo.COMIDA, 342.3, Date(2026,10,23), R.drawable.ic_car, TipoPago.DEBITO),
-    Gasto("luz", Tipo.LUZ, 1000.0, Date(2025,8,26), R.drawable.ic_energy, TipoPago.CREDITO),
-    Gasto("agua", Tipo.AGUA, 465.8, Date(2026,10,30), R.drawable.ic_car, TipoPago.DEBITO))
+    Gasto("comida", Tipo.COMIDA, 342.3, LocalDate.of(2026,10,23), R.drawable.ic_car, TipoPago.DEBITO),
+    Gasto("luz", Tipo.LUZ, 1000.0, LocalDate.of(2025,8,26), R.drawable.ic_energy, TipoPago.CREDITO),
+    Gasto("agua", Tipo.AGUA, 465.8, LocalDate.of(2026,10,30), R.drawable.ic_car, TipoPago.DEBITO))
 
 @Composable
 fun getGastosByTipo(tipo: Tipo): List<Gasto>{
@@ -53,5 +52,5 @@ fun getGastosTotales(gastos: List<Gasto>): Double{
 
 @Composable
 fun getPresupuestoTotal(gastos: List<Gasto>): Double{
-    return "%.2f".format(getTiposInGastos(gastos).sumOf { it -> it.estimado }).toDouble()
+    return "%.2f".format(getTiposInGastos(gastos).sumOf { it.estimado }).toDouble()
 }

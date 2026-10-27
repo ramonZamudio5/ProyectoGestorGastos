@@ -1,8 +1,6 @@
 package zamudio.ramon.proyectogestorgastos.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,15 +12,17 @@ import zamudio.ramon.proyectogestorgastos.view.screens.GraficosScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.HistorialScreen
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hasRoute
-import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
+import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
+import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
+import zamudio.ramon.proyectogestorgastos.view.screens.CompleteGroupDataScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.CreateEditGroupScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.GroupCreatedSuccessScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PrincipalScreen
@@ -31,8 +31,10 @@ import zamudio.ramon.proyectogestorgastos.view.screens.RegisterPerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegisterScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PresupuestoScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.MetodosPagoScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.MyGroupScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegistrarTarjetaScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegistroGastoScreen
+import java.security.Principal
 
 val topLevelRoutes = setOf(
     Inicio,
@@ -46,8 +48,7 @@ val topLevelRoutes = setOf(
 )
 
 @Composable
-fun Myapp() {
-
+fun Myapp(innerPadding: PaddingValues) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -58,7 +59,7 @@ fun Myapp() {
     Scaffold(
         bottomBar = {
             if (shouldShowBottomBar) {
-                NavBar(navController)
+                NavBar()
             }
         }
     ){ innerPadding ->
@@ -78,71 +79,137 @@ fun Myapp() {
         val navigateToPresupuesto = { navController.navigate(route = Presupuesto) }
 
 
-        NavHost(navController = navController, startDestination = Login, modifier = Modifier.padding(innerPadding)) {
-            composable<Login> {
-                LoginScreen(innerPadding,navigateToRegister,navigateToPrincipal)
-            }
-            composable<Perfil> {
-                PerfilScreen(
-                    innerPadding, navigateToLogin, navigateToMetodosPago
-                )
-            }
-            composable<Register> {
-                RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
-            }
-            composable<RegisterPerfil> {
-                RegisterPerfilScreen(innerPadding,navigateToRegister,navigateToRegisterPassword)
-            }
-            composable<RegisterPassword>{
-                RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil,navigateToPrincipal)
-            }
-            composable<Inicio> {
-                PrincipalScreen(
-                    innerPadding, navigateToPerfil, gastos, onNavigateToRegistroGasto = navigateToRegistroMovimiento, onNavigateToHistorial = navigateToHistorial
-                )
-            }
-            composable<Presupuesto> {
-                PresupuestoScreen(
-                    innerPadding = innerPadding,
-                    onNavigateToPerfil = navigateToPerfil
-                )
-            }
-            composable<MetodosPago> {
-                MetodosPagoScreen(
-                    innerPadding = innerPadding,
-                    onNavigateToPerfil = navigateToPerfil,
-                    onRegistrarTarjeta = { navController.navigate(RegistrarTarjeta) },
-                    tarjetas = tarjetasPago
-                )
-            }
-            composable<RegistrarTarjeta> {
-                RegistrarTarjetaScreen(
-                    innerPadding = innerPadding,
-                    onGuardar = { nuevaTarjeta ->
-                        tarjetasPago.add(nuevaTarjeta)
-                        navController.popBackStack()
-                    },
-                    onCancelar = { navController.popBackStack() },
-                    onNavigateToPerfil = navigateToPerfil
-                )
-            }
-            composable<RegistrarMovimiento> {
-                RegistroGastoScreen(
-                    innerPadding = innerPadding,
-                    onNavigateToPerfil = navigateToPerfil,
-                    tarjetasDisponibles = tarjetasPago,
-                    onGuardar = { gasto ->
-                        gastos.add(gasto)
-                        navController.popBackStack()
+    NavHost(navController = navController, startDestination = Login) {
+        composable<Login> {
+            LoginScreen(innerPadding,navigateToRegister,navigateToPrincipal)
+        }
+        composable<Perfil> {
+            PerfilScreen(
+                innerPadding, navigateToLogin, navigateToPrincipal,
+                navigateToMetodosPago, navigateToPresupuesto, navigateToRegistroMovimiento,
+                navigateToGraficos
+            )
+        }
+        composable<Register> {
+            RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
+        }
+        composable<RegisterPerfil> {
+            RegisterPerfilScreen(innerPadding,navigateToRegister,navigateToRegisterPassword)
+        }
+        composable<RegisterPassword>{
+            RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil,navigateToPrincipal)
+        }
+        composable<Principal> {
+            PrincipalScreen(
+                innerPadding = innerPadding,
+                onNavigateToPerfil = navigateToPerfil,
+                gastos = gastos,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                onNavigateToHistorial = navigateToHistorial,
+                onNavigateToGraficos = navigateToGraficos,
+                onNavigateToGrupos = {
+                    navController.navigate(MyGroups) {
+                        launchSingleTop = true
                     }
-                )
-            }
-            composable<Historial> {
-                HistorialScreen(innerPadding, gastosMock,navigateToPerfil)
-            }
-            composable<Graficos> {
-                GraficosScreen(innerPadding, gastosMock,navigateToPerfil)
-            }
+                }
+            )
+        }
+        composable<Presupuesto> {
+            PresupuestoScreen(
+                innerPadding = innerPadding,
+                onNavigateToPerfil = navigateToPerfil,
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento
+            )
+        }
+        composable<MetodosPago> {
+            MetodosPagoScreen(
+                innerPadding = innerPadding,
+                onNavigateToPerfil = navigateToPerfil,
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento,
+                onRegistrarTarjeta = { navController.navigate(RegistrarTarjeta) },
+                tarjetas = tarjetasPago
+            )
+        }
+        composable<RegistrarTarjeta> {
+            RegistrarTarjetaScreen(
+                innerPadding = innerPadding,
+                onGuardar = { nuevaTarjeta ->
+                    tarjetasPago.add(nuevaTarjeta)
+                    navController.popBackStack()
+                },
+                onCancelar = { navController.popBackStack() },
+                onNavigateToPerfil = navigateToPerfil,
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                onNavigateToRegistroGasto = navigateToRegistroMovimiento
+            )
+        }
+        composable<RegistrarMovimiento> {
+            RegistroGastoScreen(
+                innerPadding = innerPadding,
+                onNavigateToPerfil = navigateToPerfil,
+                onNavigateToPrincipal = navigateToPrincipal,
+                onNavigateToPresupuesto = navigateToPresupuesto,
+                tarjetasDisponibles = tarjetasPago,
+                onGuardar = { gasto ->
+                    gastos.add(gasto)
+                    navController.popBackStack()
+                }
+            )
+        }
+        composable<Historial> {
+            HistorialScreen(innerPadding,gastosMock, navigateToPerfil, navigateToGraficos)
+        }
+
+        composable<Graficos> {
+            GraficosScreen(innerPadding, gastosMock,navigateToPerfil, navigateToGraficos)
+        }
+        composable<MyGroups> {
+            MyGroupScreen (
+                onCreateGroupClick = {
+                    navController.navigate(CreateEditGroup)
+                }
+            )
+        }
+
+        composable<CreateEditGroup> {
+            CreateEditGroupScreen (
+                onNavigateNext = {
+                    navController.navigate(CompleteGroupData)
+                },
+                onCancel = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<CompleteGroupData> {
+            CompleteGroupDataScreen(
+                onNavigateNext = {
+                    navController.navigate(GroupCreatedSuccess) {
+                        popUpTo<CreateEditGroup> {
+                            inclusive = true
+                        }
+                    }
+                },
+                onEditGroupClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<GroupCreatedSuccess> {
+            GroupCreatedSuccessScreen(
+                group = grupo,
+                miembros = usuarios,
+                onClose = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
-}
+}}

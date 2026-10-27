@@ -54,23 +54,24 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
+import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
-import java.text.SimpleDateFormat
-import java.time.Instant
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
-import java.util.Date
-import java.util.Locale
 
 @Composable
 fun RegistroGastoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onNavigateToPerfil: () -> Unit = {},
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},
     tarjetasDisponibles: List<TarjetaPago> = tarjetasPagoMock,
     onGuardar: (Gasto) -> Unit = {}
 ) {
@@ -80,8 +81,7 @@ fun RegistroGastoScreen(
     var categoria by remember { mutableStateOf("") }
     var tipoPago by remember { mutableStateOf("") }
     var tarjetaSeleccionada by remember { mutableStateOf<TarjetaPago?>(null) }
-    val dateFormat = remember { SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()) }
-    var fecha by remember { mutableStateOf(dateFormat.format(Calendar.getInstance().time)) }
+    var fecha by remember { mutableStateOf("") }
     var recibo by remember { mutableStateOf("") }
     val context = LocalContext.current
     val receiptPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -89,7 +89,7 @@ fun RegistroGastoScreen(
     }
     val calendar = Calendar.getInstance()
 
-    Column(Modifier.fillMaxSize().background(fondo).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
         Header(PaddingValues(horizontal = 16.dp, vertical = 10.dp), onNavigateToPerfil)
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 20.dp),
@@ -188,20 +188,19 @@ fun RegistroGastoScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(painterResource(R.drawable.ic_calendar_outline), contentDescription = null, tint = Color.DarkGray, modifier = Modifier.size(18.dp))
-                Text("${fecha.ifBlank { Date.from(Instant.now()) }}", Modifier.padding(start = 10.dp), style = Typography.bodyMedium, color = if (fecha.isBlank()) Color.Gray else Color.Black)
+                Text(if (fecha.isBlank()) "mm/dd/aaaa" else fecha, Modifier.padding(start = 10.dp), style = Typography.bodyMedium, color = if (fecha.isBlank()) Color.Gray else Color.Black)
             }
             Spacer(Modifier.height(8.dp))
             Button(
                 onClick = {
-                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                     val gasto = Gasto(
                         nombre = descripcion.ifBlank { categoria },
                         tipo = categoria.toTipoGasto(),
                         cantidad = monto.toDoubleOrNull() ?: 0.0,
-                        fecha = formatoFecha.parse(fecha) ?: Date(),
+                        fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("MM/dd/yyyy")),
                         imagen = categoria.toIconoGasto(),
-                        tarjetaPago = if (esGasto) tarjetaSeleccionada else null
-                    )
+                        tipoPago = TipoPago.valueOf(tipoPago),
+                        tarjetaPago = if (esGasto) tarjetaSeleccionada else null)
                     onGuardar(gasto)
                 },
                 Modifier.fillMaxWidth().height(52.dp),
@@ -214,6 +213,7 @@ fun RegistroGastoScreen(
                 Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
             }
         }
+        NavBar(onInicioClick = onNavigateToPrincipal, onPresupuestoClick = onNavigateToPresupuesto)
     }
 }
 
@@ -248,7 +248,7 @@ private fun SelectorTipoMovimiento(
         )
         Box(
             Modifier.offset(x = desplazamiento.value).width(anchoOpcion).height(38.dp)
-                .clip(RoundedCornerShape(8.dp)).background(purplePrimary)
+                .clip(RoundedCornerShape(8.dp)).background(PurplePrimary)
         )
         Row(Modifier.fillMaxWidth()) {
             OpcionTipoMovimiento("Gasto", esGasto, Modifier.weight(1f), onSeleccionarGasto)
@@ -292,7 +292,7 @@ private fun CampoRegistro(
             singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             shape = RoundedCornerShape(10.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = purplePrimary, unfocusedBorderColor = Color.Transparent,
+                focusedBorderColor = PurplePrimary, unfocusedBorderColor = Color.Transparent,
                 focusedContainerColor = White, unfocusedContainerColor = White
             )
         )
@@ -304,7 +304,7 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
     var expanded by remember { mutableStateOf(false) }
     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
         Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
-        androidx.compose.foundation.layout.Box {
+        Box {
             Surface(
                 modifier = Modifier.fillMaxWidth().height(48.dp).clickable { expanded = true },
                 shape = RoundedCornerShape(10.dp), color = White
@@ -341,6 +341,5 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
 @Preview(showBackground = true)
 @Composable
 private fun RegistroGastoPreview() {
-    RegistroGastoScreen(PaddingValues(), {}, tarjetasPagoMock,
-        {})
+    RegistroGastoScreen(PaddingValues(), {}, {}, {},tarjetasPagoMock)
 }

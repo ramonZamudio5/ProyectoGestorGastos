@@ -44,9 +44,9 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.BackgroundRed
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayForm
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
@@ -54,7 +54,10 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 fun PerfilScreen(
     innerPadding: PaddingValues,
     onNavigateToLogin: () -> Unit,
-    navigateToMetodosPago: () -> Unit = {}
+    navigateToPrincipal: () -> Unit,
+    navigateToMetodosPago: () -> Unit = {},
+    navigateToPresupuesto: () -> Unit = {},
+    navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
 ) {
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -80,7 +83,7 @@ fun PerfilScreen(
                     .clickable(onClick = navigateToMetodosPago).padding(18.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = purplePrimary)
+                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurplePrimary)
                 Spacer(Modifier.width(12.dp))
                 Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge, fontWeight = FontWeight.SemiBold)
                 Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = "Abrir métodos de pago", tint = GrayText)
@@ -91,6 +94,12 @@ fun PerfilScreen(
             BotonCerrarSesion(onNavigateToLogin)
             Spacer(modifier = Modifier.height(16.dp))
         }
+        NavBar(
+            onInicioClick = navigateToPrincipal,
+            onPresupuestoClick = navigateToPresupuesto,
+            onAgregarClick = navigateToRegistroGasto,
+            onNavigateToGraficos
+        )
     }
 }
 
@@ -155,7 +164,7 @@ fun TarjetaSeguridad() {
         Row(Modifier.fillMaxWidth().padding(bottom = 24.dp),verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(36.dp).clip(CircleShape).background(Color(0xFFF3E8FF)), contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_shield), contentDescription = "Icono Seguridad",
-                    tint = purplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Text("Seguridad y Acceso", style = Typography.titleLarge)
@@ -184,7 +193,7 @@ fun TarjetaSeguridad() {
             Box(Modifier.size(40.dp).clip(RoundedCornerShape(10.dp)).background(Color(0xFFF3E8FF)),
                 contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_key), contentDescription = "Llave",
-                    tint = purplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
@@ -209,5 +218,5 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
 @Preview
 @Composable
 fun PreviewPerfil(){
-    PerfilScreen(PaddingValues(10.dp),{},{})
+    PerfilScreen(PaddingValues(10.dp),{},{}, {}, {}, {}, {})
 }

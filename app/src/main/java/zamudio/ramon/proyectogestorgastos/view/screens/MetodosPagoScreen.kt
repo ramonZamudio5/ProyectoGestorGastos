@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +17,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -30,9 +28,9 @@ import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.TarjetaMetodoPago
@@ -40,11 +38,14 @@ import zamudio.ramon.proyectogestorgastos.view.components.TarjetaMetodoPago
 @Composable
 fun MetodosPagoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
+    tarjetas: List<TarjetaPago> = tarjetasPagoMock,
     onNavigateToPerfil: () -> Unit = {},
-    onRegistrarTarjeta: () -> Unit = {},
-    tarjetas: List<TarjetaPago> = tarjetasPagoMock
+    onNavigateToPrincipal: () -> Unit = {},
+    onNavigateToPresupuesto: () -> Unit = {},
+    onNavigateToRegistroGasto: () -> Unit = {},
+    onRegistrarTarjeta: () -> Unit = {}
 ) {
-    Column(Modifier.fillMaxSize().background(fondo).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
         Header(PaddingValues(horizontal = 16.dp, vertical = 8.dp), onNavigateToPerfil)
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 30.dp),
@@ -67,16 +68,21 @@ fun MetodosPagoScreen(
                     tarjeta = tarjeta,
                     logoTexto = if (esNu) "nu" else null,
                     iconoBanco = if (esNu) null else R.drawable.ic_presupuesto,
-                    colorMarca = purplePrimary,
+                    colorMarca = PurplePrimary,
                     colorFondoMarca = BackGroundPurple
                 )
             }
         }
+        NavBar(
+            onInicioClick = onNavigateToPrincipal,
+            onPresupuestoClick = onNavigateToPresupuesto,
+            onAgregarClick = onNavigateToRegistroGasto
+        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun MetodosPagoPreview() {
-    MetodosPagoScreen(PaddingValues(),{},{},tarjetasPagoMock)
+    MetodosPagoScreen(PaddingValues(),tarjetasPagoMock)
 }
