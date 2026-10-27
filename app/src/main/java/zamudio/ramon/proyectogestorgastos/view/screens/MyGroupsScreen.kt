@@ -28,14 +28,13 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.pluralStringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
@@ -73,9 +72,8 @@ fun MyGroupScreen(
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
+                            style = GroupTextStyles.ScreenTitleBold,
                             text = stringResource(R.string.groups_title),
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
                             color = BlueNavy
                         )
                         Spacer(modifier = Modifier.width(10.dp))
@@ -84,10 +82,9 @@ fun MyGroupScreen(
                             color = GroupBadgeBackground
                         ) {
                             Text(
+                                style = GroupTextStyles.LabelSemiBold,
                                 text = pluralStringResource(R.plurals.groups_active_count, grupos.size, grupos.size),
                                 color = GroupBadgeText,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.SemiBold,
                                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                             )
                         }
@@ -119,9 +116,8 @@ fun MyGroupScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
+                            style = GroupTextStyles.ActionBold,
                             text = stringResource(R.string.groups_create),
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
                             color = White
                         )
                     }
@@ -146,9 +142,8 @@ fun MyGroupScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
+                            style = GroupTextStyles.ActionBold,
                             text = stringResource(R.string.groups_join_with_code),
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
                             color = GroupJoinAccent
                         )
                     }
@@ -168,9 +163,8 @@ fun MyGroupScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
+                        style = GroupTextStyles.LabelBold,
                         text = stringResource(R.string.groups_in_progress),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupSectionText
                     )
                 }

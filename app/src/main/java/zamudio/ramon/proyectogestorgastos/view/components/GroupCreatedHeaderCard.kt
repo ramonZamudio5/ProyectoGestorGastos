@@ -23,15 +23,14 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
@@ -82,17 +81,15 @@ fun GroupCreatedHeaderCard(
                         .padding(horizontal = 6.dp, vertical = 2.dp)
                 ) {
                     Text(
+                        style = GroupTextStyles.AvatarExtraBold,
                         text = categoryTag,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.ExtraBold,
                         color = GroupCategoryText
                     )
                 }
                 // Nombre del grupo
                 Text(
+                    style = GroupTextStyles.CardTitleBold,
                     text = groupName,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
 
@@ -102,8 +99,8 @@ fun GroupCreatedHeaderCard(
                 ) {
                     Spacer(modifier = Modifier.width(3.dp))
                     Text(
+                        style = GroupTextStyles.CaptionDefault,
                         text = stringResource(R.string.group_created_by, creatorName),
-                        fontSize = 11.sp,
                         color = GroupTextSecondary
                     )
                 }

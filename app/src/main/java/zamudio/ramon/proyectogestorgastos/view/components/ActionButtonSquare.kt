@@ -14,16 +14,15 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
@@ -59,9 +58,8 @@ fun ActionButtonSquare(
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
+                style = GroupTextStyles.CaptionSemiBold,
                 text = title,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.SemiBold,
                 color = accentColor,
                 maxLines = 1
             )

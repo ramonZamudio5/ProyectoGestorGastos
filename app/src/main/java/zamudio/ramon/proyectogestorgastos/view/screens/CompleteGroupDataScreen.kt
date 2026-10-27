@@ -22,6 +22,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,10 +30,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
@@ -73,17 +72,15 @@ fun CompleteGroupDataScreen(
             item {
                 Column(modifier = Modifier.padding(vertical = 4.dp)) {
                     Text(
+                        style = GroupTextStyles.TitleBold,
                         text = stringResource(R.string.group_complete_title),
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupTextPrimary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
+                        style = GroupTextStyles.SupportingDefaultLine18,
                         text = stringResource(R.string.group_complete_description),
-                        fontSize = 13.sp,
-                        color = GroupTextSecondary,
-                        lineHeight = 18.sp
+                        color = GroupTextSecondary
                     )
                 }
             }
@@ -138,9 +135,8 @@ fun CompleteGroupDataScreen(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
+                        style = GroupTextStyles.ActionBold,
                         text = stringResource(R.string.group_finish_create),
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
                         color = White
                     )
                 }

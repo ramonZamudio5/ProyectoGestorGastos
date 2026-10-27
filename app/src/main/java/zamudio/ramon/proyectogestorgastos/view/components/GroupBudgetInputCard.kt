@@ -22,17 +22,16 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
@@ -60,15 +59,13 @@ fun GroupBudgetInputCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_budget_title),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
+                    style = GroupTextStyles.LabelNormal,
                     text = stringResource(R.string.group_optional),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Normal,
                     color = GroupTextSecondary
                 )
             }
@@ -83,9 +80,8 @@ fun GroupBudgetInputCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    style = GroupTextStyles.AmountBold,
                     text = stringResource(R.string.group_currency_symbol),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
                     color = PurplePrimary
                 )
 
@@ -102,18 +98,15 @@ fun GroupBudgetInputCard(
                     modifier = Modifier.weight(1f),
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                    textStyle = TextStyle(
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
+                    textStyle = GroupTextStyles.AmountBold.copy(
                         color = GroupTextPrimary
                     ),
                     cursorBrush = SolidColor(PurplePrimary),
                     decorationBox = { innerTextField ->
                         if (budget.isEmpty()) {
                             Text(
+                                style = GroupTextStyles.AmountBold,
                                 text = stringResource(R.string.group_budget_placeholder),
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
                                 color = GroupTextPlaceholder
                             )
                         }
@@ -122,9 +115,9 @@ fun GroupBudgetInputCard(
                 )
 
                 Text(
+
+                    style = GroupTextStyles.SupportingBold,
                     text = stringResource(R.string.group_currency_code),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextSecondary
                 )
             }

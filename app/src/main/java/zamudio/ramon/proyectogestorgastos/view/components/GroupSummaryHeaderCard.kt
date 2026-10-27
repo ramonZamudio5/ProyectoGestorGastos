@@ -22,15 +22,14 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
@@ -73,16 +72,14 @@ fun GroupSummaryHeaderCard(
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
+                    style = GroupTextStyles.CardTitleBold,
                     text = groupName,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
+                    style = GroupTextStyles.LabelMedium,
                     text = typeGroup.title,
-                    fontSize = 12.sp,
-                    color = GroupTextSecondary,
-                    fontWeight = FontWeight.Medium
+                    color = GroupTextSecondary
                 )
             }
             // Botón de lápiz

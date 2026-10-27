@@ -17,13 +17,12 @@ import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
@@ -56,9 +55,8 @@ fun GroupFormActions(
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
+                style = GroupTextStyles.ActionBold,
                 text = stringResource(R.string.group_save_changes),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
                 color = White
             )
         }
@@ -73,9 +71,8 @@ fun GroupFormActions(
             colors = ButtonDefaults.outlinedButtonColors(containerColor = White)
         ) {
             Text(
+                style = GroupTextStyles.BodySemiBold,
                 text = stringResource(R.string.group_cancel_discard),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.SemiBold,
                 color = GroupSectionText
             )
         }

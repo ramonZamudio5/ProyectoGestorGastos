@@ -19,16 +19,15 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
@@ -56,15 +55,13 @@ fun GroupDescriptionCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_description_title),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
+                    style = GroupTextStyles.LabelNormal,
                     text = stringResource(R.string.group_description_visibility),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Normal,
                     color = GroupTextSecondary
                 )
             }
@@ -80,20 +77,16 @@ fun GroupDescriptionCard(
                     value = description,
                     onValueChange = onDescriptionChange,
                     modifier = Modifier.fillMaxWidth(),
-                    textStyle = TextStyle(
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Normal,
-                        color = GroupTextPrimary,
-                        lineHeight = 20.sp
+                    textStyle = GroupTextStyles.BodyNormalLine20.copy(
+                        color = GroupTextPrimary
                     ),
                     cursorBrush = SolidColor(PurplePrimary),
                     decorationBox = { innerTextField ->
                         if (description.isEmpty()) {
                             Text(
+                                style = GroupTextStyles.BodyDefaultLine20,
                                 text = stringResource(R.string.group_description_hint),
-                                fontSize = 14.sp,
-                                color = GroupTextSecondary,
-                                lineHeight = 20.sp
+                                color = GroupTextSecondary
                             )
                         }
                         innerTextField()

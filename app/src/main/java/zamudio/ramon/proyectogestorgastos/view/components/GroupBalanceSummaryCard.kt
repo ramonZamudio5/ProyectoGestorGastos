@@ -19,14 +19,13 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceText
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun GroupBalanceSummaryCard(
@@ -58,9 +57,8 @@ fun GroupBalanceSummaryCard(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
+                        style = GroupTextStyles.CaptionBold,
                         text = stringResource(R.string.group_balance_title),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupBalanceText
                     )
                 }

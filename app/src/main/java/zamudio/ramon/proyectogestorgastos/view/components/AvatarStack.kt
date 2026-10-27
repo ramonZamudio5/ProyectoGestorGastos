@@ -15,14 +15,13 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 
 
@@ -67,9 +66,8 @@ fun AvatarStack(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
+                    style = GroupTextStyles.AvatarBold,
                     text = stringResource(R.string.group_you),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
                     color = White
                 )
             }

@@ -28,6 +28,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,10 +39,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.tiposDisponibles
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
@@ -75,17 +74,15 @@ fun GroupTypeSelectorCard(
             // Título de la tarjeta y descripción
             Column {
                 Text(
+                    style = GroupTextStyles.CardTitleBold,
                     text = stringResource(R.string.group_type_label),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
+                    style = GroupTextStyles.LabelDefaultLine16,
                     text = stringResource(R.string.group_type_description),
-                    fontSize = 12.sp,
-                    color = GroupTextSecondary,
-                    lineHeight = 16.sp
+                    color = GroupTextSecondary
                 )
             }
             Row(
@@ -115,14 +112,13 @@ fun GroupTypeSelectorCard(
 
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
+                        style = GroupTextStyles.BodyBold,
                         text = selectedTipo.title,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupTextPrimary
                     )
                     Text(
+                        style = GroupTextStyles.CaptionDefault,
                         text = selectedTipo.subtitle,
-                        fontSize = 11.sp,
                         color = GroupTextSecondary
                     )
                 }
@@ -177,14 +173,13 @@ fun GroupTypeSelectorCard(
 
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
+                                    style = GroupTextStyles.SupportingBold,
                                     text = tipoItem.title,
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold,
                                     color = GroupTextPrimary
                                 )
                                 Text(
+                                    style = GroupTextStyles.CaptionDefault,
                                     text = tipoItem.subtitle,
-                                    fontSize = 11.sp,
                                     color = GroupTextSecondary
                                 )
                             }

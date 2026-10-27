@@ -27,6 +27,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,11 +36,9 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
@@ -70,15 +69,13 @@ fun GroupNameImputField(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_name_label),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Text(
+                    style = GroupTextStyles.LabelSemiBold,
                     text = stringResource(R.string.group_character_count, value.length, maxLength),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
                     color = PurplePrimary
                 )
             }
@@ -110,9 +107,7 @@ fun GroupNameImputField(
                     },
                     modifier = Modifier.weight(1f),
                     singleLine = true,
-                    textStyle = TextStyle(
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.SemiBold,
+                    textStyle = GroupTextStyles.ActionSemiBold.copy(
                         color = GroupTextPrimary
                     ),
                     cursorBrush = SolidColor(PurplePrimary),
@@ -121,8 +116,8 @@ fun GroupNameImputField(
                     decorationBox = { innerTextField ->
                         if (value.isEmpty()) {
                             Text(
+                                style = GroupTextStyles.ActionDefault,
                                 text = stringResource(R.string.group_name_hint),
-                                fontSize = 15.sp,
                                 color = GroupTextSecondary
                             )
                         }

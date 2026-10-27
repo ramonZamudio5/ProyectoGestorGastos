@@ -19,13 +19,12 @@ import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
@@ -98,9 +97,8 @@ fun GroupCreatedSuccessScreen(
                     colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
                 ) {
                     Text(
+                        style = GroupTextStyles.ActionBold,
                         text = stringResource(R.string.group_open_dashboard),
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
                         color = White
                     )
                     Spacer(modifier = Modifier.width(8.dp))

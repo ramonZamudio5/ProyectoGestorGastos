@@ -27,16 +27,15 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
@@ -85,9 +84,8 @@ fun GroupCardItem(
                 Column(modifier = Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
+                            style = GroupTextStyles.LabelBold,
                             text = grupo.nombre,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 12.sp,
                             color = BlueNavy,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
@@ -98,10 +96,9 @@ fun GroupCardItem(
                             color = GroupAccentBackground
                         ) {
                             Text(
+                                style = GroupTextStyles.CaptionBold,
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
                                 color = PurplePrimary,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
@@ -109,8 +106,9 @@ fun GroupCardItem(
                     Spacer(modifier = Modifier.height(2.dp))
 
                     Text(
+
+                        style = GroupTextStyles.LabelDefault,
                         text = stringResource(R.string.group_total, grupo.totalGasto.toString()),
-                        fontSize = 12.sp,
                         color = GroupTextSecondary,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -130,11 +128,10 @@ fun GroupCardItem(
             ) {
                 AvatarStack()
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(stringResource(R.string.group_last_expense_label), fontSize = 12.sp, color = GroupTextSecondary)
+                    Text(style = GroupTextStyles.LabelDefault, text = stringResource(R.string.group_last_expense_label), color = GroupTextSecondary)
                     Text(
+                        style = GroupTextStyles.LabelBold,
                         text = stringResource(R.string.group_recent_expense),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupTextPrimary
                     )
                 }
@@ -164,9 +161,8 @@ fun GroupCardItem(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
+                            style = GroupTextStyles.LabelBold,
                             text = stringResource(R.string.group_amount_owed, "3,000.00"),
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
                             color = PurplePrimary
                         )
                     }

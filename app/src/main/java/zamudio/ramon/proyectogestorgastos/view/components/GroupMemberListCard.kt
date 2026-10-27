@@ -26,16 +26,15 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Usuario
@@ -64,9 +63,8 @@ fun GroupMemberListCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    style = GroupTextStyles.CardTitleBold,
                     text = stringResource(R.string.group_members_title),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary
                 )
                 Spacer(modifier = Modifier.width(8.dp))
@@ -78,9 +76,8 @@ fun GroupMemberListCard(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
+                        style = GroupTextStyles.LabelBold,
                         text = members.size.toString(),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
                         color = PurplePrimary
                     )
                 }
@@ -107,9 +104,9 @@ fun GroupMemberListCard(
                     Spacer(modifier = Modifier.width(12.dp))
 
                     Text(
+
+                        style = GroupTextStyles.ActionBold,
                         text = usuario.nombre,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupTextPrimary
                     )
                 }
@@ -143,14 +140,13 @@ fun GroupMemberListCard(
 
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
+                        style = GroupTextStyles.SupportingBold,
                         text = stringResource(R.string.group_waiting_members),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
                         color = GroupMemberText
                     )
                     Text(
+                        style = GroupTextStyles.LabelDefault,
                         text = stringResource(R.string.group_join_code, inviteCode),
-                        fontSize = 12.sp,
                         color = GroupTextSecondary
                     )
                 }

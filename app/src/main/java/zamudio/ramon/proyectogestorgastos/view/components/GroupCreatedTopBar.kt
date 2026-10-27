@@ -15,15 +15,14 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCloseIcon
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
@@ -58,9 +57,9 @@ fun GroupCreatedTopBar(
             }
 
             Text(
+
+                style = GroupTextStyles.SuccessTitleBold,
                 text = stringResource(R.string.group_created_title),
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
                 color = GroupTextPrimary
             )
         }

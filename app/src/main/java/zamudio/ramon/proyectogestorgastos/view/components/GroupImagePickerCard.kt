@@ -30,6 +30,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,10 +42,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
@@ -122,9 +121,8 @@ fun GroupImagePickerCard(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
+                                style = if (isFotoReal) GroupTextStyles.LabelBold else GroupTextStyles.LabelMedium,
                                 text = stringResource(R.string.group_photo_mode),
-                                fontSize = 12.sp,
-                                fontWeight = if (isFotoReal) FontWeight.Bold else FontWeight.Medium,
                                 color = if (isFotoReal) GroupTextPrimary else GroupTextSecondary
                             )
                         }
@@ -150,9 +148,8 @@ fun GroupImagePickerCard(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
+                                style = if (isIcono) GroupTextStyles.LabelBold else GroupTextStyles.LabelMedium,
                                 text = stringResource(R.string.group_icon_mode),
-                                fontSize = 12.sp,
-                                fontWeight = if (isIcono) FontWeight.Bold else FontWeight.Medium,
                                 color = if (isIcono) GroupTextPrimary else GroupTextSecondary
                             )
                         }

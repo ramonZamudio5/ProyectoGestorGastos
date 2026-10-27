@@ -24,6 +24,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -32,10 +33,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
@@ -77,9 +76,9 @@ fun GroupInviteCodeCard(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
+
+                    style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_invite_title),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
                     color = GroupTextPrimary,
                     modifier = Modifier.weight(1f)
                 )
@@ -87,11 +86,10 @@ fun GroupInviteCodeCard(
 
             // Subtítulo explicativo
             Text(
+                style = GroupTextStyles.LabelDefaultLine16,
                 text = stringResource(R.string.group_invite_description),
-                fontSize = 12.sp,
                 color = GroupTextSecondary,
-                lineHeight = 16.sp
-            )
+                )
 
             // Fila con los bloques de cada letra/número
             Row(
@@ -109,9 +107,8 @@ fun GroupInviteCodeCard(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
+                            style = GroupTextStyles.TitleExtraBold,
                             text = char.toString(),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.ExtraBold,
                             color = GroupTextPrimary
                         )
                     }
@@ -145,9 +142,8 @@ fun GroupInviteCodeCard(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
+                        style = GroupTextStyles.SupportingBold,
                         text = stringResource(R.string.group_copy_code, code),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
                         color = PurplePrimary
                     )
                 }
