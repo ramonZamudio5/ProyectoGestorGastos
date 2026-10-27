@@ -58,10 +58,7 @@ fun RegistrarTarjetaScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onGuardar: (TarjetaPago) -> Unit = {},
     onCancelar: () -> Unit = {},
-    onNavigateToPerfil: () -> Unit = {},
-    onNavigateToPrincipal: () -> Unit = {},
-    onNavigateToPresupuesto: () -> Unit = {},
-    onNavigateToRegistroGasto: () -> Unit = {}
+    onNavigateToPerfil: () -> Unit = {}
 ) {
     var titular by remember { mutableStateOf("") }
     var banco by remember { mutableStateOf("") }
@@ -69,10 +66,16 @@ fun RegistrarTarjetaScreen(
     var ultimosDigitos by remember { mutableStateOf("") }
     var tipoTarjeta by remember { mutableStateOf(TipoTarjeta.DEBITO) }
 
-    Column(Modifier.fillMaxSize().background(Color(0xFFFAF9FF)).padding(innerPadding)) {
+    Column(Modifier
+        .fillMaxSize()
+        .background(Color(0xFFFAF9FF))
+        .padding(innerPadding)) {
         Header(PaddingValues(horizontal = 16.dp, vertical = 8.dp), onNavigateToPerfil)
         Column(
-            Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())
+            Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 22.dp, vertical = 26.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
@@ -88,7 +91,11 @@ fun RegistrarTarjetaScreen(
                 "0000", null, KeyboardType.Number
             )
             Text("Tipo de Tarjeta *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
-            Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(BackGroundPurple).padding(4.dp)) {
+            Row(Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(12.dp))
+                .background(BackGroundPurple)
+                .padding(4.dp)) {
                 TipoTarjetaButton("Débito", tipoTarjeta == TipoTarjeta.DEBITO, Modifier.weight(1f)) { tipoTarjeta = TipoTarjeta.DEBITO }
                 TipoTarjetaButton("Crédito", tipoTarjeta == TipoTarjeta.CREDITO, Modifier.weight(1f)) { tipoTarjeta = TipoTarjeta.CREDITO }
             }
@@ -97,23 +104,24 @@ fun RegistrarTarjetaScreen(
                 onClick = {
                     onGuardar(TarjetaPago(banco, alias, tipoTarjeta, titular.trim(), ultimosDigitos))
                 },
-                modifier = Modifier.fillMaxWidth().height(54.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(54.dp),
                 shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = purpleButton),
                 enabled = titular.isNotBlank() && banco.isNotBlank() && alias.isNotBlank() && ultimosDigitos.length == 4
             ) {
                 Text("Guardar Tarjeta", style = Typography.titleSmall, color = White, fontWeight = FontWeight.Bold)
-                Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = null, tint = White, modifier = Modifier.padding(start = 8.dp).size(19.dp))
+                Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = null, tint = White, modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(19.dp))
             }
             Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Text("Cancelar", Modifier.clickable(onClick = onCancelar).padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
+                Text("Cancelar", Modifier
+                    .clickable(onClick = onCancelar)
+                    .padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
             }
         }
-        NavBar(
-            onInicioClick = onNavigateToPrincipal,
-            onPresupuestoClick = onNavigateToPresupuesto,
-            onAgregarClick = onNavigateToRegistroGasto
-        )
     }
 }
 
@@ -131,7 +139,9 @@ private fun CampoTarjeta(
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
-            modifier = Modifier.fillMaxWidth().height(54.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(54.dp),
             placeholder = { Text(placeholder, style = Typography.bodyMedium, color = Color(0xFF98A2B3)) },
             trailingIcon = {
                 if (icono != null) Icon(painterResource(icono), contentDescription = null, tint = Color(0xFF475467), modifier = Modifier.size(19.dp))
@@ -156,8 +166,13 @@ private fun SelectorBanco(banco: String, onSeleccionar: (String) -> Unit) {
         Text("Banco Emisor *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
         Box {
             Row(
-                Modifier.fillMaxWidth().height(54.dp).clip(RoundedCornerShape(13.dp)).background(White)
-                    .clickable { expanded = true }.padding(horizontal = 12.dp),
+                Modifier
+                    .fillMaxWidth()
+                    .height(54.dp)
+                    .clip(RoundedCornerShape(13.dp))
+                    .background(White)
+                    .clickable { expanded = true }
+                    .padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(banco.ifBlank { "Selecciona tu banco" }, Modifier.weight(1f), style = Typography.bodyMedium, color = if (banco.isBlank()) Color(0xFF98A2B3) else Color(0xFF172033))
@@ -192,5 +207,5 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
 @Preview(showBackground = true)
 @Composable
 private fun RegistrarTarjetaPreview() {
-    RegistrarTarjetaScreen()
+    RegistrarTarjetaScreen(PaddingValues(), {}, {}, {})
 }

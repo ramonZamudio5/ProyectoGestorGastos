@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
@@ -42,13 +45,13 @@ fun PrincipalScreen(
     onNavigateToPerfil: () -> Unit,
     gastos: List<Gasto>,
     onNavigateToRegistroGasto: () -> Unit = {},
-    onNavigateToPresupuesto: () -> Unit = {},  onNavigateToHistorial: () -> Unit, onNavigateToGraficos: ()-> Unit
+    onNavigateToHistorial: () -> Unit
 ) {
     Column(Modifier
         .background(color = fondo)
-        .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
+        .fillMaxSize(), verticalArrangement = Arrangement.spacedBy(5.dp)) {
         Header(innerPadding, onNavigateToPerfil)
-        Column(Modifier.padding(15.dp), verticalArrangement = Arrangement.SpaceBetween) {
+        Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween) {
             BannerBalance(30.0, 40.0)
             Spacer(Modifier.size(15.dp))
             Button(onClick = onNavigateToRegistroGasto, Modifier.fillMaxWidth(),
@@ -72,12 +75,12 @@ fun PrincipalScreen(
                 }
             }
         }
-        NavBar(onNavigateToGraficos)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewPrincipalScreen(){
-    PrincipalScreen(PaddingValues(15.dp),{}, gastosMock, {},{})
+    PrincipalScreen(PaddingValues(15.dp),{}, gastosMock,
+        {},{})
 }

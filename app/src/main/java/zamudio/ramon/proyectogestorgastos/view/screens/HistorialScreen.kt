@@ -6,11 +6,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -32,12 +35,13 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 
 @Composable
-fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
+fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit){
     var filtroActual by remember { mutableStateOf("todo") }
-    Column(Modifier.background(color= fondo).fillMaxHeight(),
-        verticalArrangement = Arrangement.SpaceBetween) {
+    Column(Modifier.background(color= fondo).fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(5.dp)){
         Header(innerPadding, onNavigateToPerfil)
-        Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween) {
+        Column(Modifier.padding(10.dp).verticalScroll(rememberScrollState())
+            , verticalArrangement = Arrangement.SpaceBetween) {
             OutlinedTextField(state= TextFieldState("Buscar movimiento, tienda o concepto..."),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = White,
@@ -52,12 +56,11 @@ fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateT
                 ColumnaGastosPorFiltro(filtroActual, gastos)
             }
         }
-        NavBar(onNavigateToGraficos)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewHistorialScreen(){
-    HistorialScreen(PaddingValues(), gastosMock, {},{})
+    HistorialScreen(PaddingValues(), gastosMock, {})
 }

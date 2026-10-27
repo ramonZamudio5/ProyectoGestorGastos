@@ -6,8 +6,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,12 +31,13 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 
 @Composable
-fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
+fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit){
+
     var filtroActual by remember { mutableStateOf("todo") }
-    Column(Modifier.background(color= fondo).fillMaxHeight(),
-        verticalArrangement = Arrangement.SpaceBetween) {
+    Column(Modifier.background(color= fondo).fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(5.dp)) {
         Header(innerPadding, onNavigateToPerfil)
-        Column(Modifier.padding(10.dp), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(Modifier.padding(10.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
             RowDeFiltros(gastos, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             Spacer(Modifier.size(10.dp))
             GraficaGastos(gastos)
@@ -42,12 +46,11 @@ fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateTo
             Spacer(Modifier.size(10.dp))
             ColumnaGastosVSEstimado(gastos)
         }
-        NavBar(onNavigateToGraficos)
     }
 }
 
 @Preview
 @Composable
 fun PreviewGraficosScreen(){
-    GraficosScreen(PaddingValues(), gastosMock, {},{})
+    GraficosScreen(PaddingValues(), gastosMock, {})
 }

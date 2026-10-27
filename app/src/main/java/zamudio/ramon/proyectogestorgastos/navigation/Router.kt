@@ -25,7 +25,7 @@ object Historial
 object Presupuesto
 
 @Serializable
-object Principal
+object Inicio
 
 @Serializable
 object Graficos

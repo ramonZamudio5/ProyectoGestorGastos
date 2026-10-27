@@ -54,10 +54,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 fun PerfilScreen(
     innerPadding: PaddingValues,
     onNavigateToLogin: () -> Unit,
-    navigateToPrincipal: () -> Unit,
-    navigateToMetodosPago: () -> Unit = {},
-    navigateToPresupuesto: () -> Unit = {},
-    navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
+    navigateToMetodosPago: () -> Unit = {}
 ) {
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -94,12 +91,6 @@ fun PerfilScreen(
             BotonCerrarSesion(onNavigateToLogin)
             Spacer(modifier = Modifier.height(16.dp))
         }
-        NavBar(
-            onInicioClick = navigateToPrincipal,
-            onPresupuestoClick = navigateToPresupuesto,
-            onAgregarClick = navigateToRegistroGasto,
-            onNavigateToGraficos
-        )
     }
 }
 

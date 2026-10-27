@@ -49,8 +49,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.model.Gasto
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
+import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
@@ -61,14 +61,16 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
+import java.text.SimpleDateFormat
+import java.time.Instant
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 @Composable
 fun RegistroGastoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onNavigateToPerfil: () -> Unit = {},
-    onNavigateToPrincipal: () -> Unit = {},
-    onNavigateToPresupuesto: () -> Unit = {},
     tarjetasDisponibles: List<TarjetaPago> = tarjetasPagoMock,
     onGuardar: (Gasto) -> Unit = {}
 ) {
@@ -78,7 +80,8 @@ fun RegistroGastoScreen(
     var categoria by remember { mutableStateOf("") }
     var tipoPago by remember { mutableStateOf("") }
     var tarjetaSeleccionada by remember { mutableStateOf<TarjetaPago?>(null) }
-    var fecha by remember { mutableStateOf("") }
+    val dateFormat = remember { SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()) }
+    var fecha by remember { mutableStateOf(dateFormat.format(Calendar.getInstance().time)) }
     var recibo by remember { mutableStateOf("") }
     val context = LocalContext.current
     val receiptPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -185,16 +188,17 @@ fun RegistroGastoScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(painterResource(R.drawable.ic_calendar_outline), contentDescription = null, tint = Color.DarkGray, modifier = Modifier.size(18.dp))
-                Text(if (fecha.isBlank()) "mm/dd/aaaa" else fecha, Modifier.padding(start = 10.dp), style = Typography.bodyMedium, color = if (fecha.isBlank()) Color.Gray else Color.Black)
+                Text("${fecha.ifBlank { Date.from(Instant.now()) }}", Modifier.padding(start = 10.dp), style = Typography.bodyMedium, color = if (fecha.isBlank()) Color.Gray else Color.Black)
             }
             Spacer(Modifier.height(8.dp))
             Button(
                 onClick = {
+                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                     val gasto = Gasto(
                         nombre = descripcion.ifBlank { categoria },
                         tipo = categoria.toTipoGasto(),
                         cantidad = monto.toDoubleOrNull() ?: 0.0,
-                        fecha = fecha,
+                        fecha = formatoFecha.parse(fecha) ?: Date(),
                         imagen = categoria.toIconoGasto(),
                         tarjetaPago = if (esGasto) tarjetaSeleccionada else null
                     )
@@ -210,7 +214,6 @@ fun RegistroGastoScreen(
                 Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
             }
         }
-        NavBar(onInicioClick = onNavigateToPrincipal, onPresupuestoClick = onNavigateToPresupuesto)
     }
 }
 
@@ -338,5 +341,6 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
 @Preview(showBackground = true)
 @Composable
 private fun RegistroGastoPreview() {
-    RegistroGastoScreen()
+    RegistroGastoScreen(PaddingValues(), {}, tarjetasPagoMock,
+        {})
 }

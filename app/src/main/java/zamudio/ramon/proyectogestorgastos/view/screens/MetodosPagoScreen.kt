@@ -41,9 +41,6 @@ import zamudio.ramon.proyectogestorgastos.view.components.TarjetaMetodoPago
 fun MetodosPagoScreen(
     innerPadding: PaddingValues = PaddingValues(0.dp),
     onNavigateToPerfil: () -> Unit = {},
-    onNavigateToPrincipal: () -> Unit = {},
-    onNavigateToPresupuesto: () -> Unit = {},
-    onNavigateToRegistroGasto: () -> Unit = {},
     onRegistrarTarjeta: () -> Unit = {},
     tarjetas: List<TarjetaPago> = tarjetasPagoMock
 ) {
@@ -75,16 +72,11 @@ fun MetodosPagoScreen(
                 )
             }
         }
-        NavBar(
-            onInicioClick = onNavigateToPrincipal,
-            onPresupuestoClick = onNavigateToPresupuesto,
-            onAgregarClick = onNavigateToRegistroGasto
-        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun MetodosPagoPreview() {
-    MetodosPagoScreen()
+    MetodosPagoScreen(PaddingValues(),{},{},tarjetasPagoMock)
 }

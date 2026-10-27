@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProyectoGestorGastosTheme {
                 Scaffold(contentWindowInsets = WindowInsets(0, 0, 0, 0)) { innerPadding ->
-                    Myapp(innerPadding)
+                    Myapp()
                 }
             }
         }

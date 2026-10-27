@@ -35,14 +35,12 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 fun Header(innerPadding: PaddingValues,onNavigateToPerfil : ()-> Unit){
     Row(
         Modifier.fillMaxWidth()
-            .background(Color.White)
-            .statusBarsPadding()
-            .padding(innerPadding),
+            .background(Color.White),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(painterResource(R.drawable.ic_logo), contentDescription = "Logo", Modifier.size(35.dp).align(
             Alignment.CenterVertically))
-        Column(Modifier.padding(horizontal = 10.dp)) {
+        Column() {
             Text("GastoClaro", style = Typography.bodyLarge, fontWeight = FontWeight.Bold)
             Text("Home", style = Typography.bodyMedium)
         }
@@ -55,7 +53,6 @@ fun Header(innerPadding: PaddingValues,onNavigateToPerfil : ()-> Unit){
             contentScale = ContentScale.Crop, modifier = Modifier.padding(end = 8.dp).size(40.dp).clip(CircleShape).clickable {onNavigateToPerfil()})
     }
 }
-
 
 @Preview
 @Composable

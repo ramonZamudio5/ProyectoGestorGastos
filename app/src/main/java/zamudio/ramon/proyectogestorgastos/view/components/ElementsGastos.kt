@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -60,9 +61,11 @@ import java.util.Locale
 
 @Composable
 fun ColumnaGastos(gastos: List<Gasto>) {
-    LazyColumn(Modifier.padding(5.dp).fillMaxHeight(0.6f)) {
-        items(gastos) { gasto ->
-            BannerGasto(gasto)
+    Column(Modifier.heightIn(max= 200.dp)) {
+        LazyColumn(Modifier.padding(5.dp).fillMaxHeight(0.6f)) {
+            items(gastos) { gasto ->
+                BannerGasto(gasto)
+            }
         }
     }
 }
@@ -85,19 +88,20 @@ fun ColumnaGastosPorFiltro(filtro: String, gastos: List<Gasto>) {
             gastosFiltrados.groupBy { it.tipo.toString() }
         }
     }
-
-    LazyColumn(modifier = Modifier.padding(5.dp)) {
-        gastosAgrupados.forEach { (encabezado, gastosDelGrupo) ->
-            item {
-                Text(
-                    text = encabezado,
-                    style = Typography.titleMedium,
-                    color = PurpleGrey40,
-                    modifier = Modifier.padding(vertical = 4.dp)
-                )
-            }
-            items(gastosDelGrupo) { gasto ->
-                BannerGasto(gasto)
+    Column(Modifier.heightIn(max= 200.dp)) {
+        LazyColumn(modifier = Modifier.padding(5.dp)) {
+            gastosAgrupados.forEach { (encabezado, gastosDelGrupo) ->
+                item {
+                    Text(
+                        text = encabezado,
+                        style = Typography.titleMedium,
+                        color = PurpleGrey40,
+                        modifier = Modifier.padding(vertical = 4.dp)
+                    )
+                }
+                items(gastosDelGrupo) { gasto ->
+                    BannerGasto(gasto)
+                }
             }
         }
     }
