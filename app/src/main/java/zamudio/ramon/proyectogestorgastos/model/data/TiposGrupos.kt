@@ -1,6 +1,5 @@
 package zamudio.ramon.proyectogestorgastos.model.data
 
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
