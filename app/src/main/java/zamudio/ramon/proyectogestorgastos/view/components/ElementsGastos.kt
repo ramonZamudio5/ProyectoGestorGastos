@@ -87,7 +87,7 @@ fun ColumnaGastosPorFiltro(filtro: String, gastos: List<Gasto>) {
             gastosFiltrados.groupBy { it.tipo.toString() }
         }
     }
-    Column(Modifier.heightIn(max= 200.dp)) {
+    Column(Modifier.heightIn(max= 800.dp)) {
         LazyColumn(modifier = Modifier.padding(5.dp)) {
             gastosAgrupados.forEach { (encabezado, gastosDelGrupo) ->
                 item {
@@ -329,7 +329,7 @@ fun CeldaTipoGasto(tipo: Tipo, gastos: List<Gasto>) {
                     .background(color = tipo.color, shape = CircleShape)
                     .size(15.dp)
             )
-            Text(tipo.toString(), style = Typography.titleMedium)
+            Text(tipo.toString(), style = Typography.bodyLarge)
         }
         Spacer(Modifier.height(4.dp))
         Row {
@@ -337,9 +337,9 @@ fun CeldaTipoGasto(tipo: Tipo, gastos: List<Gasto>) {
                 getGastosTotales(getGastosByTipo(tipo)),
                 getGastosTotales(gastos)
             )
-            Text("$porcentaje%")
-            Text(" • ")
-            Text("$${getGastosTotales(getGastosByTipo(tipo))} MXN")
+            Text("$porcentaje%", style = Typography.bodyMedium)
+            Text(" • ", style = Typography.bodyMedium)
+            Text("$${getGastosTotales(getGastosByTipo(tipo))} MXN", style = Typography.bodyMedium)
         }
     }
 }

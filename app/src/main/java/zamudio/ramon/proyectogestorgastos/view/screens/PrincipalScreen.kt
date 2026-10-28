@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,19 +23,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
+import zamudio.ramon.proyectogestorgastos.model.data.getGastosTotales
+import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.view.components.BannerBalance
 import zamudio.ramon.proyectogestorgastos.view.components.BannerDistribucion
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastos
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun PrincipalScreen(
@@ -49,9 +49,9 @@ fun PrincipalScreen(
 ) {
     Column(Modifier
         .background(color = ScreenBackground)
-        .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
+        .fillMaxSize(), verticalArrangement = Arrangement.spacedBy(5.dp)) {
         Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween) {
-            BannerBalance(30.0, 40.0)
+            BannerBalance(getGastosTotales(gastos), 3000.0)
             Spacer(Modifier.size(15.dp))
             Button(onClick = onNavigateToRegistroGasto, Modifier.fillMaxWidth(),
                 colors = ButtonColors(
