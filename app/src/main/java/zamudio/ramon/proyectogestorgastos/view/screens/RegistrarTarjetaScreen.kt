@@ -44,10 +44,8 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 private val bancosDisponibles = listOf(
     "BBVA México", "Nu México", "Santander", "Banorte", "HSBC", "Otro"
@@ -110,7 +108,7 @@ fun RegistrarTarjetaScreen(
                     .fillMaxWidth()
                     .height(54.dp),
                 shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = purpleButton),
+            colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
                 enabled = titular.isNotBlank() && banco.isNotBlank() && alias.isNotBlank() && ultimosDigitos.length == 4
             ) {
                 Text("Guardar Tarjeta", style = Typography.titleSmall, color = White, fontWeight = FontWeight.Bold)

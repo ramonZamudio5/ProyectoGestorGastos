@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
@@ -52,7 +52,7 @@ fun MetodosPagoScreen(
                 onClick = onRegistrarTarjeta,
                 modifier = Modifier.fillMaxWidth().height(52.dp),
                 shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = purpleButton)
+                colors = ButtonDefaults.buttonColors(containerColor = PurpleButton)
             ) {
                 Icon(painterResource(R.drawable.ic_anadir), contentDescription = null, tint = Color.White)
                 Text("Registrar Nueva Tarjeta", Modifier.padding(start = 8.dp), style = Typography.labelLarge, fontWeight = FontWeight.Bold)

@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
@@ -49,13 +49,13 @@ fun AlertaPresupuesto(
             Switch(
                 checked = activa,
                 onCheckedChange = onActivaChange,
-                colors = SwitchDefaults.colors(checkedThumbColor = White, checkedTrackColor = purpleButton)
+                colors = SwitchDefaults.colors(checkedThumbColor = White, checkedTrackColor = PurpleButton)
             )
         }
         if (activa) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text("Avisarme cuando supere el:", style = Typography.labelSmall)
-                Text("$porcentaje%", Modifier.weight(1f), style = Typography.titleSmall, color = purpleButton, fontWeight = FontWeight.Bold, textAlign = androidx.compose.ui.text.style.TextAlign.End)
+                Text("$porcentaje%", Modifier.weight(1f), style = Typography.titleSmall, color = PurpleButton, fontWeight = FontWeight.Bold, textAlign = androidx.compose.ui.text.style.TextAlign.End)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 listOf(70, 80, 90).forEach { value ->
@@ -64,7 +64,7 @@ fun AlertaPresupuesto(
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (value == porcentaje) purpleButton else Color(0xFFF0F0FF),
+                            containerColor = if (value == porcentaje) PurpleButton else Color(0xFFF0F0FF),
                             contentColor = if (value == porcentaje) White else Color.DarkGray
                         ),
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 6.dp)

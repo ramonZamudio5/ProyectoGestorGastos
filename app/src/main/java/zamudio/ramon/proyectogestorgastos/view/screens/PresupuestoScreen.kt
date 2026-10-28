@@ -48,15 +48,13 @@ import androidx.compose.ui.window.DialogProperties
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
 import zamudio.ramon.proyectogestorgastos.view.components.AlertaPresupuesto
 import zamudio.ramon.proyectogestorgastos.view.components.TarjetaCategoriaPresupuesto
 import zamudio.ramon.proyectogestorgastos.view.components.EstadisticasPresupuesto
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.formatoDinero
 
 @Composable
@@ -278,7 +276,7 @@ private fun EditorCategoriaBottomSheet(
                     }
                     Button(
                         onClick = { onConfirmar(montoAsignado) }, modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(11.dp), colors = ButtonDefaults.buttonColors(containerColor = purpleButton),
+                        shape = RoundedCornerShape(11.dp), colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
                         enabled = montoAsignado > 0
                     ) { Text("✓  Confirmar y Aplicar (\$${montoAsignado.formatoDinero()} MXN)", color = White, style = Typography.labelLarge) }
                 }

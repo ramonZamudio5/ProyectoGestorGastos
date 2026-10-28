@@ -58,10 +58,8 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
@@ -204,7 +202,7 @@ fun RegistroGastoScreen(
                 },
                 Modifier.fillMaxWidth().height(52.dp),
                 shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = purpleButton),
+                colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
                 enabled = monto.isNotBlank() && categoria.isNotBlank() &&
                     (tipoPago !in listOf("Tarjeta de débito", "Tarjeta de crédito") || tarjetaSeleccionada != null)
             ) {

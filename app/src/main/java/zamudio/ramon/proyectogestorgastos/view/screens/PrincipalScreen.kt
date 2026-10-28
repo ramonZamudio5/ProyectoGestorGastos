@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,7 +30,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.view.components.BannerBalance
 import zamudio.ramon.proyectogestorgastos.view.components.BannerDistribucion
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastos
@@ -55,7 +54,7 @@ fun PrincipalScreen(
             Spacer(Modifier.size(15.dp))
             Button(onClick = onNavigateToRegistroGasto, Modifier.fillMaxWidth(),
                 colors = ButtonColors(
-                    containerColor = purpleButton,
+                    containerColor = PurpleButton,
                     contentColor = White, disabledContainerColor = Purple40,
                     disabledContentColor = PurpleGrey40)
             ) {

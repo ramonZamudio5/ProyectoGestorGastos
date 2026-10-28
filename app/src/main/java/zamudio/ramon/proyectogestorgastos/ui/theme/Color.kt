@@ -30,8 +30,8 @@ val BlueNavy = Color(0xFF131B2E)
 val White = Color(0xFFFFFFFF)
 
 val ScreenBackground = Color(0xFFEFE8F9)
-
-val purpleButton = Color(0xFF8455EF)
+val SecondaryBackgroundColor = Color(0xFFE2E7FF)
+val PurpleButton = Color(0xFF8455EF)
 
 //colores que puede utilizar el usuario
 val LightGreen = Color(0xBFBCF86C)

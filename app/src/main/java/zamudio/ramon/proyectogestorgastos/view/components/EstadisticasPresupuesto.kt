@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.R
 
@@ -50,7 +50,7 @@ fun EstadisticasPresupuesto(
         Column(Modifier.fillMaxWidth().background(Color(0xFFF0EDFF), RoundedCornerShape(14.dp)).padding(12.dp)) {
             Text("RESTANTE DISPONIBLE MENSUAL", style = Typography.labelSmall, color = Color.DarkGray)
             Row(verticalAlignment = Alignment.Bottom) {
-                Text("\$${disponible.formatoDinero()}", style = Typography.headlineLarge, color = purpleButton, fontWeight = FontWeight.ExtraBold)
+                Text("\$${disponible.formatoDinero()}", style = Typography.headlineLarge, color = PurpleButton, fontWeight = FontWeight.ExtraBold)
                 Text(" MXN", style = Typography.labelSmall, color = PurplePrimary, modifier = Modifier.padding(bottom = 5.dp))
             }
         }
@@ -58,7 +58,7 @@ fun EstadisticasPresupuesto(
             onClick = onAjustarPresupuesto,
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = purpleButton)
+            colors = ButtonDefaults.buttonColors(containerColor = PurpleButton)
         ) {
             Text("＋  Agregar / Ajustar Presupuesto\nMensual", color = White, style = Typography.labelLarge)
         }
