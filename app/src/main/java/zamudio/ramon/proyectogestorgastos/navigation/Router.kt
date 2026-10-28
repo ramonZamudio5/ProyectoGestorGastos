@@ -49,3 +49,6 @@ object CompleteGroupData
 
 @Serializable
 object GroupCreatedSuccess
+
+@Serializable
+object AñadirGasto

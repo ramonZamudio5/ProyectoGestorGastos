@@ -24,6 +24,7 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
+import zamudio.ramon.proyectogestorgastos.view.screens.AñadirGastoScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.CompleteGroupDataScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.CreateEditGroupScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.GroupCreatedSuccessScreen
@@ -51,7 +52,8 @@ val topLevelRoutes = setOf(
     MyGroups,
     CreateEditGroup,
     CompleteGroupData,
-    GroupCreatedSuccess
+    GroupCreatedSuccess,
+    AñadirGasto
 )
 
 @Composable
@@ -221,6 +223,10 @@ fun Myapp(innerPadding: PaddingValues) {
                     navController.popBackStack()
                 }
             )
+        }
+
+        composable<AñadirGasto> {
+            AñadirGastoScreen()
         }
     }
 }}
