@@ -47,7 +47,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.R
@@ -83,7 +83,7 @@ fun PresupuestoScreen(
     val gastosObligados = 14200.0
     val disponibleMensual = (ingresoMensual - gastosObligados).coerceAtLeast(0.0)
 
-    Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)

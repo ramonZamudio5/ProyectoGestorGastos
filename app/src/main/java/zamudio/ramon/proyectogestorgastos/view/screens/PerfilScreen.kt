@@ -47,8 +47,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 
 @Composable
 fun PerfilScreen(
@@ -59,7 +58,7 @@ fun PerfilScreen(
     navigateToPresupuesto: () -> Unit = {},
     navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
 ) {
-    Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
             Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)

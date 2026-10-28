@@ -28,11 +28,9 @@ import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.TarjetaMetodoPago
 
 @Composable
@@ -45,7 +43,7 @@ fun MetodosPagoScreen(
     onNavigateToRegistroGasto: () -> Unit = {},
     onRegistrarTarjeta: () -> Unit = {}
 ) {
-    Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 30.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)

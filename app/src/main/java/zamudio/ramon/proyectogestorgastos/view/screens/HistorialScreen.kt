@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
@@ -36,7 +36,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 @Composable
 fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
     var filtroActual by remember { mutableStateOf("todo") }
-    Column(Modifier.background(color= Fondo).fillMaxHeight(),
+    Column(Modifier.background(color= ScreenBackground).fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween) {
         Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState())
             , verticalArrangement = Arrangement.SpaceBetween) {

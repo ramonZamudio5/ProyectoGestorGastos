@@ -21,7 +21,7 @@ import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.screens.CompleteGroupDataScreen
@@ -64,7 +64,7 @@ fun Myapp(innerPadding: PaddingValues) {
     }
 
     Scaffold(
-        containerColor = GroupScreenBackground,
+        containerColor = ScreenBackground,
         bottomBar = {
             if (shouldShow) {
                 NavBar(navController)

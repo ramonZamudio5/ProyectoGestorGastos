@@ -44,7 +44,7 @@ import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 
 @Composable
 fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNavigateToPrincipal:()-> Unit) {
@@ -52,7 +52,7 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNav
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
-    Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding), verticalArrangement = Arrangement.Center) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding), verticalArrangement = Arrangement.Center) {
         Text("¡Bienvenido!", style = Typography.headlineLarge)
         Text("Administra tus finanzas y gastos de forma clara, segura y sin complicaciones.", style = Typography.bodyMedium)
         Column(Modifier.padding(24.dp).clip(RoundedCornerShape(24.dp)).background(Color.White).padding(24.dp)) {

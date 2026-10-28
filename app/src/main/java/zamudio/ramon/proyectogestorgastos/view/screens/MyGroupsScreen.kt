@@ -18,7 +18,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeBackground
@@ -39,12 +38,9 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupScreenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBalanceSummaryCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItem
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 
 @Composable
 fun MyGroupScreen(
@@ -54,7 +50,7 @@ fun MyGroupScreen(
 ) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(color= GroupScreenBackground)
+            .fillMaxSize().background(color= ScreenBackground)
             .padding(horizontal = 20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp)

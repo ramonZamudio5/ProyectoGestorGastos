@@ -50,7 +50,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Purple80
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightGreen
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightRed
 import java.time.LocalDate
@@ -316,7 +316,7 @@ fun BannerDistribucion(gastos: List<Gasto>) {
 fun CeldaTipoGasto(tipo: Tipo, gastos: List<Gasto>) {
     Column(
         Modifier
-            .background(color = Fondo, shape = RoundedCornerShape(10.dp))
+            .background(color = ScreenBackground, shape = RoundedCornerShape(10.dp))
             .fillMaxWidth()
             .padding(10.dp)
     ) {
@@ -360,7 +360,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
             Text("Presupuesto asignado: $" + getPresupuestoTotal(gastos).toString() + "MXN", color= PurpleGrey40)
             Box(modifier = Modifier.fillMaxWidth().padding(10.dp), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(50.dp * 2f)){
-                    drawArc(color= Fondo, posicion, 360f, false,
+                    drawArc(color= ScreenBackground, posicion, 360f, false,
                         style = Stroke(strokeWidthPx, cap=StrokeCap.Round))
                 }
                 tipos.forEach { tipo->
@@ -375,7 +375,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
                 }
             }
             val celdasPorFila = tipos.chunked(2)
-            Column(Modifier.background(color = Fondo, shape = RoundedCornerShape(10.dp))
+            Column(Modifier.background(color = ScreenBackground, shape = RoundedCornerShape(10.dp))
                 .fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                 celdasPorFila.forEach { fila ->
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
@@ -471,7 +471,7 @@ fun ColumnaGastosVSEstimado(gastos: List<Gasto>) {
                             .fillMaxWidth()
                             .height(10.dp)
                             .clip(RoundedCornerShape(10.dp))
-                            .background(color = Fondo)
+                            .background(color = ScreenBackground)
                     ) {
                         if (porcentajeBarra > 0f) {
                             Box(

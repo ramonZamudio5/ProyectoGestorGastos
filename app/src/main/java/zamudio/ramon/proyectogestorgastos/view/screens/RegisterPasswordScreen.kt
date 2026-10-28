@@ -48,7 +48,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
-import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
 @Composable
@@ -59,7 +59,7 @@ fun RegisterPasswordScreen(innerPadding: PaddingValues,navigateToRegisterPerfil:
     var confirmPasswordVisible by remember { mutableStateOf(false) }
     var termsAccepted by remember { mutableStateOf(false) }
 
-    Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding).verticalScroll(rememberScrollState())) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding).verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(10.dp))
         BarraProgreso(3,3)
         Column(Modifier.padding(24.dp)) {

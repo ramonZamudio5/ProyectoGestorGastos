@@ -28,7 +28,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.view.components.BannerBalance
 import zamudio.ramon.proyectogestorgastos.view.components.BannerDistribucion
@@ -48,7 +48,7 @@ fun PrincipalScreen(
     onNavigateToGrupos: () -> Unit = {}
 ) {
     Column(Modifier
-        .background(color = Fondo)
+        .background(color = ScreenBackground)
         .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
         Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween) {
             BannerBalance(30.0, 40.0)

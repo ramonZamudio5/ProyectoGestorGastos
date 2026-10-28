@@ -12,8 +12,6 @@ val Pink40 = Color(0xFF7D5260)
 
 val PurplePrimary = Color(0xFF7E57C2)
 
-val screenBackground = Color(0xFFFFF0F5)
-
 val BluePrimary = Color(0xFF2563EB)
 
 val GrayForm = Color(0xFFF4F5F9)
@@ -31,7 +29,7 @@ val BlueNavy = Color(0xFF131B2E)
 
 val White = Color(0xFFFFFFFF)
 
-val Fondo = Color(0xFFEFE8F9)
+val ScreenBackground = Color(0xFFEFE8F9)
 
 val purpleButton = Color(0xFF8455EF)
 
@@ -64,7 +62,6 @@ val GroupDeleteAccent = Color(0xFFE53935)
 val GroupBorder = Color(0xFFE8E5F2)
 val GroupAccentBackground = Color(0xFFEDE7F6)
 val GroupCategoryBackground = Color(0xFFF3E5F5)
-val GroupScreenBackground = Color(0xFFF3F1F9)
 val GroupFieldBackground = Color(0xFFF3F1FA)
 val GroupBalanceBackground = Color(0xFFF7F8FA)
 val GroupOptionsBackground = Color(0xFFFAFAFD)

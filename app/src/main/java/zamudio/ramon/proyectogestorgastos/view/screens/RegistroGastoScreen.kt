@@ -57,7 +57,7 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.Fondo
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.purpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.Header
@@ -89,7 +89,7 @@ fun RegistroGastoScreen(
     }
     val calendar = Calendar.getInstance()
 
-    Column(Modifier.fillMaxSize().background(Fondo).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 20.dp),
             verticalArrangement = Arrangement.spacedBy(11.dp)

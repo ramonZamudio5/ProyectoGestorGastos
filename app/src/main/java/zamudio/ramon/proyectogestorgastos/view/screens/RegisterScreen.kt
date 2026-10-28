@@ -28,7 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -46,7 +46,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
     var primerApellido by remember { mutableStateOf("") }
     var segundoApellido by remember { mutableStateOf("") }
 
-    Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
         Spacer(Modifier.height(10.dp))
         BarraProgreso(1,3)
         Text(
