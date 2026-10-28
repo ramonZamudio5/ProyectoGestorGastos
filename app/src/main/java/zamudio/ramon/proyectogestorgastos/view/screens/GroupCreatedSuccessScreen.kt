@@ -1,5 +1,6 @@
 package zamudio.ramon.proyectogestorgastos.view.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -45,72 +46,68 @@ fun GroupCreatedSuccessScreen(
     onClose: () -> Unit = {},
     onNavigateToDashboard: () -> Unit = {}
 ) {
-    Scaffold(
-        containerColor = GroupScreenBackground
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
-        ) {
-            // 1. Barra superior: ¡Grupo Creado! con botón cerrar (X)
-            item {
-                GroupCreatedTopBar(onClose = onClose)
-            }
-            // 2. Tarjeta con resumen del grupo creado
-            item {
-                GroupCreatedHeaderCard(
-                    groupName = group.nombre,
-                    categoryTag = group.descripcion,
-                    creatorName = group.nombreCreador
-                )
-            }
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize().background(color= GroupScreenBackground)
+            .padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
+    ) {
+        // 1. Barra superior: ¡Grupo Creado! con botón cerrar (X)
+        item {
+            GroupCreatedTopBar(onClose = onClose)
+        }
+        // 2. Tarjeta con resumen del grupo creado
+        item {
+            GroupCreatedHeaderCard(
+                groupName = group.nombre,
+                categoryTag = group.descripcion,
+                creatorName = group.nombreCreador
+            )
+        }
 
-            // 3. Tarjeta con el código de invitación único
-            item {
-                GroupInviteCodeCard(
-                    code = group.inviteCode
-                )
-            }
+        // 3. Tarjeta con el código de invitación único
+        item {
+            GroupInviteCodeCard(
+                code = group.inviteCode
+            )
+        }
 
-            // 4. Lista de miembros actuales y estado de espera
-            item {
-                GroupMemberListCard(
-                    members = miembros,
-                    inviteCode = group.inviteCode
+        // 4. Lista de miembros actuales y estado de espera
+        item {
+            GroupMemberListCard(
+                members = miembros,
+                inviteCode = group.inviteCode
+            )
+        }
+        // 5. Botón principal: Ir al panel del grupo
+        item {
+            Button(
+                onClick = onNavigateToDashboard,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp)
+                    .padding(top = 4.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
+            ) {
+                Text(
+                    style = GroupTextStyles.ActionBold,
+                    text = stringResource(R.string.group_open_dashboard),
+                    color = White
                 )
-            }
-            // 5. Botón principal: Ir al panel del grupo
-            item {
-                Button(
-                    onClick = onNavigateToDashboard,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(52.dp)
-                        .padding(top = 4.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
-                ) {
-                    Text(
-                        style = GroupTextStyles.ActionBold,
-                        text = stringResource(R.string.group_open_dashboard),
-                        color = White
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Icon(
-                        painter = painterResource(R.drawable.ic_arrow_right),
-                        contentDescription = null,
-                        tint = White,
-                        modifier = Modifier.size(18.dp)
-                    )
-                }
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    painter = painterResource(R.drawable.ic_arrow_right),
+                    contentDescription = null,
+                    tint = White,
+                    modifier = Modifier.size(18.dp)
+                )
             }
         }
     }
 }
+
 
 @Preview
 @Composable

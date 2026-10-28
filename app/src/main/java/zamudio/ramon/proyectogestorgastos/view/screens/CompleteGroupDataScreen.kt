@@ -1,5 +1,6 @@
 package zamudio.ramon.proyectogestorgastos.view.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -50,99 +51,95 @@ fun CompleteGroupDataScreen(
     var budget by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
 
-    Scaffold(
-        containerColor = GroupScreenBackground
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
-        ) {
-            // 1. Barra de progreso (Paso 2 de 2)
-            item {
-                BarraProgreso(2, 2)
-            }
-
-            // 2. Encabezado de la pantalla
-            item {
-                Column(modifier = Modifier.padding(vertical = 4.dp)) {
-                    Text(
-                        style = GroupTextStyles.TitleBold,
-                        text = stringResource(R.string.group_complete_title),
-                        color = GroupTextPrimary
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        style = GroupTextStyles.SupportingDefaultLine18,
-                        text = stringResource(R.string.group_complete_description),
-                        color = GroupTextSecondary
-                    )
-                }
-            }
-
-            // 3. Resumen compacto del grupo (con botón para editar el paso 1)
-            //modificar esto para dejar de se mock
-            item {
-                GroupSummaryHeaderCard(
-                    typeGroup = TipoGrupo(
-                        "amigos",
-                        "Amigos / Viajes",
-                        "Vacaciones y escapadas",
-                        R.drawable.ic_flight,
-                        PurplePrimary
-                    ),
-                    onEditClick = onEditGroupClick
-                )
-            }
-
-            // 4. Presupuesto estimado en pesos mexicanos (fijo MXN)
-            item {
-                GroupBudgetInputCard(
-                    budget = budget,
-                    onBudgetChange = { budget = it }
-                )
-            }
-
-            // 5. Nota o descripción
-            item {
-                GroupDescriptionCard(
-                    description = description,
-                    onDescriptionChange = { description = it }
-                )
-            }
-
-            // 6. Botón de acción principal
-            item {
-                Button(
-                    onClick = onNavigateNext,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(52.dp)
-                        .padding(top = 8.dp),
-                    shape = RoundedCornerShape(14.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_check),
-                        contentDescription = null,
-                        tint = White,
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        style = GroupTextStyles.ActionBold,
-                        text = stringResource(R.string.group_finish_create),
-                        color = White
-                    )
-                }
-            }
-
+LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 20.dp).background(color= GroupScreenBackground),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
+    ) {
+        // 1. Barra de progreso (Paso 2 de 2)
+        item {
+            BarraProgreso(2, 2)
         }
+
+        // 2. Encabezado de la pantalla
+        item {
+            Column(modifier = Modifier.padding(vertical = 4.dp)) {
+                Text(
+                    style = GroupTextStyles.TitleBold,
+                    text = stringResource(R.string.group_complete_title),
+                    color = GroupTextPrimary
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    style = GroupTextStyles.SupportingDefaultLine18,
+                    text = stringResource(R.string.group_complete_description),
+                    color = GroupTextSecondary
+                )
+            }
+        }
+
+        // 3. Resumen compacto del grupo (con botón para editar el paso 1)
+        //modificar esto para dejar de se mock
+        item {
+            GroupSummaryHeaderCard(
+                typeGroup = TipoGrupo(
+                    "amigos",
+                    "Amigos / Viajes",
+                    "Vacaciones y escapadas",
+                    R.drawable.ic_flight,
+                    PurplePrimary
+                ),
+                onEditClick = onEditGroupClick
+            )
+        }
+
+        // 4. Presupuesto estimado en pesos mexicanos (fijo MXN)
+        item {
+            GroupBudgetInputCard(
+                budget = budget,
+                onBudgetChange = { budget = it }
+            )
+        }
+
+        // 5. Nota o descripción
+        item {
+            GroupDescriptionCard(
+                description = description,
+                onDescriptionChange = { description = it }
+            )
+        }
+
+        // 6. Botón de acción principal
+        item {
+            Button(
+                onClick = onNavigateNext,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(52.dp)
+                    .padding(top = 8.dp),
+                shape = RoundedCornerShape(14.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_check),
+                    contentDescription = null,
+                    tint = White,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    style = GroupTextStyles.ActionBold,
+                    text = stringResource(R.string.group_finish_create),
+                    color = White
+                )
+            }
+        }
+
     }
 }
+
 
 @Preview
 @Composable

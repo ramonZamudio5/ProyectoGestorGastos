@@ -47,7 +47,11 @@ val topLevelRoutes = setOf(
     Perfil,
     Historial,
     MetodosPago,
-    RegistrarTarjeta
+    RegistrarTarjeta,
+    MyGroups,
+    CreateEditGroup,
+    CompleteGroupData,
+    GroupCreatedSuccess
 )
 
 @Composable

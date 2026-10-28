@@ -1,5 +1,6 @@
 package zamudio.ramon.proyectogestorgastos.view.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,53 +31,48 @@ fun CreateEditGroupScreen(
 ) {
     var groupName by remember { mutableStateOf("Viaje Cancún 2025") }
 
-    Scaffold(
-        containerColor = GroupScreenBackground // Tinte lila de fondo
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
-        ) {
-            // Barra de progreso (Paso 1 de 2)
-            item {
-                BarraProgreso(1, 2)
-            }
-
-            // 1. Selector de Foto Real / Ícono
-            item {
-                GroupImagePickerCard(
-                    onTakePhotoClick = { },
-                    onGalleryClick = { },
-                    onRemovePhotoClick = { }
-                )
-            }
-
-            // 2. Input del Nombre del Grupo con contador
-            item {
-                GroupNameImputField(
-                    value = groupName,
-                    onValueChange = { groupName = it },
-                    maxLength = 30
-                )
-            }
-            // 3. Tarjeta de selección de tipo de grupo encapsulada
-            item {
-                GroupTypeSelectorCard()
-            }
-
-            // 4. Botones de acción inferiores
-            item {
-                GroupFormActions(
-                    onNextClick = onNavigateNext,
-                    onCancelClick = onCancel
-                )
-            }
-
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize().background(color= GroupScreenBackground)
+            .padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
+    ) {
+        // Barra de progreso (Paso 1 de 2)
+        item {
+            BarraProgreso(1, 2)
         }
+
+        // 1. Selector de Foto Real / Ícono
+        item {
+            GroupImagePickerCard(
+                onTakePhotoClick = { },
+                onGalleryClick = { },
+                onRemovePhotoClick = { }
+            )
+        }
+
+        // 2. Input del Nombre del Grupo con contador
+        item {
+            GroupNameImputField(
+                value = groupName,
+                onValueChange = { groupName = it },
+                maxLength = 30
+            )
+        }
+        // 3. Tarjeta de selección de tipo de grupo encapsulada
+        item {
+            GroupTypeSelectorCard()
+        }
+
+        // 4. Botones de acción inferiores
+        item {
+            GroupFormActions(
+                onNextClick = onNavigateNext,
+                onCancelClick = onCancel
+            )
+        }
+
     }
 }
 
