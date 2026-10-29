@@ -5,6 +5,11 @@ data class Grupo(
     val nombre: String,
     val descripcion: String,
     val imagen: Int,
-    val numMiemnros: Int,
+    val numMiembros: Int,
     val tipo: String,
-    val totalGasto: Double)
+    val totalGasto: Double,
+    val nombreCreador: String,
+    val inviteCode: String,
+    val miembros: List<Usuario>,
+    val presupuesto: CategoriaPresupuesto? = null,
+    var deuda: List<DeudaGrupo>? = null)

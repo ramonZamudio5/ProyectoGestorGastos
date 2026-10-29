@@ -11,17 +11,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,18 +28,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.screenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
-import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightBlue
-import zamudio.ramon.proyectogestorgastos.ui.theme.purplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 
 
@@ -52,7 +46,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
     var primerApellido by remember { mutableStateOf("") }
     var segundoApellido by remember { mutableStateOf("") }
 
-    Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
         Spacer(Modifier.height(10.dp))
         BarraProgreso(1,3)
         Text(
@@ -135,7 +129,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
             }
         }
         Spacer(Modifier.height(30.dp))
-        Button(onClick = {navigateToRegisterPerfil()}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = purplePrimary),
+        Button(onClick = {navigateToRegisterPerfil()}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary),
             shape = RoundedCornerShape(40.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                 Text(text = "Continuar ->", color = Color.White, style = Typography.labelLarge)
@@ -145,7 +139,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
         Spacer(Modifier.height(25.dp))
         Row(Modifier.fillMaxWidth().clickable{navigateToLogin()},horizontalArrangement = Arrangement.Center) {
             Text("¿Ya tienes una cuenta?", style = Typography.labelLarge, color = Color(0xFF475467))
-            Text("Inicia Sesion", color = purplePrimary, style = Typography.labelLarge)
+            Text("Inicia Sesion", color = PurplePrimary, style = Typography.labelLarge)
         }
         }
 

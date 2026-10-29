@@ -14,41 +14,44 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
+import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 
 @Composable
-fun GroupCardItem(
+fun GroupCardItemInfo(
     grupo: Grupo,
-    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
+            .fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
@@ -65,7 +68,7 @@ fun GroupCardItem(
                     modifier = Modifier
                         .size(46.dp)
                         .clip(RoundedCornerShape(12.dp))
-                        .background(Color(0xFFEDE7F6)),
+                        .background(GroupAccentBackground),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
@@ -79,9 +82,8 @@ fun GroupCardItem(
                 Column(modifier = Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
+                            style = GroupTextStyles.LabelBold,
                             text = grupo.nombre,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 12.sp,
                             color = BlueNavy,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
@@ -89,13 +91,12 @@ fun GroupCardItem(
                         Spacer(modifier = Modifier.width(8.dp))
                         Surface(
                             shape = RoundedCornerShape(50),
-                            color = Color(0xFFEDE7F6)
+                            color = GroupAccentBackground
                         ) {
                             Text(
+                                style = GroupTextStyles.CaptionBold,
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
-                                color = Color(0xFF673AB7),
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
+                                color = PurplePrimary,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
@@ -103,9 +104,10 @@ fun GroupCardItem(
                     Spacer(modifier = Modifier.height(2.dp))
 
                     Text(
-                        text = "Total: $${grupo.totalGasto} MXN",
-                        fontSize = 12.sp,
-                        color = Color.Gray,
+
+                        style = GroupTextStyles.LabelDefault,
+                        text = stringResource(R.string.group_total, grupo.totalGasto.toString()),
+                        color = GroupTextSecondary,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -113,7 +115,7 @@ fun GroupCardItem(
                 Icon(
                     painter = painterResource(R.drawable.ic_row_right),
                     contentDescription = null,
-                    tint = Color.LightGray,
+                    tint = GroupTextPlaceholder,
                     modifier = Modifier.size(15.dp)
                 )
             }
@@ -122,26 +124,111 @@ fun GroupCardItem(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Row(horizontalArrangement = Arrangement.spacedBy((-6).dp)) {
-                    repeat(3) { idx ->
-                        Box(
-                            modifier = Modifier
-                                .size(24.dp)
-                                .clip(CircleShape)
-                                .background(Color(0xFFB0BEC5)),
-                            contentAlignment = Alignment.Center
+                AvatarStack()
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(style = GroupTextStyles.LabelDefault, text = stringResource(R.string.group_last_expense_label), color = GroupTextSecondary)
+                    Text(
+                        style = GroupTextStyles.LabelBold,
+                        text = stringResource(R.string.group_recent_expense),
+                        color = GroupTextPrimary
+                    )
+                }
+            }
+
+        }
+    }
+}
+
+@Composable
+fun GroupCardItem(
+    grupo: Grupo,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth().clickable { onClick() },
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(46.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(GroupAccentBackground),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ic_departamento),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+
+                Column(modifier = Modifier.weight(1f)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            style = GroupTextStyles.LabelBold,
+                            text = grupo.nombre,
+                            color = BlueNavy,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Surface(
+                            shape = RoundedCornerShape(50),
+                            color = GroupAccentBackground
                         ) {
-                            if (idx == 2) Text("Tú", fontSize = 9.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                            Text(
+                                style = GroupTextStyles.CaptionBold,
+                                text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
+                                color = PurplePrimary,
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
+                            )
                         }
                     }
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Último: ", fontSize = 12.sp, color = Color.Gray)
+                    Spacer(modifier = Modifier.height(2.dp))
+
                     Text(
-                        text = "Gasto reciente",
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1E2022)
+
+                        style = GroupTextStyles.LabelDefault,
+                        text = stringResource(R.string.group_total, grupo.totalGasto.toString()),
+                        color = GroupTextSecondary,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+                Icon(
+                    painter = painterResource(R.drawable.ic_row_right),
+                    contentDescription = null,
+                    tint = GroupTextPlaceholder,
+                    modifier = Modifier.size(15.dp)
+                )
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                AvatarStack()
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(style = GroupTextStyles.LabelDefault, text = stringResource(R.string.group_last_expense_label), color = GroupTextSecondary)
+                    Text(
+                        style = GroupTextStyles.LabelBold,
+                        text = stringResource(R.string.group_recent_expense),
+                        color = GroupTextPrimary
                     )
                 }
             }
@@ -149,14 +236,14 @@ fun GroupCardItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(Color(0xFFF7F8FA))
+                    .background(GroupBalanceBackground)
                     .padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
                 Surface(
                     shape = RoundedCornerShape(20.dp),
-                    color = Color(0xFFEDE7F6)
+                    color = GroupAccentBackground
                 ) {
                     Row(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
@@ -165,15 +252,14 @@ fun GroupCardItem(
                         Icon(
                             painter = painterResource(R.drawable.ic_arrow_down),
                             contentDescription = null,
-                            tint = Color(0xFF673AB7),
+                            tint = PurplePrimary,
                             modifier = Modifier.size(15.dp)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = "Te deben $3,000.00 MXN",
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFF673AB7)
+                            style = GroupTextStyles.LabelBold,
+                            text = stringResource(R.string.group_amount_owed, "3,000.00"),
+                            color = PurplePrimary
                         )
                     }
                 }
@@ -181,7 +267,6 @@ fun GroupCardItem(
         }
     }
 }
-
 
 @Preview
 @Composable

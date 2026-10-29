@@ -1,0 +1,89 @@
+package zamudio.ramon.proyectogestorgastos.view.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCloseIcon
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+
+@Composable
+fun GroupCreatedTopBar(
+    onClose: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(36.dp)
+                    .clip(CircleShape)
+                    .background(GroupAccentBackground),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_celebration),
+                    contentDescription = null,
+                    tint = PurplePrimary,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+
+            Text(
+
+                style = GroupTextStyles.SuccessTitleBold,
+                text = stringResource(R.string.group_created_title),
+                color = GroupTextPrimary
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .size(36.dp)
+                .clip(CircleShape)
+                .background(GroupBorder)
+                .clickable { onClose() },
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_close),
+                contentDescription = stringResource(R.string.group_close),
+                tint = GroupCloseIcon,
+                modifier = Modifier.size(18.dp)
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun GroupCreatedTobBarPreview(){
+    GroupCreatedTopBar({})
+}
