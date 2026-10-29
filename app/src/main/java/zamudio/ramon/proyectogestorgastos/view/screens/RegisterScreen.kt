@@ -53,6 +53,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
     var segundoApellido by remember { mutableStateOf("") }
 
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding)) {
+        Spacer(Modifier.height(10.dp))
         BarraProgreso(1,3)
         Text(
             "Crear Cuenta",

@@ -57,6 +57,7 @@ fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Uni
     val opcionesGenero = listOf("Femenino", "Masculino", "No binario", "Prefiero no decirlo")
 
     Column(Modifier.fillMaxSize().background(screenBackground).padding(innerPadding).verticalScroll(rememberScrollState())) {
+        Spacer(Modifier.height(10.dp))
         BarraProgreso(2,3)
         Column(Modifier.padding(24.dp)) {
             Spacer(Modifier.height(24.dp))

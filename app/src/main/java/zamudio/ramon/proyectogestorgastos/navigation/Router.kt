@@ -17,3 +17,7 @@ object RegisterPerfil
 
 @Serializable
 object RegisterPassword
+
+
+@Serializable
+object Principal
