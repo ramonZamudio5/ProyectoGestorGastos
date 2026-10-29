@@ -12,6 +12,8 @@
     <string name="group_optional">Opcional</string>
     <string name="group_currency_symbol">$</string>
     <string name="group_budget_placeholder">0.00</string>
+    <string name="group_budget_invalid_format">Ingresa un monto válido con hasta 2 decimales; usa punto o coma decimal, sin separadores de miles.</string>
+    <string name="group_budget_must_be_positive">El presupuesto debe ser mayor que cero o puedes dejarlo vacío.</string>
     <string name="group_currency_code">MXN</string>
     <string name="group_created_title">¡Grupo Creado!</string>
     <string name="group_close">Cerrar</string>
@@ -34,6 +36,7 @@
     <string name="group_waiting_members">Esperando nuevos miembros…</string>
     <string name="group_name_label">Nombre del Grupo</string>
     <string name="group_name_hint">Ej. Viaje Cancún 2025</string>
+    <string name="group_name_required">Ingresa un nombre para el grupo; no puede contener solo espacios.</string>
     <string name="group_clear_text">Limpiar texto</string>
     <string name="group_edit">Editar</string>
     <string name="group_type_label">Tipo de Grupo</string>

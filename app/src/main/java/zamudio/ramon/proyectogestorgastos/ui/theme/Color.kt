@@ -70,3 +70,7 @@ val GroupDeleteBackground = Color(0xFFFFEBEE)
 val GroupTextSecondary = Color(0xFF888888)
 val GroupTextPlaceholder = Color(0xFFCCCCCC)
 val GroupIconSecondary = Color(0xFF444444)
+
+// Colores del formulario de liquidación de grupos.
+val GroupSettlementBackground = Color(0xFFF6F5FB)
+val GroupSettlementAccent = Color(0xFF7C4DFF)

@@ -40,13 +40,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
+import androidx.compose.ui.semantics.error
+import androidx.compose.ui.semantics.semantics
 
 @Composable
 fun GroupNameImputField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    maxLength: Int = 30
+    maxLength: Int = 30,
+    errorMessage: String? = null
 ){
     val focusManager = LocalFocusManager.current
     Card(
@@ -104,7 +108,9 @@ fun GroupNameImputField(
                             onValueChange(it)
                         }
                     },
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.weight(1f).semantics {
+                        if (errorMessage != null) error(errorMessage)
+                    },
                     singleLine = true,
                     textStyle = GroupTextStyles.ActionSemiBold.copy(
                         color = GroupTextPrimary
@@ -141,6 +147,13 @@ fun GroupNameImputField(
                         )
                     }
                 }
+            }
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage,
+                    style = GroupTextStyles.LabelNormal,
+                    color = GroupDeleteAccent
+                )
             }
         }
     }

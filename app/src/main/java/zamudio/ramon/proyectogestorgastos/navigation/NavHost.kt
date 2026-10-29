@@ -39,6 +39,7 @@ import zamudio.ramon.proyectogestorgastos.view.screens.MetodosPagoScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.MyGroupScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegistrarTarjetaScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.RegistroGastoScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.SettleGroupAccountsScreen
 
 val topLevelRoutes = setOf(
     Inicio,
@@ -53,7 +54,8 @@ val topLevelRoutes = setOf(
     CreateEditGroup,
     CompleteGroupData,
     GroupCreatedSuccess,
-    AñadirGasto
+    AñadirGasto,
+    SettleGroupAccounts
 )
 
 @Composable
@@ -92,7 +94,15 @@ fun Myapp(innerPadding: PaddingValues) {
 
 
 
-    NavHost(navController = navController, startDestination = Login, modifier = Modifier.padding(innerPadding)) {
+    NavHost(
+        navController = navController,
+        startDestination = Login,
+        modifier = if (currentDestination?.hasRoute<SettleGroupAccounts>() == true) {
+            Modifier
+        } else {
+            Modifier.padding(innerPadding)
+        }
+    ) {
         composable<Login> {
             LoginScreen(innerPadding,navigateToRegister,navigateToPrincipal)
         }
@@ -227,6 +237,10 @@ fun Myapp(innerPadding: PaddingValues) {
 
         composable<AñadirGasto> {
             AñadirGastoScreen()
+        }
+
+        composable<SettleGroupAccounts> {
+            SettleGroupAccountsScreen(innerPadding = innerPadding)
         }
     }
 }}

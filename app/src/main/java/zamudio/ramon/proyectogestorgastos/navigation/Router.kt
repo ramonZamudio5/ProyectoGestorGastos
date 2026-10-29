@@ -52,3 +52,5 @@ object GroupCreatedSuccess
 
 @Serializable
 object AñadirGasto
+@Serializable
+object SettleGroupAccounts

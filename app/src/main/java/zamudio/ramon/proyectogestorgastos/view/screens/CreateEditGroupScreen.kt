@@ -13,6 +13,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import zamudio.ramon.proyectogestorgastos.R
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
@@ -26,7 +28,13 @@ fun CreateEditGroupScreen(
     onNavigateNext: () -> Unit = {},
     onCancel: () -> Unit = {}
 ) {
-    var groupName by remember { mutableStateOf("Viaje Cancún 2025") }
+    var groupName by remember { mutableStateOf("") }
+    val isNameValid = groupName.isNotBlank() && groupName.length <= 30
+    val nameError = if (groupName.isBlank()) {
+        stringResource(R.string.group_name_required)
+    } else {
+        null
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -54,7 +62,8 @@ fun CreateEditGroupScreen(
             GroupNameImputField(
                 value = groupName,
                 onValueChange = { groupName = it },
-                maxLength = 30
+                maxLength = 30,
+                errorMessage = nameError
             )
         }
         // 3. Tarjeta de selección de tipo de grupo encapsulada
@@ -65,8 +74,9 @@ fun CreateEditGroupScreen(
         // 4. Botones de acción inferiores
         item {
             GroupFormActions(
-                onNextClick = onNavigateNext,
-                onCancelClick = onCancel
+                onNextClick = { if (isNameValid) onNavigateNext() },
+                onCancelClick = onCancel,
+                nextEnabled = isNameValid
             )
         }
 

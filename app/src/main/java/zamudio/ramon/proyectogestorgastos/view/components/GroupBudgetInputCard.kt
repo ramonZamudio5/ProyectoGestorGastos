@@ -32,12 +32,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
+import androidx.compose.ui.semantics.error
+import androidx.compose.ui.semantics.semantics
 
 @Composable
 fun GroupBudgetInputCard(
     budget: String,
     modifier: Modifier = Modifier,
-    onBudgetChange: (String) -> Unit = {}
+    onBudgetChange: (String) -> Unit = {},
+    errorMessage: String? = null
 ){
     Card(
         modifier = modifier.fillMaxWidth(),
@@ -88,13 +92,10 @@ fun GroupBudgetInputCard(
 
                 BasicTextField(
                     value = budget,
-                    onValueChange = { input ->
-                        // Filtra para admitir solo dígitos y un solo punto decimal
-                        if (input.all { it.isDigit() || it == '.' }) {
-                            onBudgetChange(input)
-                        }
+                    onValueChange = onBudgetChange,
+                    modifier = Modifier.weight(1f).semantics {
+                        if (errorMessage != null) error(errorMessage)
                     },
-                    modifier = Modifier.weight(1f),
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     textStyle = GroupTextStyles.AmountBold.copy(
@@ -120,7 +121,13 @@ fun GroupBudgetInputCard(
                     color = GroupTextSecondary
                 )
             }
-
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage,
+                    style = GroupTextStyles.LabelNormal,
+                    color = GroupDeleteAccent
+                )
+            }
         }
     }
 }

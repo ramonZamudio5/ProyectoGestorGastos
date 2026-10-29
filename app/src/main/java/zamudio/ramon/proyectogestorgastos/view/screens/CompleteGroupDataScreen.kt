@@ -39,6 +39,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBudgetInputCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupDescriptionCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupSummaryHeaderCard
+import java.math.BigDecimal
 
 @Composable
 fun CompleteGroupDataScreen(
@@ -47,6 +48,18 @@ fun CompleteGroupDataScreen(
 ) {
     var budget by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
+    val normalizedBudget = budget.trim().replace(',', '.')
+    val budgetAmount = if (normalizedBudget.matches(Regex("[0-9]+(?:\\.[0-9]{1,2})?"))) {
+        normalizedBudget.toBigDecimalOrNull()
+    } else {
+        null
+    }
+    val budgetError = when {
+        budget.isBlank() -> null
+        budgetAmount == null -> stringResource(R.string.group_budget_invalid_format)
+        budgetAmount <= BigDecimal.ZERO -> stringResource(R.string.group_budget_must_be_positive)
+        else -> null
+    }
 
 LazyColumn(
         modifier = Modifier
@@ -96,7 +109,8 @@ LazyColumn(
         item {
             GroupBudgetInputCard(
                 budget = budget,
-                onBudgetChange = { budget = it }
+                onBudgetChange = { budget = it },
+                errorMessage = budgetError
             )
         }
 
@@ -111,7 +125,8 @@ LazyColumn(
         // 6. Botón de acción principal
         item {
             Button(
-                onClick = onNavigateNext,
+                onClick = { if (budgetError == null) onNavigateNext() },
+                enabled = budgetError == null,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp)

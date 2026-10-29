@@ -30,7 +30,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 fun GroupFormActions(
     onNextClick: () -> Unit,
     onCancelClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    nextEnabled: Boolean = true
 ) {
     Column(
         modifier = modifier
@@ -41,6 +42,7 @@ fun GroupFormActions(
         // Botón Principal: Guardar Cambios / Siguiente
         Button(
             onClick = onNextClick,
+            enabled = nextEnabled,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(52.dp),

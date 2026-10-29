@@ -53,3 +53,7 @@ fun pagarDeuda(pago: Double, usuarioActual: Usuario, grupo: Grupo): List<DeudaGr
         if (deuda.usuario.id == usuarioActual.id) deuda.copy(monto = nuevoSaldo) else deuda
     }.also { grupo.deuda = it }
 }
+
+fun getMiembros(): List<String>{
+    return listOf("Saul Apodaca", "Camila Zubia", "Ramon Zamudio", "Adel Mendez")
+}
