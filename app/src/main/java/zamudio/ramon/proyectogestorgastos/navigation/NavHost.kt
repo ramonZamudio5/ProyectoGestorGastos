@@ -59,7 +59,7 @@ val topLevelRoutes = setOf(
 )
 
 @Composable
-fun Myapp(innerPadding: PaddingValues) {
+fun Myapp() {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -108,9 +108,7 @@ fun Myapp(innerPadding: PaddingValues) {
         }
         composable<Perfil> {
             PerfilScreen(
-                innerPadding, navigateToLogin, navigateToPrincipal,
-                navigateToMetodosPago, navigateToPresupuesto, navigateToRegistroMovimiento,
-                navigateToGraficos
+                navigateToLogin, navigateToPrincipal
             )
         }
         composable<Register> {
@@ -124,26 +122,14 @@ fun Myapp(innerPadding: PaddingValues) {
         }
         composable<Inicio> {
             PrincipalScreen(
-                innerPadding = innerPadding,
-                onNavigateToPerfil = navigateToPerfil,
                 gastos = gastos,
                 onNavigateToRegistroGasto = navigateToRegistroMovimiento,
-                onNavigateToPresupuesto = navigateToPresupuesto,
-                onNavigateToHistorial = navigateToHistorial,
-                onNavigateToGraficos = navigateToGraficos,
-                onNavigateToGrupos = {
-                    navController.navigate(MyGroups) {
-                        launchSingleTop = true
-                    }
-                }
+                onNavigateToHistorial = navigateToHistorial
             )
         }
         composable<Presupuesto> {
             PresupuestoScreen(
-                innerPadding = innerPadding,
-                onNavigateToPerfil = navigateToPerfil,
-                onNavigateToPrincipal = navigateToPrincipal,
-                onNavigateToRegistroGasto = navigateToRegistroMovimiento
+                innerPadding = innerPadding
             )
         }
         composable<MetodosPago> {

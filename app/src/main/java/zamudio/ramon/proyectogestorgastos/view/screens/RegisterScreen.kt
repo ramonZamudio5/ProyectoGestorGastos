@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -34,10 +35,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
+import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightBlue
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 
 
 @Composable
@@ -46,7 +49,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
     var primerApellido by remember { mutableStateOf("") }
     var segundoApellido by remember { mutableStateOf("") }
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(innerPadding)) {
         Spacer(Modifier.height(10.dp))
         BarraProgreso(1,3)
         Text(
@@ -129,13 +132,7 @@ fun RegisterScreen(innerPadding: PaddingValues,navigateToLogin:()-> Unit,navigat
             }
         }
         Spacer(Modifier.height(30.dp))
-        Button(onClick = {navigateToRegisterPerfil()}, Modifier.fillMaxWidth().height(52.dp), colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary),
-            shape = RoundedCornerShape(40.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-                Text(text = "Continuar ->", color = Color.White, style = Typography.labelLarge)
-                Spacer(modifier = Modifier.width(8.dp))
-            }
-        }
+        BotonPrincipal("Continuar", navigateToRegisterPerfil, R.drawable.ic_arrow_right)
         Spacer(Modifier.height(25.dp))
         Row(Modifier.fillMaxWidth().clickable{navigateToLogin()},horizontalArrangement = Arrangement.Center) {
             Text("¿Ya tienes una cuenta?", style = Typography.labelLarge, color = Color(0xFF475467))

@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeBackground
@@ -50,8 +51,9 @@ fun MyGroupScreen(
 ) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(color= ScreenBackground)
-            .padding(horizontal = 20.dp),
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+            .background(MaterialTheme.colorScheme.surface),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp)
     ) {

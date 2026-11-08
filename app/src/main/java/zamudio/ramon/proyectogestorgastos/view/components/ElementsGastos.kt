@@ -360,7 +360,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
             Text("Presupuesto asignado: $" + getPresupuestoTotal(gastos).toString() + "MXN", color= PurpleGrey40)
             Box(modifier = Modifier.fillMaxWidth().padding(10.dp), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(50.dp * 2f)){
-                    drawArc(color= ScreenBackground, posicion, 360f, false,
+                    drawArc(color = White, posicion, 360f, false,
                         style = Stroke(strokeWidthPx, cap=StrokeCap.Round))
                 }
                 tipos.forEach { tipo->
@@ -471,7 +471,6 @@ fun ColumnaGastosVSEstimado(gastos: List<Gasto>) {
                             .fillMaxWidth()
                             .height(10.dp)
                             .clip(RoundedCornerShape(10.dp))
-                            .background(color = ScreenBackground)
                     ) {
                         if (porcentajeBarra > 0f) {
                             Box(

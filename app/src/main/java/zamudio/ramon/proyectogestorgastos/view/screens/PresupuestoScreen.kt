@@ -25,6 +25,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -59,10 +60,7 @@ import zamudio.ramon.proyectogestorgastos.view.components.formatoDinero
 
 @Composable
 fun PresupuestoScreen(
-    innerPadding: PaddingValues = PaddingValues(0.dp),
-    onNavigateToPerfil: () -> Unit = {},
-    onNavigateToPrincipal: () -> Unit = {},
-    onNavigateToRegistroGasto: () -> Unit = {}
+    innerPadding: PaddingValues = PaddingValues(0.dp)
 ) {
     val categorias = remember {
         mutableStateListOf(
@@ -81,7 +79,8 @@ fun PresupuestoScreen(
     val gastosObligados = 14200.0
     val disponibleMensual = (ingresoMensual - gastosObligados).coerceAtLeast(0.0)
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().padding(innerPadding)
+        .background(MaterialTheme.colorScheme.surface)) {
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)

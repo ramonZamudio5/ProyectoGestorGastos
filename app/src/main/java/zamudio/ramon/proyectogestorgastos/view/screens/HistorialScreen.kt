@@ -13,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -36,9 +37,9 @@ import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 @Composable
 fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
     var filtroActual by remember { mutableStateOf("todo") }
-    Column(Modifier.background(color= ScreenBackground).fillMaxHeight(),
+    Column(Modifier.background(MaterialTheme.colorScheme.surface).fillMaxHeight(),
         verticalArrangement = Arrangement.SpaceBetween) {
-        Column(Modifier.padding(15.dp).verticalScroll(rememberScrollState())
+        Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp).verticalScroll(rememberScrollState())
             , verticalArrangement = Arrangement.SpaceBetween) {
             OutlinedTextField(state= TextFieldState("Buscar movimiento, tienda o concepto..."),
                 modifier = Modifier.fillMaxWidth(),

@@ -54,14 +54,7 @@ fun EstadisticasPresupuesto(
                 Text(" MXN", style = Typography.labelSmall, color = PurplePrimary, modifier = Modifier.padding(bottom = 5.dp))
             }
         }
-        Button(
-            onClick = onAjustarPresupuesto,
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = PurpleButton)
-        ) {
-            Text("＋  Agregar / Ajustar Presupuesto\nMensual", color = White, style = Typography.labelLarge)
-        }
+        BotonPrincipal("Agregar / Ajustar Presupuesto\nMensual", onAjustarPresupuesto, R.drawable.ic_anadir)
     }
 }
 

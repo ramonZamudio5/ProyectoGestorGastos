@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -45,6 +46,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 
 @Composable
 fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Unit,navigateToRegisterPassword:()-> Unit) {
@@ -56,7 +58,7 @@ fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Uni
     var generoSeleccionado by remember { mutableStateOf("Selecciona una opción") }
     val opcionesGenero = listOf("Femenino", "Masculino", "No binario", "Prefiero no decirlo")
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding).verticalScroll(rememberScrollState())) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(innerPadding).verticalScroll(rememberScrollState())) {
         Spacer(Modifier.height(10.dp))
         BarraProgreso(2,3)
         Column(Modifier.padding(24.dp)) {
@@ -144,11 +146,7 @@ fun RegisterPerfilScreen(innerPadding: PaddingValues,navigateToRegister:()-> Uni
             }
 
             Spacer(Modifier.height(32.dp))
-            Button(onClick = { navigateToRegisterPassword()}, modifier = Modifier.fillMaxWidth().height(56.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8B5CF6)), shape = RoundedCornerShape(16.dp)) {
-                Text("Continuar", color = Color.White, style = Typography.titleMedium)
-                Spacer(Modifier.width(8.dp))
-                Icon(painterResource(R.drawable.ic_arrow_right), null, tint = Color.White)
-            }
+            BotonPrincipal("Continuar", navigateToRegisterPassword, R.drawable.ic_arrow_right)
             Spacer(Modifier.height(16.dp))
             Row(Modifier.fillMaxWidth().clickable { navigateToRegister()}, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                 Icon(painterResource(R.drawable.ic_chevron_left), null, tint = Color(0xFF4B5563), modifier = Modifier.size(16.dp))

@@ -34,6 +34,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -60,6 +61,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
@@ -87,9 +89,9 @@ fun RegistroGastoScreen(
     }
     val calendar = Calendar.getInstance()
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(innerPadding)) {
         Column(
-            Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 20.dp),
+            Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(11.dp)
         ) {
             SelectorTipoMovimiento(
@@ -188,27 +190,17 @@ fun RegistroGastoScreen(
                 Text(if (fecha.isBlank()) "mm/dd/aaaa" else fecha, Modifier.padding(start = 10.dp), style = Typography.bodyMedium, color = if (fecha.isBlank()) Color.Gray else Color.Black)
             }
             Spacer(Modifier.height(8.dp))
-            Button(
-                onClick = {
-                    val gasto = Gasto(
-                        nombre = descripcion.ifBlank { categoria },
-                        tipo = categoria.toTipoGasto(),
-                        cantidad = monto.toDoubleOrNull() ?: 0.0,
-                        fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("MM/dd/yyyy")),
-                        imagen = categoria.toIconoGasto(),
-                        tipoPago = TipoPago.valueOf(tipoPago),
-                        tarjetaPago = if (esGasto) tarjetaSeleccionada else null)
-                    onGuardar(gasto)
-                },
-                Modifier.fillMaxWidth().height(52.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
-                enabled = monto.isNotBlank() && categoria.isNotBlank() &&
-                    (tipoPago !in listOf("Tarjeta de débito", "Tarjeta de crédito") || tarjetaSeleccionada != null)
-            ) {
-                Icon(painterResource(R.drawable.ic_anadir), contentDescription = null, modifier = Modifier.size(18.dp))
-                Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
-            }
+            BotonPrincipal("Agregar Gasto", {
+                val gasto = Gasto(
+                    nombre = descripcion.ifBlank { categoria },
+                    tipo = categoria.toTipoGasto(),
+                    cantidad = monto.toDoubleOrNull() ?: 0.0,
+                    fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("MM/dd/yyyy")),
+                    imagen = categoria.toIconoGasto(),
+                    tipoPago = TipoPago.valueOf(tipoPago),
+                    tarjetaPago = if (esGasto) tarjetaSeleccionada else null)
+                onGuardar(gasto)
+            }, R.drawable.ic_anadir)
         }
     }
 }
@@ -339,3 +331,4 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
 private fun RegistroGastoPreview() {
     RegistroGastoScreen(PaddingValues(), {}, {}, {},tarjetasPagoMock)
 }
+

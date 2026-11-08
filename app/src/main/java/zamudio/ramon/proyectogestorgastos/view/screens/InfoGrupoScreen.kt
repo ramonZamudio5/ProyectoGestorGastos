@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,8 +41,8 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
     var filtroActual by remember { mutableStateOf("todo") }
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(color= ScreenBackground)
-            .padding(horizontal = 20.dp),
+            .fillMaxSize().background(MaterialTheme.colorScheme.surface)
+            .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp)
     ) {
@@ -73,3 +74,4 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
 fun InfoGrupoScreenPreview(){
     InfoGrupoScreen(grupo, Modifier)
 }
+

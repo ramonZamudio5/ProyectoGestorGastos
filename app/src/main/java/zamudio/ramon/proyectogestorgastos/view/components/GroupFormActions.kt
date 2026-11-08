@@ -39,49 +39,15 @@ fun GroupFormActions(
             .padding(top = 8.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        // Botón Principal: Guardar Cambios / Siguiente
-        Button(
-            onClick = onNextClick,
-            enabled = nextEnabled,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(52.dp),
-            shape = RoundedCornerShape(14.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
-        ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_check),
-                contentDescription = null,
-                tint = White,
-                modifier = Modifier.size(18.dp)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                style = GroupTextStyles.ActionBold,
-                text = stringResource(R.string.group_save_changes),
-                color = White
-            )
-        }
 
+        // Botón Principal: Guardar Cambios / Siguiente
+        BotonPrincipal("Guardar Cambios", onNextClick, R.drawable.ic_check)
         // Botón Secundario: Cancelar / Descartar
-        OutlinedButton(
-            onClick = onCancelClick,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp),
-            shape = RoundedCornerShape(14.dp),
-            colors = ButtonDefaults.outlinedButtonColors(containerColor = White)
-        ) {
-            Text(
-                style = GroupTextStyles.BodySemiBold,
-                text = stringResource(R.string.group_cancel_discard),
-                color = GroupSectionText
-            )
-        }
+        BotonSecundario("Cancelar", onCancelClick)
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun GroupFormActionsPreview(){
     GroupFormActions({}, {})

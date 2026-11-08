@@ -32,6 +32,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
 import zamudio.ramon.proyectogestorgastos.ui.theme.*
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.ItemMiembroPagador
 import java.time.Instant
 import java.time.LocalDate
@@ -545,28 +546,7 @@ fun AñadirGastoScreen() {
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(48.dp)
-                ) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_recipt),
-                            contentDescription = null,
-                            tint = White,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Text("Añadir Gasto Grupal", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = White)
-                    }
-                }
-
+                BotonPrincipal("Añadir Gasto Grupal", {}, R.drawable.ic_recipt)
                 Text(
                     text = "Cancelar",
                     color = GroupTextPrimary,

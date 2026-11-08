@@ -22,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,6 +47,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
+import zamudio.ramon.proyectogestorgastos.view.components.BotonSecundario
 
 private val bancosDisponibles = listOf(
     "BBVA México", "Nu México", "Santander", "Banorte", "HSBC", "Otro"
@@ -69,14 +72,14 @@ fun RegistrarTarjetaScreen(
 
     Column(Modifier
         .fillMaxSize()
-        .background(Color(0xFFFAF9FF))
+        .background(MaterialTheme.colorScheme.surface)
         .padding(innerPadding)) {
         Column(
             Modifier
                 .weight(1f)
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 22.dp, vertical = 26.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Spacer(Modifier.height(12.dp))
@@ -100,27 +103,10 @@ fun RegistrarTarjetaScreen(
                 TipoTarjetaButton("Crédito", tipoTarjeta == TipoTarjeta.CREDITO, Modifier.weight(1f)) { tipoTarjeta = TipoTarjeta.CREDITO }
             }
             Spacer(Modifier.height(4.dp))
-            Button(
-                onClick = {
-                    onGuardar(TarjetaPago(banco, alias, tipoTarjeta, titular.trim(), ultimosDigitos))
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(54.dp),
-                shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
-                enabled = titular.isNotBlank() && banco.isNotBlank() && alias.isNotBlank() && ultimosDigitos.length == 4
-            ) {
-                Text("Guardar Tarjeta", style = Typography.titleSmall, color = White, fontWeight = FontWeight.Bold)
-                Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = null, tint = White, modifier = Modifier
-                    .padding(start = 8.dp)
-                    .size(19.dp))
-            }
-            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Text("Cancelar", Modifier
-                    .clickable(onClick = onCancelar)
-                    .padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
-            }
+            BotonPrincipal("Guardar Tarjeta", {
+                onGuardar(TarjetaPago(banco, alias, tipoTarjeta, titular.trim(), ultimosDigitos))
+            }, R.drawable.ic_arrow_right)
+            BotonSecundario("Cancelar", onCancelar)
         }
     }
 }
@@ -209,3 +195,4 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
 private fun RegistrarTarjetaPreview() {
     RegistrarTarjetaScreen(PaddingValues(), {}, {}, {})
 }
+

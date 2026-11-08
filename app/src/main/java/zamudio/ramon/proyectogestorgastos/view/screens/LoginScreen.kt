@@ -21,6 +21,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -45,6 +46,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 
 @Composable
 fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNavigateToPrincipal:()-> Unit) {
@@ -52,7 +54,7 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNav
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding), verticalArrangement = Arrangement.Center) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(innerPadding), verticalArrangement = Arrangement.Center) {
         Text("¡Bienvenido!", style = Typography.headlineLarge)
         Text("Administra tus finanzas y gastos de forma clara, segura y sin complicaciones.", style = Typography.bodyMedium)
         Column(Modifier.padding(24.dp).clip(RoundedCornerShape(24.dp)).background(Color.White).padding(24.dp)) {
@@ -80,13 +82,7 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNav
             )
             HorizontalDivider(color = PurplePrimary.copy(alpha = 0.3f), thickness = 1.dp)
             Box(Modifier.padding(24.dp)) {
-                Button(onClick = onNavigateToPrincipal, Modifier.fillMaxWidth().height(52.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary), shape = RoundedCornerShape(12.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-                        Text(text = "Iniciar Sesión", color = Color.White, style = Typography.titleLarge)
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
-                }
+                BotonPrincipal("Iniciar Sesión", onNavigateToPrincipal)
             }
             Spacer(modifier = Modifier.height(32.dp))
         }

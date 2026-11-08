@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -51,14 +52,10 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 
 @Composable
 fun PerfilScreen(
-    innerPadding: PaddingValues,
     onNavigateToLogin: () -> Unit,
-    navigateToPrincipal: () -> Unit,
-    navigateToMetodosPago: () -> Unit = {},
-    navigateToPresupuesto: () -> Unit = {},
-    navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
+    navigateToMetodosPago: () -> Unit = {}
 ) {
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)
         .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
             Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)
@@ -211,5 +208,5 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
 @Preview
 @Composable
 fun PreviewPerfil(){
-    PerfilScreen(PaddingValues(10.dp),{},{}, {}, {}, {}, {})
+    PerfilScreen({},{})
 }

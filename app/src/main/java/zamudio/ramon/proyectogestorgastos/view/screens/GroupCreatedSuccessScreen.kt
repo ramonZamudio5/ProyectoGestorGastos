@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.White
@@ -31,6 +32,7 @@ import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.model.dominio.Usuario
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCreatedTopBar
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCreatedHeaderCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupInviteCodeCard
@@ -45,8 +47,8 @@ fun GroupCreatedSuccessScreen(
 ) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(color= ScreenBackground)
-            .padding(horizontal = 20.dp),
+            .fillMaxSize().background(MaterialTheme.colorScheme.surface)
+            .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
     ) {
@@ -79,28 +81,7 @@ fun GroupCreatedSuccessScreen(
         }
         // 5. Botón principal: Ir al panel del grupo
         item {
-            Button(
-                onClick = onNavigateToDashboard,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp)
-                    .padding(top = 4.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
-            ) {
-                Text(
-                    style = GroupTextStyles.ActionBold,
-                    text = stringResource(R.string.group_open_dashboard),
-                    color = White
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Icon(
-                    painter = painterResource(R.drawable.ic_arrow_right),
-                    contentDescription = null,
-                    tint = White,
-                    modifier = Modifier.size(18.dp)
-                )
-            }
+            BotonPrincipal("Ir al Panel del Grupo", onNavigateToDashboard, R.drawable.ic_arrow_right)
         }
     }
 }
