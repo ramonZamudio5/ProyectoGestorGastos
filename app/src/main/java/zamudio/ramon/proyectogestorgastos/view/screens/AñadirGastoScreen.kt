@@ -100,7 +100,7 @@ fun AñadirGastoScreen() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(White),
+            .background(MaterialTheme.colorScheme.background),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -131,7 +131,7 @@ fun AñadirGastoScreen() {
 
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     Box(modifier = Modifier.size(8.dp).background(PurpleButton, CircleShape))
-                    Text("Gasto compartido", color = GroupTextSecondary, fontSize = 12.sp)
+                    Text("Gasto compartido", color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp)
                 }
             }
         }
@@ -197,7 +197,7 @@ fun AñadirGastoScreen() {
                     ) {
                         Surface(
                             modifier = Modifier.weight(1f),
-                            color = White,
+                            color = OffWhite,
                             shape = RoundedCornerShape(12.dp),
                             border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                         ) {
@@ -270,7 +270,7 @@ fun AñadirGastoScreen() {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(16.dp))
-                                .background(if (esSeleccionado) PurpleButton else White)
+                                .background(if (esSeleccionado) PurpleButton else OffWhite)
                                 .border(1.dp, if (esSeleccionado) Color.Transparent else GroupBorder, RoundedCornerShape(16.dp))
                                 .clickable { categoriaSeleccionadaNombre = cat.nombre }
                                 .padding(vertical = 12.dp, horizontal = 16.dp)
@@ -279,7 +279,7 @@ fun AñadirGastoScreen() {
                                 modifier = Modifier
                                     .size(40.dp)
                                     .background(
-                                        if (esSeleccionado) White.copy(alpha = 0.2f) else cat.colorClaro,
+                                        if (esSeleccionado) OffWhite.copy(alpha = 0.2f) else cat.colorClaro,
                                         CircleShape
                                     ),
                                 contentAlignment = Alignment.Center
@@ -287,7 +287,7 @@ fun AñadirGastoScreen() {
                                 Icon(
                                     painter = painterResource(id = cat.icono),
                                     contentDescription = cat.nombre,
-                                    tint = if (esSeleccionado) White else cat.color,
+                                    tint = if (esSeleccionado) OffWhite else cat.color,
                                     modifier = Modifier.size(22.dp)
                                 )
                             }
@@ -296,7 +296,7 @@ fun AñadirGastoScreen() {
                                 cat.nombre,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Medium,
-                                color = if (esSeleccionado) White else GroupTextPrimary
+                                color = if (esSeleccionado) OffWhite else GroupTextPrimary
                             )
                         }
                     }
@@ -306,7 +306,7 @@ fun AñadirGastoScreen() {
 
         item {
             Card(
-                colors = CardDefaults.cardColors(containerColor = White),
+                colors = CardDefaults.cardColors(containerColor = OffWhite),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder),
                 modifier = Modifier.fillMaxWidth()
@@ -348,7 +348,7 @@ fun AñadirGastoScreen() {
 
         item {
             Card(
-                colors = CardDefaults.cardColors(containerColor = White),
+                colors = CardDefaults.cardColors(containerColor = OffWhite),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder),
                 modifier = Modifier.fillMaxWidth()
@@ -453,7 +453,7 @@ fun AñadirGastoScreen() {
                                     color = PurpleButton
                                 )
                             }
-                            Surface(color = White, shape = RoundedCornerShape(10.dp)) {
+                            Surface(color = OffWhite, shape = RoundedCornerShape(10.dp)) {
                                 Text(
                                     text = "$totalMiembros personas",
                                     fontSize = 10.sp,
@@ -477,7 +477,7 @@ fun AñadirGastoScreen() {
                     modifier = Modifier
                         .weight(1f)
                         .clickable { mostrarDatePicker = true },
-                    color = White,
+                    color = OffWhite,
                     shape = RoundedCornerShape(12.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                 ) {
@@ -510,7 +510,7 @@ fun AñadirGastoScreen() {
 
                 Surface(
                     modifier = Modifier.weight(1f),
-                    color = White,
+                    color = OffWhite,
                     shape = RoundedCornerShape(12.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                 ) {

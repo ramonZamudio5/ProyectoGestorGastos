@@ -26,7 +26,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeText
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupJoinAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.pluralStringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -105,14 +105,14 @@ fun MyGroupScreen(
                     Icon(
                         painter = painterResource(R.drawable.ic_add_person),
                         contentDescription = null,
-                        tint = White,
+                        tint = OffWhite,
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         style = GroupTextStyles.ActionBold,
                         text = stringResource(R.string.groups_create),
-                        color = White
+                        color = OffWhite
                     )
                 }
 
@@ -124,7 +124,7 @@ fun MyGroupScreen(
                         .height(50.dp),
                     shape = RoundedCornerShape(14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = White
+                        containerColor = OffWhite
                     ),
                     elevation = ButtonDefaults.buttonElevation(defaultElevation = 1.dp)
                 ) {

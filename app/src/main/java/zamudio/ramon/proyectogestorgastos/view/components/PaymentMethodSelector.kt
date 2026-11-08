@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupIconSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.R
@@ -72,14 +72,14 @@ fun PaymentMethodSelector(
                         Icon(
                             painter = painterResource(iconRes),
                             contentDescription = "${metodo.name} icon",
-                            tint = if (seleccionado) White else GroupIconSecondary,
+                            tint = if (seleccionado) OffWhite else GroupIconSecondary,
                             modifier = Modifier.size(20.dp)
                         )
                         Text(
                             text = metodo.name,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.SemiBold,
-                            color = if (seleccionado) White else GroupIconSecondary
+                            color = if (seleccionado) OffWhite else GroupIconSecondary
                         )
                     }
                 }

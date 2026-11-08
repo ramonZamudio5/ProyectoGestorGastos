@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +26,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 
 @Composable
 fun ColumnaGrupos(grupos: List<Grupo>){
-    LazyColumn(){
+    LazyColumn(Modifier.background(MaterialTheme.colorScheme.secondary)){
         items(grupos){
                 it ->BannerGrupo(it)
         }
@@ -34,7 +35,8 @@ fun ColumnaGrupos(grupos: List<Grupo>){
 
 @Composable
 fun BannerGrupo(grupo: Grupo){
-    Row(modifier = Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically){
+    Row(modifier = Modifier.fillMaxWidth().padding(10.dp)
+        .background(MaterialTheme.colorScheme.secondary), verticalAlignment = Alignment.CenterVertically){
         Box(modifier = Modifier.padding(10.dp), contentAlignment = Alignment.Center){
             Box(Modifier.background(color= Purple80, shape = CircleShape).size(60.dp))
             Image(painterResource(grupo.imagen), contentDescription = "${grupo.nombre} imagen", Modifier.size(50.dp))

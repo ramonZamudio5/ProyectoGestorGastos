@@ -18,7 +18,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable

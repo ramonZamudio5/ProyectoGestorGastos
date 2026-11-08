@@ -47,7 +47,7 @@ fun BotonSecundario(texto: String, onClick: ()-> Unit, icon: Int? = null){
     Button(onClick= onClick,
         modifier = Modifier.fillMaxWidth().height(52.dp),
         shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
+        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface, contentColor = MaterialTheme.colorScheme.onSurface)
     ) {
         Text(texto, Modifier.padding(start = 8.dp), style = Typography.labelLarge, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.width(8.dp))

@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.R
@@ -36,7 +36,7 @@ fun EstadisticasPresupuesto(
     onEditarIngresos: () -> Unit
 ) {
     Column(
-        Modifier.fillMaxWidth().background(White, RoundedCornerShape(18.dp)).padding(16.dp),
+        Modifier.fillMaxWidth().background(OffWhite, RoundedCornerShape(18.dp)).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

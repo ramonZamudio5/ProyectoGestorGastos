@@ -47,7 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
@@ -181,7 +181,7 @@ private fun SelectorAsignacion(texto: String, seleccionado: Boolean, modifier: M
     Button(
         onClick = onClick, modifier = modifier.height(34.dp),
         shape = RoundedCornerShape(8.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = if (seleccionado) White else Color.Transparent, contentColor = Color(0xFF293044)),
+        colors = ButtonDefaults.buttonColors(containerColor = if (seleccionado) OffWhite else Color.Transparent, contentColor = Color(0xFF293044)),
         contentPadding = PaddingValues(horizontal = 4.dp)
     ) { Text(texto, style = Typography.labelSmall) }
 }
@@ -211,7 +211,7 @@ private fun EditorCategoriaBottomSheet(
             Card(
                 Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(topStart = 22.dp, topEnd = 22.dp),
-                colors = CardDefaults.cardColors(containerColor = White)
+                colors = CardDefaults.cardColors(containerColor = OffWhite)
             ) {
                 Column(
                     Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 18.dp, vertical = 12.dp),
@@ -277,7 +277,7 @@ private fun EditorCategoriaBottomSheet(
                         onClick = { onConfirmar(montoAsignado) }, modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(11.dp), colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
                         enabled = montoAsignado > 0
-                    ) { Text("✓  Confirmar y Aplicar (\$${montoAsignado.formatoDinero()} MXN)", color = White, style = Typography.labelLarge) }
+                    ) { Text("✓  Confirmar y Aplicar (\$${montoAsignado.formatoDinero()} MXN)", color = OffWhite, style = Typography.labelLarge) }
                 }
             }
         }

@@ -15,7 +15,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable

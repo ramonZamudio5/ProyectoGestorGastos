@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.R
 
@@ -33,7 +33,7 @@ fun AlertaPresupuesto(
     onPorcentajeChange: (Int) -> Unit
 ) {
     Column(
-        Modifier.fillMaxWidth().background(White, RoundedCornerShape(16.dp)).padding(14.dp),
+        Modifier.fillMaxWidth().background(OffWhite, RoundedCornerShape(16.dp)).padding(14.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -49,7 +49,7 @@ fun AlertaPresupuesto(
             Switch(
                 checked = activa,
                 onCheckedChange = onActivaChange,
-                colors = SwitchDefaults.colors(checkedThumbColor = White, checkedTrackColor = PurpleButton)
+                colors = SwitchDefaults.colors(checkedThumbColor = OffWhite, checkedTrackColor = PurpleButton)
             )
         }
         if (activa) {
@@ -65,7 +65,7 @@ fun AlertaPresupuesto(
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = if (value == porcentaje) PurpleButton else Color(0xFFF0F0FF),
-                            contentColor = if (value == porcentaje) White else Color.DarkGray
+                            contentColor = if (value == porcentaje) OffWhite else Color.DarkGray
                         ),
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 6.dp)
                     ) { Text("$value%", style = Typography.labelSmall) }

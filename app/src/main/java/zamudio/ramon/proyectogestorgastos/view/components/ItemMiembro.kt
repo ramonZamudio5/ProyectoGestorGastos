@@ -67,7 +67,7 @@ fun ItemMiembroPagador(
                     tint = PurpleButton,
                     modifier = Modifier
                         .size(16.dp)
-                        .background(White, CircleShape)
+                        .background(OffWhite, CircleShape)
                 )
             }
         }

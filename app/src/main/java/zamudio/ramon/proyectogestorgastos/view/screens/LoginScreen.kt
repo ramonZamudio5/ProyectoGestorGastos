@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
@@ -56,15 +57,16 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNav
 
     Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(innerPadding), verticalArrangement = Arrangement.Center) {
         Text("¡Bienvenido!", style = Typography.headlineLarge)
-        Text("Administra tus finanzas y gastos de forma clara, segura y sin complicaciones.", style = Typography.bodyMedium)
-        Column(Modifier.padding(24.dp).clip(RoundedCornerShape(24.dp)).background(Color.White).padding(24.dp)) {
-            Text("Correo Electrónico", style = Typography.labelLarge)
+        Text("Administra tus finanzas y gastos de forma clara, segura y sin complicaciones.",
+            style = Typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
+        Column(Modifier.padding(24.dp).clip(RoundedCornerShape(24.dp)).background(MaterialTheme.colorScheme.secondary).padding(24.dp)) {
+            Text("Correo Electrónico", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
             Spacer(Modifier.height(8.dp))
             TextField(value = user, onValueChange = { user = it }, placeholder = { Text("ejemplo@gastoclaro.com") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)), singleLine = true)
             Spacer(Modifier.height(20.dp))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Text("Contraseña", style = Typography.labelLarge)
+                Text("Contraseña", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
                 Text(text = "¿Olvidaste tu contraseña?",Modifier.clickable { }, style = Typography.bodySmall,color = PurplePrimary)
             }
             Spacer(Modifier.height(8.dp))
@@ -76,8 +78,8 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNav
                 }, visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)),
                 colors = TextFieldDefaults.colors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
+                    focusedIndicatorColor = GroupFieldBackground,
+                    unfocusedIndicatorColor = GroupFieldBackground
                 ), singleLine = true
             )
             HorizontalDivider(color = PurplePrimary.copy(alpha = 0.3f), thickness = 1.dp)
@@ -87,7 +89,8 @@ fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNav
             Spacer(modifier = Modifier.height(32.dp))
         }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("¿Aún no tienes una cuenta en GastoClaro?", style = Typography.labelLarge, color = Color(0xFF475467))
+            Text("¿Aún no tienes una cuenta en GastoClaro?",
+                style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSurface)
             Spacer(Modifier.height(8.dp))
             Row(Modifier.clickable { navigateToRegister()}, verticalAlignment = Alignment.CenterVertically) {
                 Text("Regístrate", color = PurplePrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)

@@ -57,7 +57,7 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
@@ -160,7 +160,7 @@ fun RegistroGastoScreen(
                 style = Typography.labelLarge, fontWeight = FontWeight.SemiBold
             )
             Row(
-                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(White)
+                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(OffWhite)
                     .clickable { receiptPicker.launch("image/*") }.padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -179,7 +179,7 @@ fun RegistroGastoScreen(
             }
             Text("Fecha", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
             Row(
-                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(White)
+                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(OffWhite)
                     .clickable {
                         DatePickerDialog(context, { _, year, month, day -> fecha = "%02d/%02d/%04d".format(day, month + 1, year) },
                             calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
@@ -227,7 +227,7 @@ private fun SelectorTipoMovimiento(
     onSeleccionarIngreso: () -> Unit
 ) {
     BoxWithConstraints(
-        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(White).padding(4.dp)
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(OffWhite).padding(4.dp)
     ) {
         val anchoOpcion = maxWidth / 2
         val desplazamiento = animateDpAsState(
@@ -253,7 +253,7 @@ private fun OpcionTipoMovimiento(
     onClick: () -> Unit
 ) {
     val colorTexto = animateColorAsState(
-        targetValue = if (seleccionada) White else Color(0xFF171717),
+        targetValue = if (seleccionada) OffWhite else Color(0xFF171717),
         label = "Color texto tipo movimiento"
     )
     Box(
@@ -281,7 +281,7 @@ private fun CampoRegistro(
             shape = RoundedCornerShape(10.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = PurplePrimary, unfocusedBorderColor = Color.Transparent,
-                focusedContainerColor = White, unfocusedContainerColor = White
+                focusedContainerColor = OffWhite, unfocusedContainerColor = OffWhite
             )
         )
     }
@@ -295,7 +295,7 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
         Box {
             Surface(
                 modifier = Modifier.fillMaxWidth().height(48.dp).clickable { expanded = true },
-                shape = RoundedCornerShape(10.dp), color = White
+                shape = RoundedCornerShape(10.dp), color = OffWhite
             ) {
                 Row(
                     Modifier.padding(horizontal = 12.dp),

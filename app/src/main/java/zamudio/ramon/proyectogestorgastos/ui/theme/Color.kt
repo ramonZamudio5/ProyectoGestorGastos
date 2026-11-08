@@ -3,18 +3,15 @@ package zamudio.ramon.proyectogestorgastos.ui.theme
 import androidx.compose.ui.graphics.Color
 
 //inteneto de homogenizar el diseño >:/
-//esto es para el modo claro
 val ScreenBackground = Color(0xFFEFE8F9)
 val PurpleButton = Color(0xFF8455EF) // esto es para los botones principales
 val OffWhite = Color(0xFFFEFEFE)
 val OffBlack = Color(0xFF0E0E0E)
+
 //modo oscuro
 val ScreenDarkBackground = Color(0xFF281C3B)
 
 val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 
@@ -30,13 +27,9 @@ val RedlogOut = Color(0xFFB91C1C)
 
 val BackgroundRed = Color(0xFFFCE8E8)
 
-
 val BackGroundPurple = Color(0xFFEBE4FF)
 
 val BlueNavy = Color(0xFF131B2E)
-
-val White = Color(0xFFFFFFFF)
-
 val SecondaryBackgroundColor = Color(0xFFE2E7FF)
 
 //colores que puede utilizar el usuario

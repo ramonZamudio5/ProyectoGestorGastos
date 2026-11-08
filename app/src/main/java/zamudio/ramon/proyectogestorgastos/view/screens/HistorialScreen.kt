@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
 import zamudio.ramon.proyectogestorgastos.view.components.Header
@@ -43,15 +43,15 @@ fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateT
             , verticalArrangement = Arrangement.SpaceBetween) {
             OutlinedTextField(state= TextFieldState("Buscar movimiento, tienda o concepto..."),
                 modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = White,
-                unfocusedContainerColor = White, disabledContainerColor = White,
-                errorContainerColor = White, focusedBorderColor = Color.Transparent,
+                colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = OffWhite,
+                unfocusedContainerColor = OffWhite, disabledContainerColor = OffWhite,
+                errorContainerColor = OffWhite, focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent,
                 errorBorderColor = Color.Transparent), shape = RoundedCornerShape(10.dp))
             Spacer(Modifier.size(10.dp))
             RowDeFiltros(gastos, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             Spacer(Modifier.size(10.dp))
-            Column(modifier = Modifier.background(color= White, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
+            Column(modifier = Modifier.background(color= OffWhite, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
                 ColumnaGastosPorFiltro(filtroActual, gastos)
             }
         }

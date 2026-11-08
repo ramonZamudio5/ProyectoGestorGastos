@@ -43,7 +43,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
@@ -138,8 +138,8 @@ private fun CampoTarjeta(
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = PurplePrimary,
                 unfocusedBorderColor = Color.Transparent,
-                focusedContainerColor = White,
-                unfocusedContainerColor = White
+                focusedContainerColor = OffWhite,
+                unfocusedContainerColor = OffWhite
             )
         )
     }
@@ -156,7 +156,7 @@ private fun SelectorBanco(banco: String, onSeleccionar: (String) -> Unit) {
                     .fillMaxWidth()
                     .height(54.dp)
                     .clip(RoundedCornerShape(13.dp))
-                    .background(White)
+                    .background(OffWhite)
                     .clickable { expanded = true }
                     .padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
@@ -180,7 +180,7 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
         modifier = modifier.height(40.dp),
         shape = RoundedCornerShape(9.dp),
         colors = ButtonDefaults.buttonColors(
-        containerColor = if (seleccionado) White else Color.Transparent,
+        containerColor = if (seleccionado) OffWhite else Color.Transparent,
         contentColor = if (seleccionado) PurplePrimary else Color(0xFF667085)
         ),
         contentPadding = PaddingValues(horizontal = 6.dp)

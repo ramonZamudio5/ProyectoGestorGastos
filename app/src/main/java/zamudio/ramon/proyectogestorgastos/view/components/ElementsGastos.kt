@@ -25,6 +25,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -49,10 +50,10 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Purple80
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightGreen
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightRed
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
@@ -153,8 +154,8 @@ fun RowDeFiltros(
 
 @Composable
 fun FiltroChip(texto: String, seleccionado: Boolean, colorActivo: Color = Purple40, onClick: () -> Unit) {
-    val colorFondo = if (seleccionado) colorActivo else White
-    val colorTexto = if (seleccionado) White else Color.Black
+    val colorFondo = if (seleccionado) colorActivo else MaterialTheme.colorScheme.secondary
+    val colorTexto = if (seleccionado) MaterialTheme.colorScheme.secondary else Color.Black
 
     Box(
         modifier = Modifier
@@ -177,7 +178,7 @@ fun BannerGasto(gasto: Gasto) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp, horizontal = 2.dp)
-            .background(color = White, shape = RoundedCornerShape(10.dp))
+            .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
             .draggable(
                 orientation = Orientation.Horizontal,
                 enabled = true,
@@ -216,7 +217,7 @@ fun BannerGasto(gasto: Gasto) {
 fun BannerBalance(gastos: Double, ingresos: Double) {
     Column(
         Modifier
-            .background(color = White, shape = RoundedCornerShape(10.dp))
+            .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
             .fillMaxWidth()
             .padding(10.dp)
     ) {
@@ -231,7 +232,7 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
         Spacer(Modifier.height(10.dp))
         Row(
             Modifier
-                .background(color = White, shape = RoundedCornerShape(10.dp))
+                .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -260,7 +261,7 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
 fun BannerDistribucion(gastos: List<Gasto>) {
     Column(
         Modifier
-            .background(color = White, shape = RoundedCornerShape(10.dp))
+            .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
             .fillMaxWidth()
             .padding(10.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -351,7 +352,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
     val gastosTotales = getGastosTotales(gastos)
     val strokeWidthPx = with(LocalDensity.current) { 15.dp.toPx() }
     Column(Modifier
-        .background(color = White, shape = RoundedCornerShape(10.dp))
+        .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
         .fillMaxWidth()
         .padding(15.dp)) {
         Text("Gastos Totales", style = Typography.titleSmall)
@@ -360,7 +361,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
             Text("Presupuesto asignado: $" + getPresupuestoTotal(gastos).toString() + "MXN", color= PurpleGrey40)
             Box(modifier = Modifier.fillMaxWidth().padding(10.dp), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(50.dp * 2f)){
-                    drawArc(color = White, posicion, 360f, false,
+                    drawArc(color = OffWhite, posicion, 360f, false,
                         style = Stroke(strokeWidthPx, cap=StrokeCap.Round))
                 }
                 tipos.forEach { tipo->
@@ -415,7 +416,7 @@ fun BannerPromedioDiario(gastos: List<Gasto>) {
 
     Column(
         modifier = Modifier
-            .background(color = White, shape = RoundedCornerShape(10.dp))
+            .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
             .fillMaxWidth()
             .padding(15.dp)
     ) {
@@ -432,7 +433,7 @@ fun BannerPromedioDiario(gastos: List<Gasto>) {
 fun ColumnaGastosVSEstimado(gastos: List<Gasto>) {
     val tipos = getTiposInGastos(gastos)
 
-    Column(modifier = Modifier.background(color = White, shape = RoundedCornerShape(10.dp))
+    Column(modifier = Modifier.background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
         .fillMaxWidth().padding(15.dp)) {
         Text(text = "Gastado VS Estimado", style = Typography.titleSmall)
         Spacer(modifier = Modifier.height(10.dp))

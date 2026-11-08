@@ -32,7 +32,7 @@ import zamudio.ramon.proyectogestorgastos.model.data.getGastosTotales
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.view.components.BannerBalance
 import zamudio.ramon.proyectogestorgastos.view.components.BannerDistribucion
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
@@ -54,11 +54,11 @@ fun PrincipalScreen(
             Spacer(Modifier.size(10.dp))
             BannerDistribucion(gastos)
             Spacer(Modifier.size(10.dp))
-            Column(modifier = Modifier.background(color= White, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
+            Column(modifier = Modifier.background(color= OffWhite, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
                 Text("Últimos gastos", style = Typography.titleMedium)
                 ColumnaGastos(gastos)
                 Row(modifier = Modifier.fillMaxWidth().padding(5.dp)
-                    .background(color= White, shape = RoundedCornerShape(10.dp)).clickable(onClick = onNavigateToHistorial),
+                    .background(color= OffWhite, shape = RoundedCornerShape(10.dp)).clickable(onClick = onNavigateToHistorial),
                     verticalAlignment = Alignment.CenterVertically){
                     Text("Ver historial completo", style= Typography.labelLarge)
                 }
