@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItemInfo
@@ -41,8 +40,8 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
     var filtroActual by remember { mutableStateOf("todo") }
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 16.dp),
+            .fillMaxSize().background(MaterialTheme.colorScheme.background)
+            .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp)
     ) {
@@ -60,8 +59,8 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
         }
         item {
             Row(Modifier.fillMaxWidth().padding(5.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                Text("Gastos Recientes", style = Typography.titleMedium)
-                Row(Modifier.clickable(onClick = {})) {Text("Ver todos", style = Typography.labelMedium) }
+                Text("Gastos Recientes", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
+                Row(Modifier.clickable(onClick = {})) {Text("Ver todos", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary) }
             }
             RowDeFiltros(gastosMock, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             ColumnaGastosPorFiltro(filtroActual, gastosMock)
@@ -74,4 +73,6 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
 fun InfoGrupoScreenPreview(){
     InfoGrupoScreen(grupo, Modifier)
 }
+
+
 

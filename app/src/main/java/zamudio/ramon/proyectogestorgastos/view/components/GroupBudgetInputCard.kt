@@ -31,7 +31,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
@@ -85,7 +85,7 @@ fun GroupBudgetInputCard(
                 Text(
                     style = GroupTextStyles.AmountBold,
                     text = stringResource(R.string.group_currency_symbol),
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
 
                 Spacer(modifier = Modifier.width(8.dp))
@@ -101,7 +101,7 @@ fun GroupBudgetInputCard(
                     textStyle = GroupTextStyles.AmountBold.copy(
                         color = GroupTextPrimary
                     ),
-                    cursorBrush = SolidColor(PurplePrimary),
+                    cursorBrush = SolidColor(PurpleButton),
                     decorationBox = { innerTextField ->
                         if (budget.isEmpty()) {
                             Text(

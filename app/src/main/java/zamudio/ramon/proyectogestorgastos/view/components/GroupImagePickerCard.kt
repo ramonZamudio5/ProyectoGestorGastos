@@ -45,7 +45,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 enum class ImagePickerMode {
     FOTO_REAL,
@@ -116,7 +116,7 @@ fun GroupImagePickerCard(
                             Icon(
                                 painter = painterResource(R.drawable.ic_image),
                                 contentDescription = null,
-                                tint = if (isFotoReal) PurplePrimary else GroupTextSecondary,
+                                tint = if (isFotoReal) PurpleButton else GroupTextSecondary,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -143,7 +143,7 @@ fun GroupImagePickerCard(
                             Icon(
                                 painter = painterResource(R.drawable.ic_emojie),
                                 contentDescription = null,
-                                tint = if (isIcono) PurplePrimary else GroupTextSecondary,
+                                tint = if (isIcono) PurpleButton else GroupTextSecondary,
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
@@ -164,7 +164,7 @@ fun GroupImagePickerCard(
                 ActionButtonSquare(
                     title = stringResource(R.string.group_take_photo),
                     icon = painterResource(R.drawable.ic_camara),
-                    accentColor = PurplePrimary,
+                    accentColor = PurpleButton,
                     backgroundColor = GroupAccentBackground,
                     onClick = onTakePhotoClick,
                     modifier = Modifier.weight(1f)
@@ -174,7 +174,7 @@ fun GroupImagePickerCard(
                 ActionButtonSquare(
                     title = stringResource(R.string.group_gallery),
                     icon = painterResource(R.drawable.ic_image),
-                    accentColor = PurplePrimary,
+                    accentColor = PurpleButton,
                     backgroundColor = GroupAccentBackground,
                     onClick = onGalleryClick,
                     modifier = Modifier.weight(1f)

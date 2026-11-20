@@ -20,7 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 
 @Composable
@@ -34,13 +34,13 @@ fun BarraProgreso(pasoActual: Int, totalPasos: Int) {
         Text(
             text = stringResource(R.string.group_step, pasoActual, totalPasos),
             style = Typography.labelLarge,
-            color = PurplePrimary
+            color = PurpleButton
         )
         Spacer(Modifier.width(16.dp))
         Box(Modifier.weight(1f).height(8.dp).clip(RoundedCornerShape(4.dp)).background(
                 BackGroundPurple)) {
             Box(
-                modifier = Modifier.fillMaxWidth(progreso).fillMaxHeight().clip(RoundedCornerShape(4.dp)).background(PurplePrimary)
+                modifier = Modifier.fillMaxWidth(progreso).fillMaxHeight().clip(RoundedCornerShape(4.dp)).background(PurpleButton)
             )
         }
     }

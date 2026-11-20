@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
@@ -24,7 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupCreatedTopBar(
@@ -51,7 +52,7 @@ fun GroupCreatedTopBar(
                 Icon(
                     painter = painterResource(R.drawable.ic_celebration),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(20.dp)
                 )
             }
@@ -60,7 +61,7 @@ fun GroupCreatedTopBar(
 
                 style = GroupTextStyles.SuccessTitleBold,
                 text = stringResource(R.string.group_created_title),
-                color = GroupTextPrimary
+                color = MaterialTheme.colorScheme.onBackground
             )
         }
 

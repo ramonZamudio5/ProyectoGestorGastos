@@ -17,7 +17,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -28,7 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.Purple40
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
 
 enum class BalanceType {
@@ -48,7 +47,7 @@ fun BalanceStatCard(
     }
     val amount = 3000.00
     val accentColor = when (type) {
-        BalanceType.TE_DEBEN -> Purple40
+        BalanceType.TE_DEBEN -> PurpleButton
         BalanceType.DEBES -> RedlogOut
     }
     val iconRes = when (type) {

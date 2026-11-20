@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarBlue
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarGreen
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarOrange
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -62,7 +62,7 @@ fun AvatarStack(
                     .size(26.dp)
                     .border(1.5.dp, OffWhite, CircleShape)
                     .clip(CircleShape)
-                    .background(PurplePrimary), // Morado como el acento de la app
+                    .background(PurpleButton), // Morado como el acento de la app
                 contentAlignment = Alignment.Center
             ) {
                 Text(

@@ -26,7 +26,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupIconSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.MetodoPago
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun PaymentMethodSelector(
@@ -61,7 +61,7 @@ fun PaymentMethodSelector(
                         .weight(1f)
                         .clip(RoundedCornerShape(12.dp))
                         .clickable { onMetodoSelected(metodo) },
-                    color = if (seleccionado) PurplePrimary else GroupFieldBackground,
+                    color = if (seleccionado) PurpleButton else GroupFieldBackground,
                     shape = RoundedCornerShape(12.dp)
                 ) {
                     Column(

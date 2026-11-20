@@ -3,27 +3,12 @@ package zamudio.ramon.proyectogestorgastos.view.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
-import androidx.compose.ui.res.stringResource
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
@@ -31,7 +16,6 @@ import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.model.dominio.Usuario
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCreatedTopBar
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCreatedHeaderCard
@@ -47,8 +31,8 @@ fun GroupCreatedSuccessScreen(
 ) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 16.dp),
+            .fillMaxSize().background(MaterialTheme.colorScheme.background)
+            .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
     ) {
@@ -92,3 +76,5 @@ fun GroupCreatedSuccessScreen(
 fun GroupCreatedSuccessScreenPreview() {
     GroupCreatedSuccessScreen(grupo, usuarios)
 }
+
+

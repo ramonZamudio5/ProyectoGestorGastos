@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,7 +39,7 @@ fun CreateEditGroupScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize().background(MaterialTheme.colorScheme.background)
-            .padding(horizontal = 16.dp),
+            .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
     ) {
@@ -89,4 +88,5 @@ fun CreateEditGroupScreen(
 fun CreateEditGroupScreenPreview() {
     CreateEditGroupScreen()
 }
+
 

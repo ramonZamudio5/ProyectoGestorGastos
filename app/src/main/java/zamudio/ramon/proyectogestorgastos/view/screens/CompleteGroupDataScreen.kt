@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBudgetInputCard
@@ -54,7 +54,7 @@ fun CompleteGroupDataScreen(
 LazyColumn(
         modifier = Modifier
             .fillMaxSize().background(MaterialTheme.colorScheme.background)
-            .padding(horizontal = 16.dp),
+            .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp)
     ) {
@@ -89,7 +89,7 @@ LazyColumn(
                     "Amigos / Viajes",
                     "Vacaciones y escapadas",
                     R.drawable.ic_flight,
-                    PurplePrimary
+                    PurpleButton
                 ),
                 onEditClick = onEditGroupClick
             )
@@ -127,4 +127,5 @@ LazyColumn(
 fun CompleteGroupDataScreenPreview(){
     CompleteGroupDataScreen()
 }
+
 

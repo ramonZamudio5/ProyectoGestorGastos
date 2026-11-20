@@ -46,9 +46,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
-import zamudio.ramon.proyectogestorgastos.view.components.BotonSecundario
+import zamudio.ramon.proyectogestorgastos.view.components.BotonLink
 
 private val bancosDisponibles = listOf(
     "BBVA México", "Nu México", "Santander", "Banorte", "HSBC", "Otro"
@@ -72,7 +71,7 @@ fun RegistrarTarjetaScreen(
 
     Column(Modifier
         .fillMaxSize()
-        .background(MaterialTheme.colorScheme.surface)
+        .background(MaterialTheme.colorScheme.background)
         .padding(innerPadding)) {
         Column(
             Modifier
@@ -106,7 +105,7 @@ fun RegistrarTarjetaScreen(
             BotonPrincipal("Guardar Tarjeta", {
                 onGuardar(TarjetaPago(banco, alias, tipoTarjeta, titular.trim(), ultimosDigitos))
             }, R.drawable.ic_arrow_right)
-            BotonSecundario("Cancelar", onCancelar)
+            BotonLink("Cancelar", onCancelar)
         }
     }
 }
@@ -136,7 +135,7 @@ private fun CampoTarjeta(
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             shape = RoundedCornerShape(13.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PurplePrimary,
+                focusedBorderColor = PurpleButton,
                 unfocusedBorderColor = Color.Transparent,
                 focusedContainerColor = OffWhite,
                 unfocusedContainerColor = OffWhite
@@ -181,11 +180,11 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
         shape = RoundedCornerShape(9.dp),
         colors = ButtonDefaults.buttonColors(
         containerColor = if (seleccionado) OffWhite else Color.Transparent,
-        contentColor = if (seleccionado) PurplePrimary else Color(0xFF667085)
+        contentColor = if (seleccionado) PurpleButton else Color(0xFF667085)
         ),
         contentPadding = PaddingValues(horizontal = 6.dp)
     ) {
-        Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = if (seleccionado) PurplePrimary else Color(0xFF667085), modifier = Modifier.size(17.dp))
+        Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = if (seleccionado) PurpleButton else Color(0xFF667085), modifier = Modifier.size(17.dp))
         Text(texto, Modifier.padding(start = 6.dp), style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
     }
 }
@@ -195,4 +194,5 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
 private fun RegistrarTarjetaPreview() {
     RegistrarTarjetaScreen(PaddingValues(), {}, {}, {})
 }
+
 

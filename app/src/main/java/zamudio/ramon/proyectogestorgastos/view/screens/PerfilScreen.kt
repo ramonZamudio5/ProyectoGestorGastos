@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -45,18 +44,17 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.BackgroundRed
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayForm
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 
 @Composable
 fun PerfilScreen(
     onNavigateToLogin: () -> Unit,
     navigateToMetodosPago: () -> Unit = {}
 ) {
-    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)
-        .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
+        .padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
             Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)
                 .padding(vertical = 32.dp), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -79,7 +77,7 @@ fun PerfilScreen(
                     .clickable(onClick = navigateToMetodosPago).padding(18.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurplePrimary)
+                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurpleButton)
                 Spacer(Modifier.width(12.dp))
                 Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge, fontWeight = FontWeight.SemiBold)
                 Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = "Abrir métodos de pago", tint = GrayText)
@@ -154,7 +152,7 @@ fun TarjetaSeguridad() {
         Row(Modifier.fillMaxWidth().padding(bottom = 24.dp),verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(36.dp).clip(CircleShape).background(Color(0xFFF3E8FF)), contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_shield), contentDescription = "Icono Seguridad",
-                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurpleButton, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Text("Seguridad y Acceso", style = Typography.titleLarge)
@@ -183,7 +181,7 @@ fun TarjetaSeguridad() {
             Box(Modifier.size(40.dp).clip(RoundedCornerShape(10.dp)).background(Color(0xFFF3E8FF)),
                 contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_key), contentDescription = "Llave",
-                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurpleButton, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
@@ -210,3 +208,5 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
 fun PreviewPerfil(){
     PerfilScreen({},{})
 }
+
+

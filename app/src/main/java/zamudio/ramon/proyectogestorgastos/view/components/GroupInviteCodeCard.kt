@@ -37,7 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupInviteCodeCard(
@@ -69,7 +69,7 @@ fun GroupInviteCodeCard(
                 Icon(
                     painter = painterResource(R.drawable.ic_key),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(18.dp)
                 )
 
@@ -137,14 +137,14 @@ fun GroupInviteCodeCard(
                     Icon(
                         painter = painterResource(R.drawable.ic_copy),
                         contentDescription = null,
-                        tint = PurplePrimary,
+                        tint = PurpleButton,
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         style = GroupTextStyles.SupportingBold,
                         text = stringResource(R.string.group_copy_code, code),
-                        color = PurplePrimary
+                        color = PurpleButton
                     )
                 }
             }

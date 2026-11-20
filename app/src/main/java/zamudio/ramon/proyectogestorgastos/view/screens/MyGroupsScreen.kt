@@ -39,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBalanceSummaryCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItem
 
@@ -52,10 +51,9 @@ fun MyGroupScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp)
-            .background(MaterialTheme.colorScheme.surface),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp)
+            .padding(20.dp)
+            .background(MaterialTheme.colorScheme.background),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // 1. TÍTULO Y BADGE DE GRUPOS ACTIVOS
         item {
@@ -179,3 +177,5 @@ fun MyGroupScreen(
 fun MyGroupScreenPreview() {
     MyGroupScreen()
 }
+
+

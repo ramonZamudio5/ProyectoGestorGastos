@@ -24,7 +24,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.BannerPromedioDiario
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosVSEstimado
 import zamudio.ramon.proyectogestorgastos.view.components.GraficaGastos
@@ -33,9 +32,9 @@ import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 @Composable
 fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
     var filtroActual by remember { mutableStateOf("todo") }
-    Column(Modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize(),
+    Column(Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp)) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally) {
             RowDeFiltros(gastos, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             Spacer(Modifier.size(10.dp))
             GraficaGastos(gastos)
@@ -52,3 +51,5 @@ fun GraficosScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateTo
 fun PreviewGraficosScreen(){
     GraficosScreen(PaddingValues(), gastosMock, {},{})
 }
+
+

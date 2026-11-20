@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
@@ -37,9 +36,9 @@ import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 @Composable
 fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateToPerfil:()-> Unit, onNavigateToGraficos: ()-> Unit){
     var filtroActual by remember { mutableStateOf("todo") }
-    Column(Modifier.background(MaterialTheme.colorScheme.surface).fillMaxHeight(),
+    Column(Modifier.background(MaterialTheme.colorScheme.background).fillMaxHeight().padding(20.dp),
         verticalArrangement = Arrangement.SpaceBetween) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp).verticalScroll(rememberScrollState())
+        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState())
             , verticalArrangement = Arrangement.SpaceBetween) {
             OutlinedTextField(state= TextFieldState("Buscar movimiento, tienda o concepto..."),
                 modifier = Modifier.fillMaxWidth(),
@@ -63,3 +62,5 @@ fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateT
 fun PreviewHistorialScreen(){
     HistorialScreen(PaddingValues(), gastosMock, {},{})
 }
+
+

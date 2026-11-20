@@ -2,6 +2,7 @@ package zamudio.ramon.proyectogestorgastos.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,7 +22,6 @@ import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.data.tarjetasPagoMock
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.Header
 import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.screens.AñadirGastoScreen
@@ -68,7 +68,7 @@ fun Myapp() {
     }
 
     Scaffold(
-        containerColor = ScreenBackground,
+        containerColor = MaterialTheme.colorScheme.background,
         bottomBar = {
             if (shouldShow) {
                 NavBar(navController)
@@ -97,14 +97,10 @@ fun Myapp() {
     NavHost(
         navController = navController,
         startDestination = Login,
-        modifier = if (currentDestination?.hasRoute<SettleGroupAccounts>() == true) {
-            Modifier
-        } else {
-            Modifier.padding(innerPadding)
-        }
+        modifier = Modifier.padding(innerPadding)
     ) {
         composable<Login> {
-            LoginScreen(innerPadding,navigateToRegister,navigateToPrincipal)
+            LoginScreen(PaddingValues(), navigateToRegister, navigateToPrincipal)
         }
         composable<Perfil> {
             PerfilScreen(
@@ -112,13 +108,13 @@ fun Myapp() {
             )
         }
         composable<Register> {
-            RegisterScreen(innerPadding,navigateToLogin,navigateToRegisterPerfil)
+            RegisterScreen(PaddingValues(), navigateToLogin, navigateToRegisterPerfil)
         }
         composable<RegisterPerfil> {
-            RegisterPerfilScreen(innerPadding,navigateToRegister,navigateToRegisterPassword)
+            RegisterPerfilScreen(PaddingValues(), navigateToRegister, navigateToRegisterPassword)
         }
         composable<RegisterPassword>{
-            RegisterPasswordScreen(innerPadding,navigateToRegisterPerfil,navigateToPrincipal)
+            RegisterPasswordScreen(PaddingValues(), navigateToRegisterPerfil, navigateToPrincipal)
         }
         composable<Inicio> {
             PrincipalScreen(
@@ -129,23 +125,18 @@ fun Myapp() {
         }
         composable<Presupuesto> {
             PresupuestoScreen(
-                innerPadding = innerPadding
+                innerPadding = PaddingValues()
             )
         }
         composable<MetodosPago> {
             MetodosPagoScreen(
-                innerPadding = innerPadding,
-                onNavigateToPerfil = navigateToPerfil,
-                onNavigateToPrincipal = navigateToPrincipal,
-                onNavigateToPresupuesto = navigateToPresupuesto,
-                onNavigateToRegistroGasto = navigateToRegistroMovimiento,
                 onRegistrarTarjeta = { navController.navigate(RegistrarTarjeta) },
                 tarjetas = tarjetasPago
             )
         }
         composable<RegistrarTarjeta> {
             RegistrarTarjetaScreen(
-                innerPadding = innerPadding,
+                innerPadding = PaddingValues(),
                 onGuardar = { nuevaTarjeta ->
                     tarjetasPago.add(nuevaTarjeta)
                     navController.popBackStack()
@@ -159,7 +150,7 @@ fun Myapp() {
         }
         composable<RegistrarMovimiento> {
             RegistroGastoScreen(
-                innerPadding = innerPadding,
+                innerPadding = PaddingValues(),
                 onNavigateToPerfil = navigateToPerfil,
                 onNavigateToPrincipal = navigateToPrincipal,
                 onNavigateToPresupuesto = navigateToPresupuesto,
@@ -226,7 +217,8 @@ fun Myapp() {
         }
 
         composable<SettleGroupAccounts> {
-            SettleGroupAccountsScreen(innerPadding = innerPadding)
+            SettleGroupAccountsScreen(innerPadding = PaddingValues())
         }
     }
 }}
+

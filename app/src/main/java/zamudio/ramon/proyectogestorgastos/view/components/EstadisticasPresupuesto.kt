@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
@@ -41,7 +38,7 @@ fun EstadisticasPresupuesto(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(painterResource(R.drawable.ic_graficas), contentDescription = null, modifier = Modifier.size(18.dp))
-            Text("ESTADÍSTICAS", Modifier.padding(start = 6.dp), style = Typography.labelLarge, color = PurplePrimary, fontWeight = FontWeight.Bold)
+            Text("ESTADÍSTICAS", Modifier.padding(start = 6.dp), style = Typography.labelLarge, color = PurpleButton, fontWeight = FontWeight.Bold)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             EstadisticaCelda("↓  Ingresos del mes", ingresos, Color(0xFFF0F2FF), Modifier.weight(1f), onEditarIngresos)
@@ -51,7 +48,7 @@ fun EstadisticasPresupuesto(
             Text("RESTANTE DISPONIBLE MENSUAL", style = Typography.labelSmall, color = Color.DarkGray)
             Row(verticalAlignment = Alignment.Bottom) {
                 Text("\$${disponible.formatoDinero()}", style = Typography.headlineLarge, color = PurpleButton, fontWeight = FontWeight.ExtraBold)
-                Text(" MXN", style = Typography.labelSmall, color = PurplePrimary, modifier = Modifier.padding(bottom = 5.dp))
+                Text(" MXN", style = Typography.labelSmall, color = PurpleButton, modifier = Modifier.padding(bottom = 5.dp))
             }
         }
         BotonPrincipal("Agregar / Ajustar Presupuesto\nMensual", onAjustarPresupuesto, R.drawable.ic_anadir)

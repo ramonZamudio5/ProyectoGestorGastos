@@ -25,7 +25,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupIconSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupOptionsBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -188,7 +188,7 @@ fun GroupTypeSelectorCard(
                                 Icon(
                                     painter = painterResource(R.drawable.ic_check),
                                     contentDescription = stringResource(R.string.group_selected),
-                                    tint = PurplePrimary,
+                                    tint = PurpleButton,
                                     modifier = Modifier.size(18.dp)
                                 )
                             }

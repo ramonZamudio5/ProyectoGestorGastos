@@ -22,8 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
 
 @Composable
@@ -70,7 +69,7 @@ fun TarjetaCategoriaPresupuesto(
                 Text("  $it", style = Typography.labelSmall, color = if (porcentaje >= 95) Color(0xFFB91C1C) else Color(0xFF8B7200))
             }
             Column(Modifier.weight(1f), horizontalAlignment = Alignment.End) {
-                Text("Restan \$${(categoria.limite - categoria.gastado).coerceAtLeast(0.0).formatoDinero()}", style = Typography.labelSmall, color = PurplePrimary)
+                Text("Restan \$${(categoria.limite - categoria.gastado).coerceAtLeast(0.0).formatoDinero()}", style = Typography.labelSmall, color = PurpleButton)
             }
         }
     }

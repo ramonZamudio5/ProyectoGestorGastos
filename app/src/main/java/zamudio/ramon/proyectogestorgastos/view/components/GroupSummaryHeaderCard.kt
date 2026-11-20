@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupSummaryHeaderCard(
@@ -64,7 +64,7 @@ fun GroupSummaryHeaderCard(
                 Icon(
                     painter = painterResource(id = typeGroup.iconRes),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -94,7 +94,7 @@ fun GroupSummaryHeaderCard(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_edit),
                     contentDescription = stringResource(R.string.group_edit),
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(16.dp)
                 )
             }
@@ -111,6 +111,6 @@ fun GroupSummaryHeaderCardPreview(){
         "Amigos / Viajes",
         "Vacaciones y escapadas",
         R.drawable.ic_flight,
-        PurplePrimary
+        PurpleButton
     ))
 }

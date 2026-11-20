@@ -23,8 +23,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Icon
@@ -58,9 +56,7 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -89,7 +85,7 @@ fun RegistroGastoScreen(
     }
     val calendar = Calendar.getInstance()
 
-    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(innerPadding)) {
         Column(
             Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(11.dp)
@@ -236,7 +232,7 @@ private fun SelectorTipoMovimiento(
         )
         Box(
             Modifier.offset(x = desplazamiento.value).width(anchoOpcion).height(38.dp)
-                .clip(RoundedCornerShape(8.dp)).background(PurplePrimary)
+                .clip(RoundedCornerShape(8.dp)).background(PurpleButton)
         )
         Row(Modifier.fillMaxWidth()) {
             OpcionTipoMovimiento("Gasto", esGasto, Modifier.weight(1f), onSeleccionarGasto)
@@ -280,7 +276,7 @@ private fun CampoRegistro(
             singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             shape = RoundedCornerShape(10.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PurplePrimary, unfocusedBorderColor = Color.Transparent,
+                focusedBorderColor = PurpleButton, unfocusedBorderColor = Color.Transparent,
                 focusedContainerColor = OffWhite, unfocusedContainerColor = OffWhite
             )
         )
@@ -331,4 +327,6 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
 private fun RegistroGastoPreview() {
     RegistroGastoScreen(PaddingValues(), {}, {}, {},tarjetasPagoMock)
 }
+
+
 

@@ -101,7 +101,7 @@ fun AñadirGastoScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
@@ -259,8 +259,8 @@ fun AñadirGastoScreen() {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Categoría", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = GroupTextPrimary)
-                    Text("${categorias.size} disponibles", color = GroupBadgeText, fontSize = 12.sp, fontWeight = FontWeight.Medium)
+                    Text("Categoría", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface)
+                    Text("${categorias.size} disponibles", color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp, fontWeight = FontWeight.Medium)
                 }
 
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {

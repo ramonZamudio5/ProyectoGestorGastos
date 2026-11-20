@@ -12,7 +12,7 @@ val gasto = Gasto(
     850.0,
     LocalDate.of(2026,10,23),
     R.drawable.ic_car,
-    TipoPago.DEBITO
+    TipoPago.DÉBITO
 )
 
 val gastosMock = listOf<Gasto>(
@@ -22,11 +22,11 @@ val gastosMock = listOf<Gasto>(
         850.0,
         LocalDate.of(2026,10,23),
         R.drawable.ic_car,
-        TipoPago.DEBITO
+        TipoPago.DÉBITO
     ),
-    Gasto("comida", Tipo.COMIDA, 342.3, LocalDate.of(2026,10,23), R.drawable.ic_car, TipoPago.DEBITO),
-    Gasto("luz", Tipo.LUZ, 1000.0, LocalDate.of(2025,8,26), R.drawable.ic_energy, TipoPago.CREDITO),
-    Gasto("agua", Tipo.AGUA, 465.8, LocalDate.of(2026,10,30), R.drawable.ic_car, TipoPago.DEBITO))
+    Gasto("comida", Tipo.COMIDA, 342.3, LocalDate.of(2026,10,23), R.drawable.ic_car, TipoPago.DÉBITO),
+    Gasto("luz", Tipo.LUZ, 1000.0, LocalDate.of(2025,8,26), R.drawable.ic_energy, TipoPago.CRÉDITO),
+    Gasto("agua", Tipo.AGUA, 465.8, LocalDate.of(2026,10,30), R.drawable.ic_car, TipoPago.DÉBITO))
 
 @Composable
 fun getGastosByTipo(tipo: Tipo): List<Gasto>{

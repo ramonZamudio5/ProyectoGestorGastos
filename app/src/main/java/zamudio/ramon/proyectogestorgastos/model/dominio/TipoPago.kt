@@ -2,8 +2,8 @@ package zamudio.ramon.proyectogestorgastos.model.dominio
 
 enum class TipoPago {
     EFECTIVO,
-    DEBITO,
-    CREDITO,
+    DÉBITO,
+    CRÉDITO,
     TRANSFERENCIA,
     CHEQUE,
     DOMICILIADO,

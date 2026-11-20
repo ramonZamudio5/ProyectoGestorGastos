@@ -31,7 +31,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
 
 @Composable
@@ -67,14 +67,14 @@ fun TransferAmountInput(
                 Icon(
                     painter = painterResource(R.drawable.ic_energy),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(14.dp)
                 )
                 Text(
                     text = "Liquidar total ($${String.format("%,.2f", deudaTotal)} MXN)",
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
             }
         }
@@ -94,7 +94,7 @@ fun TransferAmountInput(
                     text = "$",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
                 Spacer(modifier = Modifier.width(6.dp))
                 TextField(

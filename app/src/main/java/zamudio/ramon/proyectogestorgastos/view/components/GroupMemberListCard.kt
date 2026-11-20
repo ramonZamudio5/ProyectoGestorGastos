@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Usuario
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupMemberListCard(
@@ -78,7 +78,7 @@ fun GroupMemberListCard(
                     Text(
                         style = GroupTextStyles.LabelBold,
                         text = members.size.toString(),
-                        color = PurplePrimary
+                        color = PurpleButton
                     )
                 }
             }

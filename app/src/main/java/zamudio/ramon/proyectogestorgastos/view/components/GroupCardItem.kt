@@ -40,7 +40,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupCardItemInfo(
@@ -96,7 +96,7 @@ fun GroupCardItemInfo(
                             Text(
                                 style = GroupTextStyles.CaptionBold,
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
-                                color = PurplePrimary,
+                                color = PurpleButton,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
@@ -194,7 +194,7 @@ fun GroupCardItem(
                             Text(
                                 style = GroupTextStyles.CaptionBold,
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
-                                color = PurplePrimary,
+                                color = PurpleButton,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
@@ -252,14 +252,14 @@ fun GroupCardItem(
                         Icon(
                             painter = painterResource(R.drawable.ic_arrow_down),
                             contentDescription = null,
-                            tint = PurplePrimary,
+                            tint = PurpleButton,
                             modifier = Modifier.size(15.dp)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             style = GroupTextStyles.LabelBold,
                             text = stringResource(R.string.group_amount_owed, "3,000.00"),
-                            color = PurplePrimary
+                            color = PurpleButton
                         )
                     }
                 }
