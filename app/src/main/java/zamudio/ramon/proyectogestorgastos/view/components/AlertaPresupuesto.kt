@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -43,7 +44,8 @@ fun AlertaPresupuesto(
                 modifier = Modifier.background(Color(0xFFFFF2B8), RoundedCornerShape(9.dp)).padding(7.dp)
             )
             Column(Modifier.weight(1f).padding(start = 8.dp)) {
-                Text("Alertas de Presupuesto", style = Typography.titleSmall, fontWeight = FontWeight.Bold)
+                Text("Alertas de Presupuesto", style = Typography.titleSmall,
+                    fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
                 Text("Previene sobregiros antes de fin de mes", style = Typography.labelSmall, color = Color.DarkGray)
             }
             Switch(
@@ -54,7 +56,8 @@ fun AlertaPresupuesto(
         }
         if (activa) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text("Avisarme cuando supere el:", style = Typography.labelSmall)
+                Text("Avisarme cuando supere el:", style = Typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSecondary)
                 Text("$porcentaje%", Modifier.weight(1f), style = Typography.titleSmall, color = PurpleButton, fontWeight = FontWeight.Bold, textAlign = androidx.compose.ui.text.style.TextAlign.End)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {

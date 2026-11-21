@@ -25,6 +25,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -92,10 +93,10 @@ fun PresupuestoScreen(
             )
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
-                    Image(painterResource(R.drawable.ic_presupuesto), contentDescription = null, modifier = Modifier.size(16.dp))
+                    Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onSurface)
                     Text("Asignación por categorías", style = Typography.labelLarge, color = PurpleButton, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 5.dp))
                 }
-                Text("${categorias.size} de 4 activas", style = Typography.labelSmall, color = Color.DarkGray)
+                Text("${categorias.size} de 4 activas", style = Typography.labelSmall, color = MaterialTheme.colorScheme.onSurface)
             }
             Row(Modifier.fillMaxWidth().background(Color(0xFFE8E7FA), RoundedCornerShape(10.dp)).padding(3.dp)) {
                 SelectorAsignacion("＄ Por Cantidad", cantidadFija, Modifier.weight(1f)) { cantidadFija = true }

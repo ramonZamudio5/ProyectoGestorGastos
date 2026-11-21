@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,10 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.dominio.Gasto
-import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
-import zamudio.ramon.proyectogestorgastos.view.components.Header
-import zamudio.ramon.proyectogestorgastos.view.components.NavBar
 import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 
 @Composable
@@ -40,17 +38,21 @@ fun HistorialScreen(innerPadding: PaddingValues, gastos:List<Gasto>, onNavigateT
         verticalArrangement = Arrangement.SpaceBetween) {
         Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState())
             , verticalArrangement = Arrangement.SpaceBetween) {
-            OutlinedTextField(state= TextFieldState("Buscar movimiento, tienda o concepto..."),
+            OutlinedTextField(state= TextFieldState(),
+                label = {
+                    Text("Buscar movimiento, tienda o concepto...")
+                },
                 modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = OffWhite,
-                unfocusedContainerColor = OffWhite, disabledContainerColor = OffWhite,
-                errorContainerColor = OffWhite, focusedBorderColor = Color.Transparent,
+                colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSecondary, focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                unfocusedContainerColor = MaterialTheme.colorScheme.secondary, disabledContainerColor = MaterialTheme.colorScheme.secondary,
+                errorContainerColor = MaterialTheme.colorScheme.secondary, focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent, disabledBorderColor = Color.Transparent,
                 errorBorderColor = Color.Transparent), shape = RoundedCornerShape(10.dp))
             Spacer(Modifier.size(10.dp))
             RowDeFiltros(gastos, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
             Spacer(Modifier.size(10.dp))
-            Column(modifier = Modifier.background(color= OffWhite, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
+            Column(modifier = Modifier.background(color= MaterialTheme.colorScheme.secondary, shape= RoundedCornerShape(10.dp)).padding(10.dp)) {
                 ColumnaGastosPorFiltro(filtroActual, gastos)
             }
         }

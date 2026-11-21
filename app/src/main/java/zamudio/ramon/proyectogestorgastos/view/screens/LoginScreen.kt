@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffBlack
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 
@@ -105,7 +105,7 @@ fun LoginScreen(innerPadding: PaddingValues, navigateToRegister: () -> Unit, onN
 
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                     Text("Contraseña", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
-                    Text(text = "¿Olvidaste tu contraseña?", Modifier.clickable { }, style = Typography.bodySmall, color = PurplePrimary)
+                    Text(text = "¿Olvidaste tu contraseña?", Modifier.clickable { }, style = Typography.bodySmall, color = MaterialTheme.colorScheme.primary)
                 }
                 Spacer(Modifier.height(8.dp))
                 TextField(
@@ -128,7 +128,7 @@ fun LoginScreen(innerPadding: PaddingValues, navigateToRegister: () -> Unit, onN
                 )
             }
 
-            HorizontalDivider(color = PurplePrimary.copy(alpha = 0.3f), thickness = 1.dp)
+            HorizontalDivider(color = PurpleButton.copy(alpha = 0.3f), thickness = 1.dp)
 
             Box(Modifier.padding(24.dp)) {
                 BotonPrincipal("Iniciar Sesión", onNavigateToPrincipal)

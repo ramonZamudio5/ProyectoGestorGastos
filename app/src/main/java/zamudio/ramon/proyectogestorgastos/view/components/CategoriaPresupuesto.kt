@@ -47,11 +47,13 @@ fun TarjetaCategoriaPresupuesto(
                 modifier = Modifier.background(categoria.colorClaro, RoundedCornerShape(9.dp)).padding(7.dp).height(24.dp)
             )
             Column(Modifier.weight(1f).padding(start = 9.dp)) {
-                Text(categoria.nombre, style = Typography.titleSmall, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(categoria.nombre, style = Typography.titleSmall, fontWeight = FontWeight.Bold,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis, color = MaterialTheme.colorScheme.onSecondary)
                 Text(categoria.descripcion, style = Typography.labelSmall, color = Color.DarkGray, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
             Column(horizontalAlignment = Alignment.End) {
-                Text("\$${categoria.gastado.formatoDinero()}", style = Typography.labelLarge, fontWeight = FontWeight.Bold)
+                Text("\$${categoria.gastado.formatoDinero()}", style = Typography.labelLarge,
+                    fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
                 Text("de \$${categoria.limite.formatoDinero()}", style = Typography.labelSmall, color = Color.DarkGray)
             }
         }
@@ -69,7 +71,8 @@ fun TarjetaCategoriaPresupuesto(
                 Text("  $it", style = Typography.labelSmall, color = if (porcentaje >= 95) Color(0xFFB91C1C) else Color(0xFF8B7200))
             }
             Column(Modifier.weight(1f), horizontalAlignment = Alignment.End) {
-                Text("Restan \$${(categoria.limite - categoria.gastado).coerceAtLeast(0.0).formatoDinero()}", style = Typography.labelSmall, color = PurpleButton)
+                Text("Restan \$${(categoria.limite - categoria.gastado).coerceAtLeast(0.0).formatoDinero()}",
+                    style = Typography.labelSmall, color = MaterialTheme.colorScheme.onSecondary)
             }
         }
     }

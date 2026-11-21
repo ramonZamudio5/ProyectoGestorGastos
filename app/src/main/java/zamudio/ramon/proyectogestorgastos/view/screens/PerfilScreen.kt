@@ -66,7 +66,7 @@ fun PerfilScreen(
                     }
                 }
                 Spacer(Modifier.height(16.dp))
-                Text("Sofía Morales", style = Typography.titleLarge)
+                Text("Sofía Morales", style = Typography.titleLarge, color = MaterialTheme.colorScheme.onSecondary)
             }
             Spacer(Modifier.height(16.dp))
 
@@ -79,7 +79,8 @@ fun PerfilScreen(
             ) {
                 Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurpleButton)
                 Spacer(Modifier.width(12.dp))
-                Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge, fontWeight = FontWeight.SemiBold)
+                Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge,
+                    fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSecondary)
                 Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = "Abrir métodos de pago", tint = GrayText)
             }
             Spacer(Modifier.height(16.dp))
@@ -99,7 +100,7 @@ fun TarjetaDatosPersonales() {
                 Icon(painter = painterResource(R.drawable.ic_id_badge), contentDescription = "Icono Datos Personales", tint = Color(0xFF6B21A8))
             }
             Spacer(Modifier.width(12.dp))
-            Text("Datos Personales",style = Typography.bodyLarge
+            Text("Datos Personales",style = Typography.bodyLarge, color = MaterialTheme.colorScheme.onSecondary
             )
             Spacer(Modifier.weight(1f))
             Row(Modifier.clickable { }, verticalAlignment = Alignment.CenterVertically) {
@@ -121,11 +122,11 @@ fun TarjetaDatosPersonales() {
 fun CampoDatoPersonal(titulo: String, valor: String, esProtegido: Boolean = false, textoAyuda: String? = null) {
     Column(Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(titulo,style = Typography.bodyLarge)
+            Text(titulo,style = Typography.bodyLarge, color = MaterialTheme.colorScheme.onSecondary)
             if (esProtegido) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Spacer(Modifier.width(4.dp))
-                    Text("Protegido", style = Typography.bodySmall)
+                    Text("Protegido", style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
                 }
             }
         }
@@ -155,7 +156,7 @@ fun TarjetaSeguridad() {
                     tint = PurpleButton, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
-            Text("Seguridad y Acceso", style = Typography.titleLarge)
+            Text("Seguridad y Acceso", style = Typography.titleLarge, color = MaterialTheme.colorScheme.onSecondary)
         }
         Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color(0xFFF4F5F9)).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(40.dp).clip(RoundedCornerShape(10.dp)).background(Color(0xFFEBF3FF)),contentAlignment = Alignment.Center) {
@@ -163,8 +164,10 @@ fun TarjetaSeguridad() {
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text("Inicio con Biometría (Huella / Face ID)", style = Typography.bodySmall, fontWeight = FontWeight.Bold)
-                Text("Permite acceder a la app usando tu sensor biométrico sin escribir la contraseña.",style = Typography.bodySmall)
+                Text("Inicio con Biometría (Huella / Face ID)", style = Typography.bodySmall,
+                    fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
+                Text("Permite acceder a la app usando tu sensor biométrico sin escribir la contraseña.",
+                    style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
             }
             Spacer(Modifier.width(8.dp))
             Switch(checked = biometriaActivada, onCheckedChange = { biometriaActivada = it },
@@ -185,8 +188,9 @@ fun TarjetaSeguridad() {
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text("Cambio de contraseña de acceso", fontWeight = FontWeight.Bold,style = Typography.bodySmall)
-                Text("Actualizada hace 2 meses", style = Typography.bodySmall)
+                Text("Cambio de contraseña de acceso", fontWeight = FontWeight.Bold,
+                    style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
+                Text("Actualizada hace 2 meses", style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
             }
         }
     }
@@ -199,7 +203,7 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
         Icon(painter = painterResource(id = R.drawable.ic_logout), contentDescription = "Cerrar Sesión",
             tint = RedlogOut, modifier = Modifier.size(24.dp))
         Spacer(Modifier.width(12.dp))
-        Text("Cerrar Sesión", style = Typography.labelLarge)
+        Text("Cerrar Sesión", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
     }
 }
 

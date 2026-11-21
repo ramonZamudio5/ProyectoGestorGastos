@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,7 +39,8 @@ fun EstadisticasPresupuesto(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(painterResource(R.drawable.ic_graficas), contentDescription = null, modifier = Modifier.size(18.dp))
-            Text("ESTADÍSTICAS", Modifier.padding(start = 6.dp), style = Typography.labelLarge, color = PurpleButton, fontWeight = FontWeight.Bold)
+            Text("ESTADÍSTICAS", Modifier.padding(start = 6.dp), style = Typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSecondary, fontWeight = FontWeight.Bold)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             EstadisticaCelda("↓  Ingresos del mes", ingresos, Color(0xFFF0F2FF), Modifier.weight(1f), onEditarIngresos)
@@ -73,7 +75,8 @@ private fun EstadisticaCelda(
             }
         }
         Spacer(Modifier.size(2.dp))
-        Text("\$${cantidad.formatoDinero()}", style = Typography.titleMedium, fontWeight = FontWeight.Bold)
+        Text("\$${cantidad.formatoDinero()}", style = Typography.titleMedium,
+            fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
         Text("MXN", style = Typography.labelSmall, color = Color.Gray)
     }
 }

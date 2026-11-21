@@ -33,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -87,7 +88,8 @@ fun ColumnaGastosPorFiltro(filtro: String, gastos: List<Gasto>) {
 
     val gastosAgrupados = when (filtroLower) {
         "todo" -> gastos.groupBy { "Todos tus gastos" }
-        "dia" -> gastos.groupBy { "Día ${it.fecha.dayOfMonth}/${it.fecha.month}/${it.fecha.year}" }
+        "dia" -> gastos.groupBy { "${it.fecha.dayOfMonth} ${it.fecha.month.getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-MX"))
+            .replaceFirstChar { c -> c.uppercase() }} ${it.fecha.year}" }
         "mes" -> gastos.groupBy {
             val nombreMes = it.fecha.month
                 .getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-MX"))
@@ -97,7 +99,7 @@ fun ColumnaGastosPorFiltro(filtro: String, gastos: List<Gasto>) {
         }
         else -> {
             val gastosFiltrados = gastos.filter { it.tipo.toString().equals(filtro, ignoreCase = true) }
-            gastosFiltrados.groupBy { it.tipo.toString() }
+            gastosFiltrados.groupBy { it.tipo.toString().lowercase().replaceFirstChar { c -> c.uppercase() }}
         }
     }
     Column(Modifier.heightIn(max= 800.dp)) {
@@ -106,8 +108,8 @@ fun ColumnaGastosPorFiltro(filtro: String, gastos: List<Gasto>) {
                 item {
                     Text(
                         text = encabezado,
-                        style = Typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
+                        style = Typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onSecondary,
                         modifier = Modifier.padding(vertical = 4.dp)
                     )
                 }
@@ -240,7 +242,7 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
             Text("BALANCE TOTAL", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
             IconButton({}) {
-                Icon(painter = painterResource(R.drawable.ic_ojo_abierto), contentDescription = "eye")
+                Icon(painter = painterResource(R.drawable.ic_ojo_abierto), contentDescription = "eye", tint = MaterialTheme.colorScheme.onSecondary)
             }
         }
         Spacer(Modifier.size(5.dp))
@@ -263,7 +265,11 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
                     .background(color = GroupSuccessBackground, shape = RoundedCornerShape(10.dp))
                     .padding(10.dp).weight(1f)
             ) {
-                Text("Ingresos del mes", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
+                Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+                    Icon(painter = painterResource(R.drawable.ic_gastos), contentDescription = "gastos",
+                        tint = MaterialTheme.colorScheme.onSecondary, modifier = Modifier.rotate(180f))
+                    Text("Ingresos del mes", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
+                }
                 Text("+$${ingresos}", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
             }
             Column(
@@ -272,7 +278,8 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
                     .padding(10.dp).weight(1f)
             ) {
                 Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
-                    Icon(painter = painterResource(R.drawable.ic_gastos), contentDescription = "gastos")
+                    Icon(painter = painterResource(R.drawable.ic_gastos), contentDescription = "gastos",
+                        tint = MaterialTheme.colorScheme.onSecondary)
                     Text("Gastos del mes", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
                 }
                 Text("-$${gastos}", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
@@ -387,10 +394,10 @@ fun GraficaGastos(gastos: List<Gasto>) {
         .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
         .fillMaxWidth()
         .padding(15.dp)) {
-        Text("Gastos Totales", style = Typography.titleSmall, color = MaterialTheme.colorScheme.onSecondary)
+        Text("Gastos Totales", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("$$gastosTotales", style = Typography.titleLarge, color = MaterialTheme.colorScheme.onSecondary)
-            Text("Presupuesto asignado: $" + getPresupuestoTotal(gastos).toString() + "MXN", color = MaterialTheme.colorScheme.onSecondary)
+            Text("$$gastosTotales", style = Typography.headlineLarge, color = MaterialTheme.colorScheme.onSecondary)
+            Text("Presupuesto asignado: $" + getPresupuestoTotal(gastos).toString() + "MXN", color = MaterialTheme.colorScheme.onSecondary, style = Typography.bodySmall)
             Box(modifier = Modifier.fillMaxWidth().padding(10.dp), contentAlignment = Alignment.Center) {
                 Canvas(Modifier.size(50.dp * 2f)){
                     drawArc(color = OffWhite, posicion, 360f, false,
@@ -420,9 +427,9 @@ fun GraficaGastos(gastos: List<Gasto>) {
                                     Modifier.background(color = tipo.color, shape = CircleShape)
                                         .size(15.dp)
                                 )
-                                Text(tipo.toString() + ": " +
+                                Text(tipo.toString().lowercase().replaceFirstChar { it.uppercaseChar() } + ": " +
                                         getPorcentajeTipo(getGastosTotales(getGastosByTipo(tipo)), gastosTotales)
-                                    + "%", style = Typography.labelMedium)
+                                    + "%", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
                             }
                         }
                         if (fila.size == 1) {
@@ -445,20 +452,29 @@ fun BannerPromedioDiario(gastos: List<Gasto>) {
     val totalGastadoMes = getGastosTotales(gastosMesActual)
     val diasDelMes = fechaActual.lengthOfMonth()
     val promedioDiario = if (diasDelMes > 0) totalGastadoMes / diasDelMes else 0.0
-
-    Column(
-        modifier = Modifier
-            .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
-            .fillMaxWidth()
-            .padding(15.dp)
-    ) {
-        Text("Promedio Diario", style = Typography.titleSmall,
-            color = MaterialTheme.colorScheme.onSecondary)
-        Spacer(modifier = Modifier.height(5.dp))
-        Text(
-            text = "$${"%.2f".format(promedioDiario)} MXN",
-            style = Typography.titleLarge, color = MaterialTheme.colorScheme.onSecondary
-        )
+    Row(modifier = Modifier
+        .background(color = MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))
+        .fillMaxWidth().padding(15.dp), verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+        Icon(painterResource(R.drawable.ic_promedio), contentDescription = "promedio",
+            tint = MaterialTheme.colorScheme.onSecondary, modifier = Modifier.size(30.dp))
+        Column() {
+            Text("Promedio Diario", style = Typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSecondary)
+            Spacer(modifier = Modifier.height(5.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "$${"%.2f".format(promedioDiario)}",
+                    style = Typography.headlineSmall,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = MaterialTheme.colorScheme.onSecondary
+                )
+                Text(
+                    text = " MXN",
+                    style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary
+                )
+            }
+        }
     }
 }
 
@@ -490,15 +506,21 @@ fun ColumnaGastosVSEstimado(gastos: List<Gasto>) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = tipo.toString(),
+                            text = tipo.toString().lowercase().replaceFirstChar { it.uppercaseChar() },
                             style = Typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSecondary
                         )
-                        Text(
-                            text = "$${"%.2f".format(gastado)} / $${"%.2f".format(estimado)}",
-                            style = Typography.labelMedium,
-                            color = if (excedePresupuesto) Color.Red else MaterialTheme.colorScheme.onSecondary
-                        )
+                        Row() {
+                            Text(
+                                text = "$${"%.2f".format(gastado)}",
+                                style = Typography.labelMedium,
+                                fontWeight = FontWeight.ExtraBold,
+                                color = if (excedePresupuesto) Color.Red else MaterialTheme.colorScheme.onSecondary
+                            )
+                            Text(text = "/$${"%.2f".format(estimado)}",
+                                style = Typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSecondary)
+                        }
                     }
 
                     Box(

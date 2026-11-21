@@ -66,7 +66,7 @@ fun MyGroupScreen(
                     Text(
                         style = GroupTextStyles.ScreenTitleBold,
                         text = stringResource(R.string.groups_title),
-                        color = BlueNavy
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Surface(
@@ -157,7 +157,7 @@ fun MyGroupScreen(
                 Text(
                     style = GroupTextStyles.LabelBold,
                     text = stringResource(R.string.groups_in_progress),
-                    color = GroupSectionText
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }
