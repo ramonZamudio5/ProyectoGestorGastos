@@ -44,7 +44,8 @@ import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItem
 
 @Composable
 fun MyGroupScreen(
-    onNavigateToDetail: (Int) -> Unit = {},
+    //onNavigateToDetail: (Int) -> Unit = {},
+    onNavigateToDetail: () -> Unit = {},
     onCreateGroupClick: () -> Unit = {},
     onJoinGroupClick: () -> Unit = {}
 ) {
@@ -165,7 +166,7 @@ fun MyGroupScreen(
         items(grupos) { grupo ->
             GroupCardItem(
                 grupo = grupo,
-                onClick = { onNavigateToDetail(grupo.id) }
+                onClick = { onNavigateToDetail() }
             )
         }
     }

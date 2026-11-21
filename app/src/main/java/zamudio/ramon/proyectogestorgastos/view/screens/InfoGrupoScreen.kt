@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -59,11 +61,13 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
         }
         item {
             Row(Modifier.fillMaxWidth().padding(5.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-                Text("Gastos Recientes", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
-                Row(Modifier.clickable(onClick = {})) {Text("Ver todos", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary) }
+                Text("Gastos Recientes", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+                Row(Modifier.clickable(onClick = {})) {Text("Ver todos", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSurface) }
             }
             RowDeFiltros(gastosMock, filtroActual, onFiltroSelected = { nuevoFiltro -> filtroActual = nuevoFiltro})
-            ColumnaGastosPorFiltro(filtroActual, gastosMock)
+            Column(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(10.dp))) {
+                ColumnaGastosPorFiltro(filtroActual, gastosMock)
+            }
         }
     }
 }

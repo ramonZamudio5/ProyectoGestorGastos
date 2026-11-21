@@ -28,8 +28,7 @@ fun PosicionDeudaGrupo(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier
-            .width(350.dp)
+        modifier = modifier.fillMaxWidth()
             .shadow(
                 elevation = 6.dp,
                 shape = RoundedCornerShape(16.dp),

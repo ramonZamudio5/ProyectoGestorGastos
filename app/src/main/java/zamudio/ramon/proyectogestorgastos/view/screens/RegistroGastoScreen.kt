@@ -153,7 +153,8 @@ fun RegistroGastoScreen(
             }
             Text(
                 if (esGasto) "Foto del recibo (opcional)" else "Comprobante del ingreso (opcional)",
-                style = Typography.labelLarge, fontWeight = FontWeight.SemiBold
+                style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Row(
                 Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(OffWhite)
@@ -173,7 +174,8 @@ fun RegistroGastoScreen(
                     tint = Color.Black, modifier = Modifier.size(24.dp)
                 )
             }
-            Text("Fecha", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
+            Text("Fecha", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface)
             Row(
                 Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(OffWhite)
                     .clickable {
@@ -196,6 +198,7 @@ fun RegistroGastoScreen(
                     tipoPago = TipoPago.valueOf(tipoPago),
                     tarjetaPago = if (esGasto) tarjetaSeleccionada else null)
                 onGuardar(gasto)
+                onNavigateToPrincipal
             }, R.drawable.ic_anadir)
         }
     }
@@ -269,7 +272,8 @@ private fun CampoRegistro(
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
+        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold
+            , color = MaterialTheme.colorScheme.onSurface)
         OutlinedTextField(
             value, onValueChange, modifier = Modifier.fillMaxWidth().height(52.dp),
             placeholder = { Text(placeholder, style = Typography.bodyMedium, color = Color.Gray) },
@@ -287,7 +291,8 @@ private fun CampoRegistro(
 private fun SelectorRegistro(label: String, seleccionado: String, opciones: List<String>, onSelect: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
+        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface)
         Box {
             Surface(
                 modifier = Modifier.fillMaxWidth().height(48.dp).clickable { expanded = true },

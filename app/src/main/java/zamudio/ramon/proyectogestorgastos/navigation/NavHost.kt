@@ -28,6 +28,7 @@ import zamudio.ramon.proyectogestorgastos.view.screens.AñadirGastoScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.CompleteGroupDataScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.CreateEditGroupScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.GroupCreatedSuccessScreen
+import zamudio.ramon.proyectogestorgastos.view.screens.InfoGrupoScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.LoginScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PerfilScreen
 import zamudio.ramon.proyectogestorgastos.view.screens.PrincipalScreen
@@ -55,7 +56,8 @@ val topLevelRoutes = setOf(
     CompleteGroupData,
     GroupCreatedSuccess,
     AñadirGasto,
-    SettleGroupAccounts
+    SettleGroupAccounts,
+    InfoGrupo
 )
 
 @Composable
@@ -168,12 +170,20 @@ fun Myapp() {
         composable<Graficos> {
             GraficosScreen(innerPadding, gastosMock,navigateToPerfil, navigateToGraficos)
         }
-        composable<MyGroups> {
+        composable<MyGroups> {navBackStackEntry ->
+            val grupo = 0
             MyGroupScreen (
                 onCreateGroupClick = {
                     navController.navigate(CreateEditGroup)
+                },
+                onNavigateToDetail = {
+                    navController.navigate(InfoGrupo)
                 }
             )
+        }
+
+        composable<InfoGrupo> {
+            InfoGrupoScreen(grupo, Modifier)
         }
 
         composable<CreateEditGroup> {
