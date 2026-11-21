@@ -552,7 +552,7 @@ fun AñadirGastoScreen(
                 BotonPrincipal("Añadir Gasto Grupal", onAñadirGasto, R.drawable.ic_recipt)
                 Text(
                     text = "Cancelar",
-                    color = GroupTextPrimary,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,

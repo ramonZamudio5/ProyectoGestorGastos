@@ -82,7 +82,7 @@ fun RegistrarTarjetaScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Spacer(Modifier.height(12.dp))
-            Text("Registrar Tarjeta", style = Typography.headlineSmall, fontWeight = FontWeight.Bold, color = Color(0xFF101828))
+            Text("Registrar Tarjeta", style = Typography.headlineSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
             Spacer(Modifier.height(6.dp))
             CampoTarjeta("Nombre del Titular *", titular, { titular = it }, "Nombre como aparece en la tarjeta", R.drawable.ic_id_badge)
             SelectorBanco(banco = banco, onSeleccionar = { banco = it })
@@ -92,7 +92,7 @@ fun RegistrarTarjetaScreen(
                 { nuevo -> if (nuevo.length <= 4 && nuevo.all(Char::isDigit)) ultimosDigitos = nuevo },
                 "0000", null, KeyboardType.Number
             )
-            Text("Tipo de Tarjeta *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
+            Text("Tipo de Tarjeta *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
             Row(Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(12.dp))
@@ -120,7 +120,7 @@ private fun CampoTarjeta(
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
+        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
@@ -148,7 +148,7 @@ private fun CampoTarjeta(
 private fun SelectorBanco(banco: String, onSeleccionar: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text("Banco Emisor *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
+        Text("Banco Emisor *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
         Box {
             Row(
                 Modifier

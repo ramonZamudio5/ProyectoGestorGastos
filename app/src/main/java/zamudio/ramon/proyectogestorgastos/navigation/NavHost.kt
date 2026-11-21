@@ -1,6 +1,11 @@
 package zamudio.ramon.proyectogestorgastos.navigation
 
+import android.app.Activity
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -67,6 +72,18 @@ fun Myapp() {
     val currentDestination = navBackStackEntry?.destination
     val shouldShow = topLevelRoutes.any { route ->
         currentDestination?.hasRoute(route::class) == true
+    }
+
+    // El header es claro en ambos temas, así que cuando se muestra los íconos de la
+    // barra de estado deben ser oscuros; sin header siguen el tema (claros en modo oscuro).
+    val darkTheme = isSystemInDarkTheme()
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            WindowCompat.getInsetsController(window, view)
+                .isAppearanceLightStatusBars = shouldShow || !darkTheme
+        }
     }
 
     Scaffold(
