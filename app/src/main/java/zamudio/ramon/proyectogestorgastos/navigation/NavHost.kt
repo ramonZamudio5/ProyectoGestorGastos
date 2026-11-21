@@ -106,7 +106,8 @@ fun Myapp() {
         }
         composable<Perfil> {
             PerfilScreen(
-                navigateToLogin, navigateToPrincipal
+                onNavigateToLogin = navigateToLogin,
+                navigateToMetodosPago = navigateToMetodosPago
             )
         }
         composable<Register> {
@@ -183,7 +184,12 @@ fun Myapp() {
         }
 
         composable<InfoGrupo> {
-            InfoGrupoScreen(grupo, Modifier)
+            InfoGrupoScreen(
+                grupo = grupo,
+                modifier = Modifier,
+                onAñadirGasto = { navController.navigate(AñadirGasto) },
+                onLiquidarCuentas = { navController.navigate(SettleGroupAccounts) }
+            )
         }
 
         composable<CreateEditGroup> {
@@ -223,11 +229,17 @@ fun Myapp() {
         }
 
         composable<AñadirGasto> {
-            AñadirGastoScreen()
+            AñadirGastoScreen(
+                onAñadirGasto = { navController.popBackStack() },
+                onCancelar = { navController.popBackStack() }
+            )
         }
 
         composable<SettleGroupAccounts> {
-            SettleGroupAccountsScreen(innerPadding = PaddingValues())
+            SettleGroupAccountsScreen(
+                innerPadding = PaddingValues(),
+                onConfirmarLiquidacion = { _, _, _, _ -> navController.popBackStack() }
+            )
         }
     }
 }}

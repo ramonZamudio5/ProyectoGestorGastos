@@ -26,10 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.gastosMock
 import zamudio.ramon.proyectogestorgastos.model.data.grupo
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.ColumnaGastosPorFiltro
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItemInfo
 import zamudio.ramon.proyectogestorgastos.view.components.PosicionDeudaGrupo
@@ -38,7 +40,12 @@ import zamudio.ramon.proyectogestorgastos.view.components.RowDeFiltros
 import zamudio.ramon.proyectogestorgastos.view.components.TarjetaCategoriaPresupuesto
 
 @Composable
-fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
+fun InfoGrupoScreen(
+    grupo: Grupo,
+    modifier: Modifier,
+    onAñadirGasto: () -> Unit = {},
+    onLiquidarCuentas: () -> Unit = {}
+){
     var filtroActual by remember { mutableStateOf("todo") }
     LazyColumn(
         modifier = Modifier
@@ -52,6 +59,12 @@ fun InfoGrupoScreen(grupo: Grupo, modifier: Modifier){
         }
         item {
             PosicionDeudaGrupo()
+        }
+        item {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                BotonPrincipal("Añadir Gasto Grupal", onAñadirGasto, R.drawable.ic_recipt)
+                BotonPrincipal("Liquidar Cuentas", onLiquidarCuentas, R.drawable.ic_check)
+            }
         }
         item {
             TarjetaCategoriaPresupuesto(categoria = grupo.presupuesto!!, onClick = {})

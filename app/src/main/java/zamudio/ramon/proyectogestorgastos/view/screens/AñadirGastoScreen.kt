@@ -41,7 +41,10 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 @Composable
-fun AñadirGastoScreen() {
+fun AñadirGastoScreen(
+    onAñadirGasto: () -> Unit = {},
+    onCancelar: () -> Unit = {}
+) {
     val categorias = remember {
         mutableStateListOf(
             CategoriaPresupuesto(
@@ -546,7 +549,7 @@ fun AñadirGastoScreen() {
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                BotonPrincipal("Añadir Gasto Grupal", {}, R.drawable.ic_recipt)
+                BotonPrincipal("Añadir Gasto Grupal", onAñadirGasto, R.drawable.ic_recipt)
                 Text(
                     text = "Cancelar",
                     color = GroupTextPrimary,
@@ -555,7 +558,7 @@ fun AñadirGastoScreen() {
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { {}}
+                        .clickable(onClick = onCancelar)
                         .padding(vertical = 8.dp)
                 )
             }
