@@ -16,7 +16,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles

@@ -44,7 +44,7 @@ private val LightColorScheme = lightColorScheme(
     //color para el texto de las pantallas que no esta dentro de las cards tipo en el login el texto debajo del titulo
     onSurface = OffBlack,
 
-    tertiary = GroupTextPlaceholder,
+    tertiary = BackGroundPurple,
     onTertiary = OffBlack
 
 

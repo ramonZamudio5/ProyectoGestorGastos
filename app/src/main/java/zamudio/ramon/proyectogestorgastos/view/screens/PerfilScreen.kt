@@ -41,7 +41,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackgroundRed
-import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.DarkGray
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayForm
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText

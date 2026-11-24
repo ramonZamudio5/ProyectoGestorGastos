@@ -37,10 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BadgeBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
-import zamudio.ramon.proyectogestorgastos.ui.theme.LightBlue
-import zamudio.ramon.proyectogestorgastos.ui.theme.ProyectoGestorGastosTheme
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
 import zamudio.ramon.proyectogestorgastos.view.components.BarraProgreso
 import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
