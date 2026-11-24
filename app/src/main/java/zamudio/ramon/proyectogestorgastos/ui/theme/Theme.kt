@@ -17,11 +17,14 @@ private val DarkColorScheme = darkColorScheme(
     background = ScreenDarkBackground,
     primary = PurpleButton,
     onPrimary = OffWhite,
-    secondary = OffWhite,
-    onSecondary = OffBlack,
+    secondary = SecondaryDark,
+    onSecondary = OffWhite,
     onBackground = PurpleButton,
     surface = ScreenDarkBackground,
-    onSurface = OffWhite
+    onSurface = OffWhite,
+    tertiary = TextFieldsDark,
+    onTertiary = OffWhite
+
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -39,7 +42,11 @@ private val LightColorScheme = lightColorScheme(
     onBackground = OffBlack,
     surface = ScreenBackground,
     //color para el texto de las pantallas que no esta dentro de las cards tipo en el login el texto debajo del titulo
-    onSurface = OffBlack
+    onSurface = OffBlack,
+
+    tertiary = GroupTextPlaceholder,
+    onTertiary = OffBlack
+
 
 
 

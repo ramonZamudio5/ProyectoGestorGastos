@@ -32,6 +32,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,6 +53,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffBlack
 import zamudio.ramon.proyectogestorgastos.view.components.AlertaPresupuesto
 import zamudio.ramon.proyectogestorgastos.view.components.TarjetaCategoriaPresupuesto
 import zamudio.ramon.proyectogestorgastos.view.components.EstadisticasPresupuesto
@@ -180,7 +182,8 @@ private fun SelectorAsignacion(texto: String, seleccionado: Boolean, modifier: M
     Button(
         onClick = onClick, modifier = modifier.height(34.dp),
         shape = RoundedCornerShape(8.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = if (seleccionado) OffWhite else Color.Transparent, contentColor = Color(0xFF293044)),
+        colors = ButtonDefaults.buttonColors(containerColor = if (seleccionado) MaterialTheme.colorScheme.tertiary else Color.Transparent,
+            contentColor = if (seleccionado) MaterialTheme.colorScheme.onTertiary else OffBlack),
         contentPadding = PaddingValues(horizontal = 4.dp)
     ) { Text(texto, style = Typography.labelSmall) }
 }
@@ -200,7 +203,7 @@ private fun EditorCategoriaBottomSheet(
             else (categoria.limite / presupuestoDisponible * 100.0).toInt().toString()
         )
     }
-    val valor by remember(cantidadTexto) { mutableStateOf(cantidadTexto.toDoubleOrNull() ?: 0.0) }
+    val valor by remember(cantidadTexto) { mutableDoubleStateOf(cantidadTexto.toDoubleOrNull() ?: 0.0) }
     val porcentaje = if (presupuestoDisponible == 0.0) 0.0 else valor / presupuestoDisponible * 100.0
     val montoAsignado = if (modoFijo) valor else presupuestoDisponible * (valor / 100.0)
     val quedaLibre = (presupuestoDisponible - montoAsignado).coerceAtLeast(0.0)

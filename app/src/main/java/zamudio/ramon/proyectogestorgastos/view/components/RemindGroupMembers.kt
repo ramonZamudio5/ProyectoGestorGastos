@@ -16,6 +16,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,7 +44,7 @@ fun RemindGroupMembers(grupo: Grupo,
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = OffWhite),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -57,7 +58,7 @@ fun RemindGroupMembers(grupo: Grupo,
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(14.dp))
-                        .background(OffWhite)
+                        .background(MaterialTheme.colorScheme.tertiary)
                         .padding(horizontal = 12.dp, vertical = 10.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -74,13 +75,13 @@ fun RemindGroupMembers(grupo: Grupo,
                         Text(
                             style = GroupTextStyles.ActionBold,
                             text = usuario.nombre,
-                            color = GroupTextPrimary
+                            color = MaterialTheme.colorScheme.onTertiary
                         )
                         Text(
 
                             style = GroupTextStyles.ActionBold,
                             text = "Debe: $" + grupo.deuda?.find { it.usuario.id == usuario.id }?.monto.toString(),
-                            color = GroupTextPrimary
+                            color = MaterialTheme.colorScheme.onTertiary
                         )
                     }
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {

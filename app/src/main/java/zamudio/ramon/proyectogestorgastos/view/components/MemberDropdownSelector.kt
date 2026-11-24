@@ -11,6 +11,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -61,7 +62,7 @@ fun MemberDropdownSelector(
                     .fillMaxWidth()
                     .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
                 shape = RoundedCornerShape(12.dp),
-                color = GroupFieldBackground
+                color = MaterialTheme.colorScheme.tertiary
             ) {
                 Row (
                     modifier = Modifier
@@ -74,7 +75,7 @@ fun MemberDropdownSelector(
                         text = selectedMember,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onTertiary
                     )
                     Icon(
                         painter = painterResource(R.drawable.ic_keyboard_down),

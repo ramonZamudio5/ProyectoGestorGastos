@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
@@ -52,7 +53,7 @@ fun GroupInviteCodeCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = OffWhite),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -79,7 +80,7 @@ fun GroupInviteCodeCard(
 
                     style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_invite_title),
-                    color = GroupTextPrimary,
+                    color = MaterialTheme.colorScheme.onSecondary,
                     modifier = Modifier.weight(1f)
                 )
             }

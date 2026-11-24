@@ -6,9 +6,16 @@ import androidx.compose.ui.graphics.Color
 val ScreenBackground = Color(0xFFEFE8F9)
 val ScreenDarkBackground = Color(0xFF281C3B)
 
+val SecondaryDark = Color(0xFF514760)
+
+val DarkGray = Color(0xFF28262A)
+
+val TextFieldsDark = Color(0xFF251B35)
+
+val BadgeBackground = Color(0xFFE9DFFF)
+
 // Morados: acciones, acentos y fondos suaves.
 val PurpleButton = Color(0xFF8455EF)
-val GroupSettlementAccent = Color(0xFF7C4DFF)
 val GroupJoinAccent = Color(0xFF673AB7)
 val GroupBadgeText = Color(0xFF5E35B1)
 val GroupMemberAccent = Color(0xFF5C6BC0)
@@ -25,7 +32,6 @@ val GroupFieldBackground = Color(0xFFF3F1FA)
 // Azules: acciones, acentos y fondos.
 val BluePrimary = Color(0xFF2563EB)
 val GroupBlueAccent = Color(0xFF2962FF)
-val BlueNavy = Color(0xFF131B2E)
 val LightBlue = Color(0xFF89ABF1)
 val GroupAvatarBlue = Color(0xFF90CAF9)
 val SecondaryBackgroundColor = Color(0xFFE2E7FF)
@@ -44,18 +50,14 @@ val GroupDeleteBackground = Color(0xFFFFEBEE)
 val LightOrange = Color(0xBFEC9D39)
 val GroupAvatarOrange = Color(0xFFFFCC80)
 val LightYellow = Color(0xBFF8E16C)
-val LightGreen = Color(0xBFBCF86C)
 
 // Neutros: texto, superficies, bordes y espacios reservados.
 val OffWhite = Color(0xFFFEFEFE)
 val OffBlack = Color(0xFF0E0E0E)
-val PurpleGrey40 = Color(0xFF625B71)
 val GrayForm = Color(0xFFF4F5F9)
 val GrayText = Color(0xFF6B7280)
 val GroupTextPrimary = Color(0xFF1E2022)
 val GroupMemberText = Color(0xFF2C3E50)
-val GroupSectionText = Color(0xFF37474F)
-val GroupBalanceText = Color(0xFF455A64)
 val GroupCloseIcon = Color(0xFF49454F)
 val GroupIconSecondary = Color(0xFF444444)
 val GroupTextSecondary = Color(0xFF888888)

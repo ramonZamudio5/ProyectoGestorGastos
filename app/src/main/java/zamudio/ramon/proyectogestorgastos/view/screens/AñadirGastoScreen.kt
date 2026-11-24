@@ -273,7 +273,7 @@ fun AñadirGastoScreen(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(16.dp))
-                                .background(if (esSeleccionado) PurpleButton else OffWhite)
+                                .background(if (esSeleccionado) PurpleButton else MaterialTheme.colorScheme.secondary)
                                 .border(1.dp, if (esSeleccionado) Color.Transparent else GroupBorder, RoundedCornerShape(16.dp))
                                 .clickable { categoriaSeleccionadaNombre = cat.nombre }
                                 .padding(vertical = 12.dp, horizontal = 16.dp)
@@ -299,7 +299,7 @@ fun AñadirGastoScreen(
                                 cat.nombre,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Medium,
-                                color = if (esSeleccionado) OffWhite else GroupTextPrimary
+                                color = if (esSeleccionado) OffWhite else MaterialTheme.colorScheme.onSecondary
                             )
                         }
                     }
@@ -309,7 +309,7 @@ fun AñadirGastoScreen(
 
         item {
             Card(
-                colors = CardDefaults.cardColors(containerColor = OffWhite),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder),
                 modifier = Modifier.fillMaxWidth()
@@ -323,7 +323,7 @@ fun AñadirGastoScreen(
                             text = "¿Quién pagó el gasto?",
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp,
-                            color = GroupTextPrimary
+                            color = MaterialTheme.colorScheme.onSecondary
                         )
                         Text(
                             text = "Selecciona quién cubrió el total",
@@ -351,7 +351,7 @@ fun AñadirGastoScreen(
 
         item {
             Card(
-                colors = CardDefaults.cardColors(containerColor = OffWhite),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder),
                 modifier = Modifier.fillMaxWidth()
@@ -364,7 +364,7 @@ fun AñadirGastoScreen(
                         text = "Monto por integrante",
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
 
                     val montoDouble = monto.toDoubleOrNull() ?: 0.0
@@ -376,7 +376,7 @@ fun AñadirGastoScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(GroupBalanceBackground, RoundedCornerShape(10.dp))
+                                .background(MaterialTheme.colorScheme.tertiary, RoundedCornerShape(10.dp))
                                 .padding(10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -410,7 +410,7 @@ fun AñadirGastoScreen(
                                         text = if (usuario.id == 1) "${usuario.nombre} (Tú)" else usuario.nombre,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 12.sp,
-                                        color = GroupTextPrimary
+                                        color = MaterialTheme.colorScheme.onTertiary
                                     )
                                     Text(
                                         text = "${String.format("%.0f", porcentajePorPersona)}% del total",
@@ -423,7 +423,7 @@ fun AñadirGastoScreen(
                                 text = "$${String.format("%.2f", montoPorPersona)} MXN",
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 13.sp,
-                                color = GroupTextPrimary
+                                color = MaterialTheme.colorScheme.onTertiary
                             )
                         }
                     }
@@ -480,7 +480,7 @@ fun AñadirGastoScreen(
                     modifier = Modifier
                         .weight(1f)
                         .clickable { mostrarDatePicker = true },
-                    color = OffWhite,
+                    color = MaterialTheme.colorScheme.secondary,
                     shape = RoundedCornerShape(12.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                 ) {
@@ -500,12 +500,12 @@ fun AñadirGastoScreen(
                             }
                         }
                         Column {
-                            Text("Fecha", fontSize = 10.sp, color = GroupTextSecondary)
+                            Text("Fecha", fontSize = 10.sp, color = MaterialTheme.colorScheme.onSecondary)
                             Text(
                                 text = fechaSeleccionada.format(formatoFecha),
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = GroupTextPrimary
+                                color = MaterialTheme.colorScheme.onSecondary
                             )
                         }
                     }
@@ -513,7 +513,7 @@ fun AñadirGastoScreen(
 
                 Surface(
                     modifier = Modifier.weight(1f),
-                    color = OffWhite,
+                    color = MaterialTheme.colorScheme.secondary,
                     shape = RoundedCornerShape(12.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                 ) {
@@ -533,8 +533,8 @@ fun AñadirGastoScreen(
                             }
                         }
                         Column(modifier = Modifier.weight(1f)) {
-                            Text("Ticket", fontSize = 10.sp, color = GroupTextSecondary)
-                            Text("recibo_puert", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = GroupTextPrimary, maxLines = 1)
+                            Text("Ticket", fontSize = 10.sp, color = MaterialTheme.colorScheme.onSecondary)
+                            Text("recibo_puert", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary, maxLines = 1)
                         }
                         Icon(
                             painter = painterResource(id = R.drawable.ic_check),

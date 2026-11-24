@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,9 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.DarkGray
 
 @Composable
 fun EstadisticasPresupuesto(
@@ -34,11 +35,11 @@ fun EstadisticasPresupuesto(
     onEditarIngresos: () -> Unit
 ) {
     Column(
-        Modifier.fillMaxWidth().background(OffWhite, RoundedCornerShape(18.dp)).padding(16.dp),
+        Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(18.dp)).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(painterResource(R.drawable.ic_graficas), contentDescription = null, modifier = Modifier.size(18.dp))
+            Icon(painterResource(R.drawable.ic_graficas), contentDescription = null, modifier = Modifier.size(18.dp), tint = MaterialTheme.colorScheme.onSecondary)
             Text("ESTADÍSTICAS", Modifier.padding(start = 6.dp), style = Typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSecondary, fontWeight = FontWeight.Bold)
         }
@@ -53,7 +54,7 @@ fun EstadisticasPresupuesto(
                 Text(" MXN", style = Typography.labelSmall, color = PurpleButton, modifier = Modifier.padding(bottom = 5.dp))
             }
         }
-        BotonPrincipal("Agregar / Ajustar Presupuesto\nMensual", onAjustarPresupuesto, R.drawable.ic_anadir)
+        BotonPrincipal("Editar Presupuesto Mensual", onAjustarPresupuesto, R.drawable.ic_anadir)
     }
 }
 
@@ -76,7 +77,8 @@ private fun EstadisticaCelda(
         }
         Spacer(Modifier.size(2.dp))
         Text("\$${cantidad.formatoDinero()}", style = Typography.titleMedium,
-            fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
+            fontWeight = FontWeight.Bold, color = DarkGray
+        )
         Text("MXN", style = Typography.labelSmall, color = Color.Gray)
     }
 }

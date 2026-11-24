@@ -23,9 +23,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeText
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupJoinAccent
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.pluralStringResource
@@ -38,7 +36,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
-import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBalanceSummaryCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItem
 
@@ -98,7 +95,7 @@ fun MyGroupScreen(
                         .height(50.dp),
                     shape = RoundedCornerShape(14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = GroupBlueAccent
+                        containerColor = MaterialTheme.colorScheme.primary
                     )
                 ) {
                     Icon(

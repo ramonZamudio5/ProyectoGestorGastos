@@ -92,7 +92,7 @@ fun SettleGroupAccountsScreen(
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
-            colors = CardDefaults.cardColors(containerColor = OffWhite),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
         ) {
             Column(
@@ -116,7 +116,7 @@ fun SettleGroupAccountsScreen(
                         text = "Registrar Liquidación",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                 }
 

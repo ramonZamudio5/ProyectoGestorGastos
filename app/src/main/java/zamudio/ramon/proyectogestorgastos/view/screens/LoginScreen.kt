@@ -54,10 +54,10 @@ fun LoginScreen(innerPadding: PaddingValues, navigateToRegister: () -> Unit, onN
     var passwordVisible by remember { mutableStateOf(false) }
 
     val textFieldColors = TextFieldDefaults.colors(
-        focusedContainerColor = GroupFieldBackground,
-        unfocusedContainerColor = GroupFieldBackground,
-        focusedTextColor = OffBlack,
-        unfocusedTextColor = OffBlack,
+        focusedContainerColor = MaterialTheme.colorScheme.tertiary,
+        unfocusedContainerColor = MaterialTheme.colorScheme.tertiary,
+        focusedTextColor = MaterialTheme.colorScheme.onTertiary,
+        unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
         focusedIndicatorColor = Color.Transparent,
         unfocusedIndicatorColor = Color.Transparent,
         disabledIndicatorColor = Color.Transparent,

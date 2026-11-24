@@ -34,7 +34,7 @@ fun AlertaPresupuesto(
     onPorcentajeChange: (Int) -> Unit
 ) {
     Column(
-        Modifier.fillMaxWidth().background(OffWhite, RoundedCornerShape(16.dp)).padding(14.dp),
+        Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(16.dp)).padding(14.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -46,7 +46,7 @@ fun AlertaPresupuesto(
             Column(Modifier.weight(1f).padding(start = 8.dp)) {
                 Text("Alertas de Presupuesto", style = Typography.titleSmall,
                     fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
-                Text("Previene sobregiros antes de fin de mes", style = Typography.labelSmall, color = Color.DarkGray)
+                Text("Previene sobregiros antes de fin de mes", style = Typography.labelSmall, color = MaterialTheme.colorScheme.onSecondary)
             }
             Switch(
                 checked = activa,

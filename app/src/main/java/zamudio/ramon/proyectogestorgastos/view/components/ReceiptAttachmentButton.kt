@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSettlementAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.R
 
@@ -62,7 +62,7 @@ fun ReceiptAttachmentButton(
                 Icon(
                     painter = painterResource(R.drawable.ic_picture_as_pdf),
                     contentDescription = null,
-                    tint = GroupSettlementAccent,
+                    tint = PurpleButton,
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))

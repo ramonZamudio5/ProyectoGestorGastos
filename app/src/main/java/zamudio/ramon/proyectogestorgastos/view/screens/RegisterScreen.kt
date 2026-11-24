@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
+import zamudio.ramon.proyectogestorgastos.ui.theme.BadgeBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
 import zamudio.ramon.proyectogestorgastos.ui.theme.LightBlue
@@ -53,8 +54,8 @@ fun RegisterScreen(
     var nombre by remember { mutableStateOf("") }
     var primerApellido by remember { mutableStateOf("") }
     var segundoApellido by remember { mutableStateOf("") }
-    val badgeTextColor = if (isSystemInDarkTheme()) MaterialTheme.colorScheme.primary else BluePrimary
-    val badgeBackgroundColor = if (isSystemInDarkTheme()) MaterialTheme.colorScheme.secondary else LightBlue
+    val badgeTextColor = MaterialTheme.colorScheme.primary
+    val badgeBackgroundColor = BadgeBackground
 
     val customTextFieldColors = TextFieldDefaults.colors(
         focusedContainerColor = MaterialTheme.colorScheme.secondary,

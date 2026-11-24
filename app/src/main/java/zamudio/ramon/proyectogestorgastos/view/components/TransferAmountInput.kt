@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -82,7 +83,7 @@ fun TransferAmountInput(
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
-            color = GroupFieldBackground
+            color = MaterialTheme.colorScheme.tertiary
         ) {
             Row(
                 modifier = Modifier
@@ -111,7 +112,7 @@ fun TransferAmountInput(
                     textStyle = LocalTextStyle.current.copy(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onTertiary
                     ),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     singleLine = true
@@ -120,7 +121,7 @@ fun TransferAmountInput(
                     text = "MXN",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
-                    color = GroupTextSecondary
+                    color = MaterialTheme.colorScheme.onTertiary
                 )
             }
         }

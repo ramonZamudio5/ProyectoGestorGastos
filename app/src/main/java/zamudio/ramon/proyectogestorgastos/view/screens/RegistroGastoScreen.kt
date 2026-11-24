@@ -157,7 +157,7 @@ fun RegistroGastoScreen(
                 color = MaterialTheme.colorScheme.onSurface
             )
             Row(
-                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(OffWhite)
+                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(MaterialTheme.colorScheme.secondary)
                     .clickable { receiptPicker.launch("image/*") }.padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -166,7 +166,7 @@ fun RegistroGastoScreen(
                     if (recibo.isBlank()) {
                         if (esGasto) "Toca para subir el recibo" else "Toca para subir el comprobante"
                     } else recibo,
-                    style = Typography.bodyMedium, color = Color.Gray
+                    style = Typography.bodyMedium, color = if (recibo.isBlank()) Color.Gray else MaterialTheme.colorScheme.onSecondary
                 )
                 Icon(
                     painterResource(R.drawable.ic_camara),
@@ -177,7 +177,8 @@ fun RegistroGastoScreen(
             Text("Fecha", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSurface)
             Row(
-                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(OffWhite)
+                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(
+                    MaterialTheme.colorScheme.secondary)
                     .clickable {
                         DatePickerDialog(context, { _, year, month, day -> fecha = "%02d/%02d/%04d".format(day, month + 1, year) },
                             calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
@@ -226,7 +227,7 @@ private fun SelectorTipoMovimiento(
     onSeleccionarIngreso: () -> Unit
 ) {
     BoxWithConstraints(
-        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(OffWhite).padding(4.dp)
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(MaterialTheme.colorScheme.secondary).padding(4.dp)
     ) {
         val anchoOpcion = maxWidth / 2
         val desplazamiento = animateDpAsState(
@@ -252,7 +253,7 @@ private fun OpcionTipoMovimiento(
     onClick: () -> Unit
 ) {
     val colorTexto = animateColorAsState(
-        targetValue = if (seleccionada) OffWhite else Color(0xFF171717),
+        targetValue = if (seleccionada) OffWhite else MaterialTheme.colorScheme.onSecondary,
         label = "Color texto tipo movimiento"
     )
     Box(
@@ -281,7 +282,7 @@ private fun CampoRegistro(
             shape = RoundedCornerShape(10.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = PurpleButton, unfocusedBorderColor = Color.Transparent,
-                focusedContainerColor = OffWhite, unfocusedContainerColor = OffWhite
+                focusedContainerColor = MaterialTheme.colorScheme.tertiary, unfocusedContainerColor = MaterialTheme.colorScheme.secondary
             )
         )
     }
@@ -296,7 +297,7 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
         Box {
             Surface(
                 modifier = Modifier.fillMaxWidth().height(48.dp).clickable { expanded = true },
-                shape = RoundedCornerShape(10.dp), color = OffWhite
+                shape = RoundedCornerShape(10.dp), color = MaterialTheme.colorScheme.secondary
             ) {
                 Row(
                     Modifier.padding(horizontal = 12.dp),
@@ -306,10 +307,10 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
                     Text(
                         seleccionado.ifBlank { "Selecciona una opción" },
                         style = Typography.bodyMedium,
-                        color = if (seleccionado.isBlank()) Color.Gray else Color.Black
+                        color = if (seleccionado.isBlank()) Color.Gray else MaterialTheme.colorScheme.onSecondary
                     )
                     Icon(
-                        painterResource(R.drawable.ic_chevron_up),
+                        painterResource(R.drawable.ic_keyboard_down),
                         contentDescription = if (expanded) "Cerrar opciones" else "Mostrar opciones",
                         modifier = Modifier.size(16.dp)
                     )

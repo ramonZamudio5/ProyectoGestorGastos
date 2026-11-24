@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
+import zamudio.ramon.proyectogestorgastos.ui.theme.BadgeBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.ProyectoGestorGastosTheme
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
@@ -67,10 +68,10 @@ fun RegisterPerfilScreen(
 
     // Colores reutilizables para los TextFields dentro de la tarjeta
     val cardTextFieldColors = TextFieldDefaults.colors(
-        focusedContainerColor = GroupFieldBackground,
-        unfocusedContainerColor = GroupFieldBackground,
-        focusedTextColor = MaterialTheme.colorScheme.onSecondary,
-        unfocusedTextColor = MaterialTheme.colorScheme.onSecondary,
+        focusedContainerColor = MaterialTheme.colorScheme.tertiary,
+        unfocusedContainerColor = MaterialTheme.colorScheme.tertiary,
+        focusedTextColor = MaterialTheme.colorScheme.onTertiary,
+        unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
         cursorColor = MaterialTheme.colorScheme.primary,
         focusedIndicatorColor = Color.Transparent,
         unfocusedIndicatorColor = Color.Transparent
@@ -93,7 +94,7 @@ fun RegisterPerfilScreen(
             Row(
                 modifier = Modifier
                     .background(
-                        color = if (isSystemInDarkTheme()) MaterialTheme.colorScheme.secondary else BackGroundPurple,
+                        color = BadgeBackground,
                         shape = CircleShape
                     )
                     .padding(horizontal = 12.dp, vertical = 6.dp),
@@ -157,7 +158,7 @@ fun RegisterPerfilScreen(
                         color = MaterialTheme.colorScheme.primary,
                         style = Typography.labelLarge.copy(fontSize = 10.sp),
                         modifier = Modifier
-                            .background(Color(0xFFF4F1FB), CircleShape)
+                            .background(BadgeBackground, CircleShape)
                             .padding(horizontal = 8.dp, vertical = 4.dp)
                     )
                 }
@@ -228,7 +229,7 @@ fun RegisterPerfilScreen(
                         color = MaterialTheme.colorScheme.primary,
                         style = Typography.labelLarge.copy(fontSize = 10.sp),
                         modifier = Modifier
-                            .background(Color(0xFFF4F1FB), CircleShape)
+                            .background(BadgeBackground, CircleShape)
                             .padding(horizontal = 8.dp, vertical = 4.dp)
                     )
                 }
@@ -334,7 +335,7 @@ fun RegisterPerfilScreen(
                         color = MaterialTheme.colorScheme.primary,
                         style = Typography.labelLarge.copy(fontSize = 10.sp),
                         modifier = Modifier
-                            .background(Color(0xFFF4F1FB), CircleShape)
+                            .background(BadgeBackground, CircleShape)
                             .padding(horizontal = 8.dp, vertical = 4.dp)
                     )
                 }
@@ -346,13 +347,13 @@ fun RegisterPerfilScreen(
                         .fillMaxWidth()
                         .shadow(if (menuExpandido) 4.dp else 0.dp, RoundedCornerShape(12.dp))
                         .clip(RoundedCornerShape(12.dp))
-                        .background(MaterialTheme.colorScheme.secondary)
+                        .background(MaterialTheme.colorScheme.tertiary)
                 ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(12.dp))
-                            .background(GroupFieldBackground)
+                            .background(MaterialTheme.colorScheme.tertiary)
                             .clickable { menuExpandido = !menuExpandido }
                             .padding(horizontal = 16.dp, vertical = 16.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -369,7 +370,7 @@ fun RegisterPerfilScreen(
                             Text(
                                 text = generoSeleccionado,
                                 style = Typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSecondary
+                                color = MaterialTheme.colorScheme.onTertiary
                             )
                         }
                         Icon(
@@ -380,7 +381,7 @@ fun RegisterPerfilScreen(
                         )
                     }
                     if (menuExpandido) {
-                        Column(Modifier.padding(vertical = 8.dp)) {
+                        Column(Modifier.padding(vertical = 8.dp).background(MaterialTheme.colorScheme.tertiary)) {
                             opcionesGenero.forEach { opcion ->
                                 Text(
                                     text = opcion,
@@ -392,7 +393,7 @@ fun RegisterPerfilScreen(
                                         }
                                         .padding(horizontal = 16.dp, vertical = 12.dp),
                                     style = Typography.bodyMedium,
-                                    color = if (opcion == "Prefiero no decirlo") Color(0xFF4B5563) else MaterialTheme.colorScheme.onSecondary
+                                    color = MaterialTheme.colorScheme.onTertiary
                                 )
                             }
                         }

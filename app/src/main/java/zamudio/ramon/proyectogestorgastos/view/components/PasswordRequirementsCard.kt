@@ -69,7 +69,7 @@ private fun RequisitoItem(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
-            .background(GroupFieldBackground)
+            .background(MaterialTheme.colorScheme.tertiary)
             .padding(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -83,7 +83,7 @@ private fun RequisitoItem(
         Text(
             text = text,
             style = Typography.bodyMedium.copy(fontSize = 12.sp),
-            color = if (isMet) MaterialTheme.colorScheme.onSecondary else Color(0xFF4B5563)
+            color = if (isMet) MaterialTheme.colorScheme.onTertiary else Color(0xFF4B5563)
         )
     }
 }

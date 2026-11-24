@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -76,7 +77,7 @@ fun ItemMiembroPagador(
             text = if (miembro.id == 1) "${miembro.nombre} (Tú)" else miembro.nombre,
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
-            color = if (esSeleccionado) PurpleButton else GroupTextPrimary
+            color = if (esSeleccionado) PurpleButton else MaterialTheme.colorScheme.onSecondary
         )
         Text(
             text = if (esSeleccionado) "Pagador" else "Miembro",

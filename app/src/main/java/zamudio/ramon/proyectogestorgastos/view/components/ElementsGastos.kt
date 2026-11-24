@@ -53,15 +53,12 @@ import zamudio.ramon.proyectogestorgastos.model.data.getPorcentajeTipo
 import zamudio.ramon.proyectogestorgastos.model.data.getPresupuestoTotal
 import zamudio.ramon.proyectogestorgastos.model.data.getTiposInGastos
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackgroundRed
+import zamudio.ramon.proyectogestorgastos.ui.theme.DarkGray
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSuccessBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Purple80
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleGrey40
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.LightGreen
-import zamudio.ramon.proyectogestorgastos.ui.theme.LightRed
 import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import java.time.LocalDate
 import java.time.format.TextStyle
@@ -137,7 +134,7 @@ fun RowDeFiltros(
             FiltroChip(
                 texto = "Todo",
                 seleccionado = filtroSeleccionado.equals("todo", ignoreCase = true),
-                onClick = { onFiltroSelected("todo") }
+                onClick = { onFiltroSelected("todo") },
             )
         }
         item {
@@ -169,7 +166,7 @@ fun RowDeFiltros(
 @Composable
 fun FiltroChip(texto: String, seleccionado: Boolean, colorActivo: Color = PurpleButton, onClick: () -> Unit) {
     val colorFondo = if (seleccionado) colorActivo else MaterialTheme.colorScheme.secondary
-    val colorTexto = if (seleccionado) MaterialTheme.colorScheme.secondary else Color.Black
+    val colorTexto = if (seleccionado) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSecondary
 
     Box(
         modifier = Modifier
@@ -267,10 +264,10 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
             ) {
                 Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                     Icon(painter = painterResource(R.drawable.ic_gastos), contentDescription = "gastos",
-                        tint = MaterialTheme.colorScheme.onSecondary, modifier = Modifier.rotate(180f))
-                    Text("Ingresos del mes", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
+                        tint = DarkGray, modifier = Modifier.rotate(180f))
+                    Text("Ingresos del mes", style = Typography.labelMedium, color = DarkGray)
                 }
-                Text("+$${ingresos}", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
+                Text("+$${ingresos}", style = Typography.titleMedium, color = DarkGray)
             }
             Column(
                 Modifier
@@ -279,10 +276,10 @@ fun BannerBalance(gastos: Double, ingresos: Double) {
             ) {
                 Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                     Icon(painter = painterResource(R.drawable.ic_gastos), contentDescription = "gastos",
-                        tint = MaterialTheme.colorScheme.onSecondary)
-                    Text("Gastos del mes", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
+                        tint = DarkGray)
+                    Text("Gastos del mes", style = Typography.labelMedium, color = DarkGray)
                 }
-                Text("-$${gastos}", style = Typography.titleMedium, color = MaterialTheme.colorScheme.onSecondary)
+                Text("-$${gastos}", style = Typography.titleMedium, color = DarkGray)
             }
         }
     }
@@ -415,7 +412,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
                 }
             }
             val celdasPorFila = tipos.chunked(2)
-            Column(Modifier.background(color = GroupFieldBackground, shape = RoundedCornerShape(10.dp))
+            Column(Modifier.background(color = MaterialTheme.colorScheme.tertiary, shape = RoundedCornerShape(10.dp))
                 .fillMaxWidth().padding(10.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                 celdasPorFila.forEach { fila ->
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
@@ -429,7 +426,7 @@ fun GraficaGastos(gastos: List<Gasto>) {
                                 )
                                 Text(tipo.toString().lowercase().replaceFirstChar { it.uppercaseChar() } + ": " +
                                         getPorcentajeTipo(getGastosTotales(getGastosByTipo(tipo)), gastosTotales)
-                                    + "%", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onSecondary)
+                                    + "%", style = Typography.labelMedium, color = MaterialTheme.colorScheme.onTertiary)
                             }
                         }
                         if (fila.size == 1) {
