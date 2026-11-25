@@ -11,8 +11,7 @@ import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarBlue
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarGreen
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAvatarOrange
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -23,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 
 
 @Composable
@@ -47,7 +47,7 @@ fun AvatarStack(
                     .offset(x = (-8).dp * index)
                     .zIndex(index.toFloat())
                     .size(26.dp)
-                    .border(1.5.dp, White, CircleShape)
+                    .border(1.5.dp, OffWhite, CircleShape)
                     .clip(CircleShape)
                     .background(color)
             )
@@ -60,15 +60,15 @@ fun AvatarStack(
                     .offset(x = (-8).dp * placeholderColors.size)
                     .zIndex(placeholderColors.size.toFloat())
                     .size(26.dp)
-                    .border(1.5.dp, White, CircleShape)
+                    .border(1.5.dp, OffWhite, CircleShape)
                     .clip(CircleShape)
-                    .background(PurplePrimary), // Morado como el acento de la app
+                    .background(PurpleButton), // Morado como el acento de la app
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     style = GroupTextStyles.AvatarBold,
                     text = stringResource(R.string.group_you),
-                    color = White
+                    color = OffWhite
                 )
             }
         }

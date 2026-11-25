@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCategoryBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCategoryText
@@ -21,7 +22,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSuccessAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSuccessBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -43,7 +44,7 @@ fun GroupCreatedHeaderCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Row(
@@ -90,7 +91,7 @@ fun GroupCreatedHeaderCard(
                 Text(
                     style = GroupTextStyles.CardTitleBold,
                     text = groupName,
-                    color = GroupTextPrimary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
 
                 // Creador

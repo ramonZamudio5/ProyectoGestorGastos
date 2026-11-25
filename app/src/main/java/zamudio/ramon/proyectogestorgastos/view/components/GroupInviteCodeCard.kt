@@ -17,12 +17,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -37,7 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupInviteCodeCard(
@@ -52,7 +53,7 @@ fun GroupInviteCodeCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -69,7 +70,7 @@ fun GroupInviteCodeCard(
                 Icon(
                     painter = painterResource(R.drawable.ic_key),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(18.dp)
                 )
 
@@ -79,7 +80,7 @@ fun GroupInviteCodeCard(
 
                     style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_invite_title),
-                    color = GroupTextPrimary,
+                    color = MaterialTheme.colorScheme.onSecondary,
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -137,14 +138,14 @@ fun GroupInviteCodeCard(
                     Icon(
                         painter = painterResource(R.drawable.ic_copy),
                         contentDescription = null,
-                        tint = PurplePrimary,
+                        tint = PurpleButton,
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         style = GroupTextStyles.SupportingBold,
                         text = stringResource(R.string.group_copy_code, code),
-                        color = PurplePrimary
+                        color = PurpleButton
                     )
                 }
             }

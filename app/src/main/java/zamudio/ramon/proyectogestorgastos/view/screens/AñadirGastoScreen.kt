@@ -32,6 +32,7 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
 import zamudio.ramon.proyectogestorgastos.ui.theme.*
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.ItemMiembroPagador
 import java.time.Instant
 import java.time.LocalDate
@@ -40,7 +41,10 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 @Composable
-fun AñadirGastoScreen() {
+fun AñadirGastoScreen(
+    onAñadirGasto: () -> Unit = {},
+    onCancelar: () -> Unit = {}
+) {
     val categorias = remember {
         mutableStateListOf(
             CategoriaPresupuesto(
@@ -99,8 +103,8 @@ fun AñadirGastoScreen() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(White),
-        contentPadding = PaddingValues(16.dp),
+            .background(MaterialTheme.colorScheme.background),
+        contentPadding = PaddingValues(20.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
@@ -130,7 +134,7 @@ fun AñadirGastoScreen() {
 
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     Box(modifier = Modifier.size(8.dp).background(PurpleButton, CircleShape))
-                    Text("Gasto compartido", color = GroupTextSecondary, fontSize = 12.sp)
+                    Text("Gasto compartido", color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp)
                 }
             }
         }
@@ -196,7 +200,7 @@ fun AñadirGastoScreen() {
                     ) {
                         Surface(
                             modifier = Modifier.weight(1f),
-                            color = White,
+                            color = OffWhite,
                             shape = RoundedCornerShape(12.dp),
                             border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                         ) {
@@ -258,8 +262,8 @@ fun AñadirGastoScreen() {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Categoría", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = GroupTextPrimary)
-                    Text("${categorias.size} disponibles", color = GroupBadgeText, fontSize = 12.sp, fontWeight = FontWeight.Medium)
+                    Text("Categoría", fontWeight = FontWeight.Bold, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface)
+                    Text("${categorias.size} disponibles", color = MaterialTheme.colorScheme.onSurface, fontSize = 12.sp, fontWeight = FontWeight.Medium)
                 }
 
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -269,7 +273,7 @@ fun AñadirGastoScreen() {
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(16.dp))
-                                .background(if (esSeleccionado) PurpleButton else White)
+                                .background(if (esSeleccionado) PurpleButton else MaterialTheme.colorScheme.secondary)
                                 .border(1.dp, if (esSeleccionado) Color.Transparent else GroupBorder, RoundedCornerShape(16.dp))
                                 .clickable { categoriaSeleccionadaNombre = cat.nombre }
                                 .padding(vertical = 12.dp, horizontal = 16.dp)
@@ -278,7 +282,7 @@ fun AñadirGastoScreen() {
                                 modifier = Modifier
                                     .size(40.dp)
                                     .background(
-                                        if (esSeleccionado) White.copy(alpha = 0.2f) else cat.colorClaro,
+                                        if (esSeleccionado) OffWhite.copy(alpha = 0.2f) else cat.colorClaro,
                                         CircleShape
                                     ),
                                 contentAlignment = Alignment.Center
@@ -286,7 +290,7 @@ fun AñadirGastoScreen() {
                                 Icon(
                                     painter = painterResource(id = cat.icono),
                                     contentDescription = cat.nombre,
-                                    tint = if (esSeleccionado) White else cat.color,
+                                    tint = if (esSeleccionado) OffWhite else cat.color,
                                     modifier = Modifier.size(22.dp)
                                 )
                             }
@@ -295,7 +299,7 @@ fun AñadirGastoScreen() {
                                 cat.nombre,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Medium,
-                                color = if (esSeleccionado) White else GroupTextPrimary
+                                color = if (esSeleccionado) OffWhite else MaterialTheme.colorScheme.onSecondary
                             )
                         }
                     }
@@ -305,7 +309,7 @@ fun AñadirGastoScreen() {
 
         item {
             Card(
-                colors = CardDefaults.cardColors(containerColor = White),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder),
                 modifier = Modifier.fillMaxWidth()
@@ -319,7 +323,7 @@ fun AñadirGastoScreen() {
                             text = "¿Quién pagó el gasto?",
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp,
-                            color = GroupTextPrimary
+                            color = MaterialTheme.colorScheme.onSecondary
                         )
                         Text(
                             text = "Selecciona quién cubrió el total",
@@ -347,7 +351,7 @@ fun AñadirGastoScreen() {
 
         item {
             Card(
-                colors = CardDefaults.cardColors(containerColor = White),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
                 shape = RoundedCornerShape(16.dp),
                 border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder),
                 modifier = Modifier.fillMaxWidth()
@@ -360,7 +364,7 @@ fun AñadirGastoScreen() {
                         text = "Monto por integrante",
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
 
                     val montoDouble = monto.toDoubleOrNull() ?: 0.0
@@ -372,7 +376,7 @@ fun AñadirGastoScreen() {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(GroupBalanceBackground, RoundedCornerShape(10.dp))
+                                .background(MaterialTheme.colorScheme.tertiary, RoundedCornerShape(10.dp))
                                 .padding(10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -406,7 +410,7 @@ fun AñadirGastoScreen() {
                                         text = if (usuario.id == 1) "${usuario.nombre} (Tú)" else usuario.nombre,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 12.sp,
-                                        color = GroupTextPrimary
+                                        color = MaterialTheme.colorScheme.onTertiary
                                     )
                                     Text(
                                         text = "${String.format("%.0f", porcentajePorPersona)}% del total",
@@ -419,7 +423,7 @@ fun AñadirGastoScreen() {
                                 text = "$${String.format("%.2f", montoPorPersona)} MXN",
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 13.sp,
-                                color = GroupTextPrimary
+                                color = MaterialTheme.colorScheme.onTertiary
                             )
                         }
                     }
@@ -452,7 +456,7 @@ fun AñadirGastoScreen() {
                                     color = PurpleButton
                                 )
                             }
-                            Surface(color = White, shape = RoundedCornerShape(10.dp)) {
+                            Surface(color = OffWhite, shape = RoundedCornerShape(10.dp)) {
                                 Text(
                                     text = "$totalMiembros personas",
                                     fontSize = 10.sp,
@@ -476,7 +480,7 @@ fun AñadirGastoScreen() {
                     modifier = Modifier
                         .weight(1f)
                         .clickable { mostrarDatePicker = true },
-                    color = White,
+                    color = MaterialTheme.colorScheme.secondary,
                     shape = RoundedCornerShape(12.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                 ) {
@@ -496,12 +500,12 @@ fun AñadirGastoScreen() {
                             }
                         }
                         Column {
-                            Text("Fecha", fontSize = 10.sp, color = GroupTextSecondary)
+                            Text("Fecha", fontSize = 10.sp, color = MaterialTheme.colorScheme.onSecondary)
                             Text(
                                 text = fechaSeleccionada.format(formatoFecha),
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = GroupTextPrimary
+                                color = MaterialTheme.colorScheme.onSecondary
                             )
                         }
                     }
@@ -509,7 +513,7 @@ fun AñadirGastoScreen() {
 
                 Surface(
                     modifier = Modifier.weight(1f),
-                    color = White,
+                    color = MaterialTheme.colorScheme.secondary,
                     shape = RoundedCornerShape(12.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GroupBorder)
                 ) {
@@ -529,8 +533,8 @@ fun AñadirGastoScreen() {
                             }
                         }
                         Column(modifier = Modifier.weight(1f)) {
-                            Text("Ticket", fontSize = 10.sp, color = GroupTextSecondary)
-                            Text("recibo_puert", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = GroupTextPrimary, maxLines = 1)
+                            Text("Ticket", fontSize = 10.sp, color = MaterialTheme.colorScheme.onSecondary)
+                            Text("recibo_puert", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary, maxLines = 1)
                         }
                         Icon(
                             painter = painterResource(id = R.drawable.ic_check),
@@ -545,37 +549,16 @@ fun AñadirGastoScreen() {
 
         item {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(48.dp)
-                ) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_recipt),
-                            contentDescription = null,
-                            tint = White,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Text("Añadir Gasto Grupal", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = White)
-                    }
-                }
-
+                BotonPrincipal("Añadir Gasto Grupal", onAñadirGasto, R.drawable.ic_recipt)
                 Text(
                     text = "Cancelar",
-                    color = GroupTextPrimary,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { {}}
+                        .clickable(onClick = onCancelar)
                         .padding(vertical = 8.dp)
                 )
             }

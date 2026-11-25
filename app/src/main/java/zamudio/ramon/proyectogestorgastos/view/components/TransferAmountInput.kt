@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -31,7 +32,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
 
 @Composable
@@ -67,14 +68,14 @@ fun TransferAmountInput(
                 Icon(
                     painter = painterResource(R.drawable.ic_energy),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(14.dp)
                 )
                 Text(
                     text = "Liquidar total ($${String.format("%,.2f", deudaTotal)} MXN)",
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
             }
         }
@@ -82,7 +83,7 @@ fun TransferAmountInput(
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
-            color = GroupFieldBackground
+            color = MaterialTheme.colorScheme.tertiary
         ) {
             Row(
                 modifier = Modifier
@@ -94,7 +95,7 @@ fun TransferAmountInput(
                     text = "$",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
                 Spacer(modifier = Modifier.width(6.dp))
                 TextField(
@@ -111,7 +112,7 @@ fun TransferAmountInput(
                     textStyle = LocalTextStyle.current.copy(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onTertiary
                     ),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     singleLine = true
@@ -120,7 +121,7 @@ fun TransferAmountInput(
                     text = "MXN",
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
-                    color = GroupTextSecondary
+                    color = MaterialTheme.colorScheme.onTertiary
                 )
             }
         }

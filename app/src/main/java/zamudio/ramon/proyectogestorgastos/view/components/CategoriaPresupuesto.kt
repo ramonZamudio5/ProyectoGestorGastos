@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,8 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.model.dominio.CategoriaPresupuesto
 
 @Composable
@@ -37,7 +37,7 @@ fun TarjetaCategoriaPresupuesto(
         else -> null
     }
     Column(
-        Modifier.fillMaxWidth().background(White, RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(12.dp),
+        Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -47,11 +47,13 @@ fun TarjetaCategoriaPresupuesto(
                 modifier = Modifier.background(categoria.colorClaro, RoundedCornerShape(9.dp)).padding(7.dp).height(24.dp)
             )
             Column(Modifier.weight(1f).padding(start = 9.dp)) {
-                Text(categoria.nombre, style = Typography.titleSmall, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(categoria.nombre, style = Typography.titleSmall, fontWeight = FontWeight.Bold,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis, color = MaterialTheme.colorScheme.onSecondary)
                 Text(categoria.descripcion, style = Typography.labelSmall, color = Color.DarkGray, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
             Column(horizontalAlignment = Alignment.End) {
-                Text("\$${categoria.gastado.formatoDinero()}", style = Typography.labelLarge, fontWeight = FontWeight.Bold)
+                Text("\$${categoria.gastado.formatoDinero()}", style = Typography.labelLarge,
+                    fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
                 Text("de \$${categoria.limite.formatoDinero()}", style = Typography.labelSmall, color = Color.DarkGray)
             }
         }
@@ -69,7 +71,8 @@ fun TarjetaCategoriaPresupuesto(
                 Text("  $it", style = Typography.labelSmall, color = if (porcentaje >= 95) Color(0xFFB91C1C) else Color(0xFF8B7200))
             }
             Column(Modifier.weight(1f), horizontalAlignment = Alignment.End) {
-                Text("Restan \$${(categoria.limite - categoria.gastado).coerceAtLeast(0.0).formatoDinero()}", style = Typography.labelSmall, color = PurplePrimary)
+                Text("Restan \$${(categoria.limite - categoria.gastado).coerceAtLeast(0.0).formatoDinero()}",
+                    style = Typography.labelSmall, color = MaterialTheme.colorScheme.onSecondary)
             }
         }
     }

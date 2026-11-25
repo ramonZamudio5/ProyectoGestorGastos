@@ -7,7 +7,7 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
 import zamudio.ramon.proyectogestorgastos.model.dominio.Usuario
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupCategoryText
 import zamudio.ramon.proyectogestorgastos.ui.theme.SecondaryBackgroundColor
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import kotlin.math.roundToLong
 
 val grupo: Grupo
@@ -24,7 +24,7 @@ val presupuesto = CategoriaPresupuesto(
     30000.0,
     15000.0,
     GroupCategoryText,
-    White
+    OffWhite
 )
 fun repartirDeuda(grupo: Grupo): List<DeudaGrupo> {
     if (grupo.miembros.isEmpty()) {

@@ -18,14 +18,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBadgeText
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupJoinAccent
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSectionText
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.pluralStringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -37,23 +36,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
-import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 import zamudio.ramon.proyectogestorgastos.view.components.GroupBalanceSummaryCard
 import zamudio.ramon.proyectogestorgastos.view.components.GroupCardItem
 
 @Composable
 fun MyGroupScreen(
-    onNavigateToDetail: (Int) -> Unit = {},
+    //onNavigateToDetail: (Int) -> Unit = {},
+    onNavigateToDetail: () -> Unit = {},
     onCreateGroupClick: () -> Unit = {},
     onJoinGroupClick: () -> Unit = {}
 ) {
     LazyColumn(
         modifier = Modifier
-            .fillMaxSize().background(color= ScreenBackground)
-            .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        contentPadding = PaddingValues(top = 16.dp, bottom = 24.dp)
+            .fillMaxSize()
+            .padding(20.dp)
+            .background(MaterialTheme.colorScheme.background),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // 1. TÍTULO Y BADGE DE GRUPOS ACTIVOS
         item {
@@ -66,7 +64,7 @@ fun MyGroupScreen(
                     Text(
                         style = GroupTextStyles.ScreenTitleBold,
                         text = stringResource(R.string.groups_title),
-                        color = BlueNavy
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Surface(
@@ -97,20 +95,20 @@ fun MyGroupScreen(
                         .height(50.dp),
                     shape = RoundedCornerShape(14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = GroupBlueAccent
+                        containerColor = MaterialTheme.colorScheme.primary
                     )
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_add_person),
                         contentDescription = null,
-                        tint = White,
+                        tint = OffWhite,
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         style = GroupTextStyles.ActionBold,
                         text = stringResource(R.string.groups_create),
-                        color = White
+                        color = OffWhite
                     )
                 }
 
@@ -122,7 +120,7 @@ fun MyGroupScreen(
                         .height(50.dp),
                     shape = RoundedCornerShape(14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = White
+                        containerColor = OffWhite
                     ),
                     elevation = ButtonDefaults.buttonElevation(defaultElevation = 1.dp)
                 ) {
@@ -157,7 +155,7 @@ fun MyGroupScreen(
                 Text(
                     style = GroupTextStyles.LabelBold,
                     text = stringResource(R.string.groups_in_progress),
-                    color = GroupSectionText
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }
@@ -165,7 +163,7 @@ fun MyGroupScreen(
         items(grupos) { grupo ->
             GroupCardItem(
                 grupo = grupo,
-                onClick = { onNavigateToDetail(grupo.id) }
+                onClick = { onNavigateToDetail() }
             )
         }
     }
@@ -177,3 +175,5 @@ fun MyGroupScreen(
 fun MyGroupScreenPreview() {
     MyGroupScreen()
 }
+
+

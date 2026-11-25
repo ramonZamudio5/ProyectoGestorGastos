@@ -20,12 +20,13 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupNameHintBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -39,7 +40,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
@@ -56,7 +57,7 @@ fun GroupNameImputField(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -74,12 +75,12 @@ fun GroupNameImputField(
                 Text(
                     style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_name_label),
-                    color = GroupTextPrimary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
                 Text(
                     style = GroupTextStyles.LabelSemiBold,
                     text = stringResource(R.string.group_character_count, value.length, maxLength),
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
             }
             Row(
@@ -94,7 +95,7 @@ fun GroupNameImputField(
                 Icon(
                     painter = painterResource(R.drawable.ic_edit),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(20.dp)
                 )
 
@@ -115,7 +116,7 @@ fun GroupNameImputField(
                     textStyle = GroupTextStyles.ActionSemiBold.copy(
                         color = GroupTextPrimary
                     ),
-                    cursorBrush = SolidColor(PurplePrimary),
+                    cursorBrush = SolidColor(PurpleButton),
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                     decorationBox = { innerTextField ->
@@ -142,7 +143,7 @@ fun GroupNameImputField(
                         Icon(
                             painter = painterResource(R.drawable.ic_delete),
                             contentDescription = stringResource(R.string.group_clear_text),
-                            tint = PurplePrimary,
+                            tint = PurpleButton,
                             modifier = Modifier.size(14.dp)
                         )
                     }

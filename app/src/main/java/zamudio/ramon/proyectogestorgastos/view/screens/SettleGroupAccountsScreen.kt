@@ -6,22 +6,17 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,20 +26,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSettlementBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.getMiembros
 import zamudio.ramon.proyectogestorgastos.model.dominio.MetodoPago
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import zamudio.ramon.proyectogestorgastos.view.components.GroupChip
 import zamudio.ramon.proyectogestorgastos.view.components.MemberDropdownSelector
 import zamudio.ramon.proyectogestorgastos.view.components.PaymentMethodSelector
@@ -85,7 +79,7 @@ fun SettleGroupAccountsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(GroupSettlementBackground)
+            .background(MaterialTheme.colorScheme.background)
             .padding(innerPadding)
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp, vertical = 12.dp),
@@ -98,7 +92,7 @@ fun SettleGroupAccountsScreen(
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
-            colors = CardDefaults.cardColors(containerColor = White),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
         ) {
             Column(
@@ -116,13 +110,13 @@ fun SettleGroupAccountsScreen(
                         modifier = Modifier
                             .size(8.dp)
                             .clip(CircleShape)
-                            .background(PurplePrimary)
+                            .background(PurpleButton)
                     )
                     Text(
                         text = "Registrar Liquidación",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                 }
 
@@ -161,33 +155,11 @@ fun SettleGroupAccountsScreen(
                 )
 
                 // Botón de acción principal
-                Button (
-                    onClick = {
-                        if (errorMonto == null && monto != null) {
-                            onConfirmarLiquidacion(quienSalda, quienRecibe, monto.toDouble(), metodoSeleccionado)
-                        }
-                    },
-                    enabled = errorMonto == null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(14.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary)
-                ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_check),
-                        contentDescription = null,
-                        tint = White,
-                        modifier = Modifier.size(18.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Confirmar y Actualizar Balances",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = White
-                    )
-                }
+                BotonPrincipal("Confirmar y Actualizar Balance", {
+                    if (errorMonto == null && monto != null) {
+                        onConfirmarLiquidacion(quienSalda, quienRecibe, monto.toDouble(), metodoSeleccionado)
+                    }
+                }, R.drawable.ic_check)
 
                 Text(
                     text = "Al confirmar, las deudas de este grupo se reducirán automáticamente para todos los miembros.",
@@ -207,3 +179,4 @@ fun SettleGroupAccountsScreen(
 fun SettleGroupAccountsScreenPreview(){
     SettleGroupAccountsScreen()
 }
+

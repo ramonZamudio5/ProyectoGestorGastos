@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -21,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.R
 
@@ -33,7 +34,7 @@ fun AlertaPresupuesto(
     onPorcentajeChange: (Int) -> Unit
 ) {
     Column(
-        Modifier.fillMaxWidth().background(White, RoundedCornerShape(16.dp)).padding(14.dp),
+        Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(16.dp)).padding(14.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -43,18 +44,20 @@ fun AlertaPresupuesto(
                 modifier = Modifier.background(Color(0xFFFFF2B8), RoundedCornerShape(9.dp)).padding(7.dp)
             )
             Column(Modifier.weight(1f).padding(start = 8.dp)) {
-                Text("Alertas de Presupuesto", style = Typography.titleSmall, fontWeight = FontWeight.Bold)
-                Text("Previene sobregiros antes de fin de mes", style = Typography.labelSmall, color = Color.DarkGray)
+                Text("Alertas de Presupuesto", style = Typography.titleSmall,
+                    fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
+                Text("Previene sobregiros antes de fin de mes", style = Typography.labelSmall, color = MaterialTheme.colorScheme.onSecondary)
             }
             Switch(
                 checked = activa,
                 onCheckedChange = onActivaChange,
-                colors = SwitchDefaults.colors(checkedThumbColor = White, checkedTrackColor = PurpleButton)
+                colors = SwitchDefaults.colors(checkedThumbColor = OffWhite, checkedTrackColor = PurpleButton)
             )
         }
         if (activa) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text("Avisarme cuando supere el:", style = Typography.labelSmall)
+                Text("Avisarme cuando supere el:", style = Typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSecondary)
                 Text("$porcentaje%", Modifier.weight(1f), style = Typography.titleSmall, color = PurpleButton, fontWeight = FontWeight.Bold, textAlign = androidx.compose.ui.text.style.TextAlign.End)
             }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -65,7 +68,7 @@ fun AlertaPresupuesto(
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = if (value == porcentaje) PurpleButton else Color(0xFFF0F0FF),
-                            contentColor = if (value == porcentaje) White else Color.DarkGray
+                            contentColor = if (value == porcentaje) OffWhite else Color.DarkGray
                         ),
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 6.dp)
                     ) { Text("$value%", style = Typography.labelSmall) }

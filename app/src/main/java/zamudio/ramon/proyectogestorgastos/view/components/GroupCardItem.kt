@@ -18,14 +18,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -39,8 +37,7 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.grupos
 import zamudio.ramon.proyectogestorgastos.model.dominio.Grupo
-import zamudio.ramon.proyectogestorgastos.ui.theme.BlueNavy
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupCardItemInfo(
@@ -51,7 +48,7 @@ fun GroupCardItemInfo(
         modifier = modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
@@ -84,7 +81,7 @@ fun GroupCardItemInfo(
                         Text(
                             style = GroupTextStyles.LabelBold,
                             text = grupo.nombre,
-                            color = BlueNavy,
+                            color = MaterialTheme.colorScheme.onSecondary,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -96,7 +93,7 @@ fun GroupCardItemInfo(
                             Text(
                                 style = GroupTextStyles.CaptionBold,
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
-                                color = PurplePrimary,
+                                color = PurpleButton,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
@@ -130,7 +127,7 @@ fun GroupCardItemInfo(
                     Text(
                         style = GroupTextStyles.LabelBold,
                         text = stringResource(R.string.group_recent_expense),
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                 }
             }
@@ -149,8 +146,9 @@ fun GroupCardItem(
         modifier = modifier
             .fillMaxWidth().clickable { onClick() },
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier
@@ -182,7 +180,7 @@ fun GroupCardItem(
                         Text(
                             style = GroupTextStyles.LabelBold,
                             text = grupo.nombre,
-                            color = BlueNavy,
+                            color = MaterialTheme.colorScheme.onSecondary,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -194,7 +192,7 @@ fun GroupCardItem(
                             Text(
                                 style = GroupTextStyles.CaptionBold,
                                 text = grupo.tipo.lowercase().replaceFirstChar { it.uppercase() },
-                                color = PurplePrimary,
+                                color = PurpleButton,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
@@ -228,7 +226,7 @@ fun GroupCardItem(
                     Text(
                         style = GroupTextStyles.LabelBold,
                         text = stringResource(R.string.group_recent_expense),
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                 }
             }
@@ -236,7 +234,7 @@ fun GroupCardItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(GroupBalanceBackground)
+                    .background(MaterialTheme.colorScheme.tertiary)
                     .padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
@@ -252,14 +250,14 @@ fun GroupCardItem(
                         Icon(
                             painter = painterResource(R.drawable.ic_arrow_down),
                             contentDescription = null,
-                            tint = PurplePrimary,
+                            tint = PurpleButton,
                             modifier = Modifier.size(15.dp)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             style = GroupTextStyles.LabelBold,
                             text = stringResource(R.string.group_amount_owed, "3,000.00"),
-                            color = PurplePrimary
+                            color = PurpleButton
                         )
                     }
                 }

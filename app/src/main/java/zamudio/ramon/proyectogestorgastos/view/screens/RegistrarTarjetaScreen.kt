@@ -22,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,10 +43,11 @@ import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TarjetaPago
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackGroundPurple
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
+import zamudio.ramon.proyectogestorgastos.view.components.BotonLink
 
 private val bancosDisponibles = listOf(
     "BBVA México", "Nu México", "Santander", "Banorte", "HSBC", "Otro"
@@ -69,18 +71,18 @@ fun RegistrarTarjetaScreen(
 
     Column(Modifier
         .fillMaxSize()
-        .background(Color(0xFFFAF9FF))
+        .background(MaterialTheme.colorScheme.background)
         .padding(innerPadding)) {
         Column(
             Modifier
                 .weight(1f)
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 22.dp, vertical = 26.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Spacer(Modifier.height(12.dp))
-            Text("Registrar Tarjeta", style = Typography.headlineSmall, fontWeight = FontWeight.Bold, color = Color(0xFF101828))
+            Text("Registrar Tarjeta", style = Typography.headlineSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
             Spacer(Modifier.height(6.dp))
             CampoTarjeta("Nombre del Titular *", titular, { titular = it }, "Nombre como aparece en la tarjeta", R.drawable.ic_id_badge)
             SelectorBanco(banco = banco, onSeleccionar = { banco = it })
@@ -90,7 +92,7 @@ fun RegistrarTarjetaScreen(
                 { nuevo -> if (nuevo.length <= 4 && nuevo.all(Char::isDigit)) ultimosDigitos = nuevo },
                 "0000", null, KeyboardType.Number
             )
-            Text("Tipo de Tarjeta *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
+            Text("Tipo de Tarjeta *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
             Row(Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(12.dp))
@@ -100,27 +102,10 @@ fun RegistrarTarjetaScreen(
                 TipoTarjetaButton("Crédito", tipoTarjeta == TipoTarjeta.CREDITO, Modifier.weight(1f)) { tipoTarjeta = TipoTarjeta.CREDITO }
             }
             Spacer(Modifier.height(4.dp))
-            Button(
-                onClick = {
-                    onGuardar(TarjetaPago(banco, alias, tipoTarjeta, titular.trim(), ultimosDigitos))
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(54.dp),
-                shape = RoundedCornerShape(12.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
-                enabled = titular.isNotBlank() && banco.isNotBlank() && alias.isNotBlank() && ultimosDigitos.length == 4
-            ) {
-                Text("Guardar Tarjeta", style = Typography.titleSmall, color = White, fontWeight = FontWeight.Bold)
-                Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = null, tint = White, modifier = Modifier
-                    .padding(start = 8.dp)
-                    .size(19.dp))
-            }
-            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Text("Cancelar", Modifier
-                    .clickable(onClick = onCancelar)
-                    .padding(12.dp), style = Typography.labelLarge, color = Color(0xFF101828), fontWeight = FontWeight.Medium)
-            }
+            BotonPrincipal("Guardar Tarjeta", {
+                onGuardar(TarjetaPago(banco, alias, tipoTarjeta, titular.trim(), ultimosDigitos))
+            }, R.drawable.ic_arrow_right)
+            BotonLink("Cancelar", onCancelar)
         }
     }
 }
@@ -135,7 +120,7 @@ private fun CampoTarjeta(
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
+        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
@@ -150,10 +135,10 @@ private fun CampoTarjeta(
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             shape = RoundedCornerShape(13.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PurplePrimary,
+                focusedBorderColor = PurpleButton,
                 unfocusedBorderColor = Color.Transparent,
-                focusedContainerColor = White,
-                unfocusedContainerColor = White
+                focusedContainerColor = OffWhite,
+                unfocusedContainerColor = OffWhite
             )
         )
     }
@@ -163,14 +148,14 @@ private fun CampoTarjeta(
 private fun SelectorBanco(banco: String, onSeleccionar: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text("Banco Emisor *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = Color(0xFF172033))
+        Text("Banco Emisor *", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
         Box {
             Row(
                 Modifier
                     .fillMaxWidth()
                     .height(54.dp)
                     .clip(RoundedCornerShape(13.dp))
-                    .background(White)
+                    .background(OffWhite)
                     .clickable { expanded = true }
                     .padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
@@ -194,12 +179,12 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
         modifier = modifier.height(40.dp),
         shape = RoundedCornerShape(9.dp),
         colors = ButtonDefaults.buttonColors(
-        containerColor = if (seleccionado) White else Color.Transparent,
-        contentColor = if (seleccionado) PurplePrimary else Color(0xFF667085)
+        containerColor = if (seleccionado) OffWhite else Color.Transparent,
+        contentColor = if (seleccionado) PurpleButton else Color(0xFF667085)
         ),
         contentPadding = PaddingValues(horizontal = 6.dp)
     ) {
-        Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = if (seleccionado) PurplePrimary else Color(0xFF667085), modifier = Modifier.size(17.dp))
+        Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = if (seleccionado) PurpleButton else Color(0xFF667085), modifier = Modifier.size(17.dp))
         Text(texto, Modifier.padding(start = 6.dp), style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
     }
 }
@@ -209,3 +194,5 @@ private fun TipoTarjetaButton(texto: String, seleccionado: Boolean, modifier: Mo
 private fun RegistrarTarjetaPreview() {
     RegistrarTarjetaScreen(PaddingValues(), {}, {}, {})
 }
+
+

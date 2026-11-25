@@ -14,12 +14,13 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPlaceholder
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -31,7 +32,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupDeleteAccent
 import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.semantics
@@ -46,7 +47,7 @@ fun GroupBudgetInputCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -64,7 +65,7 @@ fun GroupBudgetInputCard(
                 Text(
                     style = GroupTextStyles.BodyBold,
                     text = stringResource(R.string.group_budget_title),
-                    color = GroupTextPrimary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
                 Text(
                     style = GroupTextStyles.LabelNormal,
@@ -85,7 +86,7 @@ fun GroupBudgetInputCard(
                 Text(
                     style = GroupTextStyles.AmountBold,
                     text = stringResource(R.string.group_currency_symbol),
-                    color = PurplePrimary
+                    color = PurpleButton
                 )
 
                 Spacer(modifier = Modifier.width(8.dp))
@@ -101,7 +102,7 @@ fun GroupBudgetInputCard(
                     textStyle = GroupTextStyles.AmountBold.copy(
                         color = GroupTextPrimary
                     ),
-                    cursorBrush = SolidColor(PurplePrimary),
+                    cursorBrush = SolidColor(PurpleButton),
                     decorationBox = { innerTextField ->
                         if (budget.isEmpty()) {
                             Text(

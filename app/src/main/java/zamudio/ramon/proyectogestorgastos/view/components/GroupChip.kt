@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupSettlementAccent
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.R
 
 @Composable
@@ -38,14 +38,14 @@ fun GroupChip(
             Icon(
                 painter = painterResource(R.drawable.ic_flight),
                 contentDescription = null,
-                tint = GroupSettlementAccent,
+                tint = PurpleButton,
                 modifier = Modifier.size(16.dp)
             )
             Text(
                 text = nombreGrupo,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
-                color = GroupSettlementAccent
+                color = PurpleButton
             )
         }
     }

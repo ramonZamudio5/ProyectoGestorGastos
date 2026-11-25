@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
@@ -24,7 +25,7 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupMemberAccent
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupMemberText
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -38,7 +39,7 @@ import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.data.usuarios
 import zamudio.ramon.proyectogestorgastos.model.dominio.Usuario
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupMemberListCard(
@@ -49,7 +50,7 @@ fun GroupMemberListCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -65,7 +66,7 @@ fun GroupMemberListCard(
                 Text(
                     style = GroupTextStyles.CardTitleBold,
                     text = stringResource(R.string.group_members_title),
-                    color = GroupTextPrimary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Box(
@@ -78,7 +79,7 @@ fun GroupMemberListCard(
                     Text(
                         style = GroupTextStyles.LabelBold,
                         text = members.size.toString(),
-                        color = PurplePrimary
+                        color = PurpleButton
                     )
                 }
             }

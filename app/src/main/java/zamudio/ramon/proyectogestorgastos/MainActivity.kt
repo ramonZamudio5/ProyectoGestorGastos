@@ -5,7 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
 import zamudio.ramon.proyectogestorgastos.navigation.Myapp
 import zamudio.ramon.proyectogestorgastos.ui.theme.ProyectoGestorGastosTheme
 class MainActivity : ComponentActivity() {
@@ -13,9 +17,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ProyectoGestorGastosTheme {
-                Scaffold(contentWindowInsets = WindowInsets(0, 0, 0, 0)) { innerPadding ->
-                    Myapp(innerPadding)
+            ProyectoGestorGastosTheme{
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Myapp()
                 }
             }
         }

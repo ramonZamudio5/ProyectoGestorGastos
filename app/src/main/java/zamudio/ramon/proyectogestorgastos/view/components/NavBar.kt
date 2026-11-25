@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,26 +32,36 @@ fun NavBar(navControl: NavController) {
 
     NavigationBar(
         Modifier
-            .fillMaxWidth(), containerColor = Color.White
+            .fillMaxWidth(), containerColor = MaterialTheme.colorScheme.secondary
     ) {
 
-        NavigationBarItem(onClick = { navControl.navigate(Inicio) }, selected = false, icon = {
+        NavigationBarItem(onClick = { navControl.navigate(Inicio) }, selected = false, colors = navItemColors(), icon = {
             Icon(painterResource(R.drawable.ic_inicio), contentDescription = "Inicio")
         })
-        NavigationBarItem(onClick = { navControl.navigate(Presupuesto) }, selected = false, icon = {
+        NavigationBarItem(onClick = { navControl.navigate(Presupuesto) }, selected = false, colors = navItemColors(), icon = {
             Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = "Presupuesto")
         })
         NavigationBarItem(
             onClick = { navControl.navigate(RegistrarMovimiento) },
             selected = false,
+            colors = navItemColors(),
             icon = {
                 Icon(painterResource(R.drawable.ic_anadir), contentDescription = "Agregar gasto")
             })
-        NavigationBarItem(onClick = { navControl.navigate(MyGroups) }, selected = false, icon = {
+        NavigationBarItem(onClick = { navControl.navigate(MyGroups) }, selected = false, colors = navItemColors(), icon = {
             Icon(painterResource(R.drawable.ic_grupos), contentDescription = "Grupos")
         })
-        NavigationBarItem(onClick = { navControl.navigate(Graficos) }, selected = false, icon = {
+        NavigationBarItem(onClick = { navControl.navigate(Graficos) }, selected = false, colors = navItemColors(), icon = {
             Icon(painter = painterResource(R.drawable.ic_graficas), contentDescription = "grafica")
         })
     }
 }
+
+@Composable
+private fun navItemColors() = NavigationBarItemDefaults.colors(
+    selectedIconColor = MaterialTheme.colorScheme.onSecondary,
+    unselectedIconColor = MaterialTheme.colorScheme.onSecondary,
+    selectedTextColor = MaterialTheme.colorScheme.onSecondary,
+    unselectedTextColor = MaterialTheme.colorScheme.onSecondary,
+    indicatorColor = MaterialTheme.colorScheme.secondary
+)

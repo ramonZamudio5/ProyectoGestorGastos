@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBorder
@@ -25,8 +26,8 @@ import zamudio.ramon.proyectogestorgastos.ui.theme.GroupIconSecondary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupOptionsBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -62,7 +63,7 @@ fun GroupTypeSelectorCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
@@ -76,7 +77,7 @@ fun GroupTypeSelectorCard(
                 Text(
                     style = GroupTextStyles.CardTitleBold,
                     text = stringResource(R.string.group_type_label),
-                    color = GroupTextPrimary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
@@ -114,7 +115,7 @@ fun GroupTypeSelectorCard(
                     Text(
                         style = GroupTextStyles.BodyBold,
                         text = selectedTipo.title,
-                        color = GroupTextPrimary
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                     Text(
                         style = GroupTextStyles.CaptionDefault,
@@ -188,7 +189,7 @@ fun GroupTypeSelectorCard(
                                 Icon(
                                     painter = painterResource(R.drawable.ic_check),
                                     contentDescription = stringResource(R.string.group_selected),
-                                    tint = PurplePrimary,
+                                    tint = PurpleButton,
                                     modifier = Modifier.size(18.dp)
                                 )
                             }

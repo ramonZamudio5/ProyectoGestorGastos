@@ -14,9 +14,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBalanceText
-import zamudio.ramon.proyectogestorgastos.ui.theme.GroupBlueAccent
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
@@ -34,7 +33,8 @@ fun GroupBalanceSummaryCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
     ) {
         Column(
             modifier = Modifier
@@ -53,13 +53,13 @@ fun GroupBalanceSummaryCard(
                         modifier = Modifier
                             .size(8.dp)
                             .clip(CircleShape)
-                            .background(GroupBlueAccent)
+                            .background(MaterialTheme.colorScheme.primary)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         style = GroupTextStyles.CaptionBold,
                         text = stringResource(R.string.group_balance_title),
-                        color = GroupBalanceText
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                 }
             }

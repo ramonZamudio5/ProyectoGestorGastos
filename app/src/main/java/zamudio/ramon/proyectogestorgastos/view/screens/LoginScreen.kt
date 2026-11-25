@@ -16,11 +16,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -42,68 +41,125 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffBlack
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 
 @Composable
-fun LoginScreen(innerPadding: PaddingValues,navigateToRegister : ()->Unit, onNavigateToPrincipal:()-> Unit) {
+fun LoginScreen(innerPadding: PaddingValues, navigateToRegister: () -> Unit, onNavigateToPrincipal: () -> Unit) {
     var user by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding), verticalArrangement = Arrangement.Center) {
-        Text("¡Bienvenido!", style = Typography.headlineLarge)
-        Text("Administra tus finanzas y gastos de forma clara, segura y sin complicaciones.", style = Typography.bodyMedium)
-        Column(Modifier.padding(24.dp).clip(RoundedCornerShape(24.dp)).background(Color.White).padding(24.dp)) {
-            Text("Correo Electrónico", style = Typography.labelLarge)
-            Spacer(Modifier.height(8.dp))
-            TextField(value = user, onValueChange = { user = it }, placeholder = { Text("ejemplo@gastoclaro.com") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)), singleLine = true)
-            Spacer(Modifier.height(20.dp))
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                Text("Contraseña", style = Typography.labelLarge)
-                Text(text = "¿Olvidaste tu contraseña?",Modifier.clickable { }, style = Typography.bodySmall,color = PurplePrimary)
-            }
-            Spacer(Modifier.height(8.dp))
-            TextField(value = password, onValueChange = { password = it }, trailingIcon = {
-                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(painter = painterResource(id = if (passwordVisible) R.drawable.ic_ojo_abierto else R.drawable.ic_ojo_cerrado),
-                            contentDescription = if (passwordVisible) "Ocultar contraseña" else "Mostrar contraseña", tint = Color(0xFF667085))
-                    }
-                }, visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)),
-                colors = TextFieldDefaults.colors(
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                ), singleLine = true
-            )
-            HorizontalDivider(color = PurplePrimary.copy(alpha = 0.3f), thickness = 1.dp)
-            Box(Modifier.padding(24.dp)) {
-                Button(onClick = onNavigateToPrincipal, Modifier.fillMaxWidth().height(52.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = PurplePrimary), shape = RoundedCornerShape(12.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-                        Text(text = "Iniciar Sesión", color = Color.White, style = Typography.titleLarge)
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
+    val textFieldColors = TextFieldDefaults.colors(
+        focusedContainerColor = MaterialTheme.colorScheme.tertiary,
+        unfocusedContainerColor = MaterialTheme.colorScheme.tertiary,
+        focusedTextColor = MaterialTheme.colorScheme.onTertiary,
+        unfocusedTextColor = MaterialTheme.colorScheme.onTertiary,
+        focusedIndicatorColor = Color.Transparent,
+        unfocusedIndicatorColor = Color.Transparent,
+        disabledIndicatorColor = Color.Transparent,
+        focusedPlaceholderColor = Color(0xFFA1A1AA),
+        unfocusedPlaceholderColor = Color(0xFFA1A1AA)
+    )
+
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface)
+            .padding(innerPadding)
+            .padding(horizontal = 24.dp),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("¡Bienvenido!", style = Typography.headlineLarge, color = MaterialTheme.colorScheme.primary)
+        Spacer(Modifier.height(8.dp))
+        Text(
+            "Administra tus finanzas y gastos de forma clara, segura y sin complicaciones.",
+            style = Typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+
+        Spacer(Modifier.height(32.dp))
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(MaterialTheme.colorScheme.secondary)
+        ) {
+            Column(Modifier.padding(24.dp)) {
+                Text("Correo Electrónico", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
+                Spacer(Modifier.height(8.dp))
+                TextField(
+                    value = user,
+                    onValueChange = { user = it },
+                    placeholder = { Text("ejemplo@gastoclaro.com") },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                    modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)),
+                    singleLine = true,
+                    colors = textFieldColors
+                )
+
+                Spacer(Modifier.height(20.dp))
+
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                    Text("Contraseña", style = Typography.labelLarge, color = MaterialTheme.colorScheme.onSecondary)
+                    Text(text = "¿Olvidaste tu contraseña?", Modifier.clickable { }, style = Typography.bodySmall, color = MaterialTheme.colorScheme.primary)
                 }
+                Spacer(Modifier.height(8.dp))
+                TextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    trailingIcon = {
+                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                            Icon(
+                                painter = painterResource(id = if (passwordVisible) R.drawable.ic_ojo_abierto else R.drawable.ic_ojo_cerrado),
+                                contentDescription = if (passwordVisible) "Ocultar contraseña" else "Mostrar contraseña",
+                                tint = Color(0xFF667085)
+                            )
+                        }
+                    },
+                    visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)),
+                    colors = textFieldColors,
+                    singleLine = true
+                )
             }
-            Spacer(modifier = Modifier.height(32.dp))
+
+            HorizontalDivider(color = PurpleButton.copy(alpha = 0.3f), thickness = 1.dp)
+
+            Box(Modifier.padding(24.dp)) {
+                BotonPrincipal("Iniciar Sesión", onNavigateToPrincipal)
+            }
         }
+
+        Spacer(modifier = Modifier.height(40.dp))
+
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("¿Aún no tienes una cuenta en GastoClaro?", style = Typography.labelLarge, color = Color(0xFF475467))
+            Text(
+                "¿Aún no tienes una cuenta en GastoClaro?",
+                style = Typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurface
+            )
             Spacer(Modifier.height(8.dp))
-            Row(Modifier.clickable { navigateToRegister()}, verticalAlignment = Alignment.CenterVertically) {
-                Text("Regístrate", color = PurplePrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Row(Modifier.clickable { navigateToRegister() }, verticalAlignment = Alignment.CenterVertically) {
+                Text("Regístrate", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Spacer(Modifier.width(4.dp))
-                Icon(painter = painterResource(id = R.drawable.ic_person_add), contentDescription = "Icono Registrar", tint = PurplePrimary, modifier = Modifier.size(20.dp)
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_person_add),
+                    contentDescription = "Icono Registrar",
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(20.dp)
                 )
             }
         }
     }
 }
+
 @Preview()
 @Composable
 fun PreviewLogin(){
-    LoginScreen(PaddingValues(15.dp),{}, {})
+    LoginScreen(PaddingValues(15.dp), {}, {})
 }

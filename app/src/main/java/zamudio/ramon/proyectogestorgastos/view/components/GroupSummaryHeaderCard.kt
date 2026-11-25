@@ -15,12 +15,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupAccentBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupFieldBackground
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextPrimary
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextSecondary
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import androidx.compose.ui.res.stringResource
 import zamudio.ramon.proyectogestorgastos.ui.theme.GroupTextStyles
 import androidx.compose.runtime.Composable
@@ -32,7 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoGrupo
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 
 @Composable
 fun GroupSummaryHeaderCard(
@@ -44,7 +45,7 @@ fun GroupSummaryHeaderCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Row(
@@ -64,7 +65,7 @@ fun GroupSummaryHeaderCard(
                 Icon(
                     painter = painterResource(id = typeGroup.iconRes),
                     contentDescription = null,
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -74,7 +75,7 @@ fun GroupSummaryHeaderCard(
                 Text(
                     style = GroupTextStyles.CardTitleBold,
                     text = groupName,
-                    color = GroupTextPrimary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
                 Text(
                     style = GroupTextStyles.LabelMedium,
@@ -94,7 +95,7 @@ fun GroupSummaryHeaderCard(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_edit),
                     contentDescription = stringResource(R.string.group_edit),
-                    tint = PurplePrimary,
+                    tint = PurpleButton,
                     modifier = Modifier.size(16.dp)
                 )
             }
@@ -111,6 +112,6 @@ fun GroupSummaryHeaderCardPreview(){
         "Amigos / Viajes",
         "Vacaciones y escapadas",
         R.drawable.ic_flight,
-        PurplePrimary
+        PurpleButton
     ))
 }

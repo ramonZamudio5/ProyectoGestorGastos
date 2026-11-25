@@ -42,6 +42,9 @@ object RegistrarMovimiento
 object MyGroups
 
 @Serializable
+object InfoGrupo
+
+@Serializable
 object CreateEditGroup
 
 @Serializable

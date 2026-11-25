@@ -23,8 +23,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Icon
@@ -34,6 +32,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,10 +55,9 @@ import zamudio.ramon.proyectogestorgastos.model.dominio.TipoTarjeta
 import zamudio.ramon.proyectogestorgastos.model.dominio.Tipo
 import zamudio.ramon.proyectogestorgastos.model.dominio.TipoPago
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.White
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
+import zamudio.ramon.proyectogestorgastos.ui.theme.OffWhite
 import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.view.components.BotonPrincipal
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
@@ -87,9 +85,9 @@ fun RegistroGastoScreen(
     }
     val calendar = Calendar.getInstance()
 
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(innerPadding)) {
         Column(
-            Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 28.dp, vertical = 20.dp),
+            Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(11.dp)
         ) {
             SelectorTipoMovimiento(
@@ -155,10 +153,11 @@ fun RegistroGastoScreen(
             }
             Text(
                 if (esGasto) "Foto del recibo (opcional)" else "Comprobante del ingreso (opcional)",
-                style = Typography.labelLarge, fontWeight = FontWeight.SemiBold
+                style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Row(
-                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(White)
+                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(MaterialTheme.colorScheme.secondary)
                     .clickable { receiptPicker.launch("image/*") }.padding(horizontal = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -167,7 +166,7 @@ fun RegistroGastoScreen(
                     if (recibo.isBlank()) {
                         if (esGasto) "Toca para subir el recibo" else "Toca para subir el comprobante"
                     } else recibo,
-                    style = Typography.bodyMedium, color = Color.Gray
+                    style = Typography.bodyMedium, color = if (recibo.isBlank()) Color.Gray else MaterialTheme.colorScheme.onSecondary
                 )
                 Icon(
                     painterResource(R.drawable.ic_camara),
@@ -175,9 +174,11 @@ fun RegistroGastoScreen(
                     tint = Color.Black, modifier = Modifier.size(24.dp)
                 )
             }
-            Text("Fecha", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
+            Text("Fecha", style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface)
             Row(
-                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(White)
+                Modifier.fillMaxWidth().height(48.dp).clip(RoundedCornerShape(10.dp)).background(
+                    MaterialTheme.colorScheme.secondary)
                     .clickable {
                         DatePickerDialog(context, { _, year, month, day -> fecha = "%02d/%02d/%04d".format(day, month + 1, year) },
                             calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
@@ -188,27 +189,18 @@ fun RegistroGastoScreen(
                 Text(if (fecha.isBlank()) "mm/dd/aaaa" else fecha, Modifier.padding(start = 10.dp), style = Typography.bodyMedium, color = if (fecha.isBlank()) Color.Gray else Color.Black)
             }
             Spacer(Modifier.height(8.dp))
-            Button(
-                onClick = {
-                    val gasto = Gasto(
-                        nombre = descripcion.ifBlank { categoria },
-                        tipo = categoria.toTipoGasto(),
-                        cantidad = monto.toDoubleOrNull() ?: 0.0,
-                        fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("MM/dd/yyyy")),
-                        imagen = categoria.toIconoGasto(),
-                        tipoPago = TipoPago.valueOf(tipoPago),
-                        tarjetaPago = if (esGasto) tarjetaSeleccionada else null)
-                    onGuardar(gasto)
-                },
-                Modifier.fillMaxWidth().height(52.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PurpleButton),
-                enabled = monto.isNotBlank() && categoria.isNotBlank() &&
-                    (tipoPago !in listOf("Tarjeta de débito", "Tarjeta de crédito") || tarjetaSeleccionada != null)
-            ) {
-                Icon(painterResource(R.drawable.ic_anadir), contentDescription = null, modifier = Modifier.size(18.dp))
-                Text(if (esGasto) "Agregar Gasto" else "Agregar Ingreso", Modifier.padding(start = 8.dp), color = White)
-            }
+            BotonPrincipal("Agregar Gasto", {
+                val gasto = Gasto(
+                    nombre = descripcion.ifBlank { categoria },
+                    tipo = categoria.toTipoGasto(),
+                    cantidad = monto.toDoubleOrNull() ?: 0.0,
+                    fecha = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("MM/dd/yyyy")),
+                    imagen = categoria.toIconoGasto(),
+                    tipoPago = TipoPago.valueOf(tipoPago),
+                    tarjetaPago = if (esGasto) tarjetaSeleccionada else null)
+                onGuardar(gasto)
+                onNavigateToPrincipal
+            }, R.drawable.ic_anadir)
         }
     }
 }
@@ -235,7 +227,7 @@ private fun SelectorTipoMovimiento(
     onSeleccionarIngreso: () -> Unit
 ) {
     BoxWithConstraints(
-        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(White).padding(4.dp)
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)).background(MaterialTheme.colorScheme.secondary).padding(4.dp)
     ) {
         val anchoOpcion = maxWidth / 2
         val desplazamiento = animateDpAsState(
@@ -244,7 +236,7 @@ private fun SelectorTipoMovimiento(
         )
         Box(
             Modifier.offset(x = desplazamiento.value).width(anchoOpcion).height(38.dp)
-                .clip(RoundedCornerShape(8.dp)).background(PurplePrimary)
+                .clip(RoundedCornerShape(8.dp)).background(PurpleButton)
         )
         Row(Modifier.fillMaxWidth()) {
             OpcionTipoMovimiento("Gasto", esGasto, Modifier.weight(1f), onSeleccionarGasto)
@@ -261,7 +253,7 @@ private fun OpcionTipoMovimiento(
     onClick: () -> Unit
 ) {
     val colorTexto = animateColorAsState(
-        targetValue = if (seleccionada) White else Color(0xFF171717),
+        targetValue = if (seleccionada) OffWhite else MaterialTheme.colorScheme.onSecondary,
         label = "Color texto tipo movimiento"
     )
     Box(
@@ -281,15 +273,16 @@ private fun CampoRegistro(
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
+        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold
+            , color = MaterialTheme.colorScheme.onSurface)
         OutlinedTextField(
             value, onValueChange, modifier = Modifier.fillMaxWidth().height(52.dp),
             placeholder = { Text(placeholder, style = Typography.bodyMedium, color = Color.Gray) },
             singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
             shape = RoundedCornerShape(10.dp),
             colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PurplePrimary, unfocusedBorderColor = Color.Transparent,
-                focusedContainerColor = White, unfocusedContainerColor = White
+                focusedBorderColor = PurpleButton, unfocusedBorderColor = Color.Transparent,
+                focusedContainerColor = MaterialTheme.colorScheme.tertiary, unfocusedContainerColor = MaterialTheme.colorScheme.secondary
             )
         )
     }
@@ -299,11 +292,12 @@ private fun CampoRegistro(
 private fun SelectorRegistro(label: String, seleccionado: String, opciones: List<String>, onSelect: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold)
+        Text(label, style = Typography.labelLarge, fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface)
         Box {
             Surface(
                 modifier = Modifier.fillMaxWidth().height(48.dp).clickable { expanded = true },
-                shape = RoundedCornerShape(10.dp), color = White
+                shape = RoundedCornerShape(10.dp), color = MaterialTheme.colorScheme.secondary
             ) {
                 Row(
                     Modifier.padding(horizontal = 12.dp),
@@ -313,10 +307,10 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
                     Text(
                         seleccionado.ifBlank { "Selecciona una opción" },
                         style = Typography.bodyMedium,
-                        color = if (seleccionado.isBlank()) Color.Gray else Color.Black
+                        color = if (seleccionado.isBlank()) Color.Gray else MaterialTheme.colorScheme.onSecondary
                     )
                     Icon(
-                        painterResource(R.drawable.ic_chevron_up),
+                        painterResource(R.drawable.ic_keyboard_down),
                         contentDescription = if (expanded) "Cerrar opciones" else "Mostrar opciones",
                         modifier = Modifier.size(16.dp)
                     )
@@ -339,3 +333,6 @@ private fun SelectorRegistro(label: String, seleccionado: String, opciones: List
 private fun RegistroGastoPreview() {
     RegistroGastoScreen(PaddingValues(), {}, {}, {},tarjetasPagoMock)
 }
+
+
+

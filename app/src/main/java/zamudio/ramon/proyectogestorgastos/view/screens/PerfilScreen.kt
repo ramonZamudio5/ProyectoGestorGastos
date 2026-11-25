@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -41,50 +41,46 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import zamudio.ramon.proyectogestorgastos.R
 import zamudio.ramon.proyectogestorgastos.ui.theme.BackgroundRed
-import zamudio.ramon.proyectogestorgastos.ui.theme.BluePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.DarkGray
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayForm
 import zamudio.ramon.proyectogestorgastos.ui.theme.GrayText
-import zamudio.ramon.proyectogestorgastos.ui.theme.PurplePrimary
+import zamudio.ramon.proyectogestorgastos.ui.theme.PurpleButton
 import zamudio.ramon.proyectogestorgastos.ui.theme.RedlogOut
 import zamudio.ramon.proyectogestorgastos.ui.theme.Typography
-import zamudio.ramon.proyectogestorgastos.ui.theme.ScreenBackground
 
 @Composable
 fun PerfilScreen(
-    innerPadding: PaddingValues,
     onNavigateToLogin: () -> Unit,
-    navigateToPrincipal: () -> Unit,
-    navigateToMetodosPago: () -> Unit = {},
-    navigateToPresupuesto: () -> Unit = {},
-    navigateToRegistroGasto: () -> Unit = {}, onNavigateToGraficos: ()-> Unit
+    navigateToMetodosPago: () -> Unit = {}
 ) {
-    Column(Modifier.fillMaxSize().background(ScreenBackground).padding(innerPadding)
-        .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
+        .padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
-            Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)
+            Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(MaterialTheme.colorScheme.secondary)
                 .padding(vertical = 32.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(contentAlignment = Alignment.BottomEnd) {
                     Image(painter = painterResource(R.drawable.profile_picture), contentDescription = "Foto de perfil",
                         contentScale = ContentScale.Crop, modifier = Modifier.size(100.dp).padding(4.dp).clip(CircleShape))
-                    IconButton(onClick = {}, Modifier.size(36.dp).background(BluePrimary, CircleShape)) {
+                    IconButton(onClick = {}, Modifier.size(36.dp).background(MaterialTheme.colorScheme.primary, CircleShape)) {
                         Icon(painter = painterResource(R.drawable.ic_camara), contentDescription = "Cambiar Foto", tint = Color.White, modifier = Modifier.size(18.dp))
                     }
                 }
                 Spacer(Modifier.height(16.dp))
-                Text("Sofía Morales", style = Typography.titleLarge)
+                Text("Sofía Morales", style = Typography.titleLarge, color = MaterialTheme.colorScheme.onSecondary)
             }
             Spacer(Modifier.height(16.dp))
 
             TarjetaDatosPersonales()
             Spacer(Modifier.height(16.dp))
             Row(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White)
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(MaterialTheme.colorScheme.secondary)
                     .clickable(onClick = navigateToMetodosPago).padding(18.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurplePrimary)
+                Icon(painterResource(R.drawable.ic_presupuesto), contentDescription = null, tint = PurpleButton)
                 Spacer(Modifier.width(12.dp))
-                Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge, fontWeight = FontWeight.SemiBold)
+                Text("Métodos de pago", Modifier.weight(1f), style = Typography.bodyLarge,
+                    fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSecondary)
                 Icon(painterResource(R.drawable.ic_arrow_right), contentDescription = "Abrir métodos de pago", tint = GrayText)
             }
             Spacer(Modifier.height(16.dp))
@@ -98,19 +94,19 @@ fun PerfilScreen(
 
 @Composable
 fun TarjetaDatosPersonales() {
-    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White).padding(24.dp)) {
+    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(MaterialTheme.colorScheme.secondary).padding(24.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)) {
             Box(Modifier.size(44.dp).clip(RoundedCornerShape(12.dp)).background(Color(0xFFF3E8FF)),contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(R.drawable.ic_id_badge), contentDescription = "Icono Datos Personales", tint = Color(0xFF6B21A8))
             }
             Spacer(Modifier.width(12.dp))
-            Text("Datos Personales",style = Typography.bodyLarge
+            Text("Datos Personales",style = Typography.bodyLarge, color = MaterialTheme.colorScheme.onSecondary
             )
             Spacer(Modifier.weight(1f))
             Row(Modifier.clickable { }, verticalAlignment = Alignment.CenterVertically) {
-                Icon(painter = painterResource(R.drawable.ic_edit), contentDescription = "Icono Datos Personales", tint = BluePrimary)
+                Icon(painter = painterResource(R.drawable.ic_edit), contentDescription = "Icono Datos Personales", tint = MaterialTheme.colorScheme.primary)
                 Spacer(Modifier.width(4.dp))
-                Text("Editar", color = BluePrimary,style = Typography.bodyMedium)
+                Text("Editar", color = MaterialTheme.colorScheme.primary,style = Typography.bodyMedium)
             }
         }
 
@@ -126,11 +122,11 @@ fun TarjetaDatosPersonales() {
 fun CampoDatoPersonal(titulo: String, valor: String, esProtegido: Boolean = false, textoAyuda: String? = null) {
     Column(Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(titulo,style = Typography.bodyLarge)
+            Text(titulo,style = Typography.bodyLarge, color = MaterialTheme.colorScheme.onSecondary)
             if (esProtegido) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Spacer(Modifier.width(4.dp))
-                    Text("Protegido", style = Typography.bodySmall)
+                    Text("Protegido", style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
                 }
             }
         }
@@ -153,45 +149,48 @@ fun CampoDatoPersonal(titulo: String, valor: String, esProtegido: Boolean = fals
 fun TarjetaSeguridad() {
     var biometriaActivada by remember { mutableStateOf(true) }
 
-    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(Color.White).padding(24.dp)) {
+    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(MaterialTheme.colorScheme.secondary).padding(24.dp)) {
         Row(Modifier.fillMaxWidth().padding(bottom = 24.dp),verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(36.dp).clip(CircleShape).background(Color(0xFFF3E8FF)), contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_shield), contentDescription = "Icono Seguridad",
-                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurpleButton, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
-            Text("Seguridad y Acceso", style = Typography.titleLarge)
+            Text("Seguridad y Acceso", style = Typography.titleLarge, color = MaterialTheme.colorScheme.onSecondary)
         }
-        Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color(0xFFF4F5F9)).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(MaterialTheme.colorScheme.tertiary).padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(40.dp).clip(RoundedCornerShape(10.dp)).background(Color(0xFFEBF3FF)),contentAlignment = Alignment.Center) {
-                Icon(painter = painterResource(id = R.drawable.ic_fingerprint), contentDescription = "Huella", modifier = Modifier.size(24.dp), tint = BluePrimary)
+                Icon(painter = painterResource(id = R.drawable.ic_fingerprint), contentDescription = "Huella", modifier = Modifier.size(24.dp), tint = MaterialTheme.colorScheme.primary)
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text("Inicio con Biometría (Huella / Face ID)", style = Typography.bodySmall, fontWeight = FontWeight.Bold)
-                Text("Permite acceder a la app usando tu sensor biométrico sin escribir la contraseña.",style = Typography.bodySmall)
+                Text("Inicio con Biometría (Huella / Face ID)", style = Typography.bodySmall,
+                    fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSecondary)
+                Text("Permite acceder a la app usando tu sensor biométrico sin escribir la contraseña.",
+                    style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
             }
             Spacer(Modifier.width(8.dp))
             Switch(checked = biometriaActivada, onCheckedChange = { biometriaActivada = it },
                 colors = SwitchDefaults.colors(
                     checkedThumbColor = Color.White,
-                    checkedTrackColor = BluePrimary
+                    checkedTrackColor = MaterialTheme.colorScheme.primary
                 )
             )
         }
 
         Spacer(Modifier.height(12.dp))
-        Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(Color(0xFFF4F5F9))
+        Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(MaterialTheme.colorScheme.tertiary)
             .clickable {  }.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(40.dp).clip(RoundedCornerShape(10.dp)).background(Color(0xFFF3E8FF)),
                 contentAlignment = Alignment.Center) {
                 Icon(painter = painterResource(id = R.drawable.ic_key), contentDescription = "Llave",
-                    tint = PurplePrimary, modifier = Modifier.size(20.dp))
+                    tint = PurpleButton, modifier = Modifier.size(20.dp))
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text("Cambio de contraseña de acceso", fontWeight = FontWeight.Bold,style = Typography.bodySmall)
-                Text("Actualizada hace 2 meses", style = Typography.bodySmall)
+                Text("Cambio de contraseña de acceso", fontWeight = FontWeight.Bold,
+                    style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
+                Text("Actualizada hace 2 meses", style = Typography.bodySmall, color = MaterialTheme.colorScheme.onSecondary)
             }
         }
     }
@@ -204,12 +203,14 @@ fun BotonCerrarSesion(onNavigateToLogin: () -> Unit) {
         Icon(painter = painterResource(id = R.drawable.ic_logout), contentDescription = "Cerrar Sesión",
             tint = RedlogOut, modifier = Modifier.size(24.dp))
         Spacer(Modifier.width(12.dp))
-        Text("Cerrar Sesión", style = Typography.labelLarge)
+        Text("Cerrar Sesión", style = Typography.labelLarge, color = DarkGray)
     }
 }
 
 @Preview
 @Composable
 fun PreviewPerfil(){
-    PerfilScreen(PaddingValues(10.dp),{},{}, {}, {}, {}, {})
+    PerfilScreen({},{})
 }
+
+
